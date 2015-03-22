@@ -1,17 +1,20 @@
 //
-//  RegisterViewController.swift
+//  SlideshowViewController.swift
 //  appWEI
 //
-//  Created by kelei on 15/3/20.
+//  Created by kelei on 15/3/22.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class SlideshowViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let navigationController = self.navigationController {
+            navigationController.navigationBarHidden = true
+        }
         // Do any additional setup after loading the view.
     }
 

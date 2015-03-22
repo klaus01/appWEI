@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24019C4C1ABC19A100672673 /* RegisterViewController.swift */; };
 		244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19DF1ABBFFC000813708 /* AppDelegate.swift */; };
 		244C19E51ABBFFC000813708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244C19E31ABBFFC000813708 /* Main.storyboard */; };
 		244C19E71ABBFFC000813708 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244C19E61ABBFFC000813708 /* Images.xcassets */; };
@@ -14,7 +15,7 @@
 		244C19F61ABBFFC000813708 /* appWEITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19F51ABBFFC000813708 /* appWEITests.swift */; };
 		244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A041ABC007800813708 /* AlamofireExt.swift */; };
 		244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A0E1ABC053A00813708 /* Alamofire.swift */; };
-		249856A81ABC07D90044864E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249856A71ABC07D90044864E /* RegisterViewController.swift */; };
+		2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		244C19DA1ABBFFC000813708 /* appWEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appWEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		244C19DE1ABBFFC000813708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		244C19DF1ABBFFC000813708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +41,7 @@
 		244C19F51ABBFFC000813708 /* appWEITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appWEITests.swift; sourceTree = "<group>"; };
 		244C1A041ABC007800813708 /* AlamofireExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExt.swift; sourceTree = "<group>"; };
 		244C1A0E1ABC053A00813708 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
-		249856A71ABC07D90044864E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				244C1A011ABC006100813708 /* Main */,
+				244C1A021ABC007800813708 /* General */,
+				244C1A051ABC007800813708 /* Helper */,
+				244C1A061ABC007800813708 /* Model */,
+				244C1A071ABC007800813708 /* Sections */,
+				244C1A091ABC007800813708 /* Vendor */,
 				244C19DD1ABBFFC000813708 /* Supporting Files */,
 			);
 			path = appWEI;
@@ -119,11 +126,6 @@
 				244C19E31ABBFFC000813708 /* Main.storyboard */,
 				244C19E61ABBFFC000813708 /* Images.xcassets */,
 				244C19E81ABBFFC000813708 /* LaunchScreen.xib */,
-				244C1A021ABC007800813708 /* General */,
-				244C1A051ABC007800813708 /* Helper */,
-				244C1A061ABC007800813708 /* Model */,
-				244C1A071ABC007800813708 /* Sections */,
-				244C1A091ABC007800813708 /* Vendor */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -161,7 +163,8 @@
 		244C1A071ABC007800813708 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				249856A71ABC07D90044864E /* RegisterViewController.swift */,
+				24019C4C1ABC19A100672673 /* RegisterViewController.swift */,
+				2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -274,10 +277,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				249856A81ABC07D90044864E /* RegisterViewController.swift in Sources */,
 				244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
+				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
+				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
