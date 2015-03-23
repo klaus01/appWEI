@@ -151,13 +151,13 @@ extension Date {
 }
 
 extension Date {
-    init(_ v: String, style: NSDateFormatterStyle = .NoStyle) {
-        var formatter = NSDateFormatter()
-        formatter.dateStyle = style
-        if let date = formatter.dateFromString(v) {
-            self.timeInterval = date.timeIntervalSince1970
-        }
-    }
+//    init(_ v: String, style: NSDateFormatterStyle = .NoStyle) {
+//        var formatter = NSDateFormatter()
+//        formatter.dateStyle = style
+//        if let date = formatter.dateFromString(v) {
+//            self.timeInterval = date.timeIntervalSince1970
+//        }
+//    }
     
     init(_ v: String, dateFormat:String = "yyyy-MM-dd HH:mm:ss") {
         var formatter = NSDateFormatter()
@@ -183,7 +183,6 @@ extension Date {
 
 extension Date {
     init(_ v: Float) { timeInterval = Double(v) }
-    //init(_ v: Float80) { timeInterval = Double(v) }
 }
 
 // MARK: - 可以直接输出

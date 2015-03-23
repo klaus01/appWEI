@@ -13,58 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func setRootViewControllerWithIdentifier(identifier: String) {
-        if let window = self.window {
-            let stryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let rootViewController = stryBoard.instantiateViewControllerWithIdentifier(identifier) as UIViewController
-            window.rootViewController = rootViewController
-        }
-    }
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        ServerHelper.appUserIsLogged { (isLogged, error) -> Void in
-            if let error = error {
-                println(error)
-                return
-            }
-            if let isLogged = isLogged {
-                UserInfo.shared.isLogged = isLogged
-                if isLogged {
-                    ServerHelper.appUserGet(UserInfo.shared.id, completionHandler: { (userInfo, error) -> Void in
-                        if let error = error {
-                            println(error)
-                            return
-                        }
-                        if let userInfo = userInfo {
-                            switch userInfo.registrationStatus {
-                            case 1:
-                                self.setRootViewControllerWithIdentifier("user")
-                            case 2:
-                                self.setRootViewControllerWithIdentifier("show")
-                            case 3:
-                                self.setRootViewControllerWithIdentifier("home")
-                            default:
-                                self.setRootViewControllerWithIdentifier("reg")
-                            }
-                        }
-                    })
-                }
-                else {
-                    self.setRootViewControllerWithIdentifier("reg")
-                }
-            }
-        }
-        
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        if let window = window {
-            window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = UIViewController()
-            var view = UINib(nibName: "LaunchScreen", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? UIView
-            window.rootViewController!.view = view!
-            window.makeKeyAndVisible()
-        }
         return true
     }
 

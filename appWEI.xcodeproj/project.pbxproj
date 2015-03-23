@@ -15,11 +15,13 @@
 		244C19F61ABBFFC000813708 /* appWEITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19F51ABBFFC000813708 /* appWEITests.swift */; };
 		244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A041ABC007800813708 /* AlamofireExt.swift */; };
 		244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A0E1ABC053A00813708 /* Alamofire.swift */; };
+		24668F8F1ABFFE5A00A303FE /* ServerDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */; };
 		2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */; };
 		2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B21ABE97E40007E070 /* ServerHelper.swift */; };
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
+		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
+		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
-		24FFD5F71ABEB83800F0C147 /* AppUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F61ABEB83800F0C147 /* AppUserModel.swift */; };
 		24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F81ABEBD9400F0C147 /* Date.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,11 +48,13 @@
 		244C19F51ABBFFC000813708 /* appWEITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appWEITests.swift; sourceTree = "<group>"; };
 		244C1A041ABC007800813708 /* AlamofireExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExt.swift; sourceTree = "<group>"; };
 		244C1A0E1ABC053A00813708 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataModal.swift; sourceTree = "<group>"; };
 		2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 		2486F6B21ABE97E40007E070 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		24FFD5F61ABEB83800F0C147 /* AppUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserModel.swift; sourceTree = "<group>"; };
 		24FFD5F81ABEBD9400F0C147 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +158,7 @@
 			children = (
 				244C1A041ABC007800813708 /* AlamofireExt.swift */,
 				24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */,
+				24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -169,7 +174,7 @@
 		244C1A061ABC007800813708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				24FFD5F51ABEB81300F0C147 /* Server */,
+				24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			children = (
 				24019C4C1ABC19A100672673 /* RegisterViewController.swift */,
 				2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */,
+				24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -190,14 +196,6 @@
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		24FFD5F51ABEB81300F0C147 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				24FFD5F61ABEB83800F0C147 /* AppUserModel.swift */,
-			);
-			path = Server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,12 +301,14 @@
 				244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
-				24FFD5F71ABEB83800F0C147 /* AppUserModel.swift in Sources */,
+				24668F8F1ABFFE5A00A303FE /* ServerDataModal.swift in Sources */,
+				24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
+				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
