@@ -127,7 +127,7 @@ class ServerHelper {
     }
     
     // 添加或邀请朋友
-    class func appUserAddFriend(phoneNumber: String, completionHandler: (ServerResultModel<MessageModel>?, NSError?) -> Void) {
+    class func appUserAddFriend(phoneNumber: String, completionHandler: (ServerResultModel<SimpleMessageModel>?, NSError?) -> Void) {
         let parameters = [
             "phoneNumber": phoneNumber
         ]
@@ -138,9 +138,9 @@ class ServerHelper {
             }
             
             if let dic = JSON as? Dictionary<String, AnyObject> {
-                var data: MessageModel?
+                var data: SimpleMessageModel?
                 if let dic = dic["data"] as? Dictionary<String, AnyObject> {
-                    data = MessageModel(dic)
+                    data = SimpleMessageModel(dic)
                 }
                 completionHandler(ServerResultModel(dic, data: data), nil)
             }
@@ -162,6 +162,36 @@ class ServerHelper {
             "isBlack": isBlack.hashValue
         ]
         request(.GET, "\(SERVER_HOST)/appUser/setFriendIsBlack", parameters: parameters).responseJSON(getNoDataCompletionHandler(completionHandler))
+    }
+    
+    
+    // MARK: - 消息相关
+    // 获取未读消息列表
+    class func messageGetUnread(completionHandler: (ServerResultModel<[UnreadMessageModel]>?, NSError?) -> Void) {
+        request(.GET, "\(SERVER_HOST)/message/getUnread").responseJSON { (req, res, JSON, error) -> Void in
+            if let error = error {
+                completionHandler(nil, error)
+                return
+            }
+            
+            if let dic = JSON as? Dictionary<String, AnyObject> {
+                var data = [UnreadMessageModel]()
+                if let arr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
+                    for dic in arr {
+                        data.append(UnreadMessageModel(dic))
+                    }
+                }
+                completionHandler(ServerResultModel(dic, data: data), nil)
+            }
+        }
+    }
+    
+    // 设置消息已读
+    class func messageSetRead(messageID: Int, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+        let parameters = [
+            "messageID": messageID
+        ]
+        request(.GET, "\(SERVER_HOST)/message/setRead", parameters: parameters).responseJSON(getNoDataCompletionHandler(completionHandler))
     }
     
 }

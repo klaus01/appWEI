@@ -15,7 +15,7 @@
 		244C19F61ABBFFC000813708 /* appWEITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19F51ABBFFC000813708 /* appWEITests.swift */; };
 		244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A041ABC007800813708 /* AlamofireExt.swift */; };
 		244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A0E1ABC053A00813708 /* Alamofire.swift */; };
-		24668F8F1ABFFE5A00A303FE /* ServerDataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */; };
+		24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24668F8E1ABFFE5A00A303FE /* ServerDataModel.swift */; };
 		2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */; };
 		2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B21ABE97E40007E070 /* ServerHelper.swift */; };
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
@@ -48,7 +48,7 @@
 		244C19F51ABBFFC000813708 /* appWEITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appWEITests.swift; sourceTree = "<group>"; };
 		244C1A041ABC007800813708 /* AlamofireExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExt.swift; sourceTree = "<group>"; };
 		244C1A0E1ABC053A00813708 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
-		24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataModal.swift; sourceTree = "<group>"; };
+		24668F8E1ABFFE5A00A303FE /* ServerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataModel.swift; sourceTree = "<group>"; };
 		2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 		2486F6B21ABE97E40007E070 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		244C1A061ABC007800813708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				24668F8E1ABFFE5A00A303FE /* ServerDataModal.swift */,
+				24668F8E1ABFFE5A00A303FE /* ServerDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
-				24668F8F1ABFFE5A00A303FE /* ServerDataModal.swift in Sources */,
+				24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */,
 				24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
