@@ -10,7 +10,7 @@ import Foundation
 
 class ServerHelper {
     
-    private class func getCompletionHandlerWithNoData(completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) -> (NSURLRequest, NSHTTPURLResponse?, AnyObject?, NSError?) -> Void {
+    private class func getCompletionHandlerWithNoData(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) -> (NSURLRequest, NSHTTPURLResponse?, AnyObject?, NSError?) -> Void {
         func completionHandler(req: NSURLRequest, res: NSHTTPURLResponse?, JSON: AnyObject?, error: NSError?) -> Void {
             if let error = error {
                 completionHandler(nil, error)
@@ -78,21 +78,21 @@ class ServerHelper {
     }
     
     // 获取用户是否已登录
-    class func appUserIsLogged(completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserIsLogged(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/isLogged").responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 用户注册
-    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ServerResultModel<AppUserRegisterModel>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/registerAndSendCheck", parameters: [
             "phoneNumber": phoneNumber,
             "device": device,
             "deviceOS": deviceOS
-            ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
+            ]).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
     
     // 修改用户资料
-    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         upload("\(SERVER_HOST)/appUser/update", [
             "iconFile": UploadValue.PNGFILE(iconFile),
             "nickname": UploadValue.STRING(nickname),
@@ -101,19 +101,19 @@ class ServerHelper {
     }
     
     // 提交APNS令牌
-    class func appUserUpdateAPNSToken(token: String, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserUpdateAPNSToken(token: String, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/updateAPNSToken", parameters: [
             "APNSToken": token
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 更新用户状态为 已进入应用主页
-    class func appUserEnterHome(completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserEnterHome(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/enterHome").responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 更新地理位置信息
-    class func appUserUpdateLocation(longitude: Double, latitude: Double, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserUpdateLocation(longitude: Double, latitude: Double, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/updateLocation", parameters: [
             "longitude": longitude,
             "latitude": latitude
@@ -128,14 +128,14 @@ class ServerHelper {
     }
     
     // 订阅公众号
-    class func appUserAddPartnerUser(partnerUserID: Int, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserAddPartnerUser(partnerUserID: Int, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/addPartnerUser", parameters: [
             "partnerUserID": partnerUserID
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 设置朋友是否在黑名单中
-    class func appUserSetFriendIsBlack(friendUserID: Int, isBlack: Bool, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func appUserSetFriendIsBlack(friendUserID: Int, isBlack: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/setFriendIsBlack", parameters: [
             "friendUserID": friendUserID,
             "isBlack": isBlack.hashValue
@@ -150,7 +150,7 @@ class ServerHelper {
     }
     
     // 设置消息已读
-    class func messageSetRead(messageID: Int, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func messageSetRead(messageID: Int, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/message/setRead", parameters: [
             "messageID": messageID
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
@@ -171,7 +171,7 @@ class ServerHelper {
     
     // MARK: - 短信相关
     // 获取可订阅的公众号列表
-    class func smsCheckVerificationCode(phoneNumber: String, verificationCode: String, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func smsCheckVerificationCode(phoneNumber: String, verificationCode: String, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/sms/checkVerificationCode", parameters: [
             "phoneNumber": phoneNumber,
             "verificationCode": verificationCode
@@ -251,7 +251,7 @@ class ServerHelper {
     }
     
     // 发送字
-    class func wordSend(wordID: Int, friendsUsers: Array<Int>, completionHandler: (ServerResultModel<Void>?, NSError?) -> Void) {
+    class func wordSend(wordID: Int, friendsUsers: Array<Int>, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/word/send", parameters: [
             "wordID": wordID,
             "friendsUserID": friendsUsers

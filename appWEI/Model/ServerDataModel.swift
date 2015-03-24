@@ -57,6 +57,17 @@ struct AppUserModel : ServerDataProtocol {
     }
 }
 
+// 应用用户注册
+struct AppUserRegisterModel : ServerDataProtocol {
+    let appUserID: Int
+    let smsID: Int
+    
+    init(_ dic: Dictionary<String, AnyObject>) {
+        appUserID = dic["appUserID"] as Int
+        smsID     = dic["smsID"] as Int
+    }
+}
+
 // 公众号用户
 struct PartnerUserModel : ServerDataProtocol {
     let partnerUserID: Int
