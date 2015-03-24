@@ -8,8 +8,12 @@
 
 import Foundation
 
-// MARK: - 返回信息
-struct ServerResultModel<T> {
+protocol ServerDataProtocol {
+    init(_ dic: Dictionary<String, AnyObject>)
+}
+
+// 返回信息
+struct ServerResultModel<T> : ServerDataProtocol {
     let success: Bool
     let errorMessage: String?
     let data: T?
@@ -25,8 +29,8 @@ struct ServerResultModel<T> {
     }
 }
 
-// MARK: - 简单文字信息
-struct SimpleMessageModel {
+// 简单文字信息
+struct SimpleMessageModel : ServerDataProtocol {
     let message: String
     
     init(_ dic: Dictionary<String, AnyObject>) {
@@ -34,8 +38,8 @@ struct SimpleMessageModel {
     }
 }
 
-// MARK: - 应用用户
-struct AppUserModel {
+// 应用用户
+struct AppUserModel : ServerDataProtocol {
     let appUserID: Int
     let phoneNumber: String
     let nickname: String?
@@ -53,8 +57,8 @@ struct AppUserModel {
     }
 }
 
-// MARK: - 公众号用户
-struct PartnerUserModel {
+// 公众号用户
+struct PartnerUserModel : ServerDataProtocol {
     let partnerUserID: Int
     let name: String
     let iconUrl: String
@@ -70,8 +74,8 @@ struct PartnerUserModel {
     }
 }
 
-// MARK: - 朋友
-struct FriendModel {
+// 朋友
+struct FriendModel : ServerDataProtocol {
     let appUser: AppUserModel?
     let partnerUser: PartnerUserModel?
     let unreadCount: Int?
@@ -91,8 +95,8 @@ struct FriendModel {
     }
 }
 
-// MARK: - 消息
-struct MessageModel {
+// 消息
+struct MessageModel : ServerDataProtocol {
     let id: Int
     let createTime: Date
     let sourceUserID: Int
@@ -112,8 +116,8 @@ struct MessageModel {
     }
 }
 
-// MARK: - 字
-struct WordModel {
+// 字
+struct WordModel : ServerDataProtocol {
     let id: Int
     let number: String
     let createUserID: Int?
@@ -143,8 +147,17 @@ struct WordModel {
     }
 }
 
-// MARK: - 活动
-struct ActivityModel {
+// 创建字的返回结构
+struct NewWordModel : ServerDataProtocol {
+    let newWordID: Int
+    
+    init(_ dic: Dictionary<String, AnyObject>) {
+        newWordID = dic["newWordID"] as Int
+    }
+}
+
+// 活动
+struct ActivityModel : ServerDataProtocol {
     let id: Int
     let partnerUserID: Int
     let createTime: Date
@@ -164,8 +177,8 @@ struct ActivityModel {
     }
 }
 
-// MARK: - 中奖信息
-struct GiftModel {
+// 中奖信息
+struct GiftModel : ServerDataProtocol {
     let partnerActivityID: Int
     let appUserID: Int
     let awardQRCodeInfo: String
@@ -181,8 +194,8 @@ struct GiftModel {
     }
 }
 
-// MARK: - 未读消息
-struct UnreadMessageModel {
+// 未读消息
+struct UnreadMessageModel : ServerDataProtocol {
     let message: MessageModel
     let appUser: AppUserModel?
     let partnerUser: PartnerUserModel?
@@ -211,7 +224,7 @@ struct UnreadMessageModel {
 }
 
 // 历史消息
-struct HistoryMessageModel {
+struct HistoryMessageModel : ServerDataProtocol {
     let message: MessageModel
     let word: WordModel?
     let activity: ActivityModel?
@@ -232,7 +245,7 @@ struct HistoryMessageModel {
 }
 
 // 公众号消息情况
-struct PartnerUserMessageOverviewModel {
+struct PartnerUserMessageOverviewModel : ServerDataProtocol {
     let lastTime: Date
     let unreadCount: Int
     let noAwardCount: Int
@@ -245,7 +258,7 @@ struct PartnerUserMessageOverviewModel {
 }
 
 // 公众号带消息
-struct PartnerUserAndMessageOverviewModel {
+struct PartnerUserAndMessageOverviewModel : ServerDataProtocol {
     let partnerUser: PartnerUserModel
     let messageOverview: PartnerUserMessageOverviewModel?
     
