@@ -13,9 +13,9 @@ class LaunchScreenViewController: UIViewController {
     private func setRootViewControllerWithIdentifier(identifier: String) {
         let appDelegate = AppDelegate.shared()
         if let window = appDelegate?.window {
-            let rootViewController = self.storyboard!.instantiateViewControllerWithIdentifier("mainNav") as UINavigationController
+            let rootViewController = self.storyboard!.instantiateViewControllerWithIdentifier("mainNav") as! UINavigationController
             window.rootViewController = rootViewController
-            rootViewController.viewControllers = [self.storyboard!.instantiateViewControllerWithIdentifier(identifier) as UIViewController]
+            rootViewController.viewControllers = [self.storyboard!.instantiateViewControllerWithIdentifier(identifier) as! UIViewController]
         }
     }
     

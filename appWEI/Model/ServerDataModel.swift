@@ -19,11 +19,12 @@ struct ServerResultModel<T> : ServerDataProtocol {
     let data: T?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        success      = dic["success"] as Bool
+        success      = dic["success"] as! Bool
         errorMessage = dic["message"] as? String
+        data         = nil
     }
     init(_ dic: Dictionary<String, AnyObject>, data: T?) {
-        success      = dic["success"] as Bool
+        success      = dic["success"] as! Bool
         errorMessage = dic["message"] as? String
         self.data    = data
     }
@@ -34,7 +35,7 @@ struct SimpleMessageModel : ServerDataProtocol {
     let message: String
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        message = dic["message"] as String
+        message = dic["message"] as! String
     }
 }
 
@@ -48,12 +49,12 @@ struct AppUserModel : ServerDataProtocol {
     let registrationStatus: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        appUserID           = dic["AppUserID"] as Int
-        phoneNumber         = dic["PhoneNumber"] as String
+        appUserID           = dic["AppUserID"] as! Int
+        phoneNumber         = dic["PhoneNumber"] as! String
         nickname            = dic["Nickname"] as? String
         iconUrl             = dic["IconUrl"] as? String
         isMan               = dic["IsMan"] as? Bool
-        registrationStatus  = dic["RegistrationStatus"] as Int
+        registrationStatus  = dic["RegistrationStatus"] as! Int
     }
 }
 
@@ -63,8 +64,8 @@ struct AppUserRegisterModel : ServerDataProtocol {
     let smsID: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        appUserID = dic["appUserID"] as Int
-        smsID     = dic["smsID"] as Int
+        appUserID = dic["appUserID"] as! Int
+        smsID     = dic["smsID"] as! Int
     }
 }
 
@@ -77,11 +78,11 @@ struct PartnerUserModel : ServerDataProtocol {
     let createTime: Date
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        partnerUserID = dic["PartnerUserID"] as Int
-        name          = dic["Name"] as String
-        iconUrl       = dic["IconUrl"] as String
+        partnerUserID = dic["PartnerUserID"] as! Int
+        name          = dic["Name"] as! String
+        iconUrl       = dic["IconUrl"] as! String
         description   = dic["Description"] as? String
-        createTime    = Date(dic["CreateTime"] as String)
+        createTime    = Date(dic["CreateTime"] as! String)
     }
 }
 
@@ -96,11 +97,20 @@ struct FriendModel : ServerDataProtocol {
         if let dic = dic["AppUser"] as? Dictionary<String, AnyObject> {
             appUser = AppUserModel(dic)
         }
+        else {
+            appUser = nil
+        }
         if let dic = dic["PartnerUser"] as? Dictionary<String, AnyObject> {
             partnerUser = PartnerUserModel(dic)
         }
+        else {
+            partnerUser = nil
+        }
         if let time = dic["LastTime"] as? String {
             lastTime = Date(time)
+        }
+        else {
+            lastTime = nil
         }
         unreadCount = dic["UnreadCount"] as? Int
     }
@@ -117,13 +127,13 @@ struct MessageModel : ServerDataProtocol {
     let isRead: Bool
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        id              = dic["ID"] as Int
-        createTime      = Date(dic["CreateTime"] as String)
-        sourceUserID    = dic["SourceUserID"] as Int
-        receiveUserID   = dic["ReceiveUserID"] as Int
-        type            = dic["Type"] as Int
-        content         = dic["Content"] as String
-        isRead          = dic["IsRead"] as Bool
+        id              = dic["ID"] as! Int
+        createTime      = Date(dic["CreateTime"] as! String)
+        sourceUserID    = dic["SourceUserID"] as! Int
+        receiveUserID   = dic["ReceiveUserID"] as! Int
+        type            = dic["Type"] as! Int
+        content         = dic["Content"] as! String
+        isRead          = dic["IsRead"] as! Bool
     }
 }
 
@@ -143,18 +153,18 @@ struct WordModel : ServerDataProtocol {
     let useCount_Before365D_HK: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        id                      = dic["ID"] as Int
-        number                  = dic["Number"] as String
+        id                      = dic["ID"] as! Int
+        number                  = dic["Number"] as! String
         createUserID            = dic["CreateUserID"] as? Int
-        pictureUrl              = dic["PictureUrl"] as String
+        pictureUrl              = dic["PictureUrl"] as! String
         description             = dic["Description"] as? String
         audioUrl                = dic["AudioUrl"] as? String
-        useCount_Before1D_CN    = dic["UseCount_Before1D_CN"] as Int
-        useCount_Before30D_CN   = dic["UseCount_Before30D_CN"] as Int
-        useCount_Before365D_CN  = dic["UseCount_Before365D_CN"] as Int
-        useCount_Before1D_HK    = dic["UseCount_Before1D_HK"] as Int
-        useCount_Before30D_HK   = dic["UseCount_Before30D_HK"] as Int
-        useCount_Before365D_HK  = dic["UseCount_Before365D_HK"] as Int
+        useCount_Before1D_CN    = dic["UseCount_Before1D_CN"] as! Int
+        useCount_Before30D_CN   = dic["UseCount_Before30D_CN"] as! Int
+        useCount_Before365D_CN  = dic["UseCount_Before365D_CN"] as! Int
+        useCount_Before1D_HK    = dic["UseCount_Before1D_HK"] as! Int
+        useCount_Before30D_HK   = dic["UseCount_Before30D_HK"] as! Int
+        useCount_Before365D_HK  = dic["UseCount_Before365D_HK"] as! Int
     }
 }
 
@@ -163,7 +173,7 @@ struct NewWordModel : ServerDataProtocol {
     let newWordID: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        newWordID = dic["newWordID"] as Int
+        newWordID = dic["newWordID"] as! Int
     }
 }
 
@@ -178,12 +188,12 @@ struct ActivityModel : ServerDataProtocol {
     let url: String?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        id              = dic["ID"] as Int
-        partnerUserID   = dic["PartnerUserID"] as Int
-        createTime      = Date(dic["CreateTime"] as String)
-        mode            = dic["Mode"] as Int
-        pictureUrl      = dic["PictureUrl"] as String
-        content         = dic["Content"] as String
+        id              = dic["ID"] as! Int
+        partnerUserID   = dic["PartnerUserID"] as! Int
+        createTime      = Date(dic["CreateTime"] as! String)
+        mode            = dic["Mode"] as! Int
+        pictureUrl      = dic["PictureUrl"] as! String
+        content         = dic["Content"] as! String
         url             = dic["Url"] as? String
     }
 }
@@ -196,11 +206,14 @@ struct GiftModel : ServerDataProtocol {
     let awardTime: Date?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        partnerActivityID   = dic["PartnerActivityID"] as Int
-        appUserID           = dic["AppUserID"] as Int
-        awardQRCodeInfo     = dic["AwardQRCodeInfo"] as String
+        partnerActivityID   = dic["PartnerActivityID"] as! Int
+        appUserID           = dic["AppUserID"] as! Int
+        awardQRCodeInfo     = dic["AwardQRCodeInfo"] as! String
         if let time = dic["AwardTime"] as? String {
             awardTime       = Date(time)
+        }
+        else {
+            awardTime       = nil
         }
     }
 }
@@ -215,21 +228,36 @@ struct UnreadMessageModel : ServerDataProtocol {
     let gift: GiftModel?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        message = MessageModel(dic["Message"] as Dictionary<String, AnyObject>)
+        message = MessageModel(dic["Message"] as! Dictionary<String, AnyObject>)
         if let dic = dic["AppUser"] as? Dictionary<String, AnyObject> {
             appUser = AppUserModel(dic)
+        }
+        else {
+            appUser = nil
         }
         if let dic = dic["PartnerUser"] as? Dictionary<String, AnyObject> {
             partnerUser = PartnerUserModel(dic)
         }
+        else {
+            partnerUser = nil
+        }
         if let dic = dic["Word"] as? Dictionary<String, AnyObject> {
             word = WordModel(dic)
+        }
+        else {
+            word = nil
         }
         if let dic = dic["Activity"] as? Dictionary<String, AnyObject> {
             activity = ActivityModel(dic)
         }
+        else {
+            activity = nil
+        }
         if let dic = dic["Gift"] as? Dictionary<String, AnyObject> {
             gift = GiftModel(dic)
+        }
+        else {
+            gift = nil
         }
     }
 }
@@ -242,15 +270,24 @@ struct HistoryMessageModel : ServerDataProtocol {
     let gift: GiftModel?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        message = MessageModel(dic["Message"] as Dictionary<String, AnyObject>)
+        message = MessageModel(dic["Message"] as! Dictionary<String, AnyObject>)
         if let dic = dic["Word"] as? Dictionary<String, AnyObject> {
             word = WordModel(dic)
+        }
+        else {
+            word = nil
         }
         if let dic = dic["Activity"] as? Dictionary<String, AnyObject> {
             activity = ActivityModel(dic)
         }
+        else {
+            activity = nil
+        }
         if let dic = dic["Gift"] as? Dictionary<String, AnyObject> {
             gift = GiftModel(dic)
+        }
+        else {
+            gift = nil
         }
     }
 }
@@ -262,9 +299,9 @@ struct PartnerUserMessageOverviewModel : ServerDataProtocol {
     let noAwardCount: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        lastTime        = Date(dic["LastTime"] as String)
-        unreadCount     = dic["UnreadCount"] as Int
-        noAwardCount    = dic["noAwardCount"] as Int
+        lastTime        = Date(dic["LastTime"] as! String)
+        unreadCount     = dic["UnreadCount"] as! Int
+        noAwardCount    = dic["noAwardCount"] as! Int
     }
 }
 
@@ -274,9 +311,12 @@ struct PartnerUserAndMessageOverviewModel : ServerDataProtocol {
     let messageOverview: PartnerUserMessageOverviewModel?
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        partnerUser = PartnerUserModel(dic["PartnerUser"] as Dictionary<String, AnyObject>)
+        partnerUser = PartnerUserModel(dic["PartnerUser"] as! Dictionary<String, AnyObject>)
         if let dic = dic["MessageOverview"] as? Dictionary<String, AnyObject> {
             messageOverview = PartnerUserMessageOverviewModel(dic)
+        }
+        else {
+            messageOverview = nil
         }
     }
 }
