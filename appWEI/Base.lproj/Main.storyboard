@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -157,19 +157,58 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="168" width="34" height="21"/>
+                                    <rect key="frame" x="16" y="190" width="34" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-7H-BC2">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="235" width="34" height="21"/>
+                                </variation>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-bm-C4L">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="男"/>
+                                    <segment title="女"/>
+                                </segments>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="100" y="232" width="123" height="29"/>
+                                </variation>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q8j-Sj-2g4">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="100" y="186" width="123" height="30"/>
+                                </variation>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-Nz-MQL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="保存">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="177" y="285" width="46" height="30"/>
+                                    <rect key="frame" x="16" y="300" width="368" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="zl7-oP-Osb" kind="show" id="1hU-He-Tik"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-DA-jIo">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="100" y="72" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <action selector="iconButtonClick:" destination="0hc-Qb-cf7" eventType="touchUpInside" id="qkg-O8-Zt5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -178,22 +217,77 @@
                             <mask key="subviews">
                                 <exclude reference="OEx-FW-54t"/>
                                 <exclude reference="Jbo-yg-LNX"/>
+                                <exclude reference="tvm-7H-BC2"/>
+                                <exclude reference="mpO-bm-C4L"/>
+                                <exclude reference="Q8j-Sj-2g4"/>
                                 <exclude reference="N8W-Nz-MQL"/>
+                                <exclude reference="UXs-DA-jIo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="OEx-FW-54t"/>
                                 <include reference="Jbo-yg-LNX"/>
+                                <include reference="tvm-7H-BC2"/>
+                                <include reference="mpO-bm-C4L"/>
+                                <include reference="Q8j-Sj-2g4"/>
                                 <include reference="N8W-Nz-MQL"/>
+                                <include reference="UXs-DA-jIo"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="完善资料" id="AMd-hf-Bbx"/>
+                    <connections>
+                        <outlet property="iconButton" destination="UXs-DA-jIo" id="fN8-Qa-bEf"/>
+                        <outlet property="nicknameTextField" destination="Q8j-Sj-2g4" id="IxA-J0-9tE"/>
+                        <outlet property="sexSegmentedControl" destination="mpO-bm-C4L" id="uyp-YS-LV2"/>
+                        <segue destination="a6R-8A-gOg" kind="show" id="AOJ-Xv-dyL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BL9-xg-fac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492.5" y="47"/>
+            <point key="canvasLocation" x="1492.5" y="88"/>
+        </scene>
+        <!--默认头像-->
+        <scene sceneID="cIc-HQ-GEk">
+            <objects>
+                <viewController id="a6R-8A-gOg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SJP-Hs-hMZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="bJb-4P-Nkf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uss-Q4-Zz5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="2kM-Xe-J3u">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="男"/>
+                                    <segment title="女"/>
+                                </segments>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="139" y="72" width="123" height="29"/>
+                                </variation>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2kM-Xe-J3u"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2kM-Xe-J3u"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="默认头像" id="MYR-34-4bk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="umx-9G-qls" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2257.5" y="-230"/>
         </scene>
         <!--Slideshow View Controller-->
         <scene sceneID="xJq-b3-TSM">
@@ -234,8 +328,7 @@
                                         <exclude reference="oR8-H2-tpt"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
+                                <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="oR8-H2-tpt"/>
                                     </mask>
@@ -321,7 +414,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w3i-EN-3wY"/>
+        <segue reference="1hU-He-Tik"/>
         <segue reference="Gel-uq-x6C"/>
     </inferredMetricsTieBreakers>
 </document>
