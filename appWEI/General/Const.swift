@@ -19,3 +19,5 @@ let SERVER_HOST = "http://weiapp.cf:3001"
 let VERIFICATIONCODE_INTERVAL = 60
 // 验证码长度
 let VERIFICATIONCODE_LENGTH = 6
+// 多久上传一次经纬度坐标(秒)
+let UPLOADLOCATION_INTERVAL = 5 * 60.0

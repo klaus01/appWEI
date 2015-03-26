@@ -113,7 +113,7 @@ class ServerHelper {
     }
     
     // 更新地理位置信息
-    class func appUserUpdateLocation(longitude: Double, latitude: Double, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserUpdateLocation(longitude: Double, _ latitude: Double, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
         request(.GET, "\(SERVER_HOST)/appUser/updateLocation", parameters: [
             "longitude": longitude,
             "latitude": latitude

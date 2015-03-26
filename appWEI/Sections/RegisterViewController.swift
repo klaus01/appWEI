@@ -63,6 +63,7 @@ class RegisterViewController: UIViewController {
             if ret!.success {
                 UserInfo.shared.isLogged = true
                 UserInfo.shared.save()
+                UserInfo.shared.startHeartbeat()
                 
                 // 已注册且已登录，根据用户注册状态决定
                 ServerHelper.appUserGet(UserInfo.shared.id) { (ret, error) -> Void in
