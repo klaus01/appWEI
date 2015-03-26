@@ -1,20 +1,15 @@
 //
-//  SlideshowViewController.swift
+//  HomeViewController.swift
 //  appWEI
 //
-//  Created by kelei on 15/3/22.
+//  Created by kelei on 15/3/26.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
 import UIKit
 
-class SlideshowViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    @IBAction func enterHomeClick(sender: AnyObject) {
-        ServerHelper.appUserEnterHome { (ret, error) -> Void in
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let navigationController = self.navigationController {

@@ -55,15 +55,34 @@ class RegisterViewController: UIViewController {
     @IBAction func regOrLoginClick(sender: UIButton) {
         regOrLoginButton.enabled = false
         ServerHelper.smsCheckVerificationCode(UserInfo.shared.phoneNumber!, verificationCode: verificationCodeTextField.text) { (ret, error) -> Void in
+            self.regOrLoginButton.enabled = true
             if let error = error {
                 println(error)
-                self.regOrLoginButton.enabled = true
                 return
             }
             if ret!.success {
                 UserInfo.shared.isLogged = true
                 UserInfo.shared.save()
-                self.performSegueWithIdentifier("regToUser", sender: nil)
+                
+                // 已注册且已登录，根据用户注册状态决定
+                ServerHelper.appUserGet(UserInfo.shared.id) { (ret, error) -> Void in
+                    if let error = error {
+                        println(error)
+                        return
+                    }
+                    if let data = ret!.data {
+                        switch data.registrationStatus {
+                        case 1:
+                            // 手机号已验证
+                            self.performSegueWithIdentifier("regToUser", sender: nil)
+                        case 2:
+                            // 已完善了用户资料
+                            self.performSegueWithIdentifier("regToShow", sender: nil)
+                        default:
+                            self.performSegueWithIdentifier("regToHome", sender: nil)
+                        }
+                    }
+                }
             }
             else {
                 UIAlertView.showMessage(ret!.errorMessage!)

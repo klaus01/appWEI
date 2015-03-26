@@ -22,6 +22,7 @@
 		2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B21ABE97E40007E070 /* ServerHelper.swift */; };
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
 		24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */; };
+		24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA68401AC3D4C400F79324 /* HomeViewController.swift */; };
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
@@ -58,6 +59,7 @@
 		2486F6B21ABE97E40007E070 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefulatIconsViewController.swift; sourceTree = "<group>"; };
+		24AA68401AC3D4C400F79324 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */,
 				242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */,
 				24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */,
+				24AA68401AC3D4C400F79324 /* HomeViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
+				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
