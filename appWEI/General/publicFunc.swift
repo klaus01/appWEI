@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 extension String {
@@ -21,6 +22,14 @@ extension String {
     */
     func match(regularExpression: String) -> Bool {
         return self.rangeOfString(regularExpression, options: .RegularExpressionSearch) != nil
+    }
+    
+}
+
+extension UIAlertView {
+    
+    class func showMessage(message: String, cancelButtonTitle: String? = "知道了") {
+        UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
     }
     
 }
