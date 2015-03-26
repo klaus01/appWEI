@@ -43,11 +43,12 @@ class RegisterViewController: UIViewController {
                 UserInfo.shared.id = ret!.data!.appUserID
                 UserInfo.shared.save()
                 self.verificationCodeTextField.hidden = false
+                self.verificationCodeTextField.becomeFirstResponder()
                 self.countdown = VERIFICATIONCODE_INTERVAL
                 NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
             }
             else {
-                UIAlertView(title: nil, message: ret!.errorMessage, delegate: nil, cancelButtonTitle: nil).show()
+                UIAlertView.showMessage(ret!.errorMessage!)
             }
         }
     }
@@ -65,7 +66,7 @@ class RegisterViewController: UIViewController {
                 self.performSegueWithIdentifier("regToUser", sender: nil)
             }
             else {
-                UIAlertView(title: nil, message: ret!.errorMessage, delegate: nil, cancelButtonTitle: nil).show()
+                UIAlertView.showMessage(ret!.errorMessage!)
             }
         }
     }
@@ -102,12 +103,12 @@ class RegisterViewController: UIViewController {
                         // 已进入过主页
                         self.performSegueWithIdentifier("regToHome", sender: nil)
                     default:
-                        UIAlertView(title: nil, message: "用户注册状态错误\(data.registrationStatus)", delegate: nil, cancelButtonTitle: nil).show()
+                        UIAlertView.showMessage("用户注册状态错误\(data.registrationStatus)")
                     }
                 }
             }
             else {
-                UIAlertView(title: nil, message: ret!.errorMessage, delegate: nil, cancelButtonTitle: nil).show()
+                UIAlertView.showMessage(ret!.errorMessage!)
             }
         }
     }
