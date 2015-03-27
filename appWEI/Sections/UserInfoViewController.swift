@@ -94,7 +94,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         
         saveButton.enabled = false
         ServerHelper.appUserUpdate(UIImagePNGRepresentation(iconImage!), nickname: nicknameTextField.text!, isMan: isMen!) { (ret, error) -> Void in
-            self.saveButton.enabled = false
+            self.saveButton.enabled = true
             if let error = error {
                 println(error)
                 return
