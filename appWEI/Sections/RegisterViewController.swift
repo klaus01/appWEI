@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController {
         
         sendButton.enabled = false
         
-        ServerHelper.appUserRegisterAndSendCheck(phoneNumber, device: UIDevice.currentDevice().name, deviceOS: UIDevice.currentDevice().systemVersion) { (ret, error) -> Void in
+        ServerHelper.appUserRegisterAndSendCheck(phoneNumber, device: UIDevice.currentDevice().model, deviceOS: UIDevice.currentDevice().systemVersion) { (ret, error) -> Void in
             if let error = error {
                 println(error)
                 self.sendButton.enabled = true
