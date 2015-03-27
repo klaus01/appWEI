@@ -12,7 +12,7 @@ import Foundation
 extension String {
     
     var length: Int {
-        return self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        return count(self)
     }
     
     /*
