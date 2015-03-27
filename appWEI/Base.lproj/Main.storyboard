@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -55,9 +54,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入手机号" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="osF-MS-Il9">
-                                <rect key="frame" x="16" y="72" width="288" height="70"/>
+                                <rect key="frame" x="16" y="72" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="bsd-bW-csf"/>
+                                    <constraint firstAttribute="height" constant="50" id="bsd-bW-csf"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
@@ -66,21 +65,10 @@
                                     <action selector="phoneNumberEditingChanged:" destination="yQ2-EI-Wkr" eventType="editingChanged" id="19D-x2-azO"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MF0-wB-3sb">
-                                <rect key="frame" x="16" y="150" width="288" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="CPI-iR-2uE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="发送验证码"/>
-                                <connections>
-                                    <action selector="sendClick:" destination="yQ2-EI-Wkr" eventType="touchUpInside" id="Ecq-3r-awa"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入验证码" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oX-d9-XVV">
-                                <rect key="frame" x="16" y="228" width="288" height="70"/>
+                                <rect key="frame" x="16" y="188" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="VPl-Rc-zwS"/>
+                                    <constraint firstAttribute="height" constant="50" id="VPl-Rc-zwS"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
@@ -90,14 +78,25 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq7-R4-3Eo">
-                                <rect key="frame" x="16" y="306" width="288" height="70"/>
+                                <rect key="frame" x="16" y="246" width="288" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="yJ2-CF-RIW"/>
+                                    <constraint firstAttribute="height" constant="40" id="yJ2-CF-RIW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="注册或登录"/>
                                 <connections>
                                     <action selector="regOrLoginClick:" destination="yQ2-EI-Wkr" eventType="touchUpInside" id="X4p-aV-VOW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MF0-wB-3sb">
+                                <rect key="frame" x="16" y="130" width="288" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CPI-iR-2uE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="发送验证码"/>
+                                <connections>
+                                    <action selector="sendClick:" destination="yQ2-EI-Wkr" eventType="touchUpInside" id="Ecq-3r-awa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -111,7 +110,7 @@
                             <constraint firstItem="MF0-wB-3sb" firstAttribute="trailing" secondItem="UxT-8u-gLd" secondAttribute="trailingMargin" id="TUO-sT-GRE"/>
                             <constraint firstItem="osF-MS-Il9" firstAttribute="trailing" secondItem="UxT-8u-gLd" secondAttribute="trailingMargin" id="Txq-O5-Dxl"/>
                             <constraint firstItem="0oX-d9-XVV" firstAttribute="trailing" secondItem="UxT-8u-gLd" secondAttribute="trailingMargin" id="cMj-tB-MhL"/>
-                            <constraint firstItem="0oX-d9-XVV" firstAttribute="top" secondItem="MF0-wB-3sb" secondAttribute="bottom" constant="8" id="hXb-Ef-kUM"/>
+                            <constraint firstItem="0oX-d9-XVV" firstAttribute="top" secondItem="MF0-wB-3sb" secondAttribute="bottom" constant="18" id="hXb-Ef-kUM"/>
                             <constraint firstItem="MF0-wB-3sb" firstAttribute="leading" secondItem="UxT-8u-gLd" secondAttribute="leadingMargin" id="kkA-xL-kh2"/>
                             <constraint firstItem="gq7-R4-3Eo" firstAttribute="leading" secondItem="UxT-8u-gLd" secondAttribute="leadingMargin" id="oGY-Nd-jCC"/>
                             <constraint firstItem="osF-MS-Il9" firstAttribute="top" secondItem="wUp-hw-uSQ" secondAttribute="bottom" constant="8" id="qtY-cJ-sUR"/>
@@ -418,7 +417,7 @@
                                     <rect key="frame" x="180" y="282" width="39" height="37"/>
                                 </variation>
                             </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jP5-gf-C2v">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jP5-gf-C2v">
                                 <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR8-H2-tpt">
@@ -584,6 +583,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w3i-EN-3wY"/>
-        <segue reference="7xM-Dl-zBf"/>
+        <segue reference="Gel-uq-x6C"/>
     </inferredMetricsTieBreakers>
 </document>

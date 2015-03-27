@@ -10,7 +10,7 @@ import Foundation
 
 // 服务端域名
 #if DEBUG
-let SERVER_HOST = "http://localhost:3001"
+let SERVER_HOST = "http://192.168.199.101:3001"
 #else
 let SERVER_HOST = "http://weiapp.cf:3001"
 #endif
