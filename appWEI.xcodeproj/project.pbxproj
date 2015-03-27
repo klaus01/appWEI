@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24019C4C1ABC19A100672673 /* RegisterViewController.swift */; };
-		242E35B91AC14DA2001EDA0D /* publicFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E35B81AC14DA2001EDA0D /* publicFunc.swift */; };
+		242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E35B81AC14DA2001EDA0D /* PublicFunc.swift */; };
 		242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */; };
 		244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19DF1ABBFFC000813708 /* AppDelegate.swift */; };
 		244C19E51ABBFFC000813708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244C19E31ABBFFC000813708 /* Main.storyboard */; };
@@ -18,6 +18,9 @@
 		244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A041ABC007800813708 /* AlamofireExt.swift */; };
 		244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C1A0E1ABC053A00813708 /* Alamofire.swift */; };
 		24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24668F8E1ABFFE5A00A303FE /* ServerDataModel.swift */; };
+		247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247094C11AC543A500A830F3 /* InviteFriendViewController.swift */; };
+		247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */; };
+		247094C61AC54A9500A830F3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247094C51AC54A9500A830F3 /* AddressBook.framework */; };
 		2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */; };
 		2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B21ABE97E40007E070 /* ServerHelper.swift */; };
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
@@ -26,6 +29,8 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
+		24F3C0A01AC523B000E9FF49 /* FriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09F1AC523B000E9FF49 /* FriendCollectionViewCell.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
 		24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F81ABEBD9400F0C147 /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		242E35B81AC14DA2001EDA0D /* publicFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = publicFunc.swift; sourceTree = "<group>"; };
+		242E35B81AC14DA2001EDA0D /* PublicFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicFunc.swift; sourceTree = "<group>"; };
 		242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		244C19DA1ABBFFC000813708 /* appWEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appWEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		244C19DE1ABBFFC000813708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +61,9 @@
 		244C1A041ABC007800813708 /* AlamofireExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExt.swift; sourceTree = "<group>"; };
 		244C1A0E1ABC053A00813708 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		24668F8E1ABFFE5A00A303FE /* ServerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataModel.swift; sourceTree = "<group>"; };
+		247094C11AC543A500A830F3 /* InviteFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewController.swift; sourceTree = "<group>"; };
+		247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteContactsTableViewController.swift; sourceTree = "<group>"; };
+		247094C51AC54A9500A830F3 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 		2486F6B21ABE97E40007E070 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -64,6 +72,8 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		24F3C09F1AC523B000E9FF49 /* FriendCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendCollectionViewCell.swift; path = View/FriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24FFD5F81ABEBD9400F0C147 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247094C61AC54A9500A830F3 /* AddressBook.framework in Frameworks */,
 				24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +101,7 @@
 		244C19D11ABBFFC000813708 = {
 			isa = PBXGroup;
 			children = (
+				247094C51AC54A9500A830F3 /* AddressBook.framework */,
 				24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */,
 				244C19DC1ABBFFC000813708 /* appWEI */,
 				244C19F21ABBFFC000813708 /* appWEITests */,
@@ -159,9 +171,10 @@
 		244C1A021ABC007800813708 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				24F3C09E1AC5237800E9FF49 /* View */,
 				244C1A031ABC007800813708 /* Class */,
 				2486F6B41ABE99E70007E070 /* Const.swift */,
-				242E35B81AC14DA2001EDA0D /* publicFunc.swift */,
+				242E35B81AC14DA2001EDA0D /* PublicFunc.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -201,6 +214,9 @@
 				24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */,
 				2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */,
 				24AA68401AC3D4C400F79324 /* HomeViewController.swift */,
+				24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */,
+				247094C11AC543A500A830F3 /* InviteFriendViewController.swift */,
+				247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -212,6 +228,14 @@
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		24F3C09E1AC5237800E9FF49 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				24F3C09F1AC523B000E9FF49 /* FriendCollectionViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,18 +339,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F3C0A01AC523B000E9FF49 /* FriendCollectionViewCell.swift in Sources */,
 				244C1A0A1ABC007800813708 /* AlamofireExt.swift in Sources */,
 				242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
+				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
+				24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
-				242E35B91AC14DA2001EDA0D /* publicFunc.swift in Sources */,
+				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
 				24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */,
 				24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
+				247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
