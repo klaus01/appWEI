@@ -17,7 +17,7 @@ class InviteFriendViewController: UIViewController {
         inviteButton.enabled = getPhoneNumberAreaType(sender.text) != .error
     }
     
-    @IBAction func inviteClient(sender: AnyObject) {
+    @IBAction func inviteClick(sender: AnyObject) {
         phoneNumberTextField.enabled = false
         inviteButton.enabled = false
         

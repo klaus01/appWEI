@@ -11,9 +11,12 @@ import AddressBook
 
 class InviteContactsTableViewController: UITableViewController {
     
-    private var phones: [[String: String]]!
+    // MARK: - private
     
-    func getSysContacts() -> [[String: String]] {
+    private var firstLetterArray = [String]()
+    private var contacts = [String : [[String : AnyObject]]]()
+    
+    private func getSysContacts() -> [[String: AnyObject]] {
         var error:Unmanaged<CFError>?
         var addressBook: ABAddressBookRef? = ABAddressBookCreateWithOptions(nil, &error).takeRetainedValue()
         
@@ -35,7 +38,7 @@ class InviteContactsTableViewController: UITableViewController {
         return analyzeSysContacts( ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray )
     }
     
-    func analyzeSysContacts(sysContacts: NSArray) -> [[String:String]] {
+    private func analyzeSysContacts(sysContacts: NSArray) -> [[String:AnyObject]] {
         
         
         func analyzeContactProperty(contact: ABRecordRef, property: ABPropertyID) -> [String]? {
@@ -53,9 +56,8 @@ class InviteContactsTableViewController: UITableViewController {
             }
         }
         
-        var allContacts:Array = [[String:String]]()
+        var allContacts = [[String:AnyObject]]()
         for contact in sysContacts {
-            var currentContact:Dictionary = [String:String]()
             // 姓
             let firstName = ABRecordCopyValue(contact, kABPersonFirstNameProperty)?.takeRetainedValue() as? String ?? ""
             // 名
@@ -64,44 +66,135 @@ class InviteContactsTableViewController: UITableViewController {
             var phones = analyzeContactProperty(contact, kABPersonPhoneProperty)
             if let phones = phones {
                 for phone in phones {
-                    currentContact["firstName"] = firstName
-                    currentContact["lastName"] = lastName
+                    var currentContact = [String:String]()
+                    currentContact["name"] = (lastName + firstName).trimmed()
                     currentContact["phone"] = phone
+                        .replace("+", withString: "")
+                        .replace("-", withString: "")
+                        .replace("(", withString: "")
+                        .replace(")", withString: "")
+                        // 以下两个空格是不同的(有一个是空格，另一个是不可见字符)
+                        .replace(" ", withString: "")
+                        .replace(" ", withString: "")
+                    allContacts.append(currentContact)
                 }
             }
-            allContacts.append(currentContact)
         }
         return allContacts
     }
     
+    // MARK: - public
+    
+    func addFriendButtonClick(Sender: UIButton) {
+        let cell = Sender.superview!.superview! as! UITableViewCell
+        if let indexPath = self.tableView.indexPathForCell(cell) {
+            let firstLetter = self.firstLetterArray[indexPath.section]
+            var contacts = self.contacts[firstLetter]!
+            var contact = contacts[indexPath.row]
+            
+            contact["networking"] = true
+            contacts[indexPath.row] = contact
+            self.contacts[firstLetter] = contacts
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            
+            ServerHelper.appUserAddFriend(contact["phone"] as! String, completionHandler: { (ret, error) -> Void in
+                contact["networking"] = false
+                if error != nil {
+                    println(error)
+                }
+                else {
+                    contact["addSuccess"] = ret!.success
+                }
+                contacts[indexPath.row] = contact
+                self.contacts[firstLetter] = contacts
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            })
+            
+        }
+    }
+    
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.phones = getSysContacts()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let allContacts = getSysContacts()
+        allContacts.map { contact -> [String : AnyObject] in
+            var ret = contact
+            let name = ret["name"]! as! String
+            let py = name.getPinYin().trimmed()
+            let firstLetter = (py.length > 0 ? py[0]! : name[0]!).uppercaseString
+            if let tContacts = self.contacts[firstLetter] {
+            }
+            else {
+                self.firstLetterArray.append(firstLetter)
+                self.contacts[firstLetter] = [[String : AnyObject]]()
+            }
+            ret["networking"] = false
+            ret["addSuccess"] = false
+            
+            self.contacts[firstLetter]!.append(ret)
+            
+            return ret
+        }
+        self.firstLetterArray.sort { (v1, v2) -> Bool in
+            return v1 < v2
+        }
     }
 
     // MARK: - Table view data source
-
+    
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        return self.firstLetterArray
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
+        return self.firstLetterArray.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.phones.count
+        let firstLetter = self.firstLetterArray[section]
+        let contacts = self.contacts[firstLetter]!
+        return contacts.count
     }
-
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.firstLetterArray[section]
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let phone = phones[indexPath.row]
+        let firstLetter = self.firstLetterArray[indexPath.section]
+        let contacts = self.contacts[firstLetter]!
+        let contact = contacts[indexPath.row]
+        let phone = contact["phone"]! as! String
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = phone["firstName"]! + phone["lastName"]! + " " + phone["phone"]!
+        let imageView = cell.viewWithTag(101) as! UIImageView
+        let nameLabel = cell.viewWithTag(102) as! UILabel
+        let nicknameLabel = cell.viewWithTag(103) as! UILabel
+        let button = cell.viewWithTag(104) as! UIButton
+        
+        imageView.hidden = true
+        nameLabel.text = contact["name"] as? String
+        nicknameLabel.text = phone
+        button.addTarget(self, action: "addFriendButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        if getPhoneNumberAreaType(phone) == PhoneNumberAreaType.error {
+            button.setTitle("不支持该手机号", forState: UIControlState.Normal)
+            button.enabled = false
+        }
+        else if contact["addSuccess"] as! Bool {
+            button.setTitle("已添加", forState: UIControlState.Normal)
+            button.enabled = false
+        }
+        else if contact["networking"] as! Bool {
+            button.setTitle("正在添加...", forState: UIControlState.Normal)
+            button.enabled = false
+        }
+        else {
+            button.setTitle("添加", forState: UIControlState.Normal)
+            button.enabled = true
+        }
+        
         return cell
     }
 

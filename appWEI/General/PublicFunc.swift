@@ -11,8 +11,16 @@ import Foundation
 
 extension String {
     
-    var length: Int {
-        return count(self)
+    /*
+    * 匹配正则表达式
+    * @param target 需要替换的字符串
+    * @param withString 替换为新的字符串
+    * @return 替换后的字符串
+    */
+    func replace(target: String, withString: String) -> String
+    {
+        return (self as NSString).stringByReplacingOccurrencesOfString(target, withString: withString)
+//        return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
     /*
@@ -22,6 +30,12 @@ extension String {
     */
     func match(regularExpression: String) -> Bool {
         return self.rangeOfString(regularExpression, options: .RegularExpressionSearch) != nil
+    }
+    
+    func getPinYin() -> String {
+        var cn = NSMutableString(string: self) as CFMutableStringRef
+        CFStringTransform(cn, nil, kCFStringTransformMandarinLatin, Boolean(0))
+        return cn as String
     }
     
 }
@@ -45,10 +59,10 @@ enum PhoneNumberAreaType: Int {
     case hk = 1
 }
 func getPhoneNumberAreaType(phoneNumber: String) -> PhoneNumberAreaType {
-    if phoneNumber.match("^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$") {
+    if phoneNumber =~ "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$" {
         return .cn
     }
-    else if phoneNumber.match("^(852|000852)?(5|6|9)[0-9]{7}$") {
+    else if phoneNumber =~ "^(852|000852)?(5|6|9)[0-9]{7}$" {
         return .hk;
     }
     else {
