@@ -26,6 +26,19 @@
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
 		24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */; };
 		24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA68401AC3D4C400F79324 /* HomeViewController.swift */; };
+		24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEA1ACAD10B00A17D13 /* Array.swift */; };
+		24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEB1ACAD10B00A17D13 /* Character.swift */; };
+		24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */; };
+		24E02CFB1ACAD10B00A17D13 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CED1ACAD10B00A17D13 /* Double.swift */; };
+		24E02CFC1ACAD10B00A17D13 /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEF1ACAD10B00A17D13 /* ExSwift.swift */; };
+		24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF01ACAD10B00A17D13 /* Float.swift */; };
+		24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E02CF11ACAD10B00A17D13 /* Info.plist */; };
+		24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF21ACAD10B00A17D13 /* Int.swift */; };
+		24E02D001ACAD10B00A17D13 /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF31ACAD10B00A17D13 /* NSArray.swift */; };
+		24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF41ACAD10B00A17D13 /* NSDate.swift */; };
+		24E02D021ACAD10B00A17D13 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF51ACAD10B00A17D13 /* Range.swift */; };
+		24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF61ACAD10B00A17D13 /* Sequence.swift */; };
+		24E02D041ACAD10B00A17D13 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CF71ACAD10B00A17D13 /* String.swift */; };
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
@@ -69,6 +82,20 @@
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefulatIconsViewController.swift; sourceTree = "<group>"; };
 		24AA68401AC3D4C400F79324 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		24E02CEA1ACAD10B00A17D13 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		24E02CEB1ACAD10B00A17D13 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		24E02CED1ACAD10B00A17D13 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		24E02CEE1ACAD10B00A17D13 /* ExSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExSwift.h; sourceTree = "<group>"; };
+		24E02CEF1ACAD10B00A17D13 /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwift.swift; sourceTree = "<group>"; };
+		24E02CF01ACAD10B00A17D13 /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		24E02CF11ACAD10B00A17D13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24E02CF21ACAD10B00A17D13 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		24E02CF31ACAD10B00A17D13 /* NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray.swift; sourceTree = "<group>"; };
+		24E02CF41ACAD10B00A17D13 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		24E02CF51ACAD10B00A17D13 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		24E02CF61ACAD10B00A17D13 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		24E02CF71ACAD10B00A17D13 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -226,8 +253,30 @@
 			children = (
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
+				24E02CE91ACAD10B00A17D13 /* ExSwift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		24E02CE91ACAD10B00A17D13 /* ExSwift */ = {
+			isa = PBXGroup;
+			children = (
+				24E02CEA1ACAD10B00A17D13 /* Array.swift */,
+				24E02CEB1ACAD10B00A17D13 /* Character.swift */,
+				24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */,
+				24E02CED1ACAD10B00A17D13 /* Double.swift */,
+				24E02CEE1ACAD10B00A17D13 /* ExSwift.h */,
+				24E02CEF1ACAD10B00A17D13 /* ExSwift.swift */,
+				24E02CF01ACAD10B00A17D13 /* Float.swift */,
+				24E02CF11ACAD10B00A17D13 /* Info.plist */,
+				24E02CF21ACAD10B00A17D13 /* Int.swift */,
+				24E02CF31ACAD10B00A17D13 /* NSArray.swift */,
+				24E02CF41ACAD10B00A17D13 /* NSDate.swift */,
+				24E02CF51ACAD10B00A17D13 /* Range.swift */,
+				24E02CF61ACAD10B00A17D13 /* Sequence.swift */,
+				24E02CF71ACAD10B00A17D13 /* String.swift */,
+			);
+			path = ExSwift;
 			sourceTree = "<group>";
 		};
 		24F3C09E1AC5237800E9FF49 /* View */ = {
@@ -319,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */,
 				244C19E51ABBFFC000813708 /* Main.storyboard in Resources */,
 				244C19EA1ABBFFC000813708 /* LaunchScreen.xib in Resources */,
 				244C19E71ABBFFC000813708 /* Images.xcassets in Resources */,
@@ -345,19 +395,31 @@
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
+				24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */,
 				24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
+				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
 				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
+				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,
+				24E02CFB1ACAD10B00A17D13 /* Double.swift in Sources */,
+				24E02D001ACAD10B00A17D13 /* NSArray.swift in Sources */,
 				24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */,
 				24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */,
+				24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */,
+				24E02CFC1ACAD10B00A17D13 /* ExSwift.swift in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
+				24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
+				24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */,
 				247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
+				24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
+				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
+				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
 				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
