@@ -42,6 +42,7 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
 		24F3C0A01AC523B000E9FF49 /* FriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09F1AC523B000E9FF49 /* FriendCollectionViewCell.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
@@ -99,6 +100,7 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPullToRefreshView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		24F3C09F1AC523B000E9FF49 /* FriendCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendCollectionViewCell.swift; path = View/FriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
+				24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */,
 				24E02CE91ACAD10B00A17D13 /* ExSwift */,
 			);
 			path = Vendor;
@@ -394,6 +397,7 @@
 				242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
+				24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
 				24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */,
 				24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */,

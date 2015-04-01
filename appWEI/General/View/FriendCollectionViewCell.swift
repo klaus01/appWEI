@@ -32,12 +32,12 @@ class FriendCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var messageCount: Int {
+    var messageCount: Int? {
         get {
             return messageCountLabel.text == nil ? 0 : messageCountLabel.text!.toInt()!
         }
         set {
-            messageCountLabel.text = "\(newValue)"
+            messageCountLabel.text = newValue == nil ? nil : "\(newValue)"
         }
     }
 }
