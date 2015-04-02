@@ -76,15 +76,15 @@ class FriendsViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
         let friend = UserInfo.shared.friends[indexPath.row]
         if let appUser = friend.appUser {
-            cell.iconImage = nil//appUser.iconUrl
+            cell.iconImageUrl = appUser.iconUrl
             cell.nickname = appUser.nickname
         }
         else if let partnerUser = friend.partnerUser {
-            cell.iconImage = nil//partnerUser.iconUrl
+            cell.iconImageUrl = partnerUser.iconUrl
             cell.nickname = partnerUser.name
         }
         else {
-            cell.iconImage = nil
+            cell.iconImageUrl = nil
             cell.nickname = nil
         }
         cell.messageCount = friend.unreadCount

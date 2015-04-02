@@ -14,12 +14,38 @@ class FriendCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var messageCountLabel: UILabel!
     
-    var iconImage: UIImage? {
+    private var _iconImageUrl: String?
+    var iconImageUrl: String? {
         get {
-            return iconImageView.image
+            return _iconImageUrl
         }
         set {
-            iconImageView.image = newValue
+            if _iconImageUrl != newValue {
+                _iconImageUrl = newValue
+                if let _iconImageUrl = _iconImageUrl {
+                    let fileName = (_iconImageUrl as NSString).lastPathComponent
+                    let filePath = getCachesDirectory() + "/" + fileName
+                    if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+                        iconImageView.image = UIImage(contentsOfFile: filePath)
+                    }
+                    else {
+                        let hud = JHProgressHUD()
+                        hud.backGroundColor = UIColor.whiteColor()
+                        hud.loaderColor = UIColor.blackColor()
+                        hud.showInView(iconImageView)
+                        download(Method.GET, _iconImageUrl, { (temporaryURL, res) -> (NSURL) in
+                            return NSURL(string: "file://" + filePath)!
+                        }).response { (request, response, _, error) in
+                            if let error = error {
+                                println(error)
+                                return
+                            }
+                            hud.hide()
+                            self.iconImageView.image = UIImage(contentsOfFile: filePath)
+                        }
+                    }
+                }
+            }
         }
     }
     

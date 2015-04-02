@@ -8,6 +8,10 @@
 
 import Foundation
 
+private func getCompleteResourceUrl(url: String) -> String {
+    return SERVER_HOST_RESOURCE_FILE + url
+}
+
 protocol ServerDataProtocol {
     init(_ dic: Dictionary<String, AnyObject>)
 }
@@ -52,9 +56,14 @@ struct AppUserModel : ServerDataProtocol {
         appUserID           = dic["AppUserID"] as! Int
         phoneNumber         = dic["PhoneNumber"] as! String
         nickname            = dic["Nickname"] as? String
-        iconUrl             = dic["IconUrl"] as? String
         isMan               = dic["IsMan"] as? Bool
         registrationStatus  = dic["RegistrationStatus"] as! Int
+        if let url = dic["IconUrl"] as? String {
+            iconUrl         = getCompleteResourceUrl(url)
+        }
+        else {
+            iconUrl         = nil
+        }
     }
 }
 
@@ -80,7 +89,7 @@ struct PartnerUserModel : ServerDataProtocol {
     init(_ dic: Dictionary<String, AnyObject>) {
         partnerUserID = dic["PartnerUserID"] as! Int
         name          = dic["Name"] as! String
-        iconUrl       = dic["IconUrl"] as! String
+        iconUrl       = getCompleteResourceUrl(dic["IconUrl"] as! String)
         description   = dic["Description"] as? String
         createTime    = Date(dic["CreateTime"] as! String)
     }
@@ -156,15 +165,20 @@ struct WordModel : ServerDataProtocol {
         id                      = dic["ID"] as! Int
         number                  = dic["Number"] as! String
         createUserID            = dic["CreateUserID"] as? Int
-        pictureUrl              = dic["PictureUrl"] as! String
+        pictureUrl              = getCompleteResourceUrl(dic["PictureUrl"] as! String)
         description             = dic["Description"] as? String
-        audioUrl                = dic["AudioUrl"] as? String
         useCount_Before1D_CN    = dic["UseCount_Before1D_CN"] as! Int
         useCount_Before30D_CN   = dic["UseCount_Before30D_CN"] as! Int
         useCount_Before365D_CN  = dic["UseCount_Before365D_CN"] as! Int
         useCount_Before1D_HK    = dic["UseCount_Before1D_HK"] as! Int
         useCount_Before30D_HK   = dic["UseCount_Before30D_HK"] as! Int
         useCount_Before365D_HK  = dic["UseCount_Before365D_HK"] as! Int
+        if let url = dic["AudioUrl"] as? String {
+            audioUrl            = getCompleteResourceUrl(url)
+        }
+        else {
+            audioUrl            = nil
+        }
     }
 }
 
@@ -192,7 +206,7 @@ struct ActivityModel : ServerDataProtocol {
         partnerUserID   = dic["PartnerUserID"] as! Int
         createTime      = Date(dic["CreateTime"] as! String)
         mode            = dic["Mode"] as! Int
-        pictureUrl      = dic["PictureUrl"] as! String
+        pictureUrl      = getCompleteResourceUrl(dic["PictureUrl"] as! String)
         content         = dic["Content"] as! String
         url             = dic["Url"] as? String
     }

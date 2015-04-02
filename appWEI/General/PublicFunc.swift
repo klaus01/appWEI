@@ -69,3 +69,10 @@ func getPhoneNumberAreaType(phoneNumber: String) -> PhoneNumberAreaType {
         return .error;
     }
 };
+
+/**
+* 获取当前应用的Library/Caches目录
+*/
+func getCachesDirectory() -> String {
+    return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
+}
