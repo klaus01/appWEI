@@ -45,6 +45,9 @@ class FriendsViewController: UIViewController, UICollectionViewDataSource, UICol
             collectionView.addSubview(view)
             refreshHeaderView = view
         }
+        
+        let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
+        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
     }
     
     override func viewWillAppear(animated: Bool) {
