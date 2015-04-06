@@ -42,7 +42,7 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
-		24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */; };
+		24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9431AD266BF00B51FBE /* wav.mm */; };
 		24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */; };
 		24E3E9501AD266BF00B51FBE /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9461AD266BF00B51FBE /* libopencore-amrwb.a */; };
