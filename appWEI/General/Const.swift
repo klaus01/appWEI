@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import AdSupport
+
+// 应用与设备唯一标识
+let UUIDString = ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDString
 
 // 服务端域名
 #if DEBUG
