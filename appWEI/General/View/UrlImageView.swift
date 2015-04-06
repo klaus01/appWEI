@@ -32,7 +32,8 @@ class UrlImageView: UIImageView {
                         download(Method.GET, _imageUrl, { (temporaryURL, res) -> (NSURL) in
                             return NSURL(string: "file://" + filePath)!
                         }).response { (request, response, _, error) in
-                            if let error = error {
+                            // errorCode 516: 下载后保存的目标文件已经存在(同一文件下载多次时出现)
+                            if error != nil && error!.code != 516 {
                                 println(error)
                                 return
                             }
