@@ -10,7 +10,15 @@ import UIKit
 
 class FriendsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PZPullToRefreshDelegate {
     
+    private let ROW_COUNT = 3.0
+    private let CELL_WIDTH = 100.0
+    private let CELL_HEIGHT = 120.0
+    
     private var refreshHeaderView: PZPullToRefreshView?
+
+    private func getCellSpacing(collectionView: UICollectionView) -> Double {
+        return (Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / 4.0
+    }
     
     // MARK: - public
     
@@ -32,7 +40,6 @@ class FriendsViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
         if let navigationController = self.navigationController {
             navigationController.navigationBarHidden = false
         }
@@ -45,9 +52,11 @@ class FriendsViewController: UIViewController, UICollectionViewDataSource, UICol
             collectionView.addSubview(view)
             refreshHeaderView = view
         }
-        
+
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,18 +70,22 @@ class FriendsViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100, height: 120)
+        return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return CGFloat(getCellSpacing(collectionView))
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let i = ((collectionView.bounds.width - 300) / 3) / 2
+        let i = CGFloat(getCellSpacing(collectionView))
         return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
     }
     
     // MARK: - UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return UserInfo.shared.friends.count//friends.count
+        return UserInfo.shared.friends.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
