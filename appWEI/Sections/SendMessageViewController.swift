@@ -8,28 +8,40 @@
 
 import UIKit
 
-class SendMessageViewController: UIViewController {
+class SendMessageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    // MARK: - IB
+    
+    @IBOutlet weak var wordGroupSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var friendsCollectionView: UICollectionView!
+    @IBOutlet weak var addFriendButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
+    
+    @IBAction func closeClick(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
+        friendsCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - UICollectionViewDataSource
+        
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 32
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! ImageCollectionViewCell
+        cell.backgroundColor = UIColor.blueColor()
+        return cell
     }
-    */
-
+        
 }
