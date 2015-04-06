@@ -103,7 +103,7 @@ class InviteContactsTableViewController: UITableViewController {
                     println(error)
                 }
                 else {
-                    contact["addSuccess"] = ret!.success
+                    contact["isFriend"] = ret!.success
                 }
                 contacts[indexPath.row] = contact
                 self.contacts[firstLetter] = contacts
@@ -121,7 +121,9 @@ class InviteContactsTableViewController: UITableViewController {
         let allContacts = getSysContacts()
         allContacts.map { contact -> [String : AnyObject] in
             var ret = contact
-            let name = ret["name"]! as! String
+            
+            // 生成姓名拼音，确定分组
+            let name = ret["name"] as! String
             let py = name.getPinYin().trimmed()
             let firstLetter = (py.length > 0 ? py[0]! : name[0]!).uppercaseString
             if let tContacts = self.contacts[firstLetter] {
@@ -130,8 +132,17 @@ class InviteContactsTableViewController: UITableViewController {
                 self.firstLetterArray.append(firstLetter)
                 self.contacts[firstLetter] = [[String : AnyObject]]()
             }
+            
+            // 是否已经是朋友了
+            let phone = ret["phone"] as! String
+            let friends = UserInfo.shared.friends.filter { FriendModel -> Bool in
+                if let user = FriendModel.appUser {
+                    return user.phoneNumber == phone
+                }
+                return false
+            }
             ret["networking"] = false
-            ret["addSuccess"] = false
+            ret["isFriend"] = friends.count > 0
             
             self.contacts[firstLetter]!.append(ret)
             
@@ -182,7 +193,7 @@ class InviteContactsTableViewController: UITableViewController {
             button.setTitle("不支持该手机号", forState: UIControlState.Normal)
             button.enabled = false
         }
-        else if contact["addSuccess"] as! Bool {
+        else if contact["isFriend"] as! Bool {
             button.setTitle("已添加", forState: UIControlState.Normal)
             button.enabled = false
         }
