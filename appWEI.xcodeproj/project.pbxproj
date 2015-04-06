@@ -42,6 +42,11 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */; };
+		24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9431AD266BF00B51FBE /* wav.mm */; };
+		24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */; };
+		24E3E9501AD266BF00B51FBE /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9461AD266BF00B51FBE /* libopencore-amrwb.a */; };
+		24E3E9541AD26A2000B51FBE /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9531AD26A2000B51FBE /* VoiceConverter.mm */; };
 		24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
@@ -101,6 +106,19 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24E3E9401AD266BE00B51FBE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		24E3E9421AD266BF00B51FBE /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		24E3E9431AD266BF00B51FBE /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		24E3E9461AD266BF00B51FBE /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		24E3E9481AD266BF00B51FBE /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		24E3E9491AD266BF00B51FBE /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		24E3E94B1AD266BF00B51FBE /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		24E3E94C1AD266BF00B51FBE /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		24E3E9511AD2683B00B51FBE /* appWEI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "appWEI-Bridging-Header.h"; sourceTree = "<group>"; };
+		24E3E9521AD26A2000B51FBE /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		24E3E9531AD26A2000B51FBE /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
 		24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPullToRefreshView.swift; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +133,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				247094C61AC54A9500A830F3 /* AddressBook.framework in Frameworks */,
+				24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */,
+				24E3E9501AD266BF00B51FBE /* libopencore-amrwb.a in Frameworks */,
 				24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				244C19DE1ABBFFC000813708 /* Info.plist */,
+				24E3E9511AD2683B00B51FBE /* appWEI-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -255,10 +276,11 @@
 		244C1A091ABC007800813708 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				24E02CE91ACAD10B00A17D13 /* ExSwift */,
+				24E3E93E1AD266BE00B51FBE /* arm */,
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
 				24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */,
-				24E02CE91ACAD10B00A17D13 /* ExSwift */,
 				24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */,
 			);
 			path = Vendor;
@@ -283,6 +305,57 @@
 				24E02CF71ACAD10B00A17D13 /* String.swift */,
 			);
 			path = ExSwift;
+			sourceTree = "<group>";
+		};
+		24E3E93E1AD266BE00B51FBE /* arm */ = {
+			isa = PBXGroup;
+			children = (
+				24E3E93F1AD266BE00B51FBE /* amrwapper */,
+				24E3E9441AD266BF00B51FBE /* lib */,
+				24E3E9471AD266BF00B51FBE /* opencore-amrnb */,
+				24E3E94A1AD266BF00B51FBE /* opencore-amrwb */,
+				24E3E9521AD26A2000B51FBE /* VoiceConverter.h */,
+				24E3E9531AD26A2000B51FBE /* VoiceConverter.mm */,
+			);
+			path = arm;
+			sourceTree = "<group>";
+		};
+		24E3E93F1AD266BE00B51FBE /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				24E3E9401AD266BE00B51FBE /* amrFileCodec.h */,
+				24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */,
+				24E3E9421AD266BF00B51FBE /* wav.h */,
+				24E3E9431AD266BF00B51FBE /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		24E3E9441AD266BF00B51FBE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */,
+				24E3E9461AD266BF00B51FBE /* libopencore-amrwb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		24E3E9471AD266BF00B51FBE /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				24E3E9481AD266BF00B51FBE /* interf_dec.h */,
+				24E3E9491AD266BF00B51FBE /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		24E3E94A1AD266BF00B51FBE /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				24E3E94B1AD266BF00B51FBE /* dec_if.h */,
+				24E3E94C1AD266BF00B51FBE /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
 			sourceTree = "<group>";
 		};
 		24F3C09E1AC5237800E9FF49 /* View */ = {
@@ -409,12 +482,15 @@
 				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
 				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
 				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,
+				24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */,
 				24E02CFB1ACAD10B00A17D13 /* Double.swift in Sources */,
+				24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */,
 				24E02D001ACAD10B00A17D13 /* NSArray.swift in Sources */,
 				24668F8F1ABFFE5A00A303FE /* ServerDataModel.swift in Sources */,
 				24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */,
 				24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */,
 				24E02CFC1ACAD10B00A17D13 /* ExSwift.swift in Sources */,
+				24E3E9541AD26A2000B51FBE /* VoiceConverter.mm in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
@@ -558,8 +634,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = appWEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/appWEI/Vendor/arm/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "appWEI/appWEI-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -572,8 +653,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = appWEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/appWEI/Vendor/arm/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "appWEI/appWEI-Bridging-Header.h";
 			};
 			name = Release;
 		};
