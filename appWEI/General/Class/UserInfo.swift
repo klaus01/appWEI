@@ -16,14 +16,42 @@ public let kNotification_UpdateFriendsComplete = "kNotification_UpdateFriendsCom
 class UserInfo: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager
+    private var _isLogged = false
+    private var _deviceToken: String? = nil
     private var _friends = [FriendModel]()
     private var _isUpdatingFriends = false
+    
+    private func uploadDeviceToken() {
+        if _isLogged && _deviceToken != nil {
+            ServerHelper.appUserUpdateAPNSToken(_deviceToken!, completionHandler: { (ret, error) -> Void in
+                if let error = error {
+                    println(error)
+                }
+            })
+        }
+    }
+    
+    // MAKE: - Public
     
     var id = 0
     // 用户手机号
     var phoneNumber: String?
     // 用户是否已经登录
-    var isLogged = false
+    var isLogged: Bool {
+        get { return _isLogged }
+        set {
+            _isLogged = newValue
+            uploadDeviceToken()
+        }
+    }
+    // 远程通知令牌
+    var deviceToken: String? {
+        get { return _deviceToken }
+        set {
+            _deviceToken = newValue
+            uploadDeviceToken()
+        }
+    }
     // 用户的朋友列表，缓存
     var friends: [FriendModel] {
         return _friends

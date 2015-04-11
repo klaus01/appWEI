@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24019C4C1ABC19A100672673 /* RegisterViewController.swift */; };
+		2426E8CF1AD96A4E00E47636 /* CE_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2426E8CD1AD96A4E00E47636 /* CE_UICollectionView.swift */; };
+		2426E8D01AD96A4E00E47636 /* CE_UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2426E8CE1AD96A4E00E47636 /* CE_UIScrollView.swift */; };
 		242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E35B81AC14DA2001EDA0D /* PublicFunc.swift */; };
 		242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */; };
 		244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C19DF1ABBFFC000813708 /* AppDelegate.swift */; };
@@ -74,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2426E8CD1AD96A4E00E47636 /* CE_UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UICollectionView.swift; sourceTree = "<group>"; };
+		2426E8CE1AD96A4E00E47636 /* CE_UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIScrollView.swift; sourceTree = "<group>"; };
 		242E35B81AC14DA2001EDA0D /* PublicFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicFunc.swift; sourceTree = "<group>"; };
 		242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		244C19DA1ABBFFC000813708 /* appWEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appWEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +297,7 @@
 		244C1A091ABC007800813708 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				24AFA40A1AD8F87000402DFE /* ClosuresExtension */,
 				24E02CE91ACAD10B00A17D13 /* ExSwift */,
 				24E3E93E1AD266BE00B51FBE /* arm */,
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
@@ -301,6 +306,15 @@
 				24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		24AFA40A1AD8F87000402DFE /* ClosuresExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2426E8CE1AD96A4E00E47636 /* CE_UIScrollView.swift */,
+				2426E8CD1AD96A4E00E47636 /* CE_UICollectionView.swift */,
+			);
+			path = ClosuresExtension;
 			sourceTree = "<group>";
 		};
 		24E02CE91ACAD10B00A17D13 /* ExSwift */ = {
@@ -436,7 +450,12 @@
 				TargetAttributes = {
 					244C19D91ABBFFC000813708 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 5H7G72WEE9;
+						DevelopmentTeam = L2T5526FH6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					244C19EE1ABBFFC000813708 = {
 						CreatedOnToolsVersion = 6.1;
@@ -531,8 +550,10 @@
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
 				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
+				2426E8CF1AD96A4E00E47636 /* CE_UICollectionView.swift in Sources */,
 				24E3E9561AD26FA200B51FBE /* SendMessageViewController.swift in Sources */,
 				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
+				2426E8D01AD96A4E00E47636 /* CE_UIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,8 +679,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
 				INFOPLIST_FILE = appWEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -677,8 +698,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
 				INFOPLIST_FILE = appWEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
