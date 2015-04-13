@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 
-private var ceAssociationKey: UInt8 = 0
-
-
 extension UIScrollView {
     
     private var ce: UIScrollView_Delegate {
-        if let obj = objc_getAssociatedObject(self, &ceAssociationKey) as? UIScrollView_Delegate {
+        struct Static {
+            static var AssociationKey: UInt8 = 0
+        }
+        if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? UIScrollView_Delegate {
             return obj
         }
         if let delegate = self.delegate {
@@ -26,7 +26,7 @@ extension UIScrollView {
         }
         let delegate = UIScrollView_Delegate()
         self.delegate = delegate
-        objc_setAssociatedObject(self, &ceAssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+        objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
     }
     
@@ -83,7 +83,7 @@ class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
         if let f = funcDic2[aSelector] {
             return f != nil
         }
-        
+        println(aSelector)
         return super.respondsToSelector(aSelector)
     }
     

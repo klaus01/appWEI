@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendsViewController: UIViewController/*, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PZPullToRefreshDelegate*/ {
+class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
     
     private let ROW_COUNT = 3.0
     private let CELL_WIDTH = 100.0
@@ -55,8 +55,17 @@ class FriendsViewController: UIViewController/*, UICollectionViewDataSource, UIC
 
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
-        
         collectionView
+            .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
+                return CGSize(width: self.CELL_WIDTH, height: self.CELL_HEIGHT)
+            }
+            .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
+                return CGFloat(self.getCellSpacing(collectionView))
+            }
+            .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
+                    let i = CGFloat(self.getCellSpacing(collectionView))
+                    return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
+            }
             .ce_NumberOfItemsInSection { (collectionView, section) -> Int in
                 return UserInfo.shared.friends.count
             }
@@ -76,11 +85,13 @@ class FriendsViewController: UIViewController/*, UICollectionViewDataSource, UIC
                     cell.nickname = nil
                 }
                 cell.messageCount = friend.unreadCount
+                cell.backgroundColor = UIColor.redColor()
                 return cell;
             }
             .ce_DidScroll { (scrollView) -> Void in
                 refreshHeaderView?.refreshScrollViewDidScroll(scrollView)
-            }.ce_DidEndDragging { (scrollView, decelerate) -> Void in
+            }
+            .ce_DidEndDragging { (scrollView, decelerate) -> Void in
                 refreshHeaderView?.refreshScrollViewDidEndDragging(scrollView)
             }
         
@@ -95,59 +106,17 @@ class FriendsViewController: UIViewController/*, UICollectionViewDataSource, UIC
         }
     }
     
-    // MARK: - UICollectionViewDelegateFlowLayout
-    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-//        return CGFloat(getCellSpacing(collectionView))
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        let i = CGFloat(getCellSpacing(collectionView))
-//        return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
-//    }
-    
-    // MARK: - UICollectionViewDataSource
-    
-//    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return UserInfo.shared.friends.count
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
-//        let friend = UserInfo.shared.friends[indexPath.row]
-//        if let appUser = friend.appUser {
-//            cell.iconImageUrl = appUser.iconUrl
-//            cell.nickname = appUser.nickname
-//        }
-//        else if let partnerUser = friend.partnerUser {
-//            cell.iconImageUrl = partnerUser.iconUrl
-//            cell.nickname = partnerUser.name
-//        }
-//        else {
-//            cell.iconImageUrl = nil
-//            cell.nickname = nil
-//        }
-//        cell.messageCount = friend.unreadCount
-//        return cell;
-//    }
-    
-    // MARK: - UICollectionViewDelegate
-    
     // MARK: - PZPullToRefreshDelegate
     
-//    func pullToRefreshDidTrigger(view: PZPullToRefreshView) -> () {
-//        UserInfo.shared.updateFriends()
-//    }
-//    
-//    func pullToRefreshIsLoading(view: PZPullToRefreshView) -> Bool {
-//        return UserInfo.shared.isUpdatingFriends
-//    }
-//    
-//    func pullToRefreshLastUpdated(view: PZPullToRefreshView) -> NSDate {
-//        return NSDate()
-//    }
+    func pullToRefreshDidTrigger(view: PZPullToRefreshView) -> () {
+        UserInfo.shared.updateFriends()
+    }
+    
+    func pullToRefreshIsLoading(view: PZPullToRefreshView) -> Bool {
+        return UserInfo.shared.isUpdatingFriends
+    }
+    
+    func pullToRefreshLastUpdated(view: PZPullToRefreshView) -> NSDate {
+        return NSDate()
+    }
 }
