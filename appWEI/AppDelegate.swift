@@ -55,7 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .replace("<", withString: "")
             .replace(">", withString: "")
             .replace(" ", withString: "")
-        UserInfo.shared.deviceToken = token
+        if UserInfo.shared.deviceToken != token {
+            UserInfo.shared.deviceToken = token
+            UserInfo.shared.save()
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
