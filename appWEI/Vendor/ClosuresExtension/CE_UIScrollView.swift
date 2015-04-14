@@ -34,13 +34,56 @@ extension UIScrollView {
         ce.DidScroll = handle
         return self
     }
+    public func ce_DidZoom(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.DidZoom = handle
+        return self
+    }
+    public func ce_WillBeginDragging(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.WillBeginDragging = handle
+        return self
+    }
+    public func ce_WillEndDragging(handle: (scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) -> Void) -> UIScrollView {
+        ce.WillEndDragging = handle
+        return self
+    }
     public func ce_DidEndDragging(handle: (scrollView: UIScrollView, decelerate: Bool) -> Void) -> UIScrollView {
         ce.DidEndDragging = handle
         return self
     }
+    public func ce_WillBeginDecelerating(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.WillBeginDecelerating = handle
+        return self
+    }
+    public func ce_DidEndDecelerating(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.DidEndDecelerating = handle
+        return self
+    }
+    public func ce_DidEndScrollingAnimation(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.DidEndScrollingAnimation = handle
+        return self
+    }
+    public func ce_ViewForZoomingIn(handle: (scrollView: UIScrollView) -> UIView?) -> UIScrollView {
+        ce.ViewForZoomingIn = handle
+        return self
+    }
+    public func ce_WillBeginZooming(handle: (scrollView: UIScrollView, view: UIView!) -> Void) -> UIScrollView {
+        ce.WillBeginZooming = handle
+        return self
+    }
+    public func ce_DidEndZooming(handle: (scrollView: UIScrollView, view: UIView!, scale: CGFloat) -> Void) -> UIScrollView {
+        ce.DidEndZooming = handle
+        return self
+    }
+    public func ce_ShouldScrollToTop(handle: (scrollView: UIScrollView) -> Bool) -> UIScrollView {
+        ce.ShouldScrollToTop = handle
+        return self
+    }
+    public func ce_DidScrollToTop(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+        ce.DidScrollToTop = handle
+        return self
+    }
     
 }
-
 
 class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     
@@ -52,11 +95,12 @@ class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     var WillBeginDecelerating: ((UIScrollView) -> Void)?
     var DidEndDecelerating: ((UIScrollView) -> Void)?
     var DidEndScrollingAnimation: ((UIScrollView) -> Void)?
-    var viewForZoomingInScrollView: ((UIScrollView) -> UIView?)?
-    var WillBeginZooming: ((UIScrollView, UIView) -> Void)?
-    var DidEndZooming: ((UIScrollView, UIView, CGFloat) -> Void)?
+    var ViewForZoomingIn: ((UIScrollView) -> UIView?)?
+    var WillBeginZooming: ((UIScrollView, UIView!) -> Void)?
+    var DidEndZooming: ((UIScrollView, UIView!, CGFloat) -> Void)?
     var ShouldScrollToTop: ((UIScrollView) -> Bool)?
     var DidScrollToTop: ((UIScrollView) -> Void)?
+    
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         
@@ -74,20 +118,20 @@ class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
         }
         
         let funcDic2: [Selector : Any?] = [
+            "scrollViewDidEndScrollingAnimation:" : DidEndScrollingAnimation,
+            "viewForZoomingInScrollView:" : ViewForZoomingIn,
             "scrollViewWillBeginZooming:withView:" : WillBeginZooming,
             "scrollViewDidEndZooming:withView:atScale:" : DidEndZooming,
             "scrollViewShouldScrollToTop:" : ShouldScrollToTop,
             "scrollViewDidScrollToTop:" : DidScrollToTop,
-            "viewForZoomingInScrollView:" : viewForZoomingInScrollView,
         ]
         if let f = funcDic2[aSelector] {
             return f != nil
         }
-        println(aSelector)
+        
         return super.respondsToSelector(aSelector)
     }
     
-    // MARK: - UIScrollViewDelegate
     
     @objc func scrollViewDidScroll(scrollView: UIScrollView) {
         DidScroll!(scrollView)
@@ -100,5 +144,32 @@ class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     }
     @objc func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         WillEndDragging!(scrollView, velocity, targetContentOffset)
+    }
+    @objc func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        DidEndDragging!(scrollView, decelerate)
+    }
+    @objc func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+        WillBeginDecelerating!(scrollView)
+    }
+    @objc func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        DidEndDecelerating!(scrollView)
+    }
+    @objc func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        DidEndScrollingAnimation!(scrollView)
+    }
+    @objc func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return ViewForZoomingIn!(scrollView)
+    }
+    @objc func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+        WillBeginZooming!(scrollView, view)
+    }
+    @objc func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+        DidEndZooming!(scrollView, view, scale)
+    }
+    @objc func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+        return ShouldScrollToTop!(scrollView)
+    }
+    @objc func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+        DidScrollToTop!(scrollView)
     }
 }
