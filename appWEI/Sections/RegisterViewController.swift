@@ -147,5 +147,10 @@ class RegisterViewController: UIViewController {
             phoneNumberEditingChanged(phoneNumberTextField)
         }
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is UserInfoViewController {
+            segue.destinationViewController.navigationItem.hidesBackButton = true
+        }
+    }
 }

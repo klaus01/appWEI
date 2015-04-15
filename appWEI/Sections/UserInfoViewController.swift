@@ -112,8 +112,6 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.hidesBackButton = true
     }
 
     // MARK: - UIActionSheetDelegate
