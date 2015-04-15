@@ -110,7 +110,7 @@ UIScrollView: NSObject, UIScrollViewDelegate
                 returnType: undefined
             }
 
-            // 最多的参数
+            // 更多的参数
             var pre = /,(?: (\w+))? (\w+): ([<>\w\!\?]+)/g;
             while ((r = pre.exec(funcStr)) !== null) {
                 funcObj.parameters.push({
