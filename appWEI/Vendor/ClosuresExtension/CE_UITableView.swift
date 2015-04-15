@@ -59,7 +59,7 @@ extension UITableView {
         ce.CanMoveRowAtIndexPath = handle
         return self
     }
-    public func ce_SectionIndexTitlesFor(handle: (tableView: UITableView) -> Void) -> UITableView {
+    public func ce_SectionIndexTitlesFor(handle: (tableView: UITableView) -> [AnyObject]!) -> UITableView {
         ce.SectionIndexTitlesFor = handle
         return self
     }
@@ -171,7 +171,7 @@ extension UITableView {
         ce.TitleForDeleteConfirmationButtonForRowAtIndexPath = handle
         return self
     }
-    public func ce_EditActionsForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> UITableView {
+    public func ce_EditActionsForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> [AnyObject]?) -> UITableView {
         ce.EditActionsForRowAtIndexPath = handle
         return self
     }
@@ -219,7 +219,7 @@ class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITabl
     var TitleForFooterInSection: ((UITableView, Int) -> String?)?
     var CanEditRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
     var CanMoveRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
-    var SectionIndexTitlesFor: ((UITableView) -> Void)?
+    var SectionIndexTitlesFor: ((UITableView) -> [AnyObject]!)?
     var SectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)?
     var CommitEditingStyle: ((UITableView, UITableViewCellEditingStyle, NSIndexPath) -> Void)?
     var MoveRowAtIndexPath: ((UITableView, NSIndexPath, NSIndexPath) -> Void)?
@@ -247,7 +247,7 @@ class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITabl
     var DidDeselectRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
     var EditingStyleForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCellEditingStyle)?
     var TitleForDeleteConfirmationButtonForRowAtIndexPath: ((UITableView, NSIndexPath) -> String!)?
-    var EditActionsForRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
+    var EditActionsForRowAtIndexPath: ((UITableView, NSIndexPath) -> [AnyObject]?)?
     var ShouldIndentWhileEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Bool)?
     var WillBeginEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
     var DidEndEditingRowAtIndexPath: ((UITableView, NSIndexPath) -> Void)?
@@ -371,8 +371,8 @@ class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITabl
     @objc func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return CanMoveRowAtIndexPath!(tableView, indexPath)
     }
-    @objc func sectionIndexTitlesForTableView(tableView: UITableView) {
-        SectionIndexTitlesFor!(tableView)
+    @objc func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        return SectionIndexTitlesFor!(tableView)
     }
     @objc func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return SectionForSectionIndexTitle!(tableView, title, index)
@@ -455,8 +455,8 @@ class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITabl
     @objc func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
         return TitleForDeleteConfirmationButtonForRowAtIndexPath!(tableView, indexPath)
     }
-    @objc func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) {
-        EditActionsForRowAtIndexPath!(tableView, indexPath)
+    @objc func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        return EditActionsForRowAtIndexPath!(tableView, indexPath)
     }
     @objc func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return ShouldIndentWhileEditingRowAtIndexPath!(tableView, indexPath)
