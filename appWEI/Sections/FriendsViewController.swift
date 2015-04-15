@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
+class FriendsViewController: UIViewController {
     
     private let ROW_COUNT = 3.0
     private let CELL_WIDTH = 100.0
     private let CELL_HEIGHT = 120.0
     
-    private var refreshHeaderView: PZPullToRefreshView?
-
+    private let refreshControl = UIRefreshControl()
+    
     private func getCellSpacing(collectionView: UICollectionView) -> Double {
         return (Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / 4.0
     }
@@ -23,8 +23,8 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
     // MARK: - public
     
     func updateFriendsComplete() {
-        refreshHeaderView!.refreshScrollViewDataSourceDidFinishedLoading(collectionView)
         collectionView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     // MARK: - IB
@@ -42,13 +42,12 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
 
         self.edgesForExtendedLayout = UIRectEdge.None
 
-        if refreshHeaderView == nil {
-            var view = PZPullToRefreshView(frame: CGRectMake(0, 0 - collectionView.bounds.size.height, collectionView.bounds.size.width, collectionView.bounds.size.height))
-            view.delegate = self
-            collectionView.addSubview(view)
-            refreshHeaderView = view
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
+        refreshControl.pulled { () -> () in
+            UserInfo.shared.updateFriends()
         }
-
+        collectionView.addSubview(refreshControl)
+        
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         collectionView
@@ -83,12 +82,6 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
                 cell.messageCount = friend.unreadCount
                 return cell;
             }
-            .ce_DidScroll { (scrollView) -> Void in
-                refreshHeaderView?.refreshScrollViewDidScroll(scrollView)
-            }
-            .ce_DidEndDragging { (scrollView, decelerate) -> Void in
-                refreshHeaderView?.refreshScrollViewDidEndDragging(scrollView)
-            }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
     }
@@ -96,22 +89,8 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if UserInfo.shared.isUpdatingFriends {
-            refreshHeaderView?.state = .Loading
-            collectionView.setContentOffset(CGPointMake(0, -refreshHeaderView!.thresholdValue), animated: true)
+            refreshControl.beginRefreshing()
         }
     }
     
-    // MARK: - PZPullToRefreshDelegate
-    
-    func pullToRefreshDidTrigger(view: PZPullToRefreshView) -> () {
-        UserInfo.shared.updateFriends()
-    }
-    
-    func pullToRefreshIsLoading(view: PZPullToRefreshView) -> Bool {
-        return UserInfo.shared.isUpdatingFriends
-    }
-    
-    func pullToRefreshLastUpdated(view: PZPullToRefreshView) -> NSDate {
-        return NSDate()
-    }
 }

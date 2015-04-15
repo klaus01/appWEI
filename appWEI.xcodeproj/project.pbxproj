@@ -77,7 +77,6 @@
 		24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */; };
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
-		24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
@@ -179,7 +178,6 @@
 		24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendCollectionViewCell.xib; path = View/FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
-		24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPullToRefreshView.swift; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 				240D52A11ADEB69E00B8E112 /* Scream */,
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
-				24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */,
 				24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */,
 			);
 			path = Vendor;
@@ -597,7 +594,6 @@
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
 				240D529F1ADEB54900B8E112 /* UIImage+Decode.swift in Sources */,
-				24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
 				240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */,
 				240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */,
