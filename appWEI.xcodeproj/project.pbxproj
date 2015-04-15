@@ -59,6 +59,7 @@
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
 		24E5F6CD1ACC3B15004C8860 /* PZPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
+		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
 		24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F81ABEBD9400F0C147 /* Date.swift */; };
@@ -140,6 +141,7 @@
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
 		24E5F6CC1ACC3B15004C8860 /* PZPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPullToRefreshView.swift; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
+		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24FFD5F81ABEBD9400F0C147 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				2426E8CE1AD96A4E00E47636 /* CE_UIScrollView.swift */,
 				2426E8CD1AD96A4E00E47636 /* CE_UICollectionView.swift */,
+				24E827A11ADEA40700813C34 /* CE_UITableView.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,
 				24E3E9621AD27B7200B51FBE /* UrlImageView.swift in Sources */,
 				24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */,
+				24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */,
 				24E3E95F1AD277C800B51FBE /* ImageCollectionViewCell.swift in Sources */,
 				24E02CFB1ACAD10B00A17D13 /* Double.swift in Sources */,
 				24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */,
