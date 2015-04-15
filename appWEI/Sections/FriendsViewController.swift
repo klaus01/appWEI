@@ -40,10 +40,6 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let navigationController = self.navigationController {
-            navigationController.navigationBarHidden = false
-        }
-        
         self.edgesForExtendedLayout = UIRectEdge.None
 
         if refreshHeaderView == nil {
@@ -85,7 +81,6 @@ class FriendsViewController: UIViewController, PZPullToRefreshDelegate {
                     cell.nickname = nil
                 }
                 cell.messageCount = friend.unreadCount
-                cell.backgroundColor = UIColor.redColor()
                 return cell;
             }
             .ce_DidScroll { (scrollView) -> Void in
