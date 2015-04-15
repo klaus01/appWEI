@@ -33,10 +33,6 @@ class FriendsViewController: UIViewController {
     
     // MARK: - UIViewController
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,6 +80,10 @@ class FriendsViewController: UIViewController {
             }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewWillAppear(animated: Bool) {
