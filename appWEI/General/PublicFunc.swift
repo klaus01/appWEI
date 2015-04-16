@@ -45,8 +45,12 @@ extension String {
 
 extension UIAlertView {
     
-    class func showMessage(message: String, cancelButtonTitle: String? = "知道了") {
-        UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: cancelButtonTitle).show()
+    class func showMessage(message: String, cancelButtonTitle: String? = "知道了", didDismiss: (() -> Void)? = nil) {
+        UIAlertView(title: nil, message: message, cancelButtonTitle: cancelButtonTitle)
+            .didDismiss { (buttonAtIndex) -> () in
+                if let f = didDismiss { f() }
+            }
+            .show()
     }
     
 }
