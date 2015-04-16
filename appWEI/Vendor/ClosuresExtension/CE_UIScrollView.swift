@@ -85,7 +85,7 @@ extension UIScrollView {
     
 }
 
-class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
+internal class UIScrollView_Delegate: NSObject, UIScrollViewDelegate {
     
     var DidScroll: ((UIScrollView) -> Void)?
     var DidZoom: ((UIScrollView) -> Void)?

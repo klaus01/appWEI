@@ -210,7 +210,7 @@ extension UITableView {
     
 }
 
-class UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate {
+internal UITableView_Delegate: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate {
     
     var NumberOfRowsInSection: ((UITableView, Int) -> Int)?
     var CellForRowAtIndexPath: ((UITableView, NSIndexPath) -> UITableViewCell)?

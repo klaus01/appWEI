@@ -77,6 +77,9 @@
 		24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */; };
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
+		24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A171AE00AB900347C06 /* CE_UIViewController.swift */; };
+		24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */; };
+		24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
@@ -178,6 +181,9 @@
 		24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendCollectionViewCell.xib; path = View/FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
+		24E79A171AE00AB900347C06 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
+		24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
+		24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIImagePickerController.swift; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +395,9 @@
 				2426E8CE1AD96A4E00E47636 /* CE_UIScrollView.swift */,
 				2426E8CD1AD96A4E00E47636 /* CE_UICollectionView.swift */,
 				24E827A11ADEA40700813C34 /* CE_UITableView.swift */,
+				24E79A171AE00AB900347C06 /* CE_UIViewController.swift */,
+				24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */,
+				24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -592,10 +601,12 @@
 				240D52B91ADEB69E00B8E112 /* UIStepper.swift in Sources */,
 				242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
+				24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
 				240D529F1ADEB54900B8E112 /* UIImage+Decode.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
 				240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */,
+				24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */,
 				240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */,
 				24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */,
 				240D52B21ADEB69E00B8E112 /* UIButton.swift in Sources */,
@@ -640,6 +651,7 @@
 				240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
+				24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */,
 				240D52B01ADEB69E00B8E112 /* UIAlertView.swift in Sources */,
 				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
 				2426E8CF1AD96A4E00E47636 /* CE_UICollectionView.swift in Sources */,

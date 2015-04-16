@@ -134,7 +134,7 @@ extension UICollectionView {
     
 }
 
-private class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+internal class UICollectionView_Delegate: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var NumberOfItemsInSection: ((UICollectionView, Int) -> Int)?
     var CellForItemAtIndexPath: ((UICollectionView, NSIndexPath) -> UICollectionViewCell)?

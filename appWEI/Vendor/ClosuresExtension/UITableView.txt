@@ -1,5 +1,6 @@
 UITableView: UIScrollView_Delegate, UITableViewDataSource, UITableViewDelegate
 
+DELEGATE_LIST:delegate, dataSource
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     

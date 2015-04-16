@@ -1,5 +1,6 @@
 UICollectionView: UIScrollView_Delegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
+DELEGATE_LIST:delegate, dataSource
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     
