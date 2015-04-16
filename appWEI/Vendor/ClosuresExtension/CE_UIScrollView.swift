@@ -24,61 +24,65 @@ extension UIScrollView {
                 return delegate as! UIScrollView_Delegate
             }
         }
-        let delegate = UIScrollView_Delegate()
+        let delegate = getDelegateInstance()
         self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
     }
     
-    public func ce_DidScroll(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    internal func getDelegateInstance() -> UIScrollView_Delegate {
+        return UIScrollView_Delegate()
+    }
+    
+    public func ce_DidScroll(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidScroll = handle
         return self
     }
-    public func ce_DidZoom(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_DidZoom(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidZoom = handle
         return self
     }
-    public func ce_WillBeginDragging(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_WillBeginDragging(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.WillBeginDragging = handle
         return self
     }
-    public func ce_WillEndDragging(handle: (scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) -> Void) -> UIScrollView {
+    public func ce_WillEndDragging(handle: (scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) -> Void) -> Self {
         ce.WillEndDragging = handle
         return self
     }
-    public func ce_DidEndDragging(handle: (scrollView: UIScrollView, decelerate: Bool) -> Void) -> UIScrollView {
+    public func ce_DidEndDragging(handle: (scrollView: UIScrollView, decelerate: Bool) -> Void) -> Self {
         ce.DidEndDragging = handle
         return self
     }
-    public func ce_WillBeginDecelerating(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_WillBeginDecelerating(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.WillBeginDecelerating = handle
         return self
     }
-    public func ce_DidEndDecelerating(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_DidEndDecelerating(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidEndDecelerating = handle
         return self
     }
-    public func ce_DidEndScrollingAnimation(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_DidEndScrollingAnimation(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidEndScrollingAnimation = handle
         return self
     }
-    public func ce_ViewForZoomingIn(handle: (scrollView: UIScrollView) -> UIView?) -> UIScrollView {
+    public func ce_ViewForZoomingIn(handle: (scrollView: UIScrollView) -> UIView?) -> Self {
         ce.ViewForZoomingIn = handle
         return self
     }
-    public func ce_WillBeginZooming(handle: (scrollView: UIScrollView, view: UIView!) -> Void) -> UIScrollView {
+    public func ce_WillBeginZooming(handle: (scrollView: UIScrollView, view: UIView!) -> Void) -> Self {
         ce.WillBeginZooming = handle
         return self
     }
-    public func ce_DidEndZooming(handle: (scrollView: UIScrollView, view: UIView!, scale: CGFloat) -> Void) -> UIScrollView {
+    public func ce_DidEndZooming(handle: (scrollView: UIScrollView, view: UIView!, scale: CGFloat) -> Void) -> Self {
         ce.DidEndZooming = handle
         return self
     }
-    public func ce_ShouldScrollToTop(handle: (scrollView: UIScrollView) -> Bool) -> UIScrollView {
+    public func ce_ShouldScrollToTop(handle: (scrollView: UIScrollView) -> Bool) -> Self {
         ce.ShouldScrollToTop = handle
         return self
     }
-    public func ce_DidScrollToTop(handle: (scrollView: UIScrollView) -> Void) -> UIScrollView {
+    public func ce_DidScrollToTop(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidScrollToTop = handle
         return self
     }

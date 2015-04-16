@@ -24,33 +24,37 @@ extension UINavigationController {
                 return delegate as! UINavigationController_Delegate
             }
         }
-        let delegate = UINavigationController_Delegate()
+        let delegate = getDelegateInstance()
         self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
     }
     
-    public func ce_WillShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> UINavigationController {
+    internal override func getDelegateInstance() -> UINavigationController_Delegate {
+        return UINavigationController_Delegate()
+    }
+    
+    public func ce_WillShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
         ce.WillShowViewController = handle
         return self
     }
-    public func ce_DidShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> UINavigationController {
+    public func ce_DidShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
         ce.DidShowViewController = handle
         return self
     }
-    public func ce_SupportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> UINavigationController {
+    public func ce_SupportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> Self {
         ce.SupportedInterfaceOrientations = handle
         return self
     }
-    public func ce_PreferredInterfaceOrientationForPresentation(handle: (navigationController: UINavigationController) -> UIInterfaceOrientation) -> UINavigationController {
+    public func ce_PreferredInterfaceOrientationForPresentation(handle: (navigationController: UINavigationController) -> UIInterfaceOrientation) -> Self {
         ce.PreferredInterfaceOrientationForPresentation = handle
         return self
     }
-    public func ce_InteractionControllerForAnimationController(handle: (navigationController: UINavigationController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> UINavigationController {
+    public func ce_InteractionControllerForAnimationController(handle: (navigationController: UINavigationController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForAnimationController = handle
         return self
     }
-    public func ce_AnimationControllerForOperation(handle: (navigationController: UINavigationController, operation: UINavigationControllerOperation, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> UINavigationController {
+    public func ce_AnimationControllerForOperation(handle: (navigationController: UINavigationController, operation: UINavigationControllerOperation, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForOperation = handle
         return self
     }

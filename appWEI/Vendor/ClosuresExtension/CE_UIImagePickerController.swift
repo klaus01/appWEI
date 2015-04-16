@@ -24,17 +24,21 @@ extension UIImagePickerController {
                 return delegate as! UIImagePickerController_Delegate
             }
         }
-        let delegate = UIImagePickerController_Delegate()
+        let delegate = getDelegateInstance()
         self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
     }
     
-    public func ce_DidFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> UIImagePickerController {
+    internal override func getDelegateInstance() -> UIImagePickerController_Delegate {
+        return UIImagePickerController_Delegate()
+    }
+    
+    public func ce_DidFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> Self {
         ce.DidFinishPickingMediaWithInfo = handle
         return self
     }
-    public func ce_DidCancel(handle: (picker: UIImagePickerController) -> Void) -> UIImagePickerController {
+    public func ce_DidCancel(handle: (picker: UIImagePickerController) -> Void) -> Self {
         ce.DidCancel = handle
         return self
     }

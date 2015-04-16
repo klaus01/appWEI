@@ -107,7 +107,7 @@
                 funcObj.parameters.push({
                     name: r[1] ? r[1] : r[2],
                     variate: r[2],
-                    type: r[3]
+                    type: r[3].replace(/^\s+|\s+$/g,"")
                 });
             }
             if (funcObj.newName.length <= 0) {
@@ -133,7 +133,7 @@
             // 返回类型
             var tRegExp = new RegExp(" -> (" + TYPE_REGEXP_STR + ")");
             if ((r = tRegExp.exec(funcStr)) !== null)
-                funcObj.returnType = r[1];
+                funcObj.returnType = r[1].replace(/^\s+|\s+$/g,"");
 
             sourceObj.funcs.push(funcObj);
         }
@@ -174,7 +174,7 @@
             };
 
             funcStr += "\
-    public func " + EXT_NAME_ACRONYM + "_" + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> " + sourceObj.className + " {\n\
+    public func " + EXT_NAME_ACRONYM + "_" + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
         " + EXT_NAME_ACRONYM + "." + funcObj.newName + " = handle\n\
         return self\n\
     }\n";
@@ -195,9 +195,13 @@ extension " + sourceObj.className + " {\n\
                 return delegate as! " + CLASS_DELEGATE_NAME + "\n\
             }\n\
         }\n\
-        let delegate = " + CLASS_DELEGATE_NAME + "()\n" + delegateAttributeStr + "\
+        let delegate = getDelegateInstance()\n" + delegateAttributeStr + "\
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))\n\
         return delegate\n\
+    }\n\
+    \n\
+    internal override func getDelegateInstance() -> " + CLASS_DELEGATE_NAME + " {\n\
+        return " + CLASS_DELEGATE_NAME + "()\n\
     }\n\
     \n\
 " + funcStr + "\n\

@@ -24,29 +24,33 @@ extension UIViewController {
                 return delegate as! UIViewController_Delegate
             }
         }
-        let delegate = UIViewController_Delegate()
+        let delegate = getDelegateInstance()
         self.transitioningDelegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
     }
     
-    public func ce_AnimationControllerForPresentedController(handle: (presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> UIViewController {
+    internal func getDelegateInstance() -> UIViewController_Delegate {
+        return UIViewController_Delegate()
+    }
+    
+    public func ce_AnimationControllerForPresentedController(handle: (presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForPresentedController = handle
         return self
     }
-    public func ce_AnimationControllerForDismissedController(handle: (dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> UIViewController {
+    public func ce_AnimationControllerForDismissedController(handle: (dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForDismissedController = handle
         return self
     }
-    public func ce_InteractionControllerForPresentation(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> UIViewController {
+    public func ce_InteractionControllerForPresentation(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForPresentation = handle
         return self
     }
-    public func ce_InteractionControllerForDismissal(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> UIViewController {
+    public func ce_InteractionControllerForDismissal(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForDismissal = handle
         return self
     }
-    public func ce_PresentationControllerForPresented(handle: (presented: UIViewController, presenting: UIViewController!, source: UIViewController) -> UIPresentationController?) -> UIViewController {
+    public func ce_PresentationControllerForPresented(handle: (presented: UIViewController, presenting: UIViewController!, source: UIViewController) -> UIPresentationController?) -> Self {
         ce.PresentationControllerForPresented = handle
         return self
     }
