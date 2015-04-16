@@ -12,24 +12,39 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     // MARK: - Private func
     
-    private func selectImageByDefault() {
-        self.performSegueWithIdentifier("userToDefaultIcon", sender: self)
-    }
-    
-    private func takePhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        imagePickerController.sourceType = .Camera
-        self.presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    private func selectImageByPhotoLibrary() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        imagePickerController.sourceType = .PhotoLibrary
-        self.presentViewController(imagePickerController, animated: true, completion: nil)
+    private func showSelectIconActionSheet() {
+        UIActionSheet(title: "选择头像", cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles: "拍一张", "从手机相册中选择", "选择默认头像")
+            .clicked({ (buttonAtIndex) -> () in
+                switch buttonAtIndex {
+                case 1:
+                    let imagePickerController = UIImagePickerController()
+                    imagePickerController.allowsEditing = true
+                    imagePickerController.sourceType = .Camera
+                    imagePickerController.ce_DidFinishPickingMediaWithInfo({ (picker, info) -> Void in
+                        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                            self.iconImage = image
+                            picker.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                    })
+                    self.presentViewController(imagePickerController, animated: true, completion: nil)
+                case 2:
+                    let imagePickerController = UIImagePickerController()
+                    imagePickerController.allowsEditing = true
+                    imagePickerController.sourceType = .PhotoLibrary
+                    imagePickerController.ce_DidFinishPickingMediaWithInfo({ (picker, info) -> Void in
+                        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                            self.iconImage = image
+                            picker.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                    })
+                    self.presentViewController(imagePickerController, animated: true, completion: nil)
+                case 3:
+                    self.performSegueWithIdentifier("userToDefaultIcon", sender: self)
+                default:
+                    return
+                }
+            })
+            .showInView(self.view)
     }
     
     // MARK: - Public func
@@ -68,71 +83,53 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!
 
-    @IBAction func iconButtonClick(sender: AnyObject) {
-        UIActionSheet(title: "选择头像", delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles: "拍一张", "从手机相册中选择", "选择默认头像").showInView(self.view)
-    }
-    
-    @IBAction func saveClick(sender: AnyObject) {
-        if iconImage == nil {
-            UIAlertView.showMessage("请选择头像")
-            return
-        }
-        if nicknameTextField.text == nil || nicknameTextField.text!.length <= 0 {
-            UIAlertView.showMessage("请输入昵称")
-            nicknameTextField.becomeFirstResponder()
-            return
-        }
-        if nicknameTextField.text!.length > 1 {
-            UIAlertView.showMessage("昵称只能输入一个字")
-            nicknameTextField.becomeFirstResponder()
-            return
-        }
-        if isMen == nil {
-            UIAlertView.showMessage("请选择性别")
-            return
-        }
-        
-        saveButton.enabled = false
-        ServerHelper.appUserUpdate(UIImagePNGRepresentation(iconImage!), nickname: nicknameTextField.text!, isMan: isMen!) { (ret, error) -> Void in
-            self.saveButton.enabled = true
-            if let error = error {
-                println(error)
-                return
-            }
-            if ret!.success {
-                self.performSegueWithIdentifier("userToShow", sender: nil)
-            }
-            else {
-                UIAlertView.showMessage(ret!.errorMessage!)
-            }
-        }
-    }
-    
     // MARK: - ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
-    // MARK: - UIActionSheetDelegate
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        switch buttonIndex {
-        case 1:
-            takePhoto()
-        case 2:
-            selectImageByPhotoLibrary()
-        case 3:
-            selectImageByDefault()
-        default:
-            return
+        iconButton.clicked { UIButton -> () in
+            self.showSelectIconActionSheet()
+        }
+        saveButton.clicked { UIButton -> () in
+            if self.iconImage == nil {
+                UIAlertView.showMessage("请选择头像") { () -> Void in
+                    self.showSelectIconActionSheet()
+                }
+                return
+            }
+            if self.nicknameTextField.text == nil || self.nicknameTextField.text!.length <= 0 {
+                UIAlertView.showMessage("请输入昵称") { () -> Void in
+                    self.nicknameTextField.becomeFirstResponder()
+                }
+                return
+            }
+            if self.nicknameTextField.text!.length > 1 {
+                UIAlertView.showMessage("昵称只能输入一个字") { () -> Void in
+                    self.nicknameTextField.becomeFirstResponder()
+                }
+                return
+            }
+            if self.isMen == nil {
+                UIAlertView.showMessage("请选择性别")
+                return
+            }
+            
+            self.saveButton.enabled = false
+            ServerHelper.appUserUpdate(UIImagePNGRepresentation(self.iconImage!), nickname: self.nicknameTextField.text!, isMan: self.isMen!) { (ret, error) -> Void in
+                self.saveButton.enabled = true
+                if let error = error {
+                    println(error)
+                    return
+                }
+                if ret!.success {
+                    self.performSegueWithIdentifier("userToShow", sender: nil)
+                }
+                else {
+                    UIAlertView.showMessage(ret!.errorMessage!)
+                }
+            }
         }
     }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        iconImage = image
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
+
 }

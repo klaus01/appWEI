@@ -204,9 +204,6 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="100" y="72" width="100" height="100"/>
                                 </variation>
-                                <connections>
-                                    <action selector="iconButtonClick:" destination="0hc-Qb-cf7" eventType="touchUpInside" id="qkg-O8-Zt5"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-Nz-MQL">
                                 <rect key="frame" x="16" y="254" width="288" height="30"/>
@@ -219,9 +216,6 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="16" y="300" width="368" height="30"/>
                                 </variation>
-                                <connections>
-                                    <action selector="saveClick:" destination="0hc-Qb-cf7" eventType="touchUpInside" id="pvu-Kq-x1f"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEx-FW-54t">
                                 <rect key="frame" x="16" y="111" width="42" height="21"/>
