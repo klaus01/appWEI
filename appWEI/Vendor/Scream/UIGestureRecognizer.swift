@@ -16,7 +16,7 @@ public extension UIGestureRecognizer {
         
         let proxy = UIGestureRecognizerProxy(action)
         self.init(target:proxy, action:"act:")
-        self.__proxies[label] = proxy
+        __proxies[label] = proxy
     }
     
     public func on(label:String = "", action: ((UIGestureRecognizer) -> ())?) -> UIGestureRecognizer {
@@ -27,7 +27,7 @@ public extension UIGestureRecognizer {
         }
         
         let proxy = UIGestureRecognizerProxy(action!)
-        self.__proxies[label] = proxy
+        __proxies[label] = proxy
         self.addTarget(proxy, action:"act:")
         
         return self
@@ -35,9 +35,9 @@ public extension UIGestureRecognizer {
     
     internal func __off(label:String = "") -> UIGestureRecognizer{
         
-        if let proxy = self.__proxies[label] {
+        if let proxy = __proxies[label] {
             self.removeTarget(proxy, action:"act:")
-            self.__proxies.removeValueForKey(label)
+            __proxies.removeValueForKey(label)
         }
         
         return self
@@ -46,7 +46,7 @@ public extension UIGestureRecognizer {
 
 ///MARK:- Internal
 
-private var __UIGestureRecognizerProxiesKey:Void
+private var __UIGestureRecognizerProxiesKey: UInt8 = 0
 
 typealias __UIGestureRecognizerProxies = [String:UIGestureRecognizerProxy]
 
@@ -70,7 +70,7 @@ internal extension UIGestureRecognizer {
     }
     
     func __setter(newValue:__UIGestureRecognizerProxies) -> __UIGestureRecognizerProxies {
-        objc_setAssociatedObject(self, &__UIGestureRecognizerProxiesKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
+        objc_setAssociatedObject(self, &__UIGestureRecognizerProxiesKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
         return newValue
     }
     

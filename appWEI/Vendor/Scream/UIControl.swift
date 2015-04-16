@@ -29,7 +29,7 @@ public extension UIControl {
 
 ///MARK:- Internal
 
-private var __UIControlProxiesKey:Void
+private var __UIControlProxiesKey: UInt8 = 0
 
 typealias __UIControlProxies = [String: [String: UIControlProxy]]
 
@@ -53,7 +53,7 @@ internal extension UIControl {
     }
     
     func __setter(newValue:__UIControlProxies) -> __UIControlProxies {
-        objc_setAssociatedObject(self, &__UIControlProxiesKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
+        objc_setAssociatedObject(self, &__UIControlProxiesKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
         return newValue
     }
     
@@ -76,21 +76,21 @@ internal extension UIControl {
         let proxy = UIControlProxy(action)
         self.addTarget(proxy, action: "act:", forControlEvents: event)
         
-        let eventKey: String = self.__proxyKey(event)
-        if self.__proxies[eventKey] == nil {
-            self.__proxies[eventKey] = [String:UIControlProxy]()
+        let eventKey: String = __proxyKey(event)
+        if __proxies[eventKey] == nil {
+            __proxies[eventKey] = [String:UIControlProxy]()
         }
         
-        self.__proxies[eventKey]![label] = proxy
+        __proxies[eventKey]![label] = proxy
         
         return self
     }
     
     func __off(event:UIControlEvents, label:String = "") -> UIControl {
         
-        if let proxy: UIControlProxy = self.__proxies[__proxyKey(event)]?[label] {
+        if let proxy: UIControlProxy = __proxies[__proxyKey(event)]?[label] {
             self.removeTarget(proxy, action: "act:", forControlEvents: event)
-            self.__proxies[__proxyKey(event)]!.removeValueForKey(label)
+            __proxies[__proxyKey(event)]!.removeValueForKey(label)
         }
         return self
     }

@@ -26,7 +26,7 @@ public extension UIBarButtonItem {
         let proxy = UIBarButtonItemProxy(action!)
         self.target = proxy
         self.action = "act:"
-        self.proxies[label] = proxy
+        proxies[label] = proxy
 
         return self
     }
@@ -34,7 +34,7 @@ public extension UIBarButtonItem {
 
 ///MARK:- Internal
 
-private var UIBarButtonItemProxiesKey:Void
+private var UIBarButtonItemProxiesKey: UInt8 = 0
 
 typealias UIBarButtonItemProxies = [String:UIBarButtonItemProxy]
 
@@ -54,7 +54,7 @@ internal class UIBarButtonItemProxy : NSObject {
 internal extension UIBarButtonItem {
     
     func setter(newValue:UIBarButtonItemProxies) -> UIBarButtonItemProxies {
-        objc_setAssociatedObject(self, &UIBarButtonItemProxiesKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
+        objc_setAssociatedObject(self, &UIBarButtonItemProxiesKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
         return newValue
     }
     
@@ -74,9 +74,9 @@ internal extension UIBarButtonItem {
     func __offClicked(label:String = "") -> UIBarButtonItem {
         
         if let proxy = self.proxies[label] {
-            self.target = nil
-            self.action = ""
-            self.proxies.removeValueForKey(label)
+            target = nil
+            action = ""
+            proxies.removeValueForKey(label)
         }
         return self
     }
