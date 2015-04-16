@@ -31,6 +31,7 @@
             className: "",
             superClass: "",
             protocolNames: [""],
+            delegateAttributeNames: [""],
             funcs: [{
                 oldName: "",
                 newName: "",
@@ -49,7 +50,7 @@
         var result = re.exec(sourceText);
         if (result == null) {
             alert("缺少类定义信息");
-            return
+            return null;
         }
         sourceObj.className = result[1];
         var classChildName = result[2];
@@ -63,6 +64,23 @@
         var str = result[0];
         while ((result = re.exec(str)) !== null) {
             sourceObj.protocolNames.push(result[1]);
+        }
+
+        // 解析delegate属性列表
+        sourceObj.delegateAttributeNames = ["delegate"];
+        re = /DELEGATE_LIST\:(\w+)( *, *\w+)*/;
+        result = re.exec(sourceText);
+        if (result !== null) {
+            sourceText = sourceText.replace(re, "");
+
+            sourceObj.delegateAttributeNames = [result[1]];
+
+            re = / *, *(\w+)/g;
+            var str = result[0];
+            while ((result = re.exec(str)) !== null) {
+                if (sourceObj.delegateAttributeNames.indexOf(result[1]) < 0)
+                    sourceObj.delegateAttributeNames.push(result[1]);
+            }
         }
 
         // 解析方法
@@ -83,8 +101,9 @@
             }
 
             // 更多的参数
-            var pre = /,(?: (\w+))? (\w+): ([<>\w\!\?]+)/g;
-            while ((r = pre.exec(funcStr)) !== null) {
+            var TYPE_REGEXP_STR = "[ <>\\[\\:\\]\\w\\!\\?]+";
+            var tRegExp = new RegExp(",(?: (\\w+))? (\\w+): (" + TYPE_REGEXP_STR + ")", "g");
+            while ((r = tRegExp.exec(funcStr)) !== null) {
                 funcObj.parameters.push({
                     name: r[1] ? r[1] : r[2],
                     variate: r[2],
@@ -112,10 +131,9 @@
             }
 
             // 返回类型
-            r = / -> ([<>\[\]\w\!\?]+)/.exec(funcStr);
-            if (r) {
+            var tRegExp = new RegExp(" -> (" + TYPE_REGEXP_STR + ")");
+            if ((r = tRegExp.exec(funcStr)) !== null)
                 funcObj.returnType = r[1];
-            }
 
             sourceObj.funcs.push(funcObj);
         }
@@ -134,6 +152,12 @@
         var EXT_NAME_ACRONYM = "ce";
         var CLASS_DELEGATE_NAME = sourceObj.className + "_Delegate"
         var resultContent = "";
+
+        // 需要赋值的delegate属性
+        var delegateAttributeStr = "";
+        for (var i = 0; i < sourceObj.delegateAttributeNames.length; i++) {
+            delegateAttributeStr += "        self." + sourceObj.delegateAttributeNames[i] + " = delegate\n";
+        };
 
         // 生成扩展类
         //      方法
@@ -166,13 +190,12 @@ extension " + sourceObj.className + " {\n\
         if let obj = objc_getAssociatedObject(self, &Static.AssociationKey) as? " + CLASS_DELEGATE_NAME + " {\n\
             return obj\n\
         }\n\
-        if let delegate = self.delegate {\n\
+        if let delegate = self." + sourceObj.delegateAttributeNames[0] + " {\n\
             if delegate is " + CLASS_DELEGATE_NAME + " {\n\
                 return delegate as! " + CLASS_DELEGATE_NAME + "\n\
             }\n\
         }\n\
-        let delegate = " + CLASS_DELEGATE_NAME + "()\n\
-        self.delegate = delegate\n\
+        let delegate = " + CLASS_DELEGATE_NAME + "()\n" + delegateAttributeStr + "\
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))\n\
         return delegate\n\
     }\n\
@@ -258,7 +281,7 @@ extension " + sourceObj.className + " {\n\
         };
         //      最终实现的协议对象
         resultContent += "\n\
-class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + ", " + protocolStr + " {\n\
+internal class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + ", " + protocolStr + " {\n\
     \n" + classVarStr + "\n\
     \n\
     override func respondsToSelector(aSelector: Selector) -> Bool {\n\
@@ -273,9 +296,11 @@ class " + CLASS_DELEGATE_NAME + ": " + sourceObj.superClass + ", " + protocolStr
 
 	$("#buttonConvert").click(function(){
         var sourceObj = getSourceObj($("#taSource").val());
-        console.log(sourceObj);
-        var resultContent = getConvertContent(sourceObj);
-        $("#taResult").val(resultContent);
+        if (sourceObj) {
+            console.log(sourceObj);
+            var resultContent = getConvertContent(sourceObj);
+            $("#taResult").val(resultContent);
+        }
 	});
 </script>
 <br>
