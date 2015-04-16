@@ -88,10 +88,10 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        iconButton.clicked { UIButton -> () in
+        iconButton.clicked { [unowned self] UIButton -> () in
             self.showSelectIconActionSheet()
         }
-        saveButton.clicked { UIButton -> () in
+        saveButton.clicked { [unowned self] UIButton -> () in
             if self.iconImage == nil {
                 UIAlertView.showMessage("请选择头像") { () -> Void in
                     self.showSelectIconActionSheet()
@@ -116,17 +116,19 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             }
             
             self.saveButton.enabled = false
-            ServerHelper.appUserUpdate(UIImagePNGRepresentation(self.iconImage!), nickname: self.nicknameTextField.text!, isMan: self.isMen!) { (ret, error) -> Void in
-                self.saveButton.enabled = true
-                if let error = error {
-                    println(error)
-                    return
-                }
-                if ret!.success {
-                    self.performSegueWithIdentifier("userToShow", sender: nil)
-                }
-                else {
-                    UIAlertView.showMessage(ret!.errorMessage!)
+            ServerHelper.appUserUpdate(UIImagePNGRepresentation(self.iconImage!), nickname: self.nicknameTextField.text!, isMan: self.isMen!) { [weak self] (ret, error) -> Void in
+                if let strongSelf = self {
+                    strongSelf.saveButton.enabled = true
+                    if let error = error {
+                        println(error)
+                        return
+                    }
+                    if ret!.success {
+                        strongSelf.performSegueWithIdentifier("userToShow", sender: nil)
+                    }
+                    else {
+                        UIAlertView.showMessage(ret!.errorMessage!)
+                    }
                 }
             }
         }
