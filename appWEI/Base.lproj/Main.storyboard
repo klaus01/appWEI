@@ -976,7 +976,7 @@
         <!--禁-->
         <scene sceneID="qPD-M5-qk4">
             <objects>
-                <viewController id="bgi-K3-EjE" sceneMemberID="viewController">
+                <viewController id="bgi-K3-EjE" customClass="BlacklistViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4T5-G7-LIj"/>
                         <viewControllerLayoutGuide type="bottom" id="LcH-aP-oQD"/>
@@ -1025,6 +1025,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="DRS-dZ-v2f" id="Yx0-AK-Euy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHa-CN-QUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

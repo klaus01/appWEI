@@ -27,7 +27,9 @@ class FriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.automaticallyAdjustsScrollViewInsets = false;
+        
         refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
         refreshControl.pulled { () -> () in
             UserInfo.shared.updateFriends()
@@ -36,6 +38,7 @@ class FriendsViewController: UIViewController {
         
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
+        
         collectionView
             .ce_NumberOfItemsInSection { (collectionView, section) -> Int in
                 return UserInfo.shared.friends.count
@@ -43,25 +46,17 @@ class FriendsViewController: UIViewController {
             .ce_CellForItemAtIndexPath { (collectionView, indexPath) -> UICollectionViewCell in
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
                 let friend = UserInfo.shared.friends[indexPath.row]
-                if let appUser = friend.appUser {
-                    cell.iconImageUrl = appUser.iconUrl
-                    cell.nickname = appUser.nickname
-                }
-                else if let partnerUser = friend.partnerUser {
-                    cell.iconImageUrl = partnerUser.iconUrl
-                    cell.nickname = partnerUser.name
-                }
-                else {
-                    cell.iconImageUrl = nil
-                    cell.nickname = nil
-                }
+
+                cell.iconImageUrl = friend.iconUrl
+                cell.nickname = friend.nickname
+                cell.deleteAction = nil
                 if let count = friend.unreadCount {
                     cell.hintText = "\(count)"
                 }
                 else {
                     cell.hintText = nil
                 }
-                cell.deleteAction = nil
+                
                 return cell;
             }
         setUserListStyleWithCollectionView(collectionView)

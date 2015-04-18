@@ -49,6 +49,7 @@
 		24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */; };
 		24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA68401AC3D4C400F79324 /* HomeViewController.swift */; };
 		24B7808C1AE2522800460DE3 /* ProjectFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808B1AE2522800460DE3 /* ProjectFunc.swift */; };
+		24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */; };
 		24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEA1ACAD10B00A17D13 /* Array.swift */; };
 		24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEB1ACAD10B00A17D13 /* Character.swift */; };
 		24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */; };
@@ -144,6 +145,7 @@
 		24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefulatIconsViewController.swift; sourceTree = "<group>"; };
 		24AA68401AC3D4C400F79324 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		24B7808B1AE2522800460DE3 /* ProjectFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFunc.swift; sourceTree = "<group>"; };
+		24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistViewController.swift; sourceTree = "<group>"; };
 		24E02CEA1ACAD10B00A17D13 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		24E02CEB1ACAD10B00A17D13 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				24E3E9551AD26FA200B51FBE /* SendMessageViewController.swift */,
 				24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */,
 				24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */,
+				24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				240D52B41ADEB69E00B8E112 /* UIDatePicker.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
+				24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */,
 				24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */,
 				247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
