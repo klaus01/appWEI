@@ -430,7 +430,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-mW-pCt">
                                 <rect key="frame" x="60" y="350" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4G-Sq-M4o">
@@ -936,7 +936,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBP-Ip-Ixe">
                                 <rect key="frame" x="60" y="280" width="200" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVO-na-ZVo">
@@ -986,7 +986,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以下这些人将不能向你发送消息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9o-p8-JPs">
-                                <rect key="frame" x="16" y="64" width="288" height="35"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="z83-86-T2l"/>
@@ -996,7 +996,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DRS-dZ-v2f">
-                                <rect key="frame" x="16" y="99" width="288" height="381"/>
+                                <rect key="frame" x="0.0" y="99" width="320" height="381"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s0R-dA-NBc">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1010,12 +1010,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U9o-p8-JPs" firstAttribute="top" secondItem="4T5-G7-LIj" secondAttribute="bottom" id="B8I-Z6-AHU"/>
-                            <constraint firstItem="U9o-p8-JPs" firstAttribute="leading" secondItem="2r7-kM-N90" secondAttribute="leadingMargin" id="LhU-51-o0g"/>
+                            <constraint firstItem="U9o-p8-JPs" firstAttribute="leading" secondItem="2r7-kM-N90" secondAttribute="leadingMargin" constant="-16" id="LhU-51-o0g"/>
                             <constraint firstItem="LcH-aP-oQD" firstAttribute="top" secondItem="DRS-dZ-v2f" secondAttribute="bottom" id="Nj5-VI-KZT"/>
                             <constraint firstItem="DRS-dZ-v2f" firstAttribute="top" secondItem="U9o-p8-JPs" secondAttribute="bottom" id="QSL-Z7-3xs"/>
-                            <constraint firstItem="DRS-dZ-v2f" firstAttribute="leading" secondItem="2r7-kM-N90" secondAttribute="leadingMargin" id="RZf-KP-Uke"/>
-                            <constraint firstItem="DRS-dZ-v2f" firstAttribute="trailing" secondItem="2r7-kM-N90" secondAttribute="trailingMargin" id="c4y-OH-Zud"/>
-                            <constraint firstItem="U9o-p8-JPs" firstAttribute="trailing" secondItem="2r7-kM-N90" secondAttribute="trailingMargin" id="flm-S8-vL7"/>
+                            <constraint firstItem="DRS-dZ-v2f" firstAttribute="leading" secondItem="2r7-kM-N90" secondAttribute="leadingMargin" constant="-16" id="RZf-KP-Uke"/>
+                            <constraint firstItem="DRS-dZ-v2f" firstAttribute="trailing" secondItem="2r7-kM-N90" secondAttribute="trailingMargin" constant="16" id="c4y-OH-Zud"/>
+                            <constraint firstItem="U9o-p8-JPs" firstAttribute="trailing" secondItem="2r7-kM-N90" secondAttribute="trailingMargin" constant="16" id="flm-S8-vL7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="禁" id="bWq-ZM-E1D">
@@ -1508,10 +1508,10 @@
         <image name="Men9" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8VC-lQ-WAc"/>
-        <segue reference="BUh-vR-HYI"/>
-        <segue reference="7xM-Dl-zBf"/>
-        <segue reference="PMA-Jc-9AP"/>
+        <segue reference="Gel-uq-x6C"/>
+        <segue reference="OSb-j2-zDT"/>
         <segue reference="vdp-ay-qYg"/>
+        <segue reference="BUh-vR-HYI"/>
+        <segue reference="fm5-X3-Ctw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -75,7 +75,13 @@ class FriendsViewController: UIViewController {
                     cell.iconImageUrl = nil
                     cell.nickname = nil
                 }
-                cell.hintText = "\(friend.unreadCount)"
+                if let count = friend.unreadCount {
+                    cell.hintText = "\(count)"
+                }
+                else {
+                    cell.hintText = nil
+                }
+                cell.deleteAction = nil
                 return cell;
             }
         

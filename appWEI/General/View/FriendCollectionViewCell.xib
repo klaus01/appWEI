@@ -13,9 +13,6 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="187" height="169"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsV-hx-LDC">
-                        <rect key="frame" x="0.0" y="0.0" width="187" height="149"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-Zy-ZYn">
                         <rect key="frame" x="0.0" y="149" width="187" height="20"/>
                         <constraints>
@@ -31,25 +28,37 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ax7-9u-UKO">
+                        <rect key="frame" x="157" y="0.0" width="30" height="30"/>
+                        <state key="normal" title="删">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsV-hx-LDC">
+                        <rect key="frame" x="0.0" y="0.0" width="187" height="149"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="bhT-TQ-4di" secondAttribute="trailing" id="6OU-oC-dsV"/>
+                <constraint firstItem="Ax7-9u-UKO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FAt-Gf-Dfc"/>
                 <constraint firstItem="bhT-TQ-4di" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JJl-oC-Cma"/>
                 <constraint firstAttribute="trailing" secondItem="GsV-hx-LDC" secondAttribute="trailing" id="JeA-so-ubJ"/>
                 <constraint firstItem="GsV-hx-LDC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SrS-Bv-waU"/>
-                <constraint firstAttribute="trailing" secondItem="bhT-TQ-4di" secondAttribute="trailing" id="UQB-HY-kG6"/>
                 <constraint firstItem="IP1-Zy-ZYn" firstAttribute="top" secondItem="GsV-hx-LDC" secondAttribute="bottom" id="Wb1-zi-q5q"/>
                 <constraint firstItem="IP1-Zy-ZYn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAY-zz-6j8"/>
                 <constraint firstAttribute="trailing" secondItem="IP1-Zy-ZYn" secondAttribute="trailing" id="g5c-LM-jEc"/>
+                <constraint firstAttribute="trailing" secondItem="Ax7-9u-UKO" secondAttribute="trailing" id="inc-zv-KI6"/>
                 <constraint firstAttribute="bottom" secondItem="IP1-Zy-ZYn" secondAttribute="bottom" id="tgi-ZZ-gzD"/>
                 <constraint firstItem="GsV-hx-LDC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uYF-0E-PSL"/>
             </constraints>
             <size key="customSize" width="187" height="169"/>
             <connections>
-                <outlet property="iconImageView" destination="GsV-hx-LDC" id="vqV-rD-7l8"/>
-                <outlet property="messageCountLabel" destination="bhT-TQ-4di" id="OYw-d5-0gK"/>
-                <outlet property="nicknameLabel" destination="IP1-Zy-ZYn" id="RKI-zo-lgZ"/>
+                <outlet property="deleteButton" destination="Ax7-9u-UKO" id="PGn-Sq-l9S"/>
+                <outlet property="hintLabel" destination="bhT-TQ-4di" id="Zk3-0e-E1n"/>
+                <outlet property="iconImageView" destination="GsV-hx-LDC" id="JXU-95-VrR"/>
+                <outlet property="nicknameLabel" destination="IP1-Zy-ZYn" id="xMb-mZ-T3O"/>
             </connections>
             <point key="canvasLocation" x="608.5" y="440.5"/>
         </collectionViewCell>
