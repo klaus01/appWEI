@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum UserInfoViewControllerMode: Int {
+    case newUser = 0
+    case updateUser
+}
+
 class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Private func
@@ -49,12 +54,14 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     // MARK: - Public func
     
+    var mode: UserInfoViewControllerMode = .newUser
+    
     var iconImage: UIImage? {
         get {
-            return iconButton.backgroundImageForState(UIControlState.Normal)
+            return iconImageView.image
         }
         set {
-            iconButton.setBackgroundImage(newValue, forState: UIControlState.Normal)
+            iconImageView.image = newValue
         }
     }
     
@@ -78,7 +85,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     // MARK: - IB
     
-    @IBOutlet weak var iconButton: UIButton!
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!
@@ -88,9 +95,9 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        iconButton.clicked { [unowned self] UIButton -> () in
+        iconImageView.addGestureRecognizer(UITapGestureRecognizer() { [unowned self] (gestureRecognizer) -> () in
             self.showSelectIconActionSheet()
-        }
+        })
         saveButton.clicked { [unowned self] UIButton -> () in
             if self.iconImage == nil {
                 UIAlertView.showMessage("请选择头像") { () -> Void in
@@ -117,20 +124,43 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             
             self.saveButton.enabled = false
             ServerHelper.appUserUpdate(UIImagePNGRepresentation(self.iconImage!), nickname: self.nicknameTextField.text!, isMan: self.isMen!) { [weak self] (ret, error) -> Void in
-                if let strongSelf = self {
-                    strongSelf.saveButton.enabled = true
-                    if let error = error {
-                        println(error)
-                        return
-                    }
+                self?.saveButton.enabled = true
+                if let error = error {
+                    println(error)
+                    return
+                }
+                if let weakSelf = self {
                     if ret!.success {
-                        strongSelf.performSegueWithIdentifier("userToShow", sender: nil)
+                        if weakSelf.mode == .newUser {
+                            weakSelf.performSegueWithIdentifier("userToShow", sender: nil)
+                        }
+                        else {
+                            weakSelf.navigationController?.popViewControllerAnimated(true)
+                        }
                     }
                     else {
                         UIAlertView.showMessage(ret!.errorMessage!)
                     }
                 }
             }
+        }
+        if mode == .updateUser {
+            ServerHelper.appUserGet(UserInfo.shared.id, completionHandler: { [weak self] (ret, error) -> Void in
+                if let error = error {
+                    println(error)
+                    return
+                }
+                if let weakSelf = self {
+                    if ret!.success {
+                        weakSelf.iconImageView.loadImageWithUrl(ret!.data!.iconUrl!)
+                        weakSelf.isMen = ret!.data!.isMan!
+                        weakSelf.nicknameTextField.text = ret!.data!.nickname!
+                    }
+                    else {
+                        UIAlertView.showMessage(ret!.errorMessage!)
+                    }
+                }
+            });
         }
     }
 

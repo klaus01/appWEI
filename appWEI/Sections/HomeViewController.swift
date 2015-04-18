@@ -24,4 +24,9 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is UserInfoViewController {
+            (segue.destinationViewController as! UserInfoViewController).mode = .updateUser
+        }
+    }
 }

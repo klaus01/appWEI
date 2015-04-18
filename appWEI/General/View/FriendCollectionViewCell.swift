@@ -10,16 +10,15 @@ import UIKit
 
 class FriendCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var iconImageView: UrlImageView!
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var messageCountLabel: UILabel!
     
     var iconImageUrl: String? {
-        get {
-            return iconImageView.imageUrl
-        }
-        set {
-            iconImageView.imageUrl = newValue
+        didSet {
+            if let url = iconImageUrl {
+                iconImageView.loadImageWithUrl(url)
+            }
         }
     }
     

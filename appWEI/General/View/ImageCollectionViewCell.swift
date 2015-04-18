@@ -10,14 +10,13 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var urlImage: UrlImageView!
+    @IBOutlet weak var urlImage: UIImageView!
     
     var imageUrl: String? {
-        get {
-            return urlImage.imageUrl
-        }
-        set {
-            urlImage.imageUrl = newValue
+        didSet {
+            if let url = imageUrl {
+                urlImage.loadImageWithUrl(url)
+            }
         }
     }
     
