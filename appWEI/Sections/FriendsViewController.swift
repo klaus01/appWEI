@@ -10,15 +10,7 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
-    private let ROW_COUNT = 3.0
-    private let CELL_WIDTH = 100.0
-    private let CELL_HEIGHT = 120.0
-    
     private let refreshControl = UIRefreshControl()
-    
-    private func getCellSpacing(collectionView: UICollectionView) -> Double {
-        return (Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / 4.0
-    }
     
     // MARK: - public
     
@@ -47,16 +39,6 @@ class FriendsViewController: UIViewController {
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         collectionView
-            .ce_LayoutSizeForItemAtIndexPath { [unowned self] (collectionView, collectionViewLayout, indexPath) -> CGSize in
-                return CGSize(width: self.CELL_WIDTH, height: self.CELL_HEIGHT)
-            }
-            .ce_LayoutMinimumLineSpacingForSectionAtIndex { [unowned self] (collectionView, collectionViewLayout, section) -> CGFloat in
-                return CGFloat(self.getCellSpacing(collectionView))
-            }
-            .ce_LayoutInsetForSectionAtIndex { [unowned self] (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
-                    let i = CGFloat(self.getCellSpacing(collectionView))
-                    return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
-            }
             .ce_NumberOfItemsInSection { (collectionView, section) -> Int in
                 return UserInfo.shared.friends.count
             }
@@ -84,6 +66,7 @@ class FriendsViewController: UIViewController {
                 cell.deleteAction = nil
                 return cell;
             }
+        setUserListStyleWithCollectionView(collectionView)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
     }
