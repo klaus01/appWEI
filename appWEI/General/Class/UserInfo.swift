@@ -18,7 +18,6 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     private let locationManager: CLLocationManager = CLLocationManager()
     private var _isLogged = false
     private var _deviceToken: String? = nil
-    private var _friends = [FriendModel]()
     private var _isUpdatingFriends = false
     
     private func uploadDeviceToken() {
@@ -57,9 +56,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
     }
     // 用户的朋友列表，缓存
-    var friends: [FriendModel] {
-        return _friends
-    }
+    var friends = [FriendModel]()
     // 是否正在更新朋友列表
     var isUpdatingFriends: Bool {
         return _isUpdatingFriends
@@ -119,7 +116,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
                 println(error)
             }
             else if ret!.success {
-                self._friends = ret!.data!
+                self.friends = ret!.data!
                 NSNotificationCenter.defaultCenter().postNotificationName(kNotification_UpdateFriendsComplete, object: nil)
             }
         }
