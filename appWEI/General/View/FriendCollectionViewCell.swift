@@ -29,20 +29,14 @@ class FriendCollectionViewCell: UICollectionViewCell {
     }
     
     var nickname: String? {
-        get {
-            return nicknameLabel.text
-        }
-        set {
-            nicknameLabel.text = newValue
+        didSet {
+            nicknameLabel.text = nickname
         }
     }
     
     var hintText: String? {
-        get {
-            return hintLabel.text
-        }
-        set {
-            hintLabel.text = newValue
+        didSet {
+            hintLabel.text = hintText
         }
     }
 
