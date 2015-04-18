@@ -30,7 +30,7 @@ class FriendsViewController: UIViewController {
     // MARK: - IB
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     // MARK: - UIViewController
     
     override func viewDidLoad() {
@@ -47,13 +47,13 @@ class FriendsViewController: UIViewController {
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         collectionView
-            .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
+            .ce_LayoutSizeForItemAtIndexPath { [unowned self] (collectionView, collectionViewLayout, indexPath) -> CGSize in
                 return CGSize(width: self.CELL_WIDTH, height: self.CELL_HEIGHT)
             }
-            .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
+            .ce_LayoutMinimumLineSpacingForSectionAtIndex { [unowned self] (collectionView, collectionViewLayout, section) -> CGFloat in
                 return CGFloat(self.getCellSpacing(collectionView))
             }
-            .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
+            .ce_LayoutInsetForSectionAtIndex { [unowned self] (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
                     let i = CGFloat(self.getCellSpacing(collectionView))
                     return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
             }
@@ -75,7 +75,7 @@ class FriendsViewController: UIViewController {
                     cell.iconImageUrl = nil
                     cell.nickname = nil
                 }
-                cell.messageCount = friend.unreadCount
+                cell.hintText = "\(friend.unreadCount)"
                 return cell;
             }
         
