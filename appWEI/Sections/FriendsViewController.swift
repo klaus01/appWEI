@@ -28,8 +28,6 @@ class FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.edgesForExtendedLayout = UIRectEdge.None
-
         refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
         refreshControl.pulled { () -> () in
             UserInfo.shared.updateFriends()
