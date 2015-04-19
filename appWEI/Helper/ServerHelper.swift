@@ -10,6 +10,11 @@ import Foundation
 
 class ServerHelper {
     
+    struct Static {
+        // 静态的目的是只调用UUIDString一次。
+        static let SessionID = UUIDString
+    }
+    
     private class func getCompletionHandlerWithNoData(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) -> (NSURLRequest, NSHTTPURLResponse?, AnyObject?, NSError?) -> Void {
         func completionHandler(req: NSURLRequest, res: NSHTTPURLResponse?, JSON: AnyObject?, error: NSError?) -> Void {
             if let error = error {
@@ -70,7 +75,7 @@ class ServerHelper {
         else {
             param = [String: AnyObject]()
         }
-        param["sessionID"] = UUIDString
+        param["sessionID"] = Static.SessionID
         return request(.GET, "\(SERVER_HOST_INTERFACE)\(urlPathName)", parameters: param)
     }
     
@@ -82,7 +87,7 @@ class ServerHelper {
         else {
             param = [String: UploadValue]()
         }
-        param["sessionID"] = UploadValue.STRING(UUIDString)
+        param["sessionID"] = UploadValue.STRING(Static.SessionID)
         return upload("\(SERVER_HOST_INTERFACE)\(urlPathName)", param)
     }
     
