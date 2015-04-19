@@ -42,7 +42,7 @@ extension NSObject {
 
 private class NSObject_Delegate: NSObject {
     
-    var handle: ((NSNotification) -> Void)!
+    #if DEBUG
     override init() {
         super.init()
         println("init \(self)")
@@ -50,6 +50,9 @@ private class NSObject_Delegate: NSObject {
     deinit {
         println("deinit \(self)")
     }
+    #endif
+    
+    var handle: ((NSNotification) -> Void)!
     @objc func observerHandlerAction(notification: NSNotification) {
         handle(notification);
     }
