@@ -25,9 +25,13 @@ extension UIScrollView {
             }
         }
         let delegate = getDelegateInstance()
-        self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.delegate = delegate
     }
     
     internal func getDelegateInstance() -> UIScrollView_Delegate {
@@ -36,54 +40,67 @@ extension UIScrollView {
     
     public func ce_DidScroll(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidScroll = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidZoom(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidZoom = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillBeginDragging(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.WillBeginDragging = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillEndDragging(handle: (scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) -> Void) -> Self {
         ce.WillEndDragging = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDragging(handle: (scrollView: UIScrollView, decelerate: Bool) -> Void) -> Self {
         ce.DidEndDragging = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillBeginDecelerating(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.WillBeginDecelerating = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDecelerating(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidEndDecelerating = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndScrollingAnimation(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidEndScrollingAnimation = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ViewForZoomingIn(handle: (scrollView: UIScrollView) -> UIView?) -> Self {
         ce.ViewForZoomingIn = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillBeginZooming(handle: (scrollView: UIScrollView, view: UIView!) -> Void) -> Self {
         ce.WillBeginZooming = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndZooming(handle: (scrollView: UIScrollView, view: UIView!, scale: CGFloat) -> Void) -> Self {
         ce.DidEndZooming = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldScrollToTop(handle: (scrollView: UIScrollView) -> Bool) -> Self {
         ce.ShouldScrollToTop = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidScrollToTop(handle: (scrollView: UIScrollView) -> Void) -> Self {
         ce.DidScrollToTop = handle
+        rebindingDelegate()
         return self
     }
     

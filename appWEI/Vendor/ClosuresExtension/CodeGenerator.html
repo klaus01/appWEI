@@ -176,6 +176,7 @@
             funcStr += "\
     public func " + EXT_NAME_ACRONYM + "_" + funcObj.newName + "(handle: (" + paramtStr + ") -> " + getFuncReturnType(funcObj.returnType) + ") -> Self {\n\
         " + EXT_NAME_ACRONYM + "." + funcObj.newName + " = handle\n\
+        rebindingDelegate()\n\
         return self\n\
     }\n";
         };
@@ -195,9 +196,13 @@ extension " + sourceObj.className + " {\n\
                 return delegate as! " + CLASS_DELEGATE_NAME + "\n\
             }\n\
         }\n\
-        let delegate = getDelegateInstance()\n" + delegateAttributeStr + "\
+        let delegate = getDelegateInstance()\n\
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))\n\
         return delegate\n\
+    }\n\
+    \n\
+    private func rebindingDelegate() {\n\
+        let delegate = ce\n" + delegateAttributeStr + "\
     }\n\
     \n\
     internal override func getDelegateInstance() -> " + CLASS_DELEGATE_NAME + " {\n\

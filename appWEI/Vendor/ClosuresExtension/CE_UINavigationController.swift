@@ -25,9 +25,13 @@ extension UINavigationController {
             }
         }
         let delegate = getDelegateInstance()
-        self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.delegate = delegate
     }
     
     internal override func getDelegateInstance() -> UINavigationController_Delegate {
@@ -36,26 +40,32 @@ extension UINavigationController {
     
     public func ce_WillShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
         ce.WillShowViewController = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidShowViewController(handle: (navigationController: UINavigationController, viewController: UIViewController, animated: Bool) -> Void) -> Self {
         ce.DidShowViewController = handle
+        rebindingDelegate()
         return self
     }
     public func ce_SupportedInterfaceOrientations(handle: (navigationController: UINavigationController) -> Int) -> Self {
         ce.SupportedInterfaceOrientations = handle
+        rebindingDelegate()
         return self
     }
     public func ce_PreferredInterfaceOrientationForPresentation(handle: (navigationController: UINavigationController) -> UIInterfaceOrientation) -> Self {
         ce.PreferredInterfaceOrientationForPresentation = handle
+        rebindingDelegate()
         return self
     }
     public func ce_InteractionControllerForAnimationController(handle: (navigationController: UINavigationController, animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForAnimationController = handle
+        rebindingDelegate()
         return self
     }
     public func ce_AnimationControllerForOperation(handle: (navigationController: UINavigationController, operation: UINavigationControllerOperation, fromVC: UIViewController, toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForOperation = handle
+        rebindingDelegate()
         return self
     }
     

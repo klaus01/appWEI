@@ -25,9 +25,13 @@ extension UIViewController {
             }
         }
         let delegate = getDelegateInstance()
-        self.transitioningDelegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.transitioningDelegate = delegate
     }
     
     internal func getDelegateInstance() -> UIViewController_Delegate {
@@ -36,22 +40,27 @@ extension UIViewController {
     
     public func ce_AnimationControllerForPresentedController(handle: (presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForPresentedController = handle
+        rebindingDelegate()
         return self
     }
     public func ce_AnimationControllerForDismissedController(handle: (dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?) -> Self {
         ce.AnimationControllerForDismissedController = handle
+        rebindingDelegate()
         return self
     }
     public func ce_InteractionControllerForPresentation(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForPresentation = handle
+        rebindingDelegate()
         return self
     }
     public func ce_InteractionControllerForDismissal(handle: (animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?) -> Self {
         ce.InteractionControllerForDismissal = handle
+        rebindingDelegate()
         return self
     }
     public func ce_PresentationControllerForPresented(handle: (presented: UIViewController, presenting: UIViewController!, source: UIViewController) -> UIPresentationController?) -> Self {
         ce.PresentationControllerForPresented = handle
+        rebindingDelegate()
         return self
     }
     

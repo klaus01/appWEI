@@ -25,10 +25,14 @@ extension UITableView {
             }
         }
         let delegate = getDelegateInstance()
-        self.delegate = delegate
-        self.dataSource = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.delegate = delegate
+        self.dataSource = delegate
     }
     
     internal override func getDelegateInstance() -> UITableView_Delegate {
@@ -37,178 +41,222 @@ extension UITableView {
     
     public func ce_NumberOfRowsInSection(handle: (tableView: UITableView, section: Int) -> Int) -> Self {
         ce.NumberOfRowsInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CellForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell) -> Self {
         ce.CellForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_NumberOfSectionsIn(handle: (tableView: UITableView) -> Int) -> Self {
         ce.NumberOfSectionsIn = handle
+        rebindingDelegate()
         return self
     }
     public func ce_TitleForHeaderInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
         ce.TitleForHeaderInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_TitleForFooterInSection(handle: (tableView: UITableView, section: Int) -> String?) -> Self {
         ce.TitleForFooterInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CanEditRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.CanEditRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CanMoveRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.CanMoveRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_SectionIndexTitlesFor(handle: (tableView: UITableView) -> [AnyObject]!) -> Self {
         ce.SectionIndexTitlesFor = handle
+        rebindingDelegate()
         return self
     }
     public func ce_SectionForSectionIndexTitle(handle: (tableView: UITableView, title: String, index: Int) -> Int) -> Self {
         ce.SectionForSectionIndexTitle = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CommitEditingStyle(handle: (tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void) -> Self {
         ce.CommitEditingStyle = handle
+        rebindingDelegate()
         return self
     }
     public func ce_MoveRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void) -> Self {
         ce.MoveRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDisplayCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
         ce.WillDisplayCell = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDisplayHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
         ce.WillDisplayHeaderView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDisplayFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
         ce.WillDisplayFooterView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDisplayingCell(handle: (tableView: UITableView, cell: UITableViewCell, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidEndDisplayingCell = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDisplayingHeaderView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
         ce.DidEndDisplayingHeaderView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDisplayingFooterView(handle: (tableView: UITableView, view: UIView, section: Int) -> Void) -> Self {
         ce.DidEndDisplayingFooterView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_HeightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
         ce.HeightForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_HeightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
         ce.HeightForHeaderInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_HeightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
         ce.HeightForFooterInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_EstimatedHeightForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> CGFloat) -> Self {
         ce.EstimatedHeightForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_EstimatedHeightForHeaderInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
         ce.EstimatedHeightForHeaderInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_EstimatedHeightForFooterInSection(handle: (tableView: UITableView, section: Int) -> CGFloat) -> Self {
         ce.EstimatedHeightForFooterInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ViewForHeaderInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
         ce.ViewForHeaderInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ViewForFooterInSection(handle: (tableView: UITableView, section: Int) -> UIView?) -> Self {
         ce.ViewForFooterInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_AccessoryButtonTappedForRowWithIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.AccessoryButtonTappedForRowWithIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldHighlightRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidHighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidHighlightRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidUnhighlightRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidUnhighlightRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
         ce.WillSelectRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> NSIndexPath?) -> Self {
         ce.WillDeselectRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidSelectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidSelectRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidDeselectRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidDeselectRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_EditingStyleForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCellEditingStyle) -> Self {
         ce.EditingStyleForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_TitleForDeleteConfirmationButtonForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> String!) -> Self {
         ce.TitleForDeleteConfirmationButtonForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_EditActionsForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> [AnyObject]?) -> Self {
         ce.EditActionsForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldIndentWhileEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldIndentWhileEditingRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillBeginEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.WillBeginEditingRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndEditingRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidEndEditingRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_TargetIndexPathForMoveFromRowAtIndexPath(handle: (tableView: UITableView, sourceIndexPath: NSIndexPath, proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath) -> Self {
         ce.TargetIndexPathForMoveFromRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_IndentationLevelForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Int) -> Self {
         ce.IndentationLevelForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldShowMenuForRowAtIndexPath(handle: (tableView: UITableView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldShowMenuForRowAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CanPerformAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject) -> Bool) -> Self {
         ce.CanPerformAction = handle
+        rebindingDelegate()
         return self
     }
     public func ce_PerformAction(handle: (tableView: UITableView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Void) -> Self {
         ce.PerformAction = handle
+        rebindingDelegate()
         return self
     }
     

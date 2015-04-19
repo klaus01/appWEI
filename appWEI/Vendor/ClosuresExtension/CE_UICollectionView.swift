@@ -25,10 +25,14 @@ extension UICollectionView {
             }
         }
         let delegate = getDelegateInstance()
-        self.delegate = delegate
-        self.dataSource = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.delegate = delegate
+        self.dataSource = delegate
     }
     
     internal override func getDelegateInstance() -> UICollectionView_Delegate {
@@ -37,102 +41,127 @@ extension UICollectionView {
     
     public func ce_NumberOfItemsInSection(handle: (collectionView: UICollectionView, section: Int) -> Int) -> Self {
         ce.NumberOfItemsInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CellForItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell) -> Self {
         ce.CellForItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_NumberOfSectionsIn(handle: (collectionView: UICollectionView) -> Int) -> Self {
         ce.NumberOfSectionsIn = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ViewForSupplementaryElementOfKind(handle: (collectionView: UICollectionView, kind: String, indexPath: NSIndexPath) -> UICollectionReusableView) -> Self {
         ce.ViewForSupplementaryElementOfKind = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldHighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldHighlightItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidHighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidHighlightItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidUnhighlightItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidUnhighlightItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldSelectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldSelectItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldDeselectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldDeselectItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidSelectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidSelectItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidDeselectItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidDeselectItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDisplayCell(handle: (collectionView: UICollectionView, cell: UICollectionViewCell, indexPath: NSIndexPath) -> Void) -> Self {
         ce.WillDisplayCell = handle
+        rebindingDelegate()
         return self
     }
     public func ce_WillDisplaySupplementaryView(handle: (collectionView: UICollectionView, view: UICollectionReusableView, elementKind: String, indexPath: NSIndexPath) -> Void) -> Self {
         ce.WillDisplaySupplementaryView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDisplayingCell(handle: (collectionView: UICollectionView, cell: UICollectionViewCell, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidEndDisplayingCell = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidEndDisplayingSupplementaryView(handle: (collectionView: UICollectionView, view: UICollectionReusableView, elementKind: String, indexPath: NSIndexPath) -> Void) -> Self {
         ce.DidEndDisplayingSupplementaryView = handle
+        rebindingDelegate()
         return self
     }
     public func ce_ShouldShowMenuForItemAtIndexPath(handle: (collectionView: UICollectionView, indexPath: NSIndexPath) -> Bool) -> Self {
         ce.ShouldShowMenuForItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_CanPerformAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Bool) -> Self {
         ce.CanPerformAction = handle
+        rebindingDelegate()
         return self
     }
     public func ce_PerformAction(handle: (collectionView: UICollectionView, action: Selector, indexPath: NSIndexPath, sender: AnyObject!) -> Void) -> Self {
         ce.PerformAction = handle
+        rebindingDelegate()
         return self
     }
     public func ce_TransitionLayoutForOldLayout(handle: (collectionView: UICollectionView, fromLayout: UICollectionViewLayout, toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout!) -> Self {
         ce.TransitionLayoutForOldLayout = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutSizeForItemAtIndexPath(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, indexPath: NSIndexPath) -> CGSize) -> Self {
         ce.LayoutSizeForItemAtIndexPath = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutInsetForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> UIEdgeInsets) -> Self {
         ce.LayoutInsetForSectionAtIndex = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutMinimumLineSpacingForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGFloat) -> Self {
         ce.LayoutMinimumLineSpacingForSectionAtIndex = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutMinimumInteritemSpacingForSectionAtIndex(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGFloat) -> Self {
         ce.LayoutMinimumInteritemSpacingForSectionAtIndex = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutReferenceSizeForHeaderInSection(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGSize) -> Self {
         ce.LayoutReferenceSizeForHeaderInSection = handle
+        rebindingDelegate()
         return self
     }
     public func ce_LayoutReferenceSizeForFooterInSection(handle: (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, section: Int) -> CGSize) -> Self {
         ce.LayoutReferenceSizeForFooterInSection = handle
+        rebindingDelegate()
         return self
     }
     

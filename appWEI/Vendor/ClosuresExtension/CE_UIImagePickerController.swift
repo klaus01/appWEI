@@ -25,9 +25,13 @@ extension UIImagePickerController {
             }
         }
         let delegate = getDelegateInstance()
-        self.delegate = delegate
         objc_setAssociatedObject(self, &Static.AssociationKey, delegate, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         return delegate
+    }
+    
+    private func rebindingDelegate() {
+        let delegate = ce
+        self.delegate = delegate
     }
     
     internal override func getDelegateInstance() -> UIImagePickerController_Delegate {
@@ -36,10 +40,12 @@ extension UIImagePickerController {
     
     public func ce_DidFinishPickingMediaWithInfo(handle: (picker: UIImagePickerController, info: [NSObject : AnyObject]) -> Void) -> Self {
         ce.DidFinishPickingMediaWithInfo = handle
+        rebindingDelegate()
         return self
     }
     public func ce_DidCancel(handle: (picker: UIImagePickerController) -> Void) -> Self {
         ce.DidCancel = handle
+        rebindingDelegate()
         return self
     }
     
