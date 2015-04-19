@@ -10,14 +10,8 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
+    private var friends: [FriendModel]!
     private let refreshControl = UIRefreshControl()
-    
-    // MARK: - public
-    
-    func updateFriendsComplete() {
-        collectionView.reloadData()
-        refreshControl.endRefreshing()
-    }
     
     // MARK: - IB
     
@@ -27,8 +21,9 @@ class FriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.automaticallyAdjustsScrollViewInsets = false;
+        
+        friends = UserInfo.shared.whitelistFriends
         
         refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
         refreshControl.pulled { () -> () in
@@ -40,12 +35,12 @@ class FriendsViewController: UIViewController {
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         
         collectionView
-            .ce_NumberOfItemsInSection { (collectionView, section) -> Int in
-                return UserInfo.shared.friends.count
+            .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
+                return self!.friends.count
             }
-            .ce_CellForItemAtIndexPath { (collectionView, indexPath) -> UICollectionViewCell in
+            .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
-                let friend = UserInfo.shared.friends[indexPath.row]
+                let friend = self!.friends[indexPath.row]
 
                 cell.iconImageUrl = friend.iconUrl
                 cell.nickname = friend.nickname
@@ -61,11 +56,15 @@ class FriendsViewController: UIViewController {
             }
         setUserListStyleWithCollectionView(collectionView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
+        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
+            self!.friends = UserInfo.shared.whitelistFriends
+            self!.collectionView.reloadData()
+            self!.refreshControl.endRefreshing()
+        }
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.ce_removeObserver()
     }
     
     override func viewWillAppear(animated: Bool) {
