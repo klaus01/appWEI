@@ -15,6 +15,13 @@ public extension UIBarButtonItem {
         return self
     }
     
+    public convenience init(title: String?, style: UIBarButtonItemStyle, action: (UIBarButtonItem -> ())?) {
+        
+        let proxy = UIBarButtonItemProxy(action!)
+        self.init(title: title, style: style, target: proxy, action: "act:")
+        proxies[""] = proxy
+    }
+    
     public func clicked(label:String = "", action: (UIBarButtonItem -> ())?) -> UIBarButtonItem {
         
         self.__offClicked(label:label)
