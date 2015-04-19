@@ -57,6 +57,16 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     }
     // 用户的朋友列表，缓存
     var friends = [FriendModel]()
+    var whitelistFriends: [FriendModel] {
+        return friends.filter { (friend) -> Bool in
+            return !friend.isBlack
+        }
+    }
+    var blacklistFriends: [FriendModel] {
+        return friends.filter { (friend) -> Bool in
+            return friend.isBlack
+        }
+    }
     // 是否正在更新朋友列表
     var isUpdatingFriends: Bool {
         return _isUpdatingFriends
