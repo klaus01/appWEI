@@ -45,10 +45,35 @@ extension String {
 
 extension UIAlertView {
     
-    class func showMessage(message: String, cancelButtonTitle: String? = "知道了", didDismiss: (() -> Void)? = nil) {
+    /**
+    显示提示对话框
+    
+    :param: message           提示文字
+    :param: cancelButtonTitle 按钮文字
+    :param: didDismiss        点击按钮后的回调
+    */
+    class func showMessage(message: String, cancelButtonTitle: String = "知道了", didDismiss: (() -> Void)? = nil) {
         UIAlertView(title: nil, message: message, cancelButtonTitle: cancelButtonTitle)
             .didDismiss { (buttonAtIndex) -> () in
                 if let f = didDismiss { f() }
+            }
+            .show()
+    }
+    
+    /**
+    显示询问对话框
+    
+    :param: message        提示文字
+    :param: yesButtonTitle yes按钮名称
+    :param: noButtonTitle  no按钮名称
+    :param: didDismiss     点击按钮后的回调(isYes: true点击的yes按钮 false点击的no按钮)
+    */
+    class func yesOrNo(message: String, yesButtonTitle: String = "是", noButtonTitle: String = "否", didDismiss: ((isYes: Bool) -> Void)? = nil) {
+        UIAlertView(title: message, message: "", cancelButtonTitle: yesButtonTitle, otherButtonTitles: noButtonTitle)
+            .didDismiss { (buttonAtIndex) -> () in
+                if let f = didDismiss {
+                    f(isYes: buttonAtIndex == 0)
+                }
             }
             .show()
     }
