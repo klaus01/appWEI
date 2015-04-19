@@ -995,7 +995,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DRS-dZ-v2f">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DRS-dZ-v2f">
                                 <rect key="frame" x="0.0" y="99" width="320" height="381"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s0R-dA-NBc">
@@ -1036,7 +1036,7 @@
         <!--禁-->
         <scene sceneID="dx1-HP-Kb6">
             <objects>
-                <viewController id="iYe-wl-qkh" sceneMemberID="viewController">
+                <viewController id="iYe-wl-qkh" customClass="BlacklistAddViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ylk-ky-L8P"/>
                         <viewControllerLayoutGuide type="bottom" id="r70-ng-B4a"/>
@@ -1045,8 +1045,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ea1-IW-BmF">
-                                <rect key="frame" x="16" y="64" width="288" height="416"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ea1-IW-BmF">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bxU-Lv-fHP">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1060,14 +1060,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="r70-ng-B4a" firstAttribute="top" secondItem="ea1-IW-BmF" secondAttribute="bottom" id="0cs-ah-T9W"/>
-                            <constraint firstItem="ea1-IW-BmF" firstAttribute="trailing" secondItem="oEh-sr-BaS" secondAttribute="trailingMargin" id="b36-6M-5aP"/>
+                            <constraint firstItem="ea1-IW-BmF" firstAttribute="trailing" secondItem="oEh-sr-BaS" secondAttribute="trailingMargin" constant="16" id="b36-6M-5aP"/>
                             <constraint firstItem="ea1-IW-BmF" firstAttribute="top" secondItem="Ylk-ky-L8P" secondAttribute="bottom" id="qqe-FN-6Pe"/>
-                            <constraint firstItem="ea1-IW-BmF" firstAttribute="leading" secondItem="oEh-sr-BaS" secondAttribute="leadingMargin" id="uer-jp-ev6"/>
+                            <constraint firstItem="ea1-IW-BmF" firstAttribute="leading" secondItem="oEh-sr-BaS" secondAttribute="leadingMargin" constant="-16" id="uer-jp-ev6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="禁" id="xeQ-Ni-pxH">
-                        <barButtonItem key="rightBarButtonItem" title="确定" style="done" id="uaF-6s-AAC"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="禁" id="xeQ-Ni-pxH"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ea1-IW-BmF" id="4cZ-j5-yBO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxx-XK-fHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,57 +10,49 @@ import UIKit
 
 class BlacklistViewController: UIViewController {
 
-    private var blacklist = [FriendModel]()
-//    private let refreshControl = UIRefreshControl()
-    
-    private func refreshBlacklist() {
-        blacklist = UserInfo.shared.friends.filter { (friend) -> Bool in
-            return friend.isBlack
-        }
-    }
-    
-//    func updateFriendsComplete() {
-//        refreshBlacklist()
-//        collectionView.reloadData()
-//        refreshControl.endRefreshing()
-//    }
+    private var blacklist: [FriendModel]!
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshBlacklist()
+        blacklist = UserInfo.shared.blacklistFriends
         
-//        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
-//        refreshControl.pulled { () -> () in
-//            UserInfo.shared.updateFriends()
-//        }
-//        collectionView.addSubview(refreshControl)
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
+        refreshControl.pulled { () -> () in
+            UserInfo.shared.updateFriends()
+        }
+        collectionView.addSubview(refreshControl)
         
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         collectionView
-            .ce_NumberOfItemsInSection { [unowned self] (collectionView, section) -> Int in
-                return self.blacklist.count
+            .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
+                return self!.blacklist.count
             }
-            .ce_CellForItemAtIndexPath { [unowned self] (collectionView, indexPath) -> UICollectionViewCell in
+            .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
-                let friend = self.blacklist[indexPath.row]
+                let friend = self!.blacklist[indexPath.row]
                 
                 cell.iconImageUrl = friend.iconUrl
                 cell.nickname = friend.nickname
                 cell.hintText = nil
-                cell.deleteAction = { (cell) -> Void in
+                cell.deleteAction = { [weak self] (cell) -> Void in
                     if let indexPath = collectionView.indexPathForCell(cell) {
-                        let finder = self.blacklist.removeAtIndex(indexPath.row)
-                        collectionView.deleteItemsAtIndexPaths([indexPath])
+                        let finder = self!.blacklist[indexPath.row]
                         ServerHelper.appUserSetFriendIsBlack(finder.userID!, isBlack: false, completionHandler: { (ret, error) -> Void in
                             if let error = error {
                                 println(error)
                                 return
                             }
-                            UserInfo.shared.updateFriends()
+                            if ret!.success {
+                                UserInfo.shared.updateFriends()
+                            }
+                            else {
+                                UIAlertView.showMessage(ret!.errorMessage!)
+                            }
                         })
                     }
                 }
@@ -68,18 +60,22 @@ class BlacklistViewController: UIViewController {
         }
         setUserListStyleWithCollectionView(collectionView)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFriendsComplete", name: kNotification_UpdateFriendsComplete, object: nil)
+        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
+            self!.blacklist = UserInfo.shared.blacklistFriends
+            self!.collectionView.reloadData()
+            self!.refreshControl.endRefreshing()
+        }
     }
     
-//    deinit {
-//        NSNotificationCenter.defaultCenter().removeObserver(self)
-//    }
+    deinit {
+        self.ce_removeObserver()
+    }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        if UserInfo.shared.isUpdatingFriends {
-//            refreshControl.beginRefreshing()
-//        }
-//    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserInfo.shared.isUpdatingFriends {
+            refreshControl.beginRefreshing()
+        }
+    }
     
 }
