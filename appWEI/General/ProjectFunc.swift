@@ -11,6 +11,11 @@ import UIKit
 
 extension UIImageView {
     
+    /**
+    加载网络图片（下载到本地保存，下次请求时从本地加载）
+    
+    :param: url 图片网址
+    */
     func loadImageWithUrl(url: String) {
         let fileName = (url as NSString).lastPathComponent
         let filePath = getCachesDirectory() + "/" + fileName
@@ -53,6 +58,11 @@ extension UIImageView {
     
 }
 
+/**
+统一设置用户列表样式
+
+:param: collectionView
+*/
 func setUserListStyleWithCollectionView(collectionView: UICollectionView) {
     
     let ROW_COUNT = 3.0

@@ -83,6 +83,9 @@
 		24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A171AE00AB900347C06 /* CE_UIViewController.swift */; };
 		24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */; };
 		24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */; };
+		24E806261AE5361C004AD0F5 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */; };
+		24E806271AE5361C004AD0F5 /* WordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */; };
+		24E806291AE53AF1004AD0F5 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
@@ -190,6 +193,9 @@
 		24E79A171AE00AB900347C06 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
 		24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
 		24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIImagePickerController.swift; sourceTree = "<group>"; };
+		24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordTableViewCell.swift; path = View/WordTableViewCell.swift; sourceTree = "<group>"; };
+		24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordTableViewCell.xib; path = View/WordTableViewCell.xib; sourceTree = "<group>"; };
+		24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +385,7 @@
 				24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */,
 				24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */,
 				24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */,
+				24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -491,6 +498,8 @@
 				24E3E95E1AD277C800B51FBE /* ImageCollectionViewCell.xib */,
 				24E3E9631AD27CD800B51FBE /* FriendCollectionViewCell.swift */,
 				24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */,
+				24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */,
+				24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -585,6 +594,7 @@
 				244C19E51ABBFFC000813708 /* Main.storyboard in Resources */,
 				24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */,
 				244C19EA1ABBFFC000813708 /* LaunchScreen.xib in Resources */,
+				24E806271AE5361C004AD0F5 /* WordTableViewCell.xib in Resources */,
 				244C19E71ABBFFC000813708 /* Images.xcassets in Resources */,
 				24E3E9601AD277C800B51FBE /* ImageCollectionViewCell.xib in Resources */,
 			);
@@ -644,6 +654,7 @@
 				24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */,
 				24E02CFC1ACAD10B00A17D13 /* ExSwift.swift in Sources */,
 				24E3E9541AD26A2000B51FBE /* VoiceConverter.mm in Sources */,
+				24E806261AE5361C004AD0F5 /* WordTableViewCell.swift in Sources */,
 				2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */,
 				24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */,
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
@@ -657,6 +668,7 @@
 				24E3E9651AD27CD800B51FBE /* FriendCollectionViewCell.swift in Sources */,
 				240D52B51ADEB69E00B8E112 /* UIGestureRecognizer.swift in Sources */,
 				240D52B71ADEB69E00B8E112 /* UISegmentedControl.swift in Sources */,
+				24E806291AE53AF1004AD0F5 /* DictionaryViewController.swift in Sources */,
 				24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
 				240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */,

@@ -804,7 +804,7 @@
         <!--典-->
         <scene sceneID="g9c-u2-ygo">
             <objects>
-                <viewController id="yVP-Gc-Zt1" sceneMemberID="viewController">
+                <viewController id="yVP-Gc-Zt1" customClass="DictionaryViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8tT-2B-8IW"/>
                         <viewControllerLayoutGuide type="bottom" id="gqL-PI-I97"/>
@@ -823,7 +823,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-qe-ZKE">
                                 <rect key="frame" x="104" y="72" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SOT-dj-kb5">
                                 <rect key="frame" x="16" y="110" width="288" height="370"/>
@@ -845,6 +845,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="典" id="xIu-7J-tg6"/>
                     <connections>
+                        <outlet property="searchTextField" destination="e2g-qe-ZKE" id="0eI-h1-brL"/>
+                        <outlet property="searchTypeButton" destination="Ykw-bz-aGC" id="lnm-kc-RHG"/>
+                        <outlet property="tableView" destination="SOT-dj-kb5" id="vRV-Rw-goy"/>
                         <segue destination="ghL-lg-d9H" kind="show" identifier="showWord" id="fm5-X3-Ctw"/>
                     </connections>
                 </viewController>
