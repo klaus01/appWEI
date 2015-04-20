@@ -25,7 +25,21 @@ class BlacklistAddViewController: UIViewController {
             }
             else {
                 let buttonItem = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Bordered) { [weak self] barButtonItem -> () in
-                    println(self!.selectedUserIDs)
+                    barButtonItem.enabled = false
+                    ServerHelper.appUserSetFriendsIsBlack(self!.selectedUserIDs, isBlack: true, completionHandler: { (ret, error) -> Void in
+                        if let error = error {
+                            println(error)
+                            return
+                        }
+                        self?.navigationItem.rightBarButtonItem?.enabled = true
+                        if ret!.success {
+                            UserInfo.shared.updateFriends()
+                            self?.navigationController?.popViewControllerAnimated(true)
+                        }
+                        else {
+                            UIAlertView.showMessage(ret!.errorMessage!)
+                        }
+                    })
                 }
                 self.navigationItem.setRightBarButtonItem(buttonItem, animated: true)
             }
@@ -63,7 +77,7 @@ class BlacklistAddViewController: UIViewController {
                             }
                             let indexPath = collectionView.indexPathForCell(cell)!
                             var friend = self!.whitelist[indexPath.row]
-                            ServerHelper.appUserSetFriendIsBlack(friend.userID!, isBlack: true, completionHandler: { (ret, error) -> Void in
+                            ServerHelper.appUserSetFriendsIsBlack([friend.userID!], isBlack: true, completionHandler: { (ret, error) -> Void in
                                 if let error = error {
                                     println(error)
                                     return

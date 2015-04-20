@@ -42,7 +42,7 @@ class BlacklistViewController: UIViewController {
                 cell.deleteAction = { [weak self] (cell) -> Void in
                     if let indexPath = collectionView.indexPathForCell(cell) {
                         let finder = self!.blacklist[indexPath.row]
-                        ServerHelper.appUserSetFriendIsBlack(finder.userID!, isBlack: false, completionHandler: { (ret, error) -> Void in
+                        ServerHelper.appUserSetFriendsIsBlack([finder.userID!], isBlack: false, completionHandler: { (ret, error) -> Void in
                             if let error = error {
                                 println(error)
                                 return

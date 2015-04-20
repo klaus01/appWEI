@@ -163,9 +163,9 @@ class ServerHelper {
     }
     
     // 设置朋友是否在黑名单中
-    class func appUserSetFriendIsBlack(friendUserID: Int, isBlack: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
-        myRequest("/appUser/setFriendIsBlack", parameters: [
-            "friendUserID": friendUserID,
+    class func appUserSetFriendsIsBlack(friendUserIDs: [Int], isBlack: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+        myRequest("/appUser/setFriendsIsBlack", parameters: [
+            "friendUserIDs": friendUserIDs,
             "isBlack": isBlack.hashValue
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
