@@ -31,6 +31,7 @@ extension UIImagePickerController {
     
     private func rebindingDelegate() {
         let delegate = ce
+        self.delegate = nil
         self.delegate = delegate
     }
     

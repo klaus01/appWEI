@@ -31,7 +31,9 @@ extension UITableView {
     
     private func rebindingDelegate() {
         let delegate = ce
+        self.delegate = nil
         self.delegate = delegate
+        self.dataSource = nil
         self.dataSource = delegate
     }
     

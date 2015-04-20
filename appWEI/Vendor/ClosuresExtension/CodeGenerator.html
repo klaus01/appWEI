@@ -156,6 +156,7 @@
         // 需要赋值的delegate属性
         var delegateAttributeStr = "";
         for (var i = 0; i < sourceObj.delegateAttributeNames.length; i++) {
+            delegateAttributeStr += "        self." + sourceObj.delegateAttributeNames[i] + " = nil\n";
             delegateAttributeStr += "        self." + sourceObj.delegateAttributeNames[i] + " = delegate\n";
         };
 

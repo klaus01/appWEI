@@ -31,6 +31,7 @@ extension UIViewController {
     
     private func rebindingDelegate() {
         let delegate = ce
+        self.transitioningDelegate = nil
         self.transitioningDelegate = delegate
     }
     
