@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24019C4C1ABC19A100672673 /* RegisterViewController.swift */; };
 		24060F1A1AE6960300A405BC /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24060F191AE6960300A405BC /* StatisticsViewController.swift */; };
+		24060F1C1AE69EFB00A405BC /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24060F1B1AE69EFB00A405BC /* WordViewController.swift */; };
 		240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52901ADEB54900B8E112 /* ImageCache.swift */; };
 		240D529A1ADEB54900B8E112 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52911ADEB54900B8E112 /* ImageDownloader.swift */; };
 		240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52941ADEB54900B8E112 /* KingfisherManager.swift */; };
@@ -110,6 +111,7 @@
 /* Begin PBXFileReference section */
 		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		24060F191AE6960300A405BC /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		24060F1B1AE69EFB00A405BC /* WordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
 		240D52901ADEB54900B8E112 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		240D52911ADEB54900B8E112 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		240D52941ADEB54900B8E112 /* KingfisherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingfisherManager.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */,
 				24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */,
 				24060F191AE6960300A405BC /* StatisticsViewController.swift */,
+				24060F1B1AE69EFB00A405BC /* WordViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
 				240D529F1ADEB54900B8E112 /* UIImage+Decode.swift in Sources */,
+				24060F1C1AE69EFB00A405BC /* WordViewController.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
 				240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */,
 				24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */,

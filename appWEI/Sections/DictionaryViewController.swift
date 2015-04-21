@@ -15,9 +15,10 @@ class DictionaryViewController: UIViewController {
         case Description
     }
     private let pageCount = 20
-    private var words = [WordModel]()
+    private var words: [WordModel] = [WordModel]()
     private var allLoaded = false
     private var searchType = SearchType.Number
+    private var selectedWord: WordModel?
     
     @IBOutlet weak var searchTypeButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
@@ -28,6 +29,14 @@ class DictionaryViewController: UIViewController {
         self.setupSearchTypeButton()
         self.setupSearchTextField()
         self.setupTableView()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let word = selectedWord {
+            if segue.destinationViewController is WordViewController {
+                (segue.destinationViewController as! WordViewController).word = word
+            }
+        }
     }
     
     private func setupSearchTypeButton() {
@@ -72,8 +81,8 @@ class DictionaryViewController: UIViewController {
             }
             .ce_DidSelectRowAtIndexPath { [weak self] (tableView, indexPath) -> Void in
                 if (self!.allLoaded) || self!.getWordCount() != (indexPath.row + 1) {
-                    println("选中了\(indexPath)")
-                    // TODO 进入字界面
+                    self!.selectedWord = self!.words[indexPath.row]
+                    self!.performSegueWithIdentifier("showWord", sender: nil)
                 }
             }
             .ce_WillDisplayCell { [weak self] (tableView, cell, indexPath) -> Void in

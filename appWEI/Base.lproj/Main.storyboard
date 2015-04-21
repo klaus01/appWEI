@@ -924,7 +924,7 @@
         <!--字-->
         <scene sceneID="Y7e-fo-uNK">
             <objects>
-                <viewController id="ghL-lg-d9H" sceneMemberID="viewController">
+                <viewController id="ghL-lg-d9H" customClass="WordViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ev-Hf-fHE"/>
                         <viewControllerLayoutGuide type="bottom" id="4Ms-Cx-pms"/>
@@ -975,6 +975,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="字" id="xFp-d9-ivH"/>
+                    <connections>
+                        <outlet property="imageView" destination="CuL-5s-gnh" id="cy9-5l-u6p"/>
+                        <outlet property="numberLabel" destination="jBP-Ip-Ixe" id="CO5-f2-n8n"/>
+                        <outlet property="playSoundButton" destination="BVO-na-ZVo" id="3xM-Og-6Ez"/>
+                        <outlet property="textView" destination="7PQ-J2-h2s" id="fNK-1K-ORK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyw-fb-B7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1521,8 +1527,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="Gel-uq-x6C"/>
         <segue reference="OSb-j2-zDT"/>
-        <segue reference="vdp-ay-qYg"/>
         <segue reference="BUh-vR-HYI"/>
         <segue reference="PMA-Jc-9AP"/>
+        <segue reference="cSf-o2-POF"/>
     </inferredMetricsTieBreakers>
 </document>
