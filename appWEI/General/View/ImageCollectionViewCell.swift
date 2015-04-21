@@ -15,7 +15,11 @@ class ImageCollectionViewCell: UICollectionViewCell {
     var imageUrl: String? {
         didSet {
             if let url = imageUrl {
-                urlImage.loadImageWithUrl(url)
+                urlImage.imageWebUrl = url
+            }
+            else {
+                urlImage.imageWebUrl = nil
+                urlImage.image = nil
             }
         }
     }

@@ -26,7 +26,11 @@ class WordTableViewCell: UITableViewCell {
     var pictureImageUrl: String? {
         didSet {
             if let url = pictureImageUrl {
-                pictureImageView.loadImageWithUrl(url)
+                pictureImageView.imageWebUrl = url
+            }
+            else {
+                pictureImageView.imageWebUrl = nil
+                pictureImageView.image = nil
             }
         }
     }

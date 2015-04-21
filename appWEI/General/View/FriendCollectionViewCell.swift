@@ -21,9 +21,10 @@ class FriendCollectionViewCell: UICollectionViewCell {
     var iconImageUrl: String? {
         didSet {
             if let url = iconImageUrl {
-                iconImageView.loadImageWithUrl(url)
+                iconImageView.imageWebUrl = url
             }
             else {
+                iconImageView.imageWebUrl = nil
                 iconImageView.image = nil
             }
         }

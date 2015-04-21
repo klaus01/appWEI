@@ -152,7 +152,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                 }
                 if let weakSelf = self {
                     if ret!.success {
-                        weakSelf.iconImageView.loadImageWithUrl(ret!.data!.iconUrl!)
+                        weakSelf.iconImageView.imageWebUrl = ret!.data!.iconUrl!
                         weakSelf.isMen = ret!.data!.isMan!
                         weakSelf.nicknameTextField.text = ret!.data!.nickname!
                     }
