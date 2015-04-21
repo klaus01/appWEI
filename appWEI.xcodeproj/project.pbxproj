@@ -67,6 +67,7 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */; };
 		24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9431AD266BF00B51FBE /* wav.mm */; };
 		24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */; };
@@ -171,6 +172,7 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
 		24E3E9401AD266BE00B51FBE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		24E3E9421AD266BF00B51FBE /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -349,9 +351,9 @@
 		244C1A031ABC007800813708 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */,
 				244C1A041ABC007800813708 /* AlamofireExt.swift */,
 				24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */,
-				24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -419,6 +421,7 @@
 				24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */,
 				24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */,
 				24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */,
+				24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */,
 				240D529D1ADEB54900B8E112 /* KingfisherOptions.swift in Sources */,
 				24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */,
+				24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
 				240D52B61ADEB69E00B8E112 /* UIRefreshControl.swift in Sources */,
 				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
