@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var regOrLoginButton: UIButton!
     
     @IBAction func phoneNumberEditingChanged(sender: UITextField) {
-        sendButton.hidden = getPhoneNumberAreaType(sender.text) == .error
+        sendButton.hidden = getPhoneNumberAreaType(sender.text) == .Error
     }
     @IBAction func verificationCodeEditingChanged(sender: UITextField) {
         regOrLoginButton.hidden = sender.text.length != VERIFICATIONCODE_LENGTH

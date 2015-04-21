@@ -14,7 +14,7 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var inviteButton: UIButton!
     
     @IBAction func phoneNumberEditingChanged(sender: UITextField) {
-        inviteButton.enabled = getPhoneNumberAreaType(sender.text) != .error
+        inviteButton.enabled = getPhoneNumberAreaType(sender.text) != .Error
     }
     
     @IBAction func inviteClick(sender: AnyObject) {

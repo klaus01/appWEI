@@ -81,9 +81,9 @@ extension UIAlertView {
 }
 
 enum PhoneNumberAreaType: Int {
-    case error = -1
-    case cn = 0
-    case hk = 1
+    case Error = -1
+    case CN = 0
+    case HK = 1
 }
 /**
 根据手机号返回区域类型
@@ -94,13 +94,13 @@ enum PhoneNumberAreaType: Int {
 */
 func getPhoneNumberAreaType(phoneNumber: String) -> PhoneNumberAreaType {
     if phoneNumber =~ "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$" {
-        return .cn
+        return .CN
     }
     else if phoneNumber =~ "^(852|000852)?(5|6|9)[0-9]{7}$" {
-        return .hk;
+        return .HK;
     }
     else {
-        return .error;
+        return .Error;
     }
 };
 

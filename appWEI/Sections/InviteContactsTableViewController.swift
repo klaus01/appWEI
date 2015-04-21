@@ -189,7 +189,7 @@ class InviteContactsTableViewController: UITableViewController {
         nameLabel.text = contact["name"] as? String
         nicknameLabel.text = phone
         button.addTarget(self, action: "addFriendButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        if getPhoneNumberAreaType(phone) == PhoneNumberAreaType.error {
+        if getPhoneNumberAreaType(phone) == .Error {
             button.setTitle("不支持该手机号", forState: UIControlState.Normal)
             button.enabled = false
         }
