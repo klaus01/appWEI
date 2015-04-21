@@ -1,15 +1,15 @@
 //
-//  DictionaryViewController.swift
+//  StatisticsViewController.swift
 //  appWEI
 //
-//  Created by kelei on 15/4/20.
+//  Created by kelei on 15/4/21.
 //  Copyright (c) 2015年 kelei. All rights reserved.
 //
 
 import UIKit
 
-class DictionaryViewController: UIViewController {
-
+class StatisticsViewController: UIViewController {
+    
     enum SearchType {
         case Number
         case Description
@@ -21,12 +21,14 @@ class DictionaryViewController: UIViewController {
     
     @IBOutlet weak var searchTypeButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var orderSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupSearchTypeButton()
         self.setupSearchTextField()
+        self.setupOrderSegmentedControl()
         self.setupTableView()
     }
     
@@ -37,11 +39,15 @@ class DictionaryViewController: UIViewController {
         }
     }
     
+    private func setupOrderSegmentedControl() {
+        orderSegmentedControl.selectedIndexChange() { [weak self] (index) -> Void in
+            self!.reloadWords()
+        }
+    }
+    
     private func setupSearchTextField() {
         searchTextField.ce_ShouldReturn { [weak self] (textField) -> Bool in
-            self!.words.removeAll(keepCapacity: false)
-            self!.allLoaded = false
-            self!.tableView.reloadData()
+            self!.reloadWords()
             textField.resignFirstResponder()
             return true
         }
@@ -65,8 +71,30 @@ class DictionaryViewController: UIViewController {
                     
                     cell.number = word.number
                     cell.pictureImageUrl = word.pictureUrl
-                    cell.rightText = word.description
-                    
+                    let orderType = self!.orderSegmentedControl.selectedSegmentIndex
+                    switch getPhoneNumberAreaType(UserInfo.shared.phoneNumber!) {
+                    case .CN:
+                        switch orderType {
+                        case 0:
+                            cell.rightText = "\(word.useCount_Before1D_CN)"
+                        case 1:
+                            cell.rightText = "\(word.useCount_Before30D_CN)"
+                        default:
+                            cell.rightText = "\(word.useCount_Before365D_CN)"
+                        }
+                    case .HK:
+                        switch orderType {
+                        case 0:
+                            cell.rightText = "\(word.useCount_Before1D_HK)"
+                        case 1:
+                            cell.rightText = "\(word.useCount_Before30D_HK)"
+                        default:
+                            cell.rightText = "\(word.useCount_Before365D_HK)"
+                        }
+                    default:
+                        break
+                    }
+
                     return cell
                 }
             }
@@ -85,6 +113,12 @@ class DictionaryViewController: UIViewController {
     
     private func getWordCount() -> Int {
         return words.count + (allLoaded ? 0 : 1)
+    }
+    
+    private func reloadWords() {
+        words.removeAll(keepCapacity: false)
+        allLoaded = false
+        tableView.reloadData()
     }
     
     private func loadMoreWords() {
@@ -108,15 +142,16 @@ class DictionaryViewController: UIViewController {
                 UIAlertView.showMessage(ret!.errorMessage!)
             }
         }
+        let orderType = orderSegmentedControl.selectedSegmentIndex
         let offset = words.count
         if searchTextField.text == nil || searchTextField.text!.length <= 0 {
-            ServerHelper.wordFindByAppUser(offset: offset, resultCount: pageCount, completionHandler: completionHandler)
+            ServerHelper.wordFindAll(orderType, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
         }
         else if searchType == .Number {
-            ServerHelper.wordFindByAppUser(number: searchTextField.text!, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
+            ServerHelper.wordFindAll(orderType, number: searchTextField.text!, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
         }
         else {
-            ServerHelper.wordFindByAppUser(description: searchTextField.text!, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
+            ServerHelper.wordFindAll(orderType, description: searchTextField.text!, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
         }
     }
     

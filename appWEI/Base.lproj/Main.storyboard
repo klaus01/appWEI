@@ -826,7 +826,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SOT-dj-kb5">
-                                <rect key="frame" x="16" y="110" width="288" height="370"/>
+                                <rect key="frame" x="0.0" y="110" width="320" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -835,11 +835,11 @@
                             <constraint firstItem="Ykw-bz-aGC" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leadingMargin" id="0Gi-vU-Vpo"/>
                             <constraint firstItem="e2g-qe-ZKE" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailingMargin" id="BYm-U2-xKC"/>
                             <constraint firstItem="SOT-dj-kb5" firstAttribute="top" secondItem="e2g-qe-ZKE" secondAttribute="bottom" constant="8" id="Bzv-GI-fOD"/>
-                            <constraint firstItem="SOT-dj-kb5" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailingMargin" id="G5i-og-upL"/>
+                            <constraint firstItem="SOT-dj-kb5" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailingMargin" constant="16" id="G5i-og-upL"/>
                             <constraint firstItem="Ykw-bz-aGC" firstAttribute="top" secondItem="8tT-2B-8IW" secondAttribute="bottom" constant="8" id="UTq-UP-BJA"/>
                             <constraint firstItem="e2g-qe-ZKE" firstAttribute="top" secondItem="8tT-2B-8IW" secondAttribute="bottom" constant="8" id="lrj-Ky-kqr"/>
                             <constraint firstItem="gqL-PI-I97" firstAttribute="top" secondItem="SOT-dj-kb5" secondAttribute="bottom" id="nBi-oV-6fd"/>
-                            <constraint firstItem="SOT-dj-kb5" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leadingMargin" id="rfP-nd-YsW"/>
+                            <constraint firstItem="SOT-dj-kb5" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leadingMargin" constant="-16" id="rfP-nd-YsW"/>
                             <constraint firstItem="e2g-qe-ZKE" firstAttribute="leading" secondItem="Ykw-bz-aGC" secondAttribute="trailing" constant="8" id="taB-gl-qFM"/>
                         </constraints>
                     </view>
@@ -858,7 +858,7 @@
         <!--数-->
         <scene sceneID="KDZ-st-w62">
             <objects>
-                <viewController id="at7-6R-Pqs" sceneMemberID="viewController">
+                <viewController id="at7-6R-Pqs" customClass="StatisticsViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lUx-71-oQf"/>
                         <viewControllerLayoutGuide type="bottom" id="6A9-v2-aN5"/>
@@ -877,7 +877,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fG-fc-NtP">
                                 <rect key="frame" x="104" y="72" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VP3-VW-PHa">
                                 <rect key="frame" x="16" y="110" width="288" height="29"/>
@@ -888,7 +888,7 @@
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="258-0P-IyA">
-                                <rect key="frame" x="16" y="146" width="288" height="334"/>
+                                <rect key="frame" x="0.0" y="146" width="320" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -899,8 +899,8 @@
                             <constraint firstItem="6fG-fc-NtP" firstAttribute="top" secondItem="lUx-71-oQf" secondAttribute="bottom" constant="8" id="6Bd-fN-us3"/>
                             <constraint firstItem="VP3-VW-PHa" firstAttribute="trailing" secondItem="Rxl-V8-Vp9" secondAttribute="trailingMargin" id="GOX-07-FI6"/>
                             <constraint firstItem="6fG-fc-NtP" firstAttribute="leading" secondItem="e3i-ZU-cj5" secondAttribute="trailing" constant="8" id="ITm-z8-TZ3"/>
-                            <constraint firstItem="258-0P-IyA" firstAttribute="trailing" secondItem="Rxl-V8-Vp9" secondAttribute="trailingMargin" id="KsU-K0-6C9"/>
-                            <constraint firstItem="258-0P-IyA" firstAttribute="leading" secondItem="Rxl-V8-Vp9" secondAttribute="leadingMargin" id="Plb-K6-G6J"/>
+                            <constraint firstItem="258-0P-IyA" firstAttribute="trailing" secondItem="Rxl-V8-Vp9" secondAttribute="trailingMargin" constant="16" id="KsU-K0-6C9"/>
+                            <constraint firstItem="258-0P-IyA" firstAttribute="leading" secondItem="Rxl-V8-Vp9" secondAttribute="leadingMargin" constant="-16" id="Plb-K6-G6J"/>
                             <constraint firstItem="VP3-VW-PHa" firstAttribute="leading" secondItem="Rxl-V8-Vp9" secondAttribute="leadingMargin" id="VCa-Sy-5F1"/>
                             <constraint firstItem="258-0P-IyA" firstAttribute="top" secondItem="VP3-VW-PHa" secondAttribute="bottom" constant="8" id="Wxk-zK-BOc"/>
                             <constraint firstItem="e3i-ZU-cj5" firstAttribute="leading" secondItem="Rxl-V8-Vp9" secondAttribute="leadingMargin" id="qmy-I5-Yz5"/>
@@ -910,6 +910,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="数" id="fP1-mD-ZLI"/>
                     <connections>
+                        <outlet property="orderSegmentedControl" destination="VP3-VW-PHa" id="m4w-mO-sdD"/>
+                        <outlet property="searchTextField" destination="6fG-fc-NtP" id="yDB-bl-voG"/>
+                        <outlet property="searchTypeButton" destination="e3i-ZU-cj5" id="Yb4-TP-Ky4"/>
+                        <outlet property="tableView" destination="258-0P-IyA" id="B9R-2q-Lqa"/>
                         <segue destination="ghL-lg-d9H" kind="show" identifier="showWord" id="PMA-Jc-9AP"/>
                     </connections>
                 </viewController>
@@ -1519,6 +1523,6 @@
         <segue reference="OSb-j2-zDT"/>
         <segue reference="vdp-ay-qYg"/>
         <segue reference="BUh-vR-HYI"/>
-        <segue reference="fm5-X3-Ctw"/>
+        <segue reference="PMA-Jc-9AP"/>
     </inferredMetricsTieBreakers>
 </document>
