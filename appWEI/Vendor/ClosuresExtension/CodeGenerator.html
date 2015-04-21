@@ -206,7 +206,7 @@ extension " + sourceObj.className + " {\n\
         let delegate = ce\n" + delegateAttributeStr + "\
     }\n\
     \n\
-    internal override func getDelegateInstance() -> " + CLASS_DELEGATE_NAME + " {\n\
+    internal" + (sourceObj.superClass === "NSObject" ? "" : " override") + " func getDelegateInstance() -> " + CLASS_DELEGATE_NAME + " {\n\
         return " + CLASS_DELEGATE_NAME + "()\n\
     }\n\
     \n\
