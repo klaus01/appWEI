@@ -40,7 +40,7 @@ class FriendsViewController: UIViewController {
             }
             .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
-                let friend = self!.friends[indexPath.row]
+                let friend = self!.friends[indexPath.item]
 
                 cell.iconImageUrl = friend.iconUrl
                 cell.nickname = friend.nickname
@@ -53,6 +53,15 @@ class FriendsViewController: UIViewController {
                 }
                 
                 return cell;
+            }
+            .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
+                let friend = self!.friends[indexPath.item]
+                if friend.unreadCount > 0 {
+                    self!.performSegueWithIdentifier("showMessage", sender: nil)
+                }
+                else {
+                    UIAlertView.showMessage("没有收到“\(friend.nickname)”的消息")
+                }
             }
         setUserListStyleWithCollectionView(collectionView)
         
