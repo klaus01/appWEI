@@ -93,25 +93,25 @@ class ServerHelper {
     
     // MARK: - App用户类
     // 获取用户信息
-    class func appUserGet(appUserID: Int, completionHandler: (ServerResultModel<AppUserModel>?, NSError?) -> Void) {
+    class func appUserGet(appUserID: Int, completionHandler: (ret: ServerResultModel<AppUserModel>?, error: NSError?) -> Void) {
         myRequest("/appUser/get", parameters: ["appUserID": appUserID]).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
-    class func appUserGet(phoneNumber: String, completionHandler: (ServerResultModel<AppUserModel>?, NSError?) -> Void) {
+    class func appUserGet(phoneNumber: String, completionHandler: (ret: ServerResultModel<AppUserModel>?, error: NSError?) -> Void) {
         myRequest("/appUser/get", parameters: ["phoneNumber": phoneNumber]).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
     
     // 获取用户朋友列表
-    class func appUserGetFriends(completionHandler: (ServerResultModel<[FriendModel]>?, NSError?) -> Void) {
+    class func appUserGetFriends(completionHandler: (ret: ServerResultModel<[FriendModel]>?, error: NSError?) -> Void) {
         myRequest("/appUser/getFriends").responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
     
     // 获取用户是否已登录
-    class func appUserIsLogged(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserIsLogged(completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/isLogged").responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 用户注册
-    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ServerResultModel<AppUserRegisterModel>?, NSError?) -> Void) {
+    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ret: ServerResultModel<AppUserRegisterModel>?, error: NSError?) -> Void) {
         myRequest("/appUser/registerAndSendCheck", parameters: [
             "phoneNumber": phoneNumber,
             "device": device,
@@ -120,7 +120,7 @@ class ServerHelper {
     }
     
     // 修改用户资料
-    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myUpload("/appUser/update", [
             "iconFile": UploadValue.PNGFILE(iconFile),
             "nickname": UploadValue.STRING(nickname),
@@ -129,19 +129,19 @@ class ServerHelper {
     }
     
     // 提交APNS令牌
-    class func appUserUpdateAPNSToken(token: String, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserUpdateAPNSToken(token: String, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/updateAPNSToken", parameters: [
             "APNSToken": token
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 更新用户状态为 已进入应用主页
-    class func appUserEnterHome(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserEnterHome(completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/enterHome").responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 更新地理位置信息
-    class func appUserUpdateLocation(longitude: Double, _ latitude: Double, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserUpdateLocation(longitude: Double, _ latitude: Double, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/updateLocation", parameters: [
             "longitude": longitude,
             "latitude": latitude
@@ -149,21 +149,21 @@ class ServerHelper {
     }
     
     // 添加或邀请朋友
-    class func appUserAddFriend(phoneNumber: String, completionHandler: (ServerResultModel<SimpleMessageModel>?, NSError?) -> Void) {
+    class func appUserAddFriend(phoneNumber: String, completionHandler: (ret: ServerResultModel<SimpleMessageModel>?, error: NSError?) -> Void) {
         myRequest("/appUser/addFriend", parameters: [
             "phoneNumber": phoneNumber
             ]).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
     
     // 订阅公众号
-    class func appUserAddPartnerUser(partnerUserID: Int, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserAddPartnerUser(partnerUserID: Int, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/addPartnerUser", parameters: [
             "partnerUserID": partnerUserID
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
     }
     
     // 设置朋友是否在黑名单中
-    class func appUserSetFriendsIsBlack(friendUserIDs: [Int], isBlack: Bool, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func appUserSetFriendsIsBlack(friendUserIDs: [Int], isBlack: Bool, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/appUser/setFriendsIsBlack", parameters: [
             "friendUserIDs": friendUserIDs,
             "isBlack": isBlack.hashValue
@@ -173,12 +173,12 @@ class ServerHelper {
     
     // MARK: - 消息相关
     // 获取未读消息列表
-    class func messageGetUnread(completionHandler: (ServerResultModel<[UnreadMessageModel]>?, NSError?) -> Void) {
+    class func messageGetUnread(completionHandler: (ret: ServerResultModel<[UnreadMessageModel]>?, error: NSError?) -> Void) {
         myRequest("/message/getUnread").responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
     
     // 设置消息已读
-    class func messageSetRead(messageID: Int, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func messageSetRead(messageID: Int, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/message/setRead", parameters: [
             "messageID": messageID
             ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
@@ -187,19 +187,19 @@ class ServerHelper {
     
     // MARK: - 公众号相关
     // 获取可订阅的公众号列表
-    class func partnerUserGetCanSubscribe(completionHandler: (ServerResultModel<[PartnerUserModel]>?, NSError?) -> Void) {
+    class func partnerUserGetCanSubscribe(completionHandler: (ret: ServerResultModel<[PartnerUserModel]>?, error: NSError?) -> Void) {
         myRequest("/partnerUser/getCanSubscribe").responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
     
     // 获取用户已订阅的公众号列表
-    class func partnerUserGetSubscribed(completionHandler: (ServerResultModel<[PartnerUserAndMessageOverviewModel]>?, NSError?) -> Void) {
+    class func partnerUserGetSubscribed(completionHandler: (ret: ServerResultModel<[PartnerUserAndMessageOverviewModel]>?, error: NSError?) -> Void) {
         myRequest("/partnerUser/getSubscribed").responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
     
     
     // MARK: - 短信相关
     // 获取可订阅的公众号列表
-    class func smsCheckVerificationCode(phoneNumber: String, verificationCode: String, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func smsCheckVerificationCode(phoneNumber: String, verificationCode: String, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/sms/checkVerificationCode", parameters: [
             "phoneNumber": phoneNumber,
             "verificationCode": verificationCode
@@ -215,14 +215,14 @@ class ServerHelper {
     * @param [offset, resultCount]
     * @returns {[word]} 按UseCount降序
     */
-    class func wordFindAll(orderByType: Int, offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindAll(orderByType: Int, offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findAll", parameters: [
             "orderByType": orderByType,
             "offset": offset,
             "resultCount": resultCount
             ]).responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
-    class func wordFindAll(orderByType: Int, number: String, offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindAll(orderByType: Int, number: String, offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findAll", parameters: [
             "orderByType": orderByType,
             "offset": offset,
@@ -230,7 +230,7 @@ class ServerHelper {
             "number": number
             ]).responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
-    class func wordFindAll(orderByType: Int, description: String, offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindAll(orderByType: Int, description: String, offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findAll", parameters: [
             "orderByType": orderByType,
             "offset": offset,
@@ -245,20 +245,20 @@ class ServerHelper {
     * @param [offset, resultCount]
     * @returns {[word]} 按Number升序 返回系统字、appUser发送的字 和 appUser接收到的字
     */
-    class func wordFindByAppUser(#offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindByAppUser(#offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findByAppUser", parameters: [
             "offset": offset,
             "resultCount": resultCount
             ]).responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
-    class func wordFindByAppUser(#number: String, offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindByAppUser(#number: String, offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findByAppUser", parameters: [
             "offset": offset,
             "resultCount": resultCount,
             "number": number
             ]).responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
-    class func wordFindByAppUser(#description: String, offset: Int, resultCount: Int, completionHandler: (ServerResultModel<[WordModel]>?, NSError?) -> Void) {
+    class func wordFindByAppUser(#description: String, offset: Int, resultCount: Int, completionHandler: (ret: ServerResultModel<[WordModel]>?, error: NSError?) -> Void) {
         myRequest("/word/findByAppUser", parameters: [
             "offset": offset,
             "resultCount": resultCount,
@@ -267,7 +267,7 @@ class ServerHelper {
     }
     
     // 创建字
-    class func wordNew(description: String, pictureFile: NSData, audioFile: NSData?, completionHandler: (ServerResultModel<NewWordModel>?, NSError?) -> Void) {
+    class func wordNew(description: String, pictureFile: NSData, audioFile: NSData?, completionHandler: (ret: ServerResultModel<NewWordModel>?, error: NSError?) -> Void) {
         var parameters = [
             "description": UploadValue.STRING(description),
             "pictureFile": UploadValue.PNGFILE(pictureFile)
@@ -279,7 +279,7 @@ class ServerHelper {
     }
     
     // 发送字
-    class func wordSend(wordID: Int, friendsUsers: Array<Int>, completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) {
+    class func wordSend(wordID: Int, friendsUsers: Array<Int>, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
         myRequest("/word/send", parameters: [
             "wordID": wordID,
             "friendsUserID": friendsUsers
