@@ -10,18 +10,6 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var urlImage: UIImageView!
-    
-    var imageUrl: String? {
-        didSet {
-            if let url = imageUrl {
-                urlImage.imageWebUrl = url
-            }
-            else {
-                urlImage.imageWebUrl = nil
-                urlImage.image = nil
-            }
-        }
-    }
+    @IBOutlet weak var urlImageView: UIImageView!
     
 }
