@@ -164,12 +164,18 @@ struct FriendModel : ServerDataProtocol {
 }
 
 // 消息
+enum MessageType: Int {
+    case AddFriend = 0 // 成为朋友
+    case Word          // 字消息
+    case Activity      // 公众号发的消息
+    case Gift          // 中奖消息
+}
 struct MessageModel : ServerDataProtocol {
     let id: Int
     let createTime: Date
     let sourceUserID: Int
     let receiveUserID: Int
-    let type: Int
+    let type: MessageType
     let content: String
     let isRead: Bool
     
@@ -178,7 +184,7 @@ struct MessageModel : ServerDataProtocol {
         createTime      = Date(dic["CreateTime"] as! String)
         sourceUserID    = dic["SourceUserID"] as! Int
         receiveUserID   = dic["ReceiveUserID"] as! Int
-        type            = dic["Type"] as! Int
+        type            = MessageType(rawValue: dic["Type"] as! Int)!
         content         = dic["Content"] as! String
         isRead          = dic["IsRead"] as! Bool
     }
