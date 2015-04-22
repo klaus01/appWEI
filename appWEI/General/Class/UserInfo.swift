@@ -10,8 +10,13 @@ import UIKit
 import Foundation
 import CoreLocation
 
+
 // 当前登录用户的朋友列表更新完成
 public let kNotification_UpdateFriendsComplete = "kNotification_UpdateFriendsComplete"
+
+// 当前登录用户的未读消息更新完成
+public let kNotification_UpdateUnreadMessagesComplete = "kNotification_UpdateUnreadMessagesComplete"
+
 
 class UserInfo: NSObject, CLLocationManagerDelegate {
     
@@ -19,6 +24,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     private var _isLogged = false
     private var _deviceToken: String? = nil
     private var _isUpdatingFriends = false
+    private var _isUpdatingUnreadMessages = false
     
     private func uploadDeviceToken() {
         if _isLogged && _deviceToken != nil {
@@ -56,7 +62,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
     }
     // 用户的朋友列表，缓存
-    var friends = [FriendModel]()
+    var friends: [FriendModel] = [FriendModel]()
     var whitelistFriends: [FriendModel] {
         return friends.filter { (friend) -> Bool in
             return !friend.isBlack
@@ -68,9 +74,12 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
     }
     // 是否正在更新朋友列表
-    var isUpdatingFriends: Bool {
-        return _isUpdatingFriends
-    }
+    var isUpdatingFriends: Bool { return _isUpdatingFriends }
+    
+    // 未读消息列表，缓存
+    var unreadMessages: [UnreadMessageModel] = [UnreadMessageModel]()
+    // 是否正在更新未读消息列表
+    var isUpdatingUnreadMessages: Bool { return _isUpdatingUnreadMessages }
 
     override init() {
         super.init()
@@ -128,6 +137,31 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
             else if ret!.success {
                 self.friends = ret!.data!
                 NSNotificationCenter.defaultCenter().postNotificationName(kNotification_UpdateFriendsComplete, object: nil)
+            }
+            else {
+                println(ret!.errorMessage)
+            }
+        }
+    }
+    
+    // 更新未读消息列表
+    func updateUnreadMessages() {
+        if _isUpdatingUnreadMessages {
+            return
+        }
+        
+        _isUpdatingUnreadMessages = true
+        ServerHelper.messageGetUnread { (ret, error) -> Void in
+            self._isUpdatingUnreadMessages = false
+            if let error = error {
+                println(error)
+            }
+            else if ret!.success {
+                self.unreadMessages = ret!.data!
+                NSNotificationCenter.defaultCenter().postNotificationName(kNotification_UpdateUnreadMessagesComplete, object: nil)
+            }
+            else {
+                println(ret!.errorMessage)
             }
         }
     }

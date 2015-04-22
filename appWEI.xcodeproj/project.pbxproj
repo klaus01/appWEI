@@ -50,6 +50,7 @@
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
 		24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */; };
 		24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA68401AC3D4C400F79324 /* HomeViewController.swift */; };
+		24ADB4351AE7DF4C000B4B59 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ADB4341AE7DF4C000B4B59 /* MessagesViewController.swift */; };
 		24B7808C1AE2522800460DE3 /* ProjectFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808B1AE2522800460DE3 /* ProjectFunc.swift */; };
 		24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */; };
 		24C388451AE38F5600C05A2D /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */; };
@@ -106,6 +107,20 @@
 			remoteGlobalIDString = 244C19D91ABBFFC000813708;
 			remoteInfo = appWEI;
 		};
+		24ADB4441AE7EA27000B4B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D08336371A202E81004EE128;
+			remoteInfo = RSBarcodes;
+		};
+		24ADB44A1AE7EBEC000B4B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D08336361A202E81004EE128;
+			remoteInfo = RSBarcodes;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +171,8 @@
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefulatIconsViewController.swift; sourceTree = "<group>"; };
 		24AA68401AC3D4C400F79324 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		24ADB4341AE7DF4C000B4B59 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RSBarcodes.xcodeproj; path = RSBarcodes/RSBarcodes.xcodeproj; sourceTree = "<group>"; };
 		24B7808B1AE2522800460DE3 /* ProjectFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFunc.swift; sourceTree = "<group>"; };
 		24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistViewController.swift; sourceTree = "<group>"; };
 		24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
@@ -398,6 +415,7 @@
 				24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */,
 				24060F191AE6960300A405BC /* StatisticsViewController.swift */,
 				24060F1B1AE69EFB00A405BC /* WordViewController.swift */,
+				24ADB4341AE7DF4C000B4B59 /* MessagesViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -413,8 +431,17 @@
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
 				24FFD5F81ABEBD9400F0C147 /* Date.swift */,
 				24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */,
+				24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		24ADB4411AE7EA27000B4B59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24ADB4451AE7EA27000B4B59 /* RSBarcodes.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		24AFA40A1AD8F87000402DFE /* ClosuresExtension */ = {
@@ -533,6 +560,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				24ADB44B1AE7EBEC000B4B59 /* PBXTargetDependency */,
 			);
 			name = appWEI;
 			productName = appWEI;
@@ -592,6 +620,12 @@
 			mainGroup = 244C19D11ABBFFC000813708;
 			productRefGroup = 244C19DB1ABBFFC000813708 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 24ADB4411AE7EA27000B4B59 /* Products */;
+					ProjectRef = 24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				244C19D91ABBFFC000813708 /* appWEI */,
@@ -599,6 +633,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		24ADB4451AE7EA27000B4B59 /* RSBarcodes.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RSBarcodes.framework;
+			remoteRef = 24ADB4441AE7EA27000B4B59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		244C19D81ABBFFC000813708 /* Resources */ = {
@@ -694,6 +738,7 @@
 				240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
+				24ADB4351AE7DF4C000B4B59 /* MessagesViewController.swift in Sources */,
 				24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */,
 				240D52B01ADEB69E00B8E112 /* UIAlertView.swift in Sources */,
 				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
@@ -724,6 +769,11 @@
 			isa = PBXTargetDependency;
 			target = 244C19D91ABBFFC000813708 /* appWEI */;
 			targetProxy = 244C19F01ABBFFC000813708 /* PBXContainerItemProxy */;
+		};
+		24ADB44B1AE7EBEC000B4B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSBarcodes;
+			targetProxy = 24ADB44A1AE7EBEC000B4B59 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
