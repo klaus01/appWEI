@@ -43,6 +43,7 @@ class LaunchScreenViewController: UIViewController {
             if UserInfo.shared.isLogged {
                 UserInfo.shared.startHeartbeat()
                 UserInfo.shared.updateFriends()
+                UserInfo.shared.updateUnreadMessages()
                 // 已注册且已登录，根据用户注册状态决定
                 ServerHelper.appUserGet(UserInfo.shared.id) { (ret, error) -> Void in
                     if let error = error {

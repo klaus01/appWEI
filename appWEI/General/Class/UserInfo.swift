@@ -166,6 +166,13 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func removeUnreadMessage(messageID: Int) {
+        let oldMessages = unreadMessages
+        unreadMessages = oldMessages.filter() { (includeElement: UnreadMessageModel) -> Bool in
+            return includeElement.message.id != messageID
+        }
+    }
+    
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
