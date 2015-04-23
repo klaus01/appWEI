@@ -46,7 +46,7 @@ class FriendsViewController: UIViewController {
                 cell.nickname = friend.nickname
                 cell.deleteAction = nil
                 if let count = friend.unreadCount {
-                    cell.hintText = "\(count)"
+                    cell.hintText = count > 0 ? "\(count)" : nil
                 }
                 else {
                     cell.hintText = nil
@@ -56,11 +56,11 @@ class FriendsViewController: UIViewController {
             }
             .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
                 let friend = self!.friends[indexPath.item]
-                if friend.unreadCount > 0 {
+                if friend.unreadCount != nil && friend.unreadCount! > 0 {
                     self!.performSegueWithIdentifier("showMessage", sender: nil)
                 }
                 else {
-                    UIAlertView.showMessage("没有收到“\(friend.nickname)”的消息")
+                    UIAlertView.showMessage("没有收到“\(friend.nickname!)”的消息")
                 }
             }
         setUserListStyleWithCollectionView(collectionView)
