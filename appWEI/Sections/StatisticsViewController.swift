@@ -74,6 +74,7 @@ class StatisticsViewController: UIViewController {
         tableView.registerNib(cellNib, forCellReuseIdentifier: "MYCELL")
         let loadingCellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
         tableView.registerNib(loadingCellNib, forCellReuseIdentifier: "LOADINGCELL")
+        tableView.rowHeight = WordTableViewCell.cellHeight
         tableView
         .ce_NumberOfSectionsIn { [weak self] (tableView) -> Int in
             return 1 + (self!.allLoaded ? 0 : 1)

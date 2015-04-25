@@ -14,6 +14,8 @@ class WordTableViewCell: UITableViewCell {
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    class var cellHeight: CGFloat { return 44 }
+    
     var number: String? {
         get {
             return noLabel.text
