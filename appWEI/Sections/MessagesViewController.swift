@@ -113,13 +113,13 @@ class MessagesViewController: UIViewController {
         wordSendTimeLabel.hidden = true
         playButton.hidden = true
         forwardButton.hidden = true
-        playButton.clicked() { (UIButton) -> () in
+        playButton.clicked() { (button) -> () in
             // TODO 播放音频
         }
         wordView.longPressAction { () -> () in
             // TODO 原消息回复
         }
-        forwardButton.clicked() { (UIButton) -> () in
+        forwardButton.clicked() { (button) -> () in
             // TODO 转发消息
         }
         
