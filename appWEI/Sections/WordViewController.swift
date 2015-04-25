@@ -15,18 +15,15 @@ class WordViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var playSoundButton: UIButton!
     
-    var word: WordModel! {
-        didSet {
-            imageView.imageWebUrl = word.pictureUrl
-            numberLabel.text = word.number
-            textView.text = word.description
-        }
-    }
+    var word: WordModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        imageView.imageWebUrl = word.pictureUrl
+        numberLabel.text = word.number
+        textView.text = word.description
+        playSoundButton.hidden = word.audioUrl == nil
     }
 
 }
