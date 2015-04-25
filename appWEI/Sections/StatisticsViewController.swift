@@ -68,61 +68,62 @@ class StatisticsViewController: UIViewController {
         let loadingCellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
         tableView.registerNib(loadingCellNib, forCellReuseIdentifier: "LOADINGCELL")
         tableView
+        .ce_NumberOfSectionsIn { [weak self] (tableView) -> Int in
+            return 1 + (self!.allLoaded ? 0 : 1)
+        }
         .ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
-            return self!.getWordCount()
+            return section == 0 ? self!.words.count : 1
         }
         .ce_CellForRowAtIndexPath { [weak self] (tableView, indexPath) -> UITableViewCell in
-            if !(self!.allLoaded) && self!.getWordCount() == (indexPath.row + 1) {
-                return tableView.dequeueReusableCellWithIdentifier("LOADINGCELL", forIndexPath: indexPath) as! UITableViewCell
-            }
-            else {
+            if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
-                let word = self!.words[indexPath.row]
+                let word = self!.words[indexPath.item]
                 
                 cell.number = word.number
                 cell.pictureImageUrl = word.pictureUrl
                 let orderType = self!.orderSegmentedControl.selectedSegmentIndex
+                var text = ""
                 switch getPhoneNumberAreaType(UserInfo.shared.phoneNumber!) {
                 case .CN:
                     switch orderType {
                     case 0:
-                        cell.rightText = "\(word.useCount_Before1D_CN)"
+                        text = "\(word.useCount_Before1D_CN)"
                     case 1:
-                        cell.rightText = "\(word.useCount_Before30D_CN)"
+                        text = "\(word.useCount_Before30D_CN)"
                     default:
-                        cell.rightText = "\(word.useCount_Before365D_CN)"
+                        text = "\(word.useCount_Before365D_CN)"
                     }
                 case .HK:
                     switch orderType {
                     case 0:
-                        cell.rightText = "\(word.useCount_Before1D_HK)"
+                        text = "\(word.useCount_Before1D_HK)"
                     case 1:
-                        cell.rightText = "\(word.useCount_Before30D_HK)"
+                        text = "\(word.useCount_Before30D_HK)"
                     default:
-                        cell.rightText = "\(word.useCount_Before365D_HK)"
+                        text = "\(word.useCount_Before365D_HK)"
                     }
                 default:
                     break
                 }
+                cell.rightText = "\t\t\(text)"
 
                 return cell
             }
+            else {
+                return tableView.dequeueReusableCellWithIdentifier("LOADINGCELL", forIndexPath: indexPath) as! UITableViewCell
+            }
         }
         .ce_DidSelectRowAtIndexPath { [weak self] (tableView, indexPath) -> Void in
-            if (self!.allLoaded) || self!.getWordCount() != (indexPath.row + 1) {
-                self!.selectedWord = self!.words[indexPath.row]
+            if indexPath.section == 0 {
+                self!.selectedWord = self!.words[indexPath.item]
                 self!.performSegueWithIdentifier("showWord", sender: nil)
             }
         }
         .ce_WillDisplayCell { [weak self] (tableView, cell, indexPath) -> Void in
-            if !(self!.allLoaded) && self!.getWordCount() == (indexPath.row + 1) {
+            if !(self!.allLoaded) && indexPath.section == 1 {
                 self!.loadMoreWords()
             }
         }
-    }
-    
-    private func getWordCount() -> Int {
-        return words.count + (allLoaded ? 0 : 1)
     }
     
     private func reloadWords() {
@@ -144,8 +145,8 @@ class StatisticsViewController: UIViewController {
                     }
                     if data.count > 0 {
                         self!.words += data
-                        self!.tableView.reloadData()
                     }
+                    self!.tableView.reloadData()
                 }
             }
             else {
