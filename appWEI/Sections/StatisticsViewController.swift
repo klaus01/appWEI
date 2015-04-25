@@ -33,6 +33,13 @@ class StatisticsViewController: UIViewController {
         self.setupTableView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            tableView.deselectRowAtIndexPath(indexPath, animated: animated)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let word = selectedWord {
             if segue.destinationViewController is WordViewController {
