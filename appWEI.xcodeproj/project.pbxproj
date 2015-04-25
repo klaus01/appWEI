@@ -71,6 +71,9 @@
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
 		24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */; };
+		24E28C8A1AEB926200BAD6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28C891AEB926200BAD6B3 /* AVFoundation.framework */; };
+		24E28C911AEB9CF700BAD6B3 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24ADB4451AE7EA27000B4B59 /* RSBarcodes.framework */; };
+		24E28C921AEB9CF700BAD6B3 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24ADB4451AE7EA27000B4B59 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24E3E94D1AD266BF00B51FBE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		24E3E94E1AD266BF00B51FBE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9431AD266BF00B51FBE /* wav.mm */; };
 		24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E3E9451AD266BF00B51FBE /* libopencore-amrnb.a */; };
@@ -121,7 +124,35 @@
 			remoteGlobalIDString = D08336361A202E81004EE128;
 			remoteInfo = RSBarcodes;
 		};
+		24E28C8E1AEB9C7500BAD6B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D08336361A202E81004EE128;
+			remoteInfo = RSBarcodes;
+		};
+		24E28C931AEB9CF700BAD6B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24ADB4401AE7EA27000B4B59 /* RSBarcodes.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D08336361A202E81004EE128;
+			remoteInfo = RSBarcodes;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24E28C901AEB9C7500BAD6B3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24E28C921AEB9CF700BAD6B3 /* RSBarcodes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +225,7 @@
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
+		24E28C891AEB926200BAD6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		24E3E9401AD266BE00B51FBE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		24E3E9411AD266BE00B51FBE /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		24E3E9421AD266BF00B51FBE /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -235,7 +267,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E28C8A1AEB926200BAD6B3 /* AVFoundation.framework in Frameworks */,
 				247094C61AC54A9500A830F3 /* AddressBook.framework in Frameworks */,
+				24E28C911AEB9CF700BAD6B3 /* RSBarcodes.framework in Frameworks */,
 				24E3E94F1AD266BF00B51FBE /* libopencore-amrnb.a in Frameworks */,
 				24E3E9501AD266BF00B51FBE /* libopencore-amrwb.a in Frameworks */,
 				24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */,
@@ -289,6 +323,7 @@
 		244C19D11ABBFFC000813708 = {
 			isa = PBXGroup;
 			children = (
+				24E28C891AEB926200BAD6B3 /* AVFoundation.framework */,
 				247094C51AC54A9500A830F3 /* AddressBook.framework */,
 				24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */,
 				244C19DC1ABBFFC000813708 /* appWEI */,
@@ -556,11 +591,14 @@
 				244C19D61ABBFFC000813708 /* Sources */,
 				244C19D71ABBFFC000813708 /* Frameworks */,
 				244C19D81ABBFFC000813708 /* Resources */,
+				24E28C901AEB9C7500BAD6B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				24ADB44B1AE7EBEC000B4B59 /* PBXTargetDependency */,
+				24E28C8F1AEB9C7500BAD6B3 /* PBXTargetDependency */,
+				24E28C941AEB9CF700BAD6B3 /* PBXTargetDependency */,
 			);
 			name = appWEI;
 			productName = appWEI;
@@ -774,6 +812,16 @@
 			isa = PBXTargetDependency;
 			name = RSBarcodes;
 			targetProxy = 24ADB44A1AE7EBEC000B4B59 /* PBXContainerItemProxy */;
+		};
+		24E28C8F1AEB9C7500BAD6B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSBarcodes;
+			targetProxy = 24E28C8E1AEB9C7500BAD6B3 /* PBXContainerItemProxy */;
+		};
+		24E28C941AEB9CF700BAD6B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSBarcodes;
+			targetProxy = 24E28C931AEB9CF700BAD6B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
