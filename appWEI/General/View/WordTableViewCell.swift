@@ -19,18 +19,18 @@ class WordTableViewCell: UITableViewCell {
             return noLabel.text
         }
         set {
-            noLabel.text = number
+            noLabel.text = newValue
         }
     }
     
     var pictureImageUrl: String? {
         didSet {
+            pictureImageView.image = nil
             if let url = pictureImageUrl {
                 pictureImageView.imageWebUrl = url
             }
             else {
                 pictureImageView.imageWebUrl = nil
-                pictureImageView.image = nil
             }
         }
     }
@@ -40,7 +40,7 @@ class WordTableViewCell: UITableViewCell {
             return descriptionLabel.text
         }
         set {
-            descriptionLabel.text = number
+            descriptionLabel.text = newValue
         }
     }
     
