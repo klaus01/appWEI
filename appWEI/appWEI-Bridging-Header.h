@@ -9,6 +9,6 @@
 #ifndef appWEI_appWEI_Bridging_Header_h
 #define appWEI_appWEI_Bridging_Header_h
 
-//#import "VoiceConverter.h"
+#import "VoiceConverter.h"
 
 #endif
