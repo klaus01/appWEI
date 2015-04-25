@@ -61,34 +61,35 @@ class DictionaryViewController: UIViewController {
         tableView.registerNib(cellNib, forCellReuseIdentifier: "MYCELL")
         let loadingCellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
         tableView.registerNib(loadingCellNib, forCellReuseIdentifier: "LOADINGCELL")
-        tableView.ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
+        tableView
+        .ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
             return self!.getWordCount()
+        }
+        .ce_CellForRowAtIndexPath { [weak self] (tableView, indexPath) -> UITableViewCell in
+            if !(self!.allLoaded) && self!.getWordCount() == (indexPath.row + 1) {
+                return tableView.dequeueReusableCellWithIdentifier("LOADINGCELL", forIndexPath: indexPath) as! UITableViewCell
             }
-            .ce_CellForRowAtIndexPath { [weak self] (tableView, indexPath) -> UITableViewCell in
-                if !(self!.allLoaded) && self!.getWordCount() == (indexPath.row + 1) {
-                    return tableView.dequeueReusableCellWithIdentifier("LOADINGCELL", forIndexPath: indexPath) as! UITableViewCell
-                }
-                else {
-                    let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
-                    let word = self!.words[indexPath.row]
-                    
-                    cell.number = word.number
-                    cell.pictureImageUrl = word.pictureUrl
-                    cell.rightText = word.description
-                    
-                    return cell
-                }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
+                let word = self!.words[indexPath.item]
+                
+                cell.number = word.number
+                cell.pictureImageUrl = word.pictureUrl
+                cell.rightText = word.description
+                
+                return cell
             }
-            .ce_DidSelectRowAtIndexPath { [weak self] (tableView, indexPath) -> Void in
-                if (self!.allLoaded) || self!.getWordCount() != (indexPath.row + 1) {
-                    self!.selectedWord = self!.words[indexPath.row]
-                    self!.performSegueWithIdentifier("showWord", sender: nil)
-                }
+        }
+        .ce_DidSelectRowAtIndexPath { [weak self] (tableView, indexPath) -> Void in
+            if (self!.allLoaded) || self!.getWordCount() != (indexPath.row + 1) {
+                self!.selectedWord = self!.words[indexPath.row]
+                self!.performSegueWithIdentifier("showWord", sender: nil)
             }
-            .ce_WillDisplayCell { [weak self] (tableView, cell, indexPath) -> Void in
-                if self!.getWordCount() == (indexPath.row + 1) {
-                    self!.loadMoreWords()
-                }
+        }
+        .ce_WillDisplayCell { [weak self] (tableView, cell, indexPath) -> Void in
+            if !(self!.allLoaded) && self!.getWordCount() == (indexPath.row + 1) {
+                self!.loadMoreWords()
+            }
         }
     }
     
@@ -104,13 +105,13 @@ class DictionaryViewController: UIViewController {
             }
             if ret!.success {
                 if let weakSelf = self, let data = ret!.data {
-                    if data.count > 0 {
-                        self!.words += data
-                    }
-                    else {
+                    if data.count < self!.pageCount {
                         self!.allLoaded = true
                     }
-                    self!.tableView.reloadData()
+                    if data.count > 0 {
+                        self!.words += data
+                        self!.tableView.reloadData()
+                    }
                 }
             }
             else {
