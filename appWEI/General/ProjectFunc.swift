@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 extension UIImageView {
     
@@ -53,6 +54,12 @@ extension UIImageView {
                         return NSURL(string: "file://" + filePath)!
                     })
                     request.response { (request, response, _, error) in
+                        // 404 没有error，而且文件还被保存了
+                        if response?.statusCode == 404 {
+                            println(response)
+                            NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
+                            return
+                        }
                         // errorCode 516: 下载后保存的目标文件已经存在(同一文件下载多次时出现)
                         if error != nil && error!.code != 516 {
                             println(error)
