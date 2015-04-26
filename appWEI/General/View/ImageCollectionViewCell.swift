@@ -10,6 +10,6 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var urlImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     
 }

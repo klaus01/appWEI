@@ -26,7 +26,7 @@
                 <constraint firstItem="Y8b-9M-8qP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kX3-ZK-88g"/>
             </constraints>
             <connections>
-                <outlet property="urlImageView" destination="Y8b-9M-8qP" id="w5J-gW-EC0"/>
+                <outlet property="imageView" destination="Y8b-9M-8qP" id="7nU-ac-Tya"/>
             </connections>
         </collectionViewCell>
     </objects>

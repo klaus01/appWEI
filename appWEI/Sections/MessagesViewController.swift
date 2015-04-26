@@ -144,7 +144,7 @@ class MessagesViewController: UIViewController {
         .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! ImageCollectionViewCell
             let message = self!.unreadMessages[indexPath.item]
-            setUnreadMessageToImage(message, cell.urlImageView, 2.0)
+            setUnreadMessageToImage(message, cell.imageView, 2.0)
             return cell
         }
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
