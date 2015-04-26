@@ -87,6 +87,8 @@
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
 		24E649281AE35D0B00B5228A /* BlacklistAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */; };
+		24E69A5D1AECF0B900419361 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */; };
+		24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */; };
 		24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A171AE00AB900347C06 /* CE_UIViewController.swift */; };
 		24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */; };
 		24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */; };
@@ -247,6 +249,8 @@
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
 		24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistAddViewController.swift; sourceTree = "<group>"; };
+		24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingCollectionViewCell.swift; path = View/LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewCell.xib; path = View/LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E79A171AE00AB900347C06 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
 		24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
 		24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIImagePickerController.swift; sourceTree = "<group>"; };
@@ -577,6 +581,8 @@
 				24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */,
 				24E8062C1AE5588E004AD0F5 /* LoadingTableViewCell.swift */,
 				24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */,
+				24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */,
+				24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -687,6 +693,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */,
 				24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */,
 				244C19E51ABBFFC000813708 /* Main.storyboard in Resources */,
 				24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */,
@@ -737,6 +744,7 @@
 				24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
 				240D52B61ADEB69E00B8E112 /* UIRefreshControl.swift in Sources */,
+				24E69A5D1AECF0B900419361 /* LoadingCollectionViewCell.swift in Sources */,
 				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
 				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
 				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,
