@@ -25,6 +25,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     private var _deviceToken: String? = nil
     private var _isUpdatingFriends = false
     private var _isUpdatingUnreadMessages = false
+    private var _lastUseWordIDs: [Int]!
     
     private func uploadDeviceToken() {
         if _isLogged && _deviceToken != nil {
@@ -61,6 +62,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
             }
         }
     }
+    
     // 用户的朋友列表，缓存
     var friends: [FriendModel] = [FriendModel]()
     var whitelistFriends: [FriendModel] {
@@ -80,6 +82,15 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     var unreadMessages: [UnreadMessageModel] = [UnreadMessageModel]()
     // 是否正在更新未读消息列表
     var isUpdatingUnreadMessages: Bool { return _isUpdatingUnreadMessages }
+    
+    // 最近使用的字ID列表
+    var lastUseWordIDs: [Int] {
+        return _lastUseWordIDs
+    }
+    func addLastUseWordID(id: Int) {
+        _lastUseWordIDs.remove(id)
+        _lastUseWordIDs.insert(id, atIndex: 0)
+    }
 
     override init() {
         super.init()
@@ -98,6 +109,12 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         phoneNumber      = userDefaults.stringForKey("phoneNumber")
         _isLogged        = userDefaults.boolForKey("isLogged")
         _deviceToken     = userDefaults.stringForKey("deviceToken")
+        if let array = userDefaults.arrayForKey("lastUseWordIDs") as? [Int] {
+            _lastUseWordIDs = array
+        }
+        else {
+            _lastUseWordIDs = [Int]()
+        }
     }
     
     func save() {
@@ -106,19 +123,23 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         userDefaults.setValue(phoneNumber, forKey: "phoneNumber")
         userDefaults.setBool(_isLogged, forKey: "isLogged")
         userDefaults.setValue(_deviceToken, forKey: "deviceToken")
+        userDefaults.setObject(_lastUseWordIDs, forKey: "lastUseWordIDs")
+        userDefaults.synchronize()
     }
     
     // 开始心跳，每隔一段时间获取一下经纬度上传到服务器
     func startHeartbeat() {
-        if (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 8.0 {
+        if locationManager.respondsToSelector("requestAlwaysAuthorization") {
             locationManager.requestAlwaysAuthorization()
         }
         locationManager.startUpdatingLocation()
         
         let delta = NSEC_PER_SEC * UInt64(UPLOADLOCATION_INTERVAL)
         let afterTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delta))
-        dispatch_after(afterTime, dispatch_get_main_queue()) { () -> Void in
-            self.startHeartbeat()
+        dispatch_after(afterTime, dispatch_get_main_queue()) { [weak self] () -> Void in
+            if let weakSelf = self {
+                self!.startHeartbeat()
+            }
         }
     }
     
