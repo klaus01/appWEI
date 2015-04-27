@@ -13,18 +13,37 @@ class SendMessageViewController: UIViewController {
     private let pageCount = 30
     private var allLoaded = false
     private var loadedCount: Int = 0
-    private var lastUseWords: [WordModel]!
-    private var sytemWords: [WordModel]!
-    private var userWords: [WordModel]!
+    private var lastUseWords: [WordModel] = [WordModel]()
+    private var systemWords: [WordModel] = [WordModel]()
+    private var userWords: [WordModel] = [WordModel]()
     private var currentWords: [WordModel] {
         switch wordGroupSegmentedControl.selectedSegmentIndex {
-        case 1: return sytemWords
+        case 1: return systemWords
         case 2: return userWords
         default: return lastUseWords
         }
     }
     private var friends: [AppUserModel] = [AppUserModel]()
+    private var selectedWordCellFrame: CGRect?
+    private var selectedWord: WordModel? {
+        didSet {
+            sendButton.enabled = selectedWord != nil
+        }
+    }
+    private var selectedWordImageViewFrame: CGRect! {
+        didSet {
+            selectedWordImageViewTopConstraint.constant = selectedWordImageViewFrame.origin.y - navigationController!.navigationBar.frame.size.height - 20
+            selectedWordImageViewLeftConstraint.constant = selectedWordImageViewFrame.origin.x - 16
+            selectedWordImageViewWidthConstraint.constant = selectedWordImageViewFrame.size.width
+            selectedWordImageViewHeightConstraint.constant = selectedWordImageViewFrame.size.height
+        }
+    }
     
+    @IBOutlet weak var selectedWordImageView: UIImageView!
+    @IBOutlet weak var selectedWordImageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selectedWordImageViewLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selectedWordImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selectedWordImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var wordGroupSegmentedControl: UISegmentedControl!
     @IBOutlet weak var wordCollectionView: UICollectionView!
     @IBOutlet weak var friendsCollectionView: UICollectionView!
@@ -33,15 +52,27 @@ class SendMessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSelectedWordImageView()
         setupWordGroupSegmentedControl()
         setupWordCollectionView()
         setupFriendsCollectionView()
+        
+        hideSelectedWord(false)
+        wordGroupSegmentedControl.selectedSegmentIndex = UserInfo.shared.lastUseWordIDs.count > 0 ? 0 : 1
     }
 
     private func setupWordGroupSegmentedControl() {
         wordGroupSegmentedControl.selectedIndexChange() { [weak self] (Int) -> () in
             self!.wordCollectionView.reloadData()
         }
+    }
+    
+    private func setupSelectedWordImageView() {
+        let tapGestureRecognizer = UITapGestureRecognizer() { [weak self] (gestureRecognizer) -> () in
+            self!.hideSelectedWord(true)
+        }
+        selectedWordImageView.userInteractionEnabled = true
+        selectedWordImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func setupWordCollectionView() {
@@ -68,8 +99,13 @@ class SendMessageViewController: UIViewController {
                 return cell
             }
         }
-        .ce_DidSelectItemAtIndexPath { (collectionView, indexPath) -> Void in
-            // TODO 使用这个字
+        .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
+            if self!.allLoaded == false || indexPath.item < self!.currentWords.count {
+                var frame = collectionView.layoutAttributesForItemAtIndexPath(indexPath)!.frame;
+                frame.origin.x += collectionView.frame.origin.x
+                frame.origin.y += collectionView.frame.origin.y
+                self!.showSelectedWord(self!.currentWords[indexPath.item], wordFrame: frame)
+            }
         }
         .ce_WillDisplayCell { [weak self] (collectionView, cell, indexPath) -> Void in
             if self!.allLoaded == false && indexPath.item >= self!.currentWords.count {
@@ -133,7 +169,15 @@ class SendMessageViewController: UIViewController {
                     }
                     if data.count > 0 {
                         self!.loadedCount += data.count
-                        // TODO 将data中的数据分散到3个words中
+                        for word in data {
+                            if word.createUserID != nil && word.createUserID! > 0 {
+                                self!.userWords += [word]
+                            }
+                            else {
+                                self!.systemWords += [word]
+                            }
+                        }
+                        self!.reloadLastUseWords()
                     }
                     self!.wordCollectionView.reloadData()
                 }
@@ -141,6 +185,63 @@ class SendMessageViewController: UIViewController {
             else {
                 UIAlertView.showMessage(ret!.errorMessage!)
             }
+        }
+    }
+    
+    private func reloadLastUseWords() {
+        lastUseWords.removeAll(keepCapacity: true)
+        for id in UserInfo.shared.lastUseWordIDs {
+            var words = systemWords.filter({ (word) -> Bool in
+                return word.id == id
+            })
+            if words.count > 0 {
+                lastUseWords += words
+            }
+            else {
+                var words = userWords.filter({ (word) -> Bool in
+                    return word.id == id
+                })
+                if words.count > 0 {
+                    lastUseWords += words
+                }
+            }
+        }
+    }
+    
+    private func showSelectedWord(word: WordModel, wordFrame: CGRect) {
+        selectedWord = word
+        selectedWordCellFrame = wordFrame
+        selectedWordImageView.imageWebUrl = word.pictureUrl
+        selectedWordImageViewFrame = wordFrame
+        self.selectedWordImageView.layoutIfNeeded()
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.selectedWordImageView.hidden = false
+            var frame = CGRectZero
+            frame.origin = self.wordGroupSegmentedControl.frame.origin
+            frame.size.width = self.wordGroupSegmentedControl.frame.size.width
+            frame.size.height = CGRectGetMaxY(self.wordCollectionView.frame) - self.wordGroupSegmentedControl.frame.origin.y
+            self.selectedWordImageViewFrame = frame
+            self.selectedWordImageView.layoutIfNeeded()
+        }
+    }
+    
+    private func hideSelectedWord(animate: Bool) {
+        if animate {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.selectedWordImageViewFrame = self.selectedWordCellFrame
+                self.selectedWordImageView.layoutIfNeeded()
+            }) { (success) -> Void in
+                self.selectedWord = nil
+                self.selectedWordCellFrame = nil
+                self.selectedWordImageView.imageWebUrl = nil
+                self.selectedWordImageView.hidden = true
+            }
+        }
+        else {
+            self.selectedWord = nil
+            self.selectedWordCellFrame = nil
+            self.selectedWordImageView.imageWebUrl = nil
+            self.selectedWordImageView.hidden = true
         }
     }
     

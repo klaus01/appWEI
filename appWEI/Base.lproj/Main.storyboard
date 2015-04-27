@@ -1177,6 +1177,15 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DQk-4U-uI3">
+                                <rect key="frame" x="16" y="72" width="54" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Dxf-8b-XMD"/>
+                                    <constraint firstAttribute="width" constant="54" id="h47-Eq-iS5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1188,11 +1197,13 @@
                             <constraint firstItem="9W7-ma-tv2" firstAttribute="leading" secondItem="X3W-Wu-cDf" secondAttribute="trailing" constant="8" id="Ewn-1O-DOg"/>
                             <constraint firstItem="9W7-ma-tv2" firstAttribute="top" secondItem="ajZ-xV-fnU" secondAttribute="bottom" constant="8" id="GQX-PN-nHU"/>
                             <constraint firstItem="TfP-Mh-5KA" firstAttribute="top" secondItem="EQ6-B3-nZh" secondAttribute="bottom" constant="8" id="Lcd-9j-9i0"/>
+                            <constraint firstItem="DQk-4U-uI3" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" id="M3g-OA-wKz"/>
                             <constraint firstItem="EQ6-B3-nZh" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" id="PgM-Ks-xb2"/>
                             <constraint firstItem="brE-Yn-Lun" firstAttribute="top" secondItem="9W7-ma-tv2" secondAttribute="bottom" constant="8" id="Tj4-IS-Rcd"/>
                             <constraint firstItem="X3W-Wu-cDf" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" id="XOW-jh-9TW"/>
                             <constraint firstItem="ajZ-xV-fnU" firstAttribute="trailing" secondItem="LYn-Pq-vMh" secondAttribute="trailingMargin" constant="-30" id="XWb-4v-ZcX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4In-W2-PWJ" secondAttribute="trailing" id="ZFU-Rg-dI1"/>
+                            <constraint firstItem="DQk-4U-uI3" firstAttribute="top" secondItem="r6x-vA-Wrr" secondAttribute="bottom" constant="8" id="bp1-Ii-cCL"/>
                             <constraint firstItem="ajZ-xV-fnU" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" constant="-16" id="gMr-j4-GEa"/>
                             <constraint firstItem="4In-W2-PWJ" firstAttribute="centerY" secondItem="ajZ-xV-fnU" secondAttribute="centerY" id="mBX-tc-MbH"/>
                             <constraint firstItem="9W7-ma-tv2" firstAttribute="trailing" secondItem="LYn-Pq-vMh" secondAttribute="trailingMargin" id="ou4-Xs-RAK"/>
@@ -1211,6 +1222,11 @@
                     <connections>
                         <outlet property="addFriendButton" destination="PH2-SQ-HH6" id="FGd-XY-7iW"/>
                         <outlet property="friendsCollectionView" destination="ajZ-xV-fnU" id="OG3-th-xhe"/>
+                        <outlet property="selectedWordImageView" destination="DQk-4U-uI3" id="Nt5-zp-pBk"/>
+                        <outlet property="selectedWordImageViewHeightConstraint" destination="Dxf-8b-XMD" id="rIA-E6-N46"/>
+                        <outlet property="selectedWordImageViewLeftConstraint" destination="M3g-OA-wKz" id="go3-qd-7L5"/>
+                        <outlet property="selectedWordImageViewTopConstraint" destination="bp1-Ii-cCL" id="KrP-am-zHg"/>
+                        <outlet property="selectedWordImageViewWidthConstraint" destination="h47-Eq-iS5" id="cyg-9K-wXX"/>
                         <outlet property="sendButton" destination="9W7-ma-tv2" id="ZPP-wB-v6N"/>
                         <outlet property="wordCollectionView" destination="TfP-Mh-5KA" id="gcb-kk-X5I"/>
                         <outlet property="wordGroupSegmentedControl" destination="EQ6-B3-nZh" id="WPe-zC-PBG"/>
