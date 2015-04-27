@@ -23,11 +23,15 @@ class SendMessageViewController: UIViewController {
         default: return lastUseWords
         }
     }
-    private var friends: [AppUserModel] = [AppUserModel]()
+    private var friends: [FriendModel] = [FriendModel]() {
+        didSet {
+            resetSendButtonEnabled()
+        }
+    }
     private var selectedWordCellFrame: CGRect?
     private var selectedWord: WordModel? {
         didSet {
-            sendButton.enabled = selectedWord != nil
+            resetSendButtonEnabled()
         }
     }
     private var selectedWordImageViewFrame: CGRect! {
@@ -56,11 +60,22 @@ class SendMessageViewController: UIViewController {
         setupWordGroupSegmentedControl()
         setupWordCollectionView()
         setupFriendsCollectionView()
-        
+        // TODO 播放声音
         hideSelectedWord(false)
         wordGroupSegmentedControl.selectedSegmentIndex = UserInfo.shared.lastUseWordIDs.count > 0 ? 0 : 1
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is SelectFriendsViewController {
+            let vc = segue.destinationViewController as! SelectFriendsViewController
+            vc.selectedFriends = friends
+            vc.popViewControllerBlock = { [weak self] (selectFriendsViewController) -> () in
+                self!.friends = selectFriendsViewController.selectedFriends
+                self!.friendsCollectionView.reloadData()
+            }
+        }
+    }
+    
     private func setupWordGroupSegmentedControl() {
         wordGroupSegmentedControl.selectedIndexChange() { [weak self] (Int) -> () in
             self!.wordCollectionView.reloadData()
@@ -141,9 +156,6 @@ class SendMessageViewController: UIViewController {
             cell.imageView.imageWebUrl = friend.iconUrl
             return cell
         }
-        .ce_DidSelectItemAtIndexPath { (collectionView, indexPath) -> Void in
-            // TODO 删除这个接收好友
-        }
         .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
             return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
         }
@@ -152,7 +164,7 @@ class SendMessageViewController: UIViewController {
         }
         .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
             let i = CGFloat((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
+            return UIEdgeInsets(top: 0, left: i, bottom: 0, right: i)
         }
     }
     
@@ -245,8 +257,42 @@ class SendMessageViewController: UIViewController {
         }
     }
     
+    private func resetSendButtonEnabled() {
+        sendButton.enabled = selectedWord != nil && friends.count > 0
+    }
+    
     @IBAction func closeClick(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func sendClick(sender: AnyObject) {
+        view.userInteractionEnabled = false
+        sendButton.setTitle("发送中...", forState: UIControlState.Normal)
+        sendButton.enabled = false
+        
+        var ids: [Int] = [Int]()
+        for friend in friends {
+            ids.append(friend.userID!)
+        }
+        ServerHelper.wordSend(selectedWord!.id, friendsUsers: ids) { [weak self](ret, error) -> Void in
+            if let weakSelf = self {
+                self!.view.userInteractionEnabled = false
+                self!.sendButton.setTitle("发送", forState: UIControlState.Normal)
+                self!.sendButton.enabled = true
+            }
+            if let error = error {
+                println(error)
+                return
+            }
+            if let weakSelf = self {
+                if ret!.success {
+                    UIAlertView.showMessage("发送成功")
+                }
+                else {
+                    UIAlertView.showMessage(ret!.errorMessage!)
+                }
+            }
+        }
     }
     
 }

@@ -1098,6 +1098,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxx-XK-fHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1902" y="2370"/>
+        </scene>
+        <!--选择好友-->
+        <scene sceneID="Wee-RT-anB">
+            <objects>
+                <viewController id="shg-Gr-n8h" customClass="SelectFriendsViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y5C-be-JFc"/>
+                        <viewControllerLayoutGuide type="bottom" id="DQ8-9f-xwP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cxg-Cj-rDM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xZ9-bq-WJ8">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MYCELL" textLabel="zUe-i4-1fE" style="IBUITableViewCellStyleDefault" id="naU-PJ-dfU">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naU-PJ-dfU" id="bEs-4M-rrU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUe-i4-1fE">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="xZ9-bq-WJ8" secondAttribute="trailing" constant="-16" id="344-3R-rdQ"/>
+                            <constraint firstItem="DQ8-9f-xwP" firstAttribute="top" secondItem="xZ9-bq-WJ8" secondAttribute="bottom" id="lgy-II-q3t"/>
+                            <constraint firstItem="xZ9-bq-WJ8" firstAttribute="leading" secondItem="cxg-Cj-rDM" secondAttribute="leadingMargin" constant="-16" id="n5X-l8-gB6"/>
+                            <constraint firstItem="xZ9-bq-WJ8" firstAttribute="top" secondItem="y5C-be-JFc" secondAttribute="bottom" id="oSN-Aq-a9H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择好友" id="aBW-JC-3wG"/>
+                    <connections>
+                        <outlet property="tableView" destination="xZ9-bq-WJ8" id="Nui-Ma-n0I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ssn-eG-oBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="2338" y="1738"/>
         </scene>
         <!--发-->
@@ -1134,6 +1184,9 @@
                                 <state key="normal" title="发送">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendClick:" destination="IA7-Iw-iTb" eventType="touchUpInside" id="l6x-b0-Xds"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ajZ-xV-fnU">
                                 <rect key="frame" x="0.0" y="398" width="274" height="36"/>
@@ -1157,6 +1210,9 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="shg-Gr-n8h" kind="show" id="xgj-V6-Nxn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

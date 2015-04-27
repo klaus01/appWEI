@@ -70,6 +70,7 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24E1519A1AEE79670013FD74 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E151991AEE79670013FD74 /* SelectFriendsViewController.swift */; };
 		24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */; };
 		24E28C8A1AEB926200BAD6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28C891AEB926200BAD6B3 /* AVFoundation.framework */; };
 		24E28C911AEB9CF700BAD6B3 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24ADB4451AE7EA27000B4B59 /* RSBarcodes.framework */; };
@@ -226,6 +227,7 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24E151991AEE79670013FD74 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
 		24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
 		24E28C891AEB926200BAD6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		24E3E9401AD266BE00B51FBE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				247094C11AC543A500A830F3 /* InviteFriendViewController.swift */,
 				247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */,
 				24E3E9551AD26FA200B51FBE /* SendMessageViewController.swift */,
+				24E151991AEE79670013FD74 /* SelectFriendsViewController.swift */,
 				24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */,
 				24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */,
 				24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */,
@@ -781,6 +784,7 @@
 				24E806291AE53AF1004AD0F5 /* DictionaryViewController.swift in Sources */,
 				24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
+				24E1519A1AEE79670013FD74 /* SelectFriendsViewController.swift in Sources */,
 				240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
