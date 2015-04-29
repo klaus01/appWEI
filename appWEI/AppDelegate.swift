@@ -14,7 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // 分享相关设置 http://dashboard.mob.com/ShareSDK#/quickstarts/ios 第三步
+        
+        ShareSDK.registerApp("71e5245184cf")
+        //添加微信应用 注册网址 http://open.weixin.qq.com
+        ShareSDK.connectWeChatWithAppId("wx4868b35061f87885", wechatCls: WXApi.self)
+        //微信登陆的时候需要初始化
+        ShareSDK.connectWeChatWithAppId("wx4868b35061f87885", appSecret:"64020361b8ec4c99936c0e3999a9f249", wechatCls:WXApi.self)
+        //添加Facebook应用  注册网址 https://developers.facebook.com
+        ShareSDK.connectFacebookWithAppKey("107704292745179", appSecret:"38053202e1a5fe26c80c753071f0b573")
+        //添加Instagram应用，此应用需要引用InstagramConnection.framework库 http://instagram.com/developer/clients/register/上注册应用，并将相关信息填写以下字段
+        ShareSDK.connectInstagramWithClientId("ff68e3216b4f4f989121aa1c2962d058", clientSecret: "1b2e82f110264869b3505c3fe34e31a1", redirectUri: "http://sharesdk.cn")
+        
+        // 注册远程通知
         if application.respondsToSelector("isRegisteredForRemoteNotifications") {
             let settings = UIUserNotificationSettings(forTypes: .Alert | .Sound | .Badge, categories: nil)
             application.registerUserNotificationSettings(settings)

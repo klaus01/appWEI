@@ -10,5 +10,7 @@
 #define appWEI_appWEI_Bridging_Header_h
 
 #import "VoiceConverter.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 
 #endif
