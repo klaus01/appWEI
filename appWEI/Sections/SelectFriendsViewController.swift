@@ -61,7 +61,18 @@ class SelectFriendsViewController: UIViewController {
             let friend = UserInfo.shared.friends[indexPath.row]
             cell.imageView?.imageWebUrl = friend.iconUrl
             cell.textLabel?.text = friend.nickname
+            cell.accessoryType = cell.selected ? .Checkmark : .None
             return cell
+        }
+        .ce_DidSelectRowAtIndexPath { (tableView, indexPath) -> Void in
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                cell.accessoryType = .Checkmark
+            }
+        }
+        .ce_DidDeselectRowAtIndexPath { (tableView, indexPath) -> Void in
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                cell.accessoryType = .None
+            }
         }
     }
     
