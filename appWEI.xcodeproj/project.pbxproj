@@ -54,6 +54,7 @@
 		24B7808C1AE2522800460DE3 /* ProjectFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808B1AE2522800460DE3 /* ProjectFunc.swift */; };
 		24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */; };
 		24C388451AE38F5600C05A2D /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */; };
+		24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */; };
 		24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEA1ACAD10B00A17D13 /* Array.swift */; };
 		24E02CF91ACAD10B00A17D13 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEB1ACAD10B00A17D13 /* Character.swift */; };
 		24E02CFA1ACAD10B00A17D13 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */; };
@@ -210,6 +211,7 @@
 		24B7808B1AE2522800460DE3 /* ProjectFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFunc.swift; sourceTree = "<group>"; };
 		24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistViewController.swift; sourceTree = "<group>"; };
 		24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
+		24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerViewController.swift; sourceTree = "<group>"; };
 		24E02CEA1ACAD10B00A17D13 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		24E02CEB1ACAD10B00A17D13 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		24E02CEC1ACAD10B00A17D13 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				24060F191AE6960300A405BC /* StatisticsViewController.swift */,
 				24060F1B1AE69EFB00A405BC /* WordViewController.swift */,
 				24ADB4341AE7DF4C000B4B59 /* MessagesViewController.swift */,
+				24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				240D52B41ADEB69E00B8E112 /* UIDatePicker.swift in Sources */,
+				24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
 				24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */,
 				24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */,

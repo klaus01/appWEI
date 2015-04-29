@@ -675,7 +675,7 @@
         <!--奖-->
         <scene sceneID="FxI-5B-aNA">
             <objects>
-                <viewController id="eUN-Bc-pfZ" sceneMemberID="viewController">
+                <viewController id="eUN-Bc-pfZ" customClass="PartnerViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5eS-1j-vQ1"/>
                         <viewControllerLayoutGuide type="bottom" id="RKU-Fd-Ph0"/>
@@ -691,16 +691,65 @@
                                     <segment title="兑奖消息"/>
                                 </segments>
                             </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rOW-co-iqD">
+                                <rect key="frame" x="0.0" y="108" width="320" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ArR-zO-G4U">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vou-f6-2G5">
+                                <rect key="frame" x="0.0" y="108" width="320" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MYCELL" textLabel="DhP-Px-V2X" detailTextLabel="51J-hy-NDC" style="IBUITableViewCellStyleSubtitle" id="Oe3-Xw-fhl">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oe3-Xw-fhl" id="6rb-hi-Zyr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DhP-Px-V2X">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="51J-hy-NDC">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rOW-co-iqD" firstAttribute="top" secondItem="7Bk-2U-WmK" secondAttribute="bottom" constant="8" id="Csp-c2-f5y"/>
+                            <constraint firstItem="vou-f6-2G5" firstAttribute="leading" secondItem="Yr4-o4-vVW" secondAttribute="leadingMargin" constant="-16" id="T4l-ud-bUa"/>
+                            <constraint firstItem="rOW-co-iqD" firstAttribute="leading" secondItem="Yr4-o4-vVW" secondAttribute="leadingMargin" constant="-16" id="V2X-2b-hGg"/>
                             <constraint firstItem="7Bk-2U-WmK" firstAttribute="trailing" secondItem="Yr4-o4-vVW" secondAttribute="trailingMargin" id="Z0h-gB-Iaa"/>
+                            <constraint firstItem="RKU-Fd-Ph0" firstAttribute="top" secondItem="vou-f6-2G5" secondAttribute="bottom" id="aQ2-sy-Zb4"/>
+                            <constraint firstItem="RKU-Fd-Ph0" firstAttribute="top" secondItem="rOW-co-iqD" secondAttribute="bottom" id="c8O-4u-Ilc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rOW-co-iqD" secondAttribute="trailing" constant="-16" id="gbc-26-jam"/>
+                            <constraint firstItem="vou-f6-2G5" firstAttribute="top" secondItem="7Bk-2U-WmK" secondAttribute="bottom" constant="8" id="mDT-zz-qq9"/>
                             <constraint firstItem="7Bk-2U-WmK" firstAttribute="leading" secondItem="Yr4-o4-vVW" secondAttribute="leadingMargin" id="v3g-N6-iTw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vou-f6-2G5" secondAttribute="trailing" constant="-16" id="wMs-GL-J3A"/>
                             <constraint firstItem="7Bk-2U-WmK" firstAttribute="top" secondItem="5eS-1j-vQ1" secondAttribute="bottom" constant="8" id="wOs-Is-APb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="奖" id="iLc-rr-0e1"/>
                     <connections>
+                        <outlet property="messageCollectionView" destination="rOW-co-iqD" id="RAp-Lp-s2U"/>
+                        <outlet property="partnerTableView" destination="vou-f6-2G5" id="9hw-5c-rhM"/>
+                        <outlet property="segmentedControl" destination="7Bk-2U-WmK" id="KEy-ea-R9u"/>
                         <segue destination="XeV-am-VAK" kind="show" identifier="toParentMessages" id="QQS-Gs-ELf"/>
                     </connections>
                 </viewController>
@@ -1124,7 +1173,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUe-i4-1fE">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
