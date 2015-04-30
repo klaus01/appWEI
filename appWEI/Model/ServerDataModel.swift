@@ -8,6 +8,10 @@
 
 import Foundation
 
+private func DateWithServerDateString(str: String) -> Date {
+    return Date(str, dateFormat:"yyyy-MM-dd'T'HH:mm:ss.zzz'Z'")
+}
+
 private func getCompleteResourceUrl(url: String) -> String {
     return SERVER_HOST_RESOURCE_FILE + url
 }
@@ -91,7 +95,7 @@ struct PartnerUserModel : ServerDataProtocol {
         name          = dic["Name"] as! String
         iconUrl       = getCompleteResourceUrl(dic["IconUrl"] as! String)
         description   = dic["Description"] as? String
-        createTime    = Date(dic["CreateTime"] as! String)
+        createTime    = DateWithServerDateString(dic["CreateTime"] as! String)
     }
 }
 
@@ -117,7 +121,7 @@ struct FriendModel : ServerDataProtocol {
             partnerUser = nil
         }
         if let time = dic["LastTime"] as? String {
-            lastTime = Date(time)
+            lastTime = DateWithServerDateString(time)
         }
         else {
             lastTime = nil
@@ -181,7 +185,7 @@ struct MessageModel : ServerDataProtocol {
     
     init(_ dic: Dictionary<String, AnyObject>) {
         id              = dic["ID"] as! Int
-        createTime      = Date(dic["CreateTime"] as! String)
+        createTime      = DateWithServerDateString(dic["CreateTime"] as! String)
         sourceUserID    = dic["SourceUserID"] as! Int
         receiveUserID   = dic["ReceiveUserID"] as! Int
         type            = MessageType(rawValue: dic["Type"] as! Int)!
@@ -248,7 +252,7 @@ struct ActivityModel : ServerDataProtocol {
     init(_ dic: Dictionary<String, AnyObject>) {
         id              = dic["ID"] as! Int
         partnerUserID   = dic["PartnerUserID"] as! Int
-        createTime      = Date(dic["CreateTime"] as! String)
+        createTime      = DateWithServerDateString(dic["CreateTime"] as! String)
         mode            = dic["Mode"] as! Int
         pictureUrl      = getCompleteResourceUrl(dic["PictureUrl"] as! String)
         content         = dic["Content"] as! String
@@ -268,7 +272,7 @@ struct GiftModel : ServerDataProtocol {
         appUserID           = dic["AppUserID"] as! Int
         awardQRCodeInfo     = dic["AwardQRCodeInfo"] as! String
         if let time = dic["AwardTime"] as? String {
-            awardTime       = Date(time)
+            awardTime       = DateWithServerDateString(time)
         }
         else {
             awardTime       = nil
@@ -276,8 +280,8 @@ struct GiftModel : ServerDataProtocol {
     }
 }
 
-// 未读消息
-struct UnreadMessageModel : ServerDataProtocol {
+// 历史消息
+struct HistoryMessageModel : ServerDataProtocol {
     let message: MessageModel
     let appUser: AppUserModel?
     let partnerUser: PartnerUserModel?
@@ -320,36 +324,6 @@ struct UnreadMessageModel : ServerDataProtocol {
     }
 }
 
-// 历史消息
-struct HistoryMessageModel : ServerDataProtocol {
-    let message: MessageModel
-    let word: WordModel?
-    let activity: ActivityModel?
-    let gift: GiftModel?
-    
-    init(_ dic: Dictionary<String, AnyObject>) {
-        message = MessageModel(dic["Message"] as! Dictionary<String, AnyObject>)
-        if let dic = dic["Word"] as? Dictionary<String, AnyObject> {
-            word = WordModel(dic)
-        }
-        else {
-            word = nil
-        }
-        if let dic = dic["Activity"] as? Dictionary<String, AnyObject> {
-            activity = ActivityModel(dic)
-        }
-        else {
-            activity = nil
-        }
-        if let dic = dic["Gift"] as? Dictionary<String, AnyObject> {
-            gift = GiftModel(dic)
-        }
-        else {
-            gift = nil
-        }
-    }
-}
-
 // 公众号消息情况
 struct PartnerUserMessageOverviewModel : ServerDataProtocol {
     let lastTime: Date
@@ -357,9 +331,9 @@ struct PartnerUserMessageOverviewModel : ServerDataProtocol {
     let noAwardCount: Int
     
     init(_ dic: Dictionary<String, AnyObject>) {
-        lastTime        = Date(dic["LastTime"] as! String)
+        lastTime        = DateWithServerDateString(dic["LastTime"] as! String)
         unreadCount     = dic["UnreadCount"] as! Int
-        noAwardCount    = dic["noAwardCount"] as! Int
+        noAwardCount    = dic["NoAwardCount"] as! Int
     }
 }
 

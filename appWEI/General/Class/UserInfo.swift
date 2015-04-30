@@ -79,7 +79,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     var isUpdatingFriends: Bool { return _isUpdatingFriends }
     
     // 未读消息列表，缓存
-    var unreadMessages: [UnreadMessageModel] = [UnreadMessageModel]()
+    var unreadMessages: [HistoryMessageModel] = [HistoryMessageModel]()
     // 是否正在更新未读消息列表
     var isUpdatingUnreadMessages: Bool { return _isUpdatingUnreadMessages }
     
@@ -189,7 +189,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     
     func removeUnreadMessage(messageID: Int) {
         let oldMessages = unreadMessages
-        unreadMessages = oldMessages.filter() { (includeElement: UnreadMessageModel) -> Bool in
+        unreadMessages = oldMessages.filter() { (includeElement: HistoryMessageModel) -> Bool in
             return includeElement.message.id != messageID
         }
     }
