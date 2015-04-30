@@ -173,8 +173,15 @@ class ServerHelper {
     
     // MARK: - 消息相关
     // 获取未读消息列表
-    class func messageGetUnread(completionHandler: (ret: ServerResultModel<[UnreadMessageModel]>?, error: NSError?) -> Void) {
+    class func messageGetUnread(completionHandler: (ret: ServerResultModel<[HistoryMessageModel]>?, error: NSError?) -> Void) {
         myRequest("/message/getUnread").responseJSON(getCompletionHandlerWithArray(completionHandler))
+    }
+    
+    // 获取用户与公众号历史消息列表
+    class func messageGetByPartnerUser(partnerUserID: Int, completionHandler: (ret: ServerResultModel<[HistoryMessageModel]>?, error: NSError?) -> Void) {
+        myRequest("/message/getByPartnerUser", parameters: [
+            "partnerUserID": partnerUserID
+            ]).responseJSON(getCompletionHandlerWithArray(completionHandler))
     }
     
     // 设置消息已读
