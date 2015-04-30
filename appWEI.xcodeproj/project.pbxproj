@@ -86,6 +86,9 @@
 		24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */; };
 		24E0A3031ABFF337002D6E7F /* AppDelegateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */; };
 		24E0CCDB1AC4454300CDF40A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */; };
+		24E0EF501AF25E9900B44C68 /* PartnerMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0EF4F1AF25E9900B44C68 /* PartnerMessagesViewController.swift */; };
+		24E0EF5D1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0EF5B1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift */; };
+		24E0EF5E1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */; };
 		24E1519A1AEE79670013FD74 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E151991AEE79670013FD74 /* SelectFriendsViewController.swift */; };
 		24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */; };
 		24E28C8A1AEB926200BAD6B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24E28C891AEB926200BAD6B3 /* AVFoundation.framework */; };
@@ -104,7 +107,6 @@
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
 		24E649281AE35D0B00B5228A /* BlacklistAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */; };
-		24E69A5D1AECF0B900419361 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */; };
 		24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */; };
 		24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A171AE00AB900347C06 /* CE_UIViewController.swift */; };
 		24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */; };
@@ -112,7 +114,6 @@
 		24E806261AE5361C004AD0F5 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */; };
 		24E806271AE5361C004AD0F5 /* WordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */; };
 		24E806291AE53AF1004AD0F5 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */; };
-		24E8062E1AE5588E004AD0F5 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8062C1AE5588E004AD0F5 /* LoadingTableViewCell.swift */; };
 		24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
@@ -262,6 +263,9 @@
 		24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		24E0A3021ABFF337002D6E7F /* AppDelegateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExt.swift; sourceTree = "<group>"; };
 		24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		24E0EF4F1AF25E9900B44C68 /* PartnerMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerMessagesViewController.swift; sourceTree = "<group>"; };
+		24E0EF5B1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartnerMessageTableViewCell.swift; path = View/PartnerMessageTableViewCell.swift; sourceTree = "<group>"; };
+		24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PartnerMessageTableViewCell.xib; path = View/PartnerMessageTableViewCell.xib; sourceTree = "<group>"; };
 		24E151991AEE79670013FD74 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
 		24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextField.swift; sourceTree = "<group>"; };
 		24E28C891AEB926200BAD6B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -286,7 +290,6 @@
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
 		24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistAddViewController.swift; sourceTree = "<group>"; };
-		24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingCollectionViewCell.swift; path = View/LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewCell.xib; path = View/LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E79A171AE00AB900347C06 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
 		24E79A191AE00AFA00347C06 /* CE_UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UINavigationController.swift; sourceTree = "<group>"; };
@@ -294,7 +297,6 @@
 		24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordTableViewCell.swift; path = View/WordTableViewCell.swift; sourceTree = "<group>"; };
 		24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordTableViewCell.xib; path = View/WordTableViewCell.xib; sourceTree = "<group>"; };
 		24E806281AE53AF1004AD0F5 /* DictionaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
-		24E8062C1AE5588E004AD0F5 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingTableViewCell.swift; path = View/LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingTableViewCell.xib; path = View/LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				24060F1B1AE69EFB00A405BC /* WordViewController.swift */,
 				24ADB4341AE7DF4C000B4B59 /* MessagesViewController.swift */,
 				24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */,
+				24E0EF4F1AF25E9900B44C68 /* PartnerMessagesViewController.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -682,16 +685,16 @@
 		24F3C09E1AC5237800E9FF49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */,
+				24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */,
 				24E3E95D1AD277C800B51FBE /* ImageCollectionViewCell.swift */,
 				24E3E95E1AD277C800B51FBE /* ImageCollectionViewCell.xib */,
 				24E3E9631AD27CD800B51FBE /* FriendCollectionViewCell.swift */,
 				24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */,
 				24E806241AE5361C004AD0F5 /* WordTableViewCell.swift */,
 				24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */,
-				24E8062C1AE5588E004AD0F5 /* LoadingTableViewCell.swift */,
-				24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */,
-				24E69A5B1AECF0B900419361 /* LoadingCollectionViewCell.swift */,
-				24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */,
+				24E0EF5B1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift */,
+				24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				24DEA2651AF132F600E0E4AD /* Resource.bundle in Resources */,
 				24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */,
 				24DEA2641AF132F600E0E4AD /* ShareSDKLocalizable.strings in Resources */,
+				24E0EF5E1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib in Resources */,
 				244C19E51ABBFFC000813708 /* Main.storyboard in Resources */,
 				24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */,
 				24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */,
@@ -845,18 +849,19 @@
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
 				240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */,
 				24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */,
+				24E0EF5D1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift in Sources */,
 				240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */,
 				24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */,
 				240D52B21ADEB69E00B8E112 /* UIButton.swift in Sources */,
 				240D529A1ADEB54900B8E112 /* ImageDownloader.swift in Sources */,
 				24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */,
 				24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */,
+				24E0EF501AF25E9900B44C68 /* PartnerMessagesViewController.swift in Sources */,
 				240D529D1ADEB54900B8E112 /* KingfisherOptions.swift in Sources */,
 				24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */,
 				24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
 				240D52B61ADEB69E00B8E112 /* UIRefreshControl.swift in Sources */,
-				24E69A5D1AECF0B900419361 /* LoadingCollectionViewCell.swift in Sources */,
 				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
 				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
 				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,
@@ -889,7 +894,6 @@
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
 				24E3E9651AD27CD800B51FBE /* FriendCollectionViewCell.swift in Sources */,
 				240D52B51ADEB69E00B8E112 /* UIGestureRecognizer.swift in Sources */,
-				24E8062E1AE5588E004AD0F5 /* LoadingTableViewCell.swift in Sources */,
 				240D52B71ADEB69E00B8E112 /* UISegmentedControl.swift in Sources */,
 				24E806291AE53AF1004AD0F5 /* DictionaryViewController.swift in Sources */,
 				24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */,

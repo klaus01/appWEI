@@ -750,7 +750,7 @@
                         <outlet property="messageCollectionView" destination="rOW-co-iqD" id="RAp-Lp-s2U"/>
                         <outlet property="partnerTableView" destination="vou-f6-2G5" id="9hw-5c-rhM"/>
                         <outlet property="segmentedControl" destination="7Bk-2U-WmK" id="KEy-ea-R9u"/>
-                        <segue destination="XeV-am-VAK" kind="show" identifier="toParentMessages" id="QQS-Gs-ELf"/>
+                        <segue destination="XeV-am-VAK" kind="show" identifier="showPartnerMessages" id="QQS-Gs-ELf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAu-CA-OnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -760,7 +760,7 @@
         <!--消息历史-->
         <scene sceneID="Ti2-ct-CYG">
             <objects>
-                <viewController id="XeV-am-VAK" sceneMemberID="viewController">
+                <viewController id="XeV-am-VAK" customClass="PartnerMessagesViewController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uOr-3r-uto"/>
                         <viewControllerLayoutGuide type="bottom" id="4JJ-kH-Fvx"/>
@@ -795,6 +795,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="消息历史" id="7fC-ZV-2I3"/>
+                    <connections>
+                        <outlet property="tableView" destination="Wvl-1X-fbo" id="Yrm-6m-om7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtA-vO-Ur2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
