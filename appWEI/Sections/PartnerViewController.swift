@@ -12,6 +12,7 @@ class PartnerViewController: UIViewController {
 
     private var partners: [PartnerUserModel]!
     private var partnerMessages: [PartnerUserAndMessageOverviewModel]!
+    private var selectedPartner: PartnerUserModel?
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var partnerTableView: UITableView!
@@ -26,6 +27,12 @@ class PartnerViewController: UIViewController {
         loadPartnerMessages()
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is PartnerMessagesViewController {
+            (segue.destinationViewController as! PartnerMessagesViewController).partner = selectedPartner
+        }
+    }
+    
     private func setupSegmentedControl() {
         segmentedControl.selectedIndexChange { [weak self] (index) -> () in
             self!.partnerTableView.hidden = index != 0
@@ -38,10 +45,10 @@ class PartnerViewController: UIViewController {
         partnerTableView.registerNib(cellNib, forCellReuseIdentifier: "LOADING")
         partnerTableView
         .ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
-            return (self!.partners == nil && self!.partnerMessages == nil) ? 1 : self!.partners.count
+            return (self!.partners == nil || self!.partnerMessages == nil) ? 1 : self!.partners.count
         }
         .ce_CellForRowAtIndexPath { [weak self] (tableView, indexPath) -> UITableViewCell in
-            if self!.partners == nil && self!.partnerMessages == nil {
+            if self!.partners == nil || self!.partnerMessages == nil {
                 return tableView.dequeueReusableCellWithIdentifier("LOADING", forIndexPath: indexPath) as! UITableViewCell
             }
             else {
@@ -88,10 +95,10 @@ class PartnerViewController: UIViewController {
         messageCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         messageCollectionView
         .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
-            return (self!.partners == nil && self!.partnerMessages == nil) ? 1 : self!.partnerMessages.count
+            return (self!.partners == nil || self!.partnerMessages == nil) ? 1 : self!.partnerMessages.count
         }
         .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
-            if self!.partners == nil && self!.partnerMessages == nil {
+            if self!.partners == nil || self!.partnerMessages == nil {
                 return collectionView.dequeueReusableCellWithReuseIdentifier("LOADING", forIndexPath: indexPath) as! UICollectionViewCell
             }
             else {
@@ -109,6 +116,14 @@ class PartnerViewController: UIViewController {
                 }
                 
                 return cell
+            }
+        }
+        .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
+            if self!.partners == nil || self!.partnerMessages == nil {
+            }
+            else {
+                self!.selectedPartner = self!.partnerMessages[indexPath.item].partnerUser
+                self!.performSegueWithIdentifier("showPartnerMessages", sender: nil)
             }
         }
         setUserListStyleWithCollectionView(messageCollectionView)
