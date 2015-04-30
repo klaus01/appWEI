@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import RSBarcodes
 
 extension UIImageView {
     
@@ -144,5 +145,35 @@ func setUserListStyleWithCollectionView(collectionView: UICollectionView) {
         .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
             let i = CGFloat((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
             return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
+    }
+}
+
+/**
+显示消息对应的图片
+
+:param: message          消息对象
+:param: imageView        显示到的UIImageView
+:param: QRCodeImageScale 二维码图片放大位数（1不变）
+*/
+func displayMessageImage(message: HistoryMessageModel, imageView: UIImageView, QRCodeImageScale: CGFloat) {
+    switch message.message.type {
+    case .AddFriend:
+        imageView.imageWebUrl = nil
+        imageView.image = UIImage(named: "imagePlaceholder")
+    case .Gift:
+        imageView.imageWebUrl = nil
+        let image = RSUnifiedCodeGenerator.shared.generateCode(message.gift!.awardQRCodeInfo, machineReadableCodeObjectType: AVMetadataObjectTypeQRCode)
+        if let i = image {
+            imageView.image = RSAbstractCodeGenerator.resizeImage(i, scale: QRCodeImageScale)
+        }
+        else {
+            imageView.image = nil
+        }
+    case .Activity:
+        imageView.image = nil
+        imageView.imageWebUrl = message.activity!.pictureUrl
+    default:
+        imageView.image = nil
+        imageView.imageWebUrl = message.word!.pictureUrl
     }
 }

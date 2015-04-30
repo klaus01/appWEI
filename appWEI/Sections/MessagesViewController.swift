@@ -8,30 +8,6 @@
 
 import UIKit
 import AVFoundation
-import RSBarcodes
-
-private func setUnreadMessageToImage(message: UnreadMessageModel, imageView: UIImageView, QRCodeImageScale: CGFloat) {
-    switch message.message.type {
-    case .AddFriend:
-        imageView.imageWebUrl = nil
-        imageView.image = UIImage(named: "imagePlaceholder")
-    case .Gift:
-        imageView.imageWebUrl = nil
-        let image = RSUnifiedCodeGenerator.shared.generateCode(message.gift!.awardQRCodeInfo, machineReadableCodeObjectType: AVMetadataObjectTypeQRCode)
-        if let i = image {
-            imageView.image = RSAbstractCodeGenerator.resizeImage(i, scale: QRCodeImageScale)
-        }
-        else {
-            imageView.image = nil
-        }
-    case .Activity:
-        imageView.image = nil
-        imageView.imageWebUrl = message.activity!.pictureUrl
-    default:
-        imageView.image = nil
-        imageView.imageWebUrl = message.word!.pictureUrl
-    }
-}
 
 class WordView: UIView {
     
@@ -43,9 +19,9 @@ class WordView: UIView {
     
     private var _longPressAction: (() -> ())?
     
-    var message: UnreadMessageModel! {
+    var message: HistoryMessageModel! {
         didSet {
-            setUnreadMessageToImage(message, wordImageView, 10)
+            displayMessageImage(message, wordImageView, 10)
             setupWordMaskView()
             setupWordButton()
         }
@@ -96,8 +72,8 @@ class WordView: UIView {
 
 class MessagesViewController: UIViewController {
 
-    private var unreadMessages: [UnreadMessageModel]!
-    private var currentDisplayMessage: UnreadMessageModel?
+    private var unreadMessages: [HistoryMessageModel]!
+    private var currentDisplayMessage: HistoryMessageModel?
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var wordView: WordView!
@@ -144,7 +120,7 @@ class MessagesViewController: UIViewController {
         .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! ImageCollectionViewCell
             let message = self!.unreadMessages[indexPath.item]
-            setUnreadMessageToImage(message, cell.imageView, 2.0)
+            displayMessageImage(message, cell.imageView, 2.0)
             return cell
         }
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
@@ -169,7 +145,7 @@ class MessagesViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    private func showUnreadMessage(message: UnreadMessageModel) {
+    private func showUnreadMessage(message: HistoryMessageModel) {
         currentDisplayMessage = message;
         
         wordView.hidden = false
