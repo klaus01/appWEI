@@ -33,7 +33,7 @@ class WordViewController: UIViewController {
     
     @IBAction func playSoundAction(sender: UIButton) {
         if let url = word.audioUrl {
-            sender.playWordSoundUrl(url)
+            playSoundButton.playWordSoundUrl(url)
         }
     }
 }

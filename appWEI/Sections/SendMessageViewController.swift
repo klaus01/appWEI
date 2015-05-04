@@ -44,6 +44,7 @@ class SendMessageViewController: UIViewController {
     }
     
     @IBOutlet weak var selectedWordImageView: UIImageView!
+    @IBOutlet weak var selectedWordPlayButton: UIButton!
     @IBOutlet weak var selectedWordImageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectedWordImageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectedWordImageViewWidthConstraint: NSLayoutConstraint!
@@ -60,7 +61,7 @@ class SendMessageViewController: UIViewController {
         setupWordGroupSegmentedControl()
         setupWordCollectionView()
         setupFriendsCollectionView()
-        // TODO 播放声音
+        
         hideSelectedWord(false)
         wordGroupSegmentedControl.selectedSegmentIndex = UserInfo.shared.lastUseWordIDs.count > 0 ? 0 : 1
     }
@@ -74,6 +75,11 @@ class SendMessageViewController: UIViewController {
                 self!.friendsCollectionView.reloadData()
             }
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        selectedWordPlayButton.stopPlayWordSound()
     }
     
     private func setupWordGroupSegmentedControl() {
@@ -226,7 +232,7 @@ class SendMessageViewController: UIViewController {
         selectedWordImageView.imageWebUrl = word.pictureUrl
         selectedWordImageViewFrame = wordFrame
         self.selectedWordImageView.layoutIfNeeded()
-        UIView.animateWithDuration(0.3) { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.selectedWordImageView.hidden = false
             var frame = CGRectZero
             frame.origin = self.wordGroupSegmentedControl.frame.origin
@@ -234,14 +240,20 @@ class SendMessageViewController: UIViewController {
             frame.size.height = CGRectGetMaxY(self.wordCollectionView.frame) - self.wordGroupSegmentedControl.frame.origin.y
             self.selectedWordImageViewFrame = frame
             self.selectedWordImageView.layoutIfNeeded()
+        }) { (success) -> Void in
+            self.selectedWordPlayButton.hidden = word.audioUrl == nil
         }
+        
     }
     
     private func hideSelectedWord(animate: Bool) {
+        selectedWordPlayButton.stopPlayWordSound()
         if animate {
+            self.selectedWordPlayButton.hidden = true
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.selectedWordImageViewFrame = self.selectedWordCellFrame
                 self.selectedWordImageView.layoutIfNeeded()
+                self.selectedWordPlayButton.layoutIfNeeded()
             }) { (success) -> Void in
                 self.selectedWord = nil
                 self.selectedWordCellFrame = nil
@@ -250,10 +262,11 @@ class SendMessageViewController: UIViewController {
             }
         }
         else {
-            self.selectedWord = nil
-            self.selectedWordCellFrame = nil
-            self.selectedWordImageView.imageWebUrl = nil
-            self.selectedWordImageView.hidden = true
+            selectedWord = nil
+            selectedWordCellFrame = nil
+            selectedWordImageView.imageWebUrl = nil
+            selectedWordImageView.hidden = true
+            selectedWordPlayButton.hidden = true
         }
     }
     
@@ -292,6 +305,12 @@ class SendMessageViewController: UIViewController {
                     UIAlertView.showMessage(ret!.errorMessage!)
                 }
             }
+        }
+    }
+    
+    @IBAction func playWordSound(sender: AnyObject) {
+        if let word = selectedWord, let url = word.audioUrl {
+            selectedWordPlayButton.playWordSoundUrl(url)
         }
     }
     

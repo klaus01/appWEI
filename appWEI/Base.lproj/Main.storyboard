@@ -1294,10 +1294,20 @@
                                     <constraint firstAttribute="width" constant="54" id="h47-Eq-iS5"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-wt-dNV">
+                                <rect key="frame" x="54" y="64" width="30" height="30"/>
+                                <state key="normal" title="播放">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playWordSound:" destination="IA7-Iw-iTb" eventType="touchUpInside" id="ZeE-iZ-rrq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X3W-Wu-cDf" firstAttribute="width" secondItem="9W7-ma-tv2" secondAttribute="width" id="1Be-oc-mUa"/>
+                            <constraint firstItem="DQk-4U-uI3" firstAttribute="trailing" secondItem="bIe-wt-dNV" secondAttribute="trailing" constant="-14" id="55L-VF-T5V"/>
                             <constraint firstItem="EQ6-B3-nZh" firstAttribute="trailing" secondItem="LYn-Pq-vMh" secondAttribute="trailingMargin" id="7r3-N7-e9Z"/>
                             <constraint firstItem="EQ6-B3-nZh" firstAttribute="top" secondItem="r6x-vA-Wrr" secondAttribute="bottom" constant="8" id="Bn0-SM-rwH"/>
                             <constraint firstItem="TfP-Mh-5KA" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" constant="-16" id="C8q-jl-xjd"/>
@@ -1311,6 +1321,7 @@
                             <constraint firstItem="X3W-Wu-cDf" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" id="XOW-jh-9TW"/>
                             <constraint firstItem="ajZ-xV-fnU" firstAttribute="trailing" secondItem="LYn-Pq-vMh" secondAttribute="trailingMargin" constant="-30" id="XWb-4v-ZcX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4In-W2-PWJ" secondAttribute="trailing" id="ZFU-Rg-dI1"/>
+                            <constraint firstItem="DQk-4U-uI3" firstAttribute="top" secondItem="bIe-wt-dNV" secondAttribute="top" constant="8" id="aJ4-vb-DBW"/>
                             <constraint firstItem="DQk-4U-uI3" firstAttribute="top" secondItem="r6x-vA-Wrr" secondAttribute="bottom" constant="8" id="bp1-Ii-cCL"/>
                             <constraint firstItem="ajZ-xV-fnU" firstAttribute="leading" secondItem="LYn-Pq-vMh" secondAttribute="leadingMargin" constant="-16" id="gMr-j4-GEa"/>
                             <constraint firstItem="4In-W2-PWJ" firstAttribute="centerY" secondItem="ajZ-xV-fnU" secondAttribute="centerY" id="mBX-tc-MbH"/>
@@ -1335,6 +1346,7 @@
                         <outlet property="selectedWordImageViewLeftConstraint" destination="M3g-OA-wKz" id="go3-qd-7L5"/>
                         <outlet property="selectedWordImageViewTopConstraint" destination="bp1-Ii-cCL" id="KrP-am-zHg"/>
                         <outlet property="selectedWordImageViewWidthConstraint" destination="h47-Eq-iS5" id="cyg-9K-wXX"/>
+                        <outlet property="selectedWordPlayButton" destination="bIe-wt-dNV" id="LD3-cf-drp"/>
                         <outlet property="sendButton" destination="9W7-ma-tv2" id="ZPP-wB-v6N"/>
                         <outlet property="wordCollectionView" destination="TfP-Mh-5KA" id="gcb-kk-X5I"/>
                         <outlet property="wordGroupSegmentedControl" destination="EQ6-B3-nZh" id="WPe-zC-PBG"/>
