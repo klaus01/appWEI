@@ -10,13 +10,6 @@
 		24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24019C4C1ABC19A100672673 /* RegisterViewController.swift */; };
 		24060F1A1AE6960300A405BC /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24060F191AE6960300A405BC /* StatisticsViewController.swift */; };
 		24060F1C1AE69EFB00A405BC /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24060F1B1AE69EFB00A405BC /* WordViewController.swift */; };
-		240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52901ADEB54900B8E112 /* ImageCache.swift */; };
-		240D529A1ADEB54900B8E112 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52911ADEB54900B8E112 /* ImageDownloader.swift */; };
-		240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52941ADEB54900B8E112 /* KingfisherManager.swift */; };
-		240D529D1ADEB54900B8E112 /* KingfisherOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52951ADEB54900B8E112 /* KingfisherOptions.swift */; };
-		240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52961ADEB54900B8E112 /* String+MD5.swift */; };
-		240D529F1ADEB54900B8E112 /* UIImage+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52971ADEB54900B8E112 /* UIImage+Decode.swift */; };
-		240D52A01ADEB54900B8E112 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52981ADEB54900B8E112 /* UIImageView+Kingfisher.swift */; };
 		240D52AF1ADEB69E00B8E112 /* UIActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52A21ADEB69E00B8E112 /* UIActionSheet.swift */; };
 		240D52B01ADEB69E00B8E112 /* UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52A31ADEB69E00B8E112 /* UIAlertView.swift */; };
 		240D52B11ADEB69E00B8E112 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D52A41ADEB69E00B8E112 /* UIBarButtonItem.swift */; };
@@ -178,13 +171,6 @@
 		24019C4C1ABC19A100672673 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		24060F191AE6960300A405BC /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		24060F1B1AE69EFB00A405BC /* WordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
-		240D52901ADEB54900B8E112 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		240D52911ADEB54900B8E112 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		240D52941ADEB54900B8E112 /* KingfisherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingfisherManager.swift; sourceTree = "<group>"; };
-		240D52951ADEB54900B8E112 /* KingfisherOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingfisherOptions.swift; sourceTree = "<group>"; };
-		240D52961ADEB54900B8E112 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
-		240D52971ADEB54900B8E112 /* UIImage+Decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decode.swift"; sourceTree = "<group>"; };
-		240D52981ADEB54900B8E112 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		240D52A21ADEB69E00B8E112 /* UIActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActionSheet.swift; sourceTree = "<group>"; };
 		240D52A31ADEB69E00B8E112 /* UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertView.swift; sourceTree = "<group>"; };
 		240D52A41ADEB69E00B8E112 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
@@ -342,20 +328,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		240D528F1ADEB54900B8E112 /* Kingfisher */ = {
-			isa = PBXGroup;
-			children = (
-				240D52901ADEB54900B8E112 /* ImageCache.swift */,
-				240D52911ADEB54900B8E112 /* ImageDownloader.swift */,
-				240D52941ADEB54900B8E112 /* KingfisherManager.swift */,
-				240D52951ADEB54900B8E112 /* KingfisherOptions.swift */,
-				240D52961ADEB54900B8E112 /* String+MD5.swift */,
-				240D52971ADEB54900B8E112 /* UIImage+Decode.swift */,
-				240D52981ADEB54900B8E112 /* UIImageView+Kingfisher.swift */,
-			);
-			path = Kingfisher;
-			sourceTree = "<group>";
-		};
 		240D52A11ADEB69E00B8E112 /* Scream */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,7 +498,6 @@
 				24AFA40A1AD8F87000402DFE /* ClosuresExtension */,
 				24E02CE91ACAD10B00A17D13 /* ExSwift */,
 				24E3E93E1AD266BE00B51FBE /* arm */,
-				240D528F1ADEB54900B8E112 /* Kingfisher */,
 				240D52A11ADEB69E00B8E112 /* Scream */,
 				24DEA24E1AF132F600E0E4AD /* ShareSDK */,
 				244C1A0E1ABC053A00813708 /* Alamofire.swift */,
@@ -844,20 +815,15 @@
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */,
 				24AA683F1AC3928700F79324 /* DefulatIconsViewController.swift in Sources */,
-				240D529F1ADEB54900B8E112 /* UIImage+Decode.swift in Sources */,
 				24060F1C1AE69EFB00A405BC /* WordViewController.swift in Sources */,
 				247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */,
-				240D529E1ADEB54900B8E112 /* String+MD5.swift in Sources */,
 				24E79A1A1AE00AFA00347C06 /* CE_UINavigationController.swift in Sources */,
 				24E0EF5D1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift in Sources */,
-				240D529C1ADEB54900B8E112 /* KingfisherManager.swift in Sources */,
 				24E02CFF1ACAD10B00A17D13 /* Int.swift in Sources */,
 				240D52B21ADEB69E00B8E112 /* UIButton.swift in Sources */,
-				240D529A1ADEB54900B8E112 /* ImageDownloader.swift in Sources */,
 				24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */,
 				24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */,
 				24E0EF501AF25E9900B44C68 /* PartnerMessagesViewController.swift in Sources */,
-				240D529D1ADEB54900B8E112 /* KingfisherOptions.swift in Sources */,
 				24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */,
 				24E1F7D91AE68D2000A77A16 /* CE_UITextField.swift in Sources */,
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
@@ -899,7 +865,6 @@
 				24E02CFD1ACAD10B00A17D13 /* Float.swift in Sources */,
 				2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */,
 				24E1519A1AEE79670013FD74 /* SelectFriendsViewController.swift in Sources */,
-				240D52991ADEB54900B8E112 /* ImageCache.swift in Sources */,
 				24E0A3011ABFF0D5002D6E7F /* LaunchScreenViewController.swift in Sources */,
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
 				24ADB4351AE7DF4C000B4B59 /* MessagesViewController.swift in Sources */,
@@ -908,7 +873,6 @@
 				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
 				2426E8CF1AD96A4E00E47636 /* CE_UICollectionView.swift in Sources */,
 				240D52BA1ADEB69E00B8E112 /* UISwitch.swift in Sources */,
-				240D52A01ADEB54900B8E112 /* UIImageView+Kingfisher.swift in Sources */,
 				240D52B11ADEB69E00B8E112 /* UIBarButtonItem.swift in Sources */,
 				24E3E9561AD26FA200B51FBE /* SendMessageViewController.swift in Sources */,
 				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
