@@ -124,6 +124,72 @@ extension UIImageView {
     
 }
 
+extension UIButton {
+    
+    private struct Static {
+        static var AudioPlayerAssociationKey: UInt8 = 0
+    }
+    private var audioPlayer: AVAudioPlayer? {
+        get {
+            if let obj = objc_getAssociatedObject(self, &Static.AudioPlayerAssociationKey) as? AVAudioPlayer {
+                return obj
+            }
+            return nil
+        }
+        set {
+            if let value = newValue {
+                objc_setAssociatedObject(self, &Static.AudioPlayerAssociationKey, value, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+            }
+        }
+    }
+    private func playAmrFile(amrFilePath: String) {
+        let wavFilePath = NSTemporaryDirectory().stringByAppendingPathComponent("amrtowav.wav")
+        if VoiceConverter.amrToWav(amrFilePath, wavSavePath: wavFilePath) > 0 {
+            let player = AVAudioPlayer(contentsOfURL: NSURL(string: wavFilePath), error: nil)
+            player.prepareToPlay()
+            player.play()
+            audioPlayer = player
+        }
+    }
+    
+    /**
+    播放 字 的音频
+    
+    :param: url 音频文件URL
+    */
+    func playWordSoundUrl(url: String) {
+        let fileName = url.lastPathComponent
+        let filePath = getCachesDirectory() + "/" + fileName
+        if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+            self.playAmrFile(filePath)
+        }
+        else {
+            download(Method.GET, url, { (temporaryURL, res) -> (NSURL) in
+                return NSURL(string: "file://" + filePath)!
+            }).response { [weak self] (request, response, dd, error) in
+                // 404 没有error，而且文件还被保存了
+                if response?.statusCode == 404 {
+                    println(response)
+                    NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
+                    return
+                }
+                // errorCode 516: 下载后保存的目标文件已经存在(同一文件下载多次时出现)
+                if error != nil && error!.code != 516 {
+                    println(error)
+                    return
+                }
+                if let weakSelf = self {
+                    self!.playAmrFile(filePath)
+                }
+            }
+        }
+    }
+    
+    func stopPlayWordSound() {
+        audioPlayer?.stop()
+    }
+}
+
 /**
 统一设置用户列表样式
 
