@@ -89,11 +89,34 @@ class MessagesViewController: UIViewController {
         wordSendTimeLabel.hidden = true
         playButton.hidden = true
         forwardButton.hidden = true
-        playButton.clicked() { (button) -> () in
-            // TODO 播放音频
+        playButton.clicked() { [weak self] (button) -> () in
+            if let message = self!.currentDisplayMessage {
+                if message.message.type == .Word {
+                    if let url = message.word!.audioUrl {
+                        button.playWordSoundUrl(url)
+                    }
+                }
+            }
         }
-        wordView.longPressAction { () -> () in
-            // TODO 原消息回复
+        wordView.longPressAction { [weak self] () -> () in
+            if let message = self!.currentDisplayMessage {
+                if message.message.type == .Word {
+                    ServerHelper.wordSend(message.word!.id, friendsUsers: [message.appUser!.appUserID], completionHandler: { [weak self] (ret, error) -> Void in
+                        if let error = error {
+                            println(error)
+                            return
+                        }
+                        if let weakSelf = self {
+                            if ret!.success {
+                                UIAlertView.showMessage("原消息回复成功")
+                            }
+                            else {
+                                UIAlertView.showMessage(ret!.errorMessage!)
+                            }
+                        }
+                    })
+                }
+            }
         }
         forwardButton.clicked() { (button) -> () in
             // TODO 转发消息
@@ -105,6 +128,11 @@ class MessagesViewController: UIViewController {
         }
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        playButton.stopPlayWordSound()
+    }
+    
     private func setupCollectionView() {
         
         let ROW_COUNT = 6.0
@@ -126,7 +154,7 @@ class MessagesViewController: UIViewController {
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
             let message = self!.unreadMessages.removeAtIndex(indexPath.item)
             self!.showUnreadMessage(message)
-//            self!.collectionView.deleteItemsAtIndexPaths([indexPath])
+            self!.collectionView.deleteItemsAtIndexPaths([indexPath])
         }
         .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
             return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
@@ -155,14 +183,14 @@ class MessagesViewController: UIViewController {
         playButton.hidden = message.message.type != .Word || message.word?.audioUrl == nil
         forwardButton.hidden = message.message.type != .Word
         
-//        ServerHelper.messageSetRead(message.message.id, completionHandler: { (ret, error) -> Void in
-//            if let error = error {
-//                println(error)
-//                return
-//            }
-//            UserInfo.shared.removeUnreadMessage(message.message.id)
-//            UserInfo.shared.updateFriends()
-//        })
+        ServerHelper.messageSetRead(message.message.id, completionHandler: { (ret, error) -> Void in
+            if let error = error {
+                println(error)
+                return
+            }
+            UserInfo.shared.removeUnreadMessage(message.message.id)
+            UserInfo.shared.updateFriends()
+        })
     }
     
     deinit {
