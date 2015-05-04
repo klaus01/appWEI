@@ -23,14 +23,30 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false;
         
-        friends = UserInfo.shared.whitelistFriends
+        setupRefreshControl();
+        setupCollectionView();
         
-        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
-        refreshControl.pulled { () -> () in
-            UserInfo.shared.updateFriends()
+        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
+            self!.friends = UserInfo.shared.whitelistFriends
+            self!.collectionView.reloadData()
+            self!.refreshControl.endRefreshing()
         }
-        collectionView.addSubview(refreshControl)
         
+        friends = UserInfo.shared.whitelistFriends
+    }
+    
+    deinit {
+        self.ce_removeObserver()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserInfo.shared.isUpdatingFriends {
+            refreshControl.beginRefreshing()
+        }
+    }
+    
+    private func setupCollectionView() {
         let cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         
@@ -41,7 +57,7 @@ class FriendsViewController: UIViewController {
             .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
                 let friend = self!.friends[indexPath.item]
-
+                
                 cell.iconImageUrl = friend.iconUrl
                 cell.nickname = friend.nickname
                 cell.deleteAction = nil
@@ -62,25 +78,16 @@ class FriendsViewController: UIViewController {
                 else {
                     UIAlertView.showMessage("没有收到“\(friend.nickname!)”的消息")
                 }
-            }
+        }
         setUserListStyleWithCollectionView(collectionView)
-        
-        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
-            self!.friends = UserInfo.shared.whitelistFriends
-            self!.collectionView.reloadData()
-            self!.refreshControl.endRefreshing()
-        }
     }
     
-    deinit {
-        self.ce_removeObserver()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        if UserInfo.shared.isUpdatingFriends {
-            refreshControl.beginRefreshing()
+    private func setupRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉刷新")
+        refreshControl.pulled { () -> () in
+            UserInfo.shared.updateFriends()
         }
+        collectionView.addSubview(refreshControl)
     }
     
 }
