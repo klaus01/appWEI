@@ -17,6 +17,9 @@ public let kNotification_UpdateFriendsComplete = "kNotification_UpdateFriendsCom
 // 当前登录用户的未读消息更新完成
 public let kNotification_UpdateUnreadMessagesComplete = "kNotification_UpdateUnreadMessagesComplete"
 
+// 当前登录用户创建了一个新字
+public let kNotification_NewWord = "kNotification_NewWord"
+
 
 class UserInfo: NSObject, CLLocationManagerDelegate {
     

@@ -1453,20 +1453,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-FT-hMR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-FT-hMR">
                                 <rect key="frame" x="0.0" y="64" width="320" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="mI4-wX-hHB"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="在这里写下这个字的解释吧" translatesAutoresizingMaskIntoConstraints="NO" id="Mhq-5O-WBq">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="在这里写下这个字的解释吧" translatesAutoresizingMaskIntoConstraints="NO" id="Mhq-5O-WBq">
                                 <rect key="frame" x="16" y="164" width="288" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6iO-lu-yJ0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Q-2h-NVc">
                                 <rect key="frame" x="16" y="311" width="46" height="30"/>
@@ -1504,8 +1504,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="音" id="PXa-gl-aN6">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="hFr-ho-4lW"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="hFr-ho-4lW">
+                            <connections>
+                                <action selector="saveAction:" destination="Maz-Y7-0K3" id="j3W-fZ-8Yu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="countdownLabel" destination="BnY-qz-BWq" id="hBM-7B-TRE"/>
+                        <outlet property="descriptionTextView" destination="Mhq-5O-WBq" id="7Jx-Nn-ilP"/>
+                        <outlet property="imageView" destination="yhn-FT-hMR" id="D5B-O9-pwg"/>
+                        <outlet property="playButton" destination="w6Q-2h-NVc" id="g8v-6y-W7p"/>
+                        <outlet property="recordButton" destination="a5Y-PI-4lz" id="z7p-1Q-0k1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhK-Rk-TLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -145,6 +145,10 @@ extension UIButton {
     private func playAmrFile(amrFilePath: String) {
         let wavFilePath = NSTemporaryDirectory().stringByAppendingPathComponent("amrtowav.wav")
         if VoiceConverter.amrToWav(amrFilePath, wavSavePath: wavFilePath) > 0 {
+            let session = AVAudioSession.sharedInstance()
+            session.setCategory(AVAudioSessionCategoryPlayback, error: nil)
+            session.setActive(true, error: nil)
+            
             let player = AVAudioPlayer(contentsOfURL: NSURL(string: wavFilePath), error: nil)
             player.prepareToPlay()
             player.play()

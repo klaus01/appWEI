@@ -61,11 +61,16 @@ class SendMessageViewController: UIViewController {
         setupWordGroupSegmentedControl()
         setupWordCollectionView()
         setupFriendsCollectionView()
+        setupObserver()
         
         hideSelectedWord(false)
         wordGroupSegmentedControl.selectedSegmentIndex = UserInfo.shared.lastUseWordIDs.count > 0 ? 0 : 1
     }
 
+    deinit {
+        ce_removeObserver()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is SelectFriendsViewController {
             let vc = segue.destinationViewController as! SelectFriendsViewController
@@ -174,7 +179,44 @@ class SendMessageViewController: UIViewController {
         }
     }
     
-    private func loadMoreWords() {
+    private func setupObserver() {
+        ce_addObserverForName(kNotification_NewWord, handle: { [weak self] (notification) -> Void in
+            if let weakSelf = self {
+                let newWordID = notification.object as! Int
+                self!.wordGroupSegmentedControl.selectedSegmentIndex = 2
+                self!.reloadWords({ [weak self] () -> () in
+                    if let weakSelf = self {
+                        var i = 0
+                        for item in self!.userWords {
+                            if item.id == newWordID {
+                                self!.navigationController?.popToViewController(self!, animated: true)
+                                
+                                let indexPath = NSIndexPath(forItem: i, inSection: 0)
+                                self!.wordCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: false)
+                                var frame = self!.wordCollectionView.layoutAttributesForItemAtIndexPath(indexPath)!.frame;
+                                frame.origin.x += self!.wordCollectionView.frame.origin.x
+                                frame.origin.y += self!.wordCollectionView.frame.origin.y
+                                self!.showSelectedWord(item, wordFrame: frame)
+                                return
+                            }
+                            i++
+                        }
+                    }
+                })
+            }
+        })
+    }
+    
+    private func reloadWords(completeHandle: (() -> ())?) {
+        allLoaded = false
+        loadedCount = 0
+        lastUseWords.removeAll(keepCapacity: true)
+        systemWords.removeAll(keepCapacity: true)
+        userWords.removeAll(keepCapacity: true)
+        loadMoreWords(completeHandle)
+    }
+    
+    private func loadMoreWords(_ completeHandle: (() -> ())? = nil) {
         ServerHelper.wordFindByAppUser(offset: loadedCount, resultCount: pageCount) { [weak self] (ret, error) -> Void in
             if let error = error {
                 println(error)
@@ -198,6 +240,9 @@ class SendMessageViewController: UIViewController {
                         self!.reloadLastUseWords()
                     }
                     self!.wordCollectionView.reloadData()
+                    if let f = completeHandle {
+                        f()
+                    }
                 }
             }
             else {
