@@ -110,6 +110,7 @@
 		24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
+		24EA77BD1AF90A8E008EE77E /* CE_UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
 		24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F81ABEBD9400F0C147 /* Date.swift */; };
@@ -286,6 +287,7 @@
 		24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingTableViewCell.xib; path = View/LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
+		24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24FFD5F81ABEBD9400F0C147 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				24E79A1B1AE00C1900347C06 /* CE_UIImagePickerController.swift */,
 				24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */,
 				24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */,
+				24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				240D52B41ADEB69E00B8E112 /* UIDatePicker.swift in Sources */,
 				24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
+				24EA77BD1AF90A8E008EE77E /* CE_UITextView.swift in Sources */,
 				24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */,
 				24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */,
 				247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */,
