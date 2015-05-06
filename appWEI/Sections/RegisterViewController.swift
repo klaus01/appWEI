@@ -10,9 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
-    private var sendButtonDefaultTitle: String!
     private var countdown = 0
-    private var timer: NSTimer!
     
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var verificationCodeTextField: UITextField!
@@ -33,19 +31,19 @@ class RegisterViewController: UIViewController {
         
         sendButton.enabled = false
         
-        ServerHelper.appUserRegisterAndSendCheck(phoneNumber, device: UIDevice.currentDevice().model, deviceOS: UIDevice.currentDevice().systemVersion) { (ret, error) -> Void in
+        ServerHelper.appUserRegisterAndSendCheck(phoneNumber, device: UIDevice.currentDevice().model, deviceOS: UIDevice.currentDevice().systemVersion) { [weak self] (ret, error) -> Void in
             if let error = error {
                 println(error)
-                self.sendButton.enabled = true
+                self!.sendButton.enabled = true
                 return
             }
             if ret!.success {
                 UserInfo.shared.id = ret!.data!.appUserID
                 UserInfo.shared.save()
-                self.verificationCodeTextField.hidden = false
-                self.verificationCodeTextField.becomeFirstResponder()
-                self.countdown = VERIFICATIONCODE_INTERVAL
-                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer:", userInfo: nil, repeats: true)
+                self!.verificationCodeTextField.hidden = false
+                self!.verificationCodeTextField.becomeFirstResponder()
+                self!.countdown = VERIFICATIONCODE_INTERVAL
+                NSTimer.scheduledTimerWithTimeInterval(1, target: self!, selector: "onTimer:", userInfo: nil, repeats: true)
             }
             else {
                 UIAlertView.showMessage(ret!.errorMessage!)
@@ -54,8 +52,8 @@ class RegisterViewController: UIViewController {
     }
     @IBAction func regOrLoginClick(sender: UIButton) {
         regOrLoginButton.enabled = false
-        ServerHelper.smsCheckVerificationCode(UserInfo.shared.phoneNumber!, verificationCode: verificationCodeTextField.text) { (ret, error) -> Void in
-            self.regOrLoginButton.enabled = true
+        ServerHelper.smsCheckVerificationCode(UserInfo.shared.phoneNumber!, verificationCode: verificationCodeTextField.text) { [weak self] (ret, error) -> Void in
+            self!.regOrLoginButton.enabled = true
             if let error = error {
                 println(error)
                 return
@@ -68,7 +66,7 @@ class RegisterViewController: UIViewController {
                 UserInfo.shared.updateUnreadMessages()
                 
                 // 已注册且已登录，根据用户注册状态决定
-                ServerHelper.appUserGet(UserInfo.shared.id) { (ret, error) -> Void in
+                ServerHelper.appUserGet(UserInfo.shared.id) { [weak self] (ret, error) -> Void in
                     if let error = error {
                         println(error)
                         return
@@ -77,12 +75,12 @@ class RegisterViewController: UIViewController {
                         switch data.registrationStatus {
                         case 1:
                             // 手机号已验证
-                            self.performSegueWithIdentifier("regToUser", sender: nil)
+                            self!.performSegueWithIdentifier("regToUser", sender: nil)
                         case 2:
                             // 已完善了用户资料
-                            self.performSegueWithIdentifier("regToShow", sender: nil)
+                            self!.performSegueWithIdentifier("regToShow", sender: nil)
                         default:
-                            self.performSegueWithIdentifier("regToHome", sender: nil)
+                            self!.performSegueWithIdentifier("regToHome", sender: nil)
                         }
                     }
                 }
@@ -97,11 +95,10 @@ class RegisterViewController: UIViewController {
         countdown--
         if countdown <= 0 {
             timer.invalidate()
-            sendButton.setTitle(sendButtonDefaultTitle, forState: UIControlState.Normal)
             sendButton.enabled = true
         }
         else {
-            sendButton.setTitle("\(countdown)秒后可重新发送", forState: UIControlState.Normal)
+            sendButton.setTitle("\(countdown)秒后可重新发送", forState: UIControlState.Disabled)
         }
     }
     
@@ -138,7 +135,6 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendButtonDefaultTitle = sendButton.titleForState(UIControlState.Normal)
         verificationCodeTextField.hidden = true
         sendButton.hidden = true
         regOrLoginButton.hidden = true
