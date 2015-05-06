@@ -33,9 +33,8 @@ extension NSObject {
         return self
     }
     
-    public func ce_removeObserver() -> Self {
+    public func ce_removeObserver() {
         NSNotificationCenter.defaultCenter().removeObserver(ce)
-        return self
     }
     
 }

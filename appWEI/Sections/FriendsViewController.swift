@@ -26,7 +26,7 @@ class FriendsViewController: UIViewController {
         setupRefreshControl();
         setupCollectionView();
         
-        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
+        ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
             self!.friends = UserInfo.shared.whitelistFriends
             self!.collectionView.reloadData()
             self!.refreshControl.endRefreshing()
@@ -36,7 +36,7 @@ class FriendsViewController: UIViewController {
     }
     
     deinit {
-        self.ce_removeObserver()
+        ce_removeObserver()
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -60,7 +60,7 @@ class BlacklistViewController: UIViewController {
         }
         setUserListStyleWithCollectionView(collectionView)
         
-        self.ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
+        ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
             self!.blacklist = UserInfo.shared.blacklistFriends
             self!.collectionView.reloadData()
             self!.refreshControl.endRefreshing()
@@ -68,7 +68,7 @@ class BlacklistViewController: UIViewController {
     }
     
     deinit {
-        self.ce_removeObserver()
+        ce_removeObserver()
     }
     
     override func viewWillAppear(animated: Bool) {
