@@ -29,6 +29,7 @@ class RegisterViewController: UIViewController {
         UserInfo.shared.phoneNumber = phoneNumber
         UserInfo.shared.save()
         
+        sendButton.setTitle(sendButton.titleForState(.Normal), forState: .Disabled)
         sendButton.enabled = false
         
         ServerHelper.appUserRegisterAndSendCheck(phoneNumber, device: UIDevice.currentDevice().model, deviceOS: UIDevice.currentDevice().systemVersion) { [weak self] (ret, error) -> Void in
@@ -42,8 +43,9 @@ class RegisterViewController: UIViewController {
                 UserInfo.shared.save()
                 self!.verificationCodeTextField.hidden = false
                 self!.verificationCodeTextField.becomeFirstResponder()
-                self!.countdown = VERIFICATIONCODE_INTERVAL
-                NSTimer.scheduledTimerWithTimeInterval(1, target: self!, selector: "onTimer:", userInfo: nil, repeats: true)
+                self!.countdown = VERIFICATIONCODE_INTERVAL + 1
+                let timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self!, selector: "onTimer:", userInfo: nil, repeats: true)
+                timer.fire()
             }
             else {
                 UIAlertView.showMessage(ret!.errorMessage!)
