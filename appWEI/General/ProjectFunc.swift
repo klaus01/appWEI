@@ -210,11 +210,13 @@ func setUserListStyleWithCollectionView(collectionView: UICollectionView) {
             return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
         }
         .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
-            return CGFloat((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
+            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
+            return CGFloat(i)
         }
         .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
-            let i = CGFloat((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
+            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
+            let f = CGFloat(i)
+            return UIEdgeInsets(top: f, left: f, bottom: f, right: f)
     }
 }
 
@@ -232,7 +234,7 @@ func displayMessageImage(message: HistoryMessageModel, imageView: UIImageView, Q
         imageView.image = UIImage(named: "imagePlaceholder")
     case .Gift:
         imageView.imageWebUrl = nil
-        let image = RSUnifiedCodeGenerator.shared.generateCode(message.gift!.awardQRCodeInfo, machineReadableCodeObjectType: AVMetadataObjectTypeQRCode)
+        let image = RSUnifiedCodeGenerator.shared.generateCode(SERVER_HOST_INTERFACE + "/activity/award?" + message.gift!.awardQRCodeInfo, machineReadableCodeObjectType: AVMetadataObjectTypeQRCode)
         if let i = image {
             imageView.image = RSAbstractCodeGenerator.resizeImage(i, scale: QRCodeImageScale)
         }
