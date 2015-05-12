@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -420,19 +421,13 @@
                                     <outlet property="wordMaskView" destination="Cdf-O1-tHY" id="nRu-M5-Nkq"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F63-67-1S8">
-                                <rect key="frame" x="245" y="131" width="30" height="30"/>
-                                <state key="normal" title="播放">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFY-cn-6w4">
-                                <rect key="frame" x="245" y="322" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFY-cn-6w4">
+                                <rect key="frame" x="245" y="324" width="30" height="30"/>
                                 <state key="normal" title="转发">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-mW-pCt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-mW-pCt">
                                 <rect key="frame" x="60" y="347" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -459,15 +454,27 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F63-67-1S8">
+                                <rect key="frame" x="245" y="124" width="30" height="30"/>
+                                <state key="normal" title="播放">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cK6-7h-fzc" firstAttribute="top" secondItem="VuB-Zk-h05" secondAttribute="bottom" id="0MG-HG-QIG"/>
                             <constraint firstItem="VuB-Zk-h05" firstAttribute="leading" secondItem="mDZ-Hh-2sw" secondAttribute="leadingMargin" constant="-16" id="0oU-zN-sN0"/>
+                            <constraint firstItem="eQa-mW-pCt" firstAttribute="top" secondItem="Cn6-Gn-TY1" secondAttribute="bottom" constant="8" id="9aB-RJ-ceR"/>
+                            <constraint firstItem="Cn6-Gn-TY1" firstAttribute="leading" secondItem="eQa-mW-pCt" secondAttribute="leading" id="ARE-Ja-ThA"/>
                             <constraint firstItem="c4G-Sq-M4o" firstAttribute="leading" secondItem="mDZ-Hh-2sw" secondAttribute="leadingMargin" constant="-16" id="FjO-NW-0iy"/>
+                            <constraint firstItem="Cn6-Gn-TY1" firstAttribute="bottom" secondItem="cFY-cn-6w4" secondAttribute="centerY" id="GKo-Zc-KiR"/>
+                            <constraint firstItem="Cn6-Gn-TY1" firstAttribute="trailing" secondItem="cFY-cn-6w4" secondAttribute="centerX" id="KdO-Rp-Ayk"/>
                             <constraint firstItem="c4G-Sq-M4o" firstAttribute="top" secondItem="Een-XF-j4i" secondAttribute="bottom" constant="8" id="Pu6-Qu-Evn"/>
                             <constraint firstItem="VuB-Zk-h05" firstAttribute="top" secondItem="c4G-Sq-M4o" secondAttribute="bottom" id="Vv8-kn-bHX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VuB-Zk-h05" secondAttribute="trailing" constant="-16" id="dpX-3Y-zDb"/>
+                            <constraint firstItem="F63-67-1S8" firstAttribute="centerX" secondItem="Cn6-Gn-TY1" secondAttribute="trailing" id="kFI-YH-M7T"/>
+                            <constraint firstItem="F63-67-1S8" firstAttribute="centerY" secondItem="Cn6-Gn-TY1" secondAttribute="top" id="ryk-vP-P2V"/>
                             <constraint firstItem="c4G-Sq-M4o" firstAttribute="centerY" secondItem="Cn6-Gn-TY1" secondAttribute="centerY" id="ub0-c5-dp5"/>
                             <constraint firstAttribute="centerX" secondItem="Cn6-Gn-TY1" secondAttribute="centerX" id="vqA-gM-xxJ"/>
                         </constraints>

@@ -353,15 +353,6 @@
 		244C19D11ABBFFC000813708 = {
 			isa = PBXGroup;
 			children = (
-				24DEA2731AF1336400E0E4AD /* Security.framework */,
-				24DEA2711AF1335E00E0E4AD /* libz.1.2.5.dylib */,
-				24DEA26F1AF1335600E0E4AD /* libicucore.dylib */,
-				24DEA26D1AF1335000E0E4AD /* CoreTelephony.framework */,
-				24DEA26B1AF1334800E0E4AD /* QuartzCore.framework */,
-				24DEA2691AF1334000E0E4AD /* SystemConfiguration.framework */,
-				24E28C891AEB926200BAD6B3 /* AVFoundation.framework */,
-				247094C51AC54A9500A830F3 /* AddressBook.framework */,
-				24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */,
 				244C19DC1ABBFFC000813708 /* appWEI */,
 				244C19F21ABBFFC000813708 /* appWEITests */,
 				244C19DB1ABBFFC000813708 /* Products */,
@@ -394,6 +385,15 @@
 		244C19DD1ABBFFC000813708 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24DEA2731AF1336400E0E4AD /* Security.framework */,
+				24DEA2711AF1335E00E0E4AD /* libz.1.2.5.dylib */,
+				24DEA26F1AF1335600E0E4AD /* libicucore.dylib */,
+				24DEA26D1AF1335000E0E4AD /* CoreTelephony.framework */,
+				24DEA26B1AF1334800E0E4AD /* QuartzCore.framework */,
+				24DEA2691AF1334000E0E4AD /* SystemConfiguration.framework */,
+				24E28C891AEB926200BAD6B3 /* AVFoundation.framework */,
+				247094C51AC54A9500A830F3 /* AddressBook.framework */,
+				24E0CCDA1AC4454300CDF40A /* CoreLocation.framework */,
 				244C19DE1ABBFFC000813708 /* Info.plist */,
 				24E3E9511AD2683B00B51FBE /* appWEI-Bridging-Header.h */,
 			);
