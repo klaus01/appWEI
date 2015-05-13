@@ -8,11 +8,16 @@
 
 import Foundation
 
+// 网络请求，服务端返回未登录
+public let kNotification_NotLogged = "kNotification_NotLogged"
+
 class ServerHelper {
     
     struct Static {
         // 静态的目的是只调用UUIDString一次。
         static let SessionID = UUIDString
+        // 服务端返回的未登录字符串，用于判断
+        static let NotLoggedString = "未登录或登录已过期"
     }
     
     private class func getCompletionHandlerWithNoData(completionHandler: (ServerResultModel<Any>?, NSError?) -> Void) -> (NSURLRequest, NSHTTPURLResponse?, AnyObject?, NSError?) -> Void {
@@ -23,7 +28,11 @@ class ServerHelper {
             }
             
             if let dic = JSON as? Dictionary<String, AnyObject> {
-                completionHandler(ServerResultModel(dic), nil)
+                let ret = ServerResultModel<Any>(dic)
+                completionHandler(ret, nil)
+                if !ret.success && (ret.errorMessage! =~ Static.NotLoggedString) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(kNotification_NotLogged, object: nil)
+                }
             }
         }
         return completionHandler
@@ -41,7 +50,11 @@ class ServerHelper {
                 if let dic = dic["data"] as? Dictionary<String, AnyObject> {
                     data = T(dic)
                 }
-                completionHandler(ServerResultModel(dic, data: data), nil)
+                let ret = ServerResultModel(dic, data: data)
+                completionHandler(ret, nil)
+                if !ret.success && (ret.errorMessage! =~ Static.NotLoggedString) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(kNotification_NotLogged, object: nil)
+                }
             }
         }
         return completionHandler
@@ -61,7 +74,11 @@ class ServerHelper {
                         data.append(T(dic))
                     }
                 }
-                completionHandler(ServerResultModel(dic, data: data), nil)
+                let ret = ServerResultModel(dic, data: data)
+                completionHandler(ret, nil)
+                if !ret.success && (ret.errorMessage! =~ Static.NotLoggedString) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(kNotification_NotLogged, object: nil)
+                }
             }
         }
         return completionHandler

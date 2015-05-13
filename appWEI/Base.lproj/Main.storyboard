@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-223.5" y="-300"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="Nlw-Vt-WUz">
             <objects>
-                <navigationController storyboardIdentifier="mainNav" id="wCr-Ha-8wK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNav" id="wCr-Ha-8wK" customClass="MainNavigationController" customModule="appWEI" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yaf-Ss-UVd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1688,9 +1688,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Gel-uq-x6C"/>
-        <segue reference="OSb-j2-zDT"/>
-        <segue reference="cSf-o2-POF"/>
-        <segue reference="BUh-vR-HYI"/>
+        <segue reference="w3i-EN-3wY"/>
+        <segue reference="8VC-lQ-WAc"/>
         <segue reference="fm5-X3-Ctw"/>
+        <segue reference="cSf-o2-POF"/>
     </inferredMetricsTieBreakers>
 </document>

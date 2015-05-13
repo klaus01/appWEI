@@ -99,6 +99,7 @@
 		24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */; };
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
+		24E50EDE1B039F100016F1DD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E50EDD1B039F100016F1DD /* MainNavigationController.swift */; };
 		24E649281AE35D0B00B5228A /* BlacklistAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */; };
 		24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */; };
 		24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E79A171AE00AB900347C06 /* CE_UIViewController.swift */; };
@@ -276,6 +277,7 @@
 		24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendCollectionViewCell.xib; path = View/FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
+		24E50EDD1B039F100016F1DD /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistAddViewController.swift; sourceTree = "<group>"; };
 		24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewCell.xib; path = View/LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E79A171AE00AB900347C06 /* CE_UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				24E0A3001ABFF0D5002D6E7F /* LaunchScreenViewController.swift */,
+				24E50EDD1B039F100016F1DD /* MainNavigationController.swift */,
 				24019C4C1ABC19A100672673 /* RegisterViewController.swift */,
 				242E35BA1AC164D1001EDA0D /* UserInfoViewController.swift */,
 				24AA683E1AC3928700F79324 /* DefulatIconsViewController.swift */,
@@ -854,6 +857,7 @@
 				244C19E01ABBFFC000813708 /* AppDelegate.swift in Sources */,
 				24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */,
 				240D52B41ADEB69E00B8E112 /* UIDatePicker.swift in Sources */,
+				24E50EDE1B039F100016F1DD /* MainNavigationController.swift in Sources */,
 				24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */,
 				24AA68411AC3D4C400F79324 /* HomeViewController.swift in Sources */,
 				24EA77BD1AF90A8E008EE77E /* CE_UITextView.swift in Sources */,
