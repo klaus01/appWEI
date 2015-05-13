@@ -26,6 +26,9 @@ class FriendsViewController: UIViewController {
         setupRefreshControl();
         setupCollectionView();
         
+        ce_addObserverForName(kNotification_UpdatingFriends) { [weak self] (notification) -> Void in
+            self!.refreshControl.beginRefreshing()
+        }
         ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
             self!.friends = UserInfo.shared.whitelistFriends
             self!.collectionView.reloadData()

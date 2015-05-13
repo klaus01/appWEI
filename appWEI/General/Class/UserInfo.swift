@@ -12,9 +12,11 @@ import CoreLocation
 
 
 // 当前登录用户的朋友列表更新完成
+public let kNotification_UpdatingFriends = "kNotification_UpdatingFriends"
 public let kNotification_UpdateFriendsComplete = "kNotification_UpdateFriendsComplete"
 
 // 当前登录用户的未读消息更新完成
+public let kNotification_UpdatingUnreadMessages = "kNotification_UpdatingUnreadMessages"
 public let kNotification_UpdateUnreadMessagesComplete = "kNotification_UpdateUnreadMessagesComplete"
 
 // 当前登录用户创建了一个新字
@@ -153,6 +155,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
         
         _isUpdatingFriends = true
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotification_UpdatingFriends, object: nil)
         ServerHelper.appUserGetFriends { (ret, error) -> Void in
             self._isUpdatingFriends = false
             if let error = error {
@@ -175,6 +178,7 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         }
         
         _isUpdatingUnreadMessages = true
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotification_UpdatingUnreadMessages, object: nil)
         ServerHelper.messageGetUnread { (ret, error) -> Void in
             self._isUpdatingUnreadMessages = false
             if let error = error {

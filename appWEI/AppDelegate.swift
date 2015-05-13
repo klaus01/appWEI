@@ -13,6 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func clearNotifications(application: UIApplication) {
+        application.applicationIconBadgeNumber = 1
+        application.applicationIconBadgeNumber = 0
+        application.cancelAllLocalNotifications()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // 分享相关设置 http://dashboard.mob.com/ShareSDK#/quickstarts/ios 第三步
@@ -26,8 +32,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ShareSDK.connectFacebookWithAppKey("107704292745179", appSecret:"38053202e1a5fe26c80c753071f0b573")
         //添加Instagram应用，此应用需要引用InstagramConnection.framework库 http://instagram.com/developer/clients/register/上注册应用，并将相关信息填写以下字段
         ShareSDK.connectInstagramWithClientId("ff68e3216b4f4f989121aa1c2962d058", clientSecret: "1b2e82f110264869b3505c3fe34e31a1", redirectUri: "http://sharesdk.cn")
+//        // TODO 自定义UI分享
+//        [ShareSDK shareContent:publishContent
+//            type:ShareTypeSinaWeibo
+//            authOptions:nil
+//            shareOptions:nil
+//            statusBarTips:YES
+//            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+//            if (state == SSPublishContentStateSuccess)
+//            {
+//            NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+//            }
+//            else if (state == SSPublishContentStateFail)
+//            {
+//            NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+//            }
+//            
+//            }];
         
-        // 注册远程通知
+        // 注册远程通知UIApplicationLaunchOptionsRemoteNotificationKey
         if application.respondsToSelector("isRegisteredForRemoteNotifications") {
             let settings = UIUserNotificationSettings(forTypes: .Alert | .Sound | .Badge, categories: nil)
             application.registerUserNotificationSettings(settings)
@@ -36,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             application.registerForRemoteNotificationTypes(.Alert | .Sound | .Badge)
         }
+        
+        // 处理应用通知数量
+        clearNotifications(application)
         
         return true
     }
@@ -55,13 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        clearNotifications(application)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK:- Remote Notifications
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let token = deviceToken.description
@@ -78,5 +105,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("获取token失败：\(error)")
     }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        UserInfo.shared.updateUnreadMessages()
+        UserInfo.shared.updateFriends()
+    }
 }
 
