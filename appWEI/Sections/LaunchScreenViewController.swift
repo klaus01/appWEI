@@ -36,6 +36,7 @@ class LaunchScreenViewController: UIViewController {
         ServerHelper.appUserIsLogged { (ret, error) -> Void in
             if let error = error {
                 println(error)
+                self.setRootViewControllerWithIdentifier("reg")
                 return
             }
             UserInfo.shared.isLogged = ret!.success
