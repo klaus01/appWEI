@@ -194,30 +194,40 @@ extension UIButton {
     }
 }
 
-/**
-统一设置用户列表样式
-
-:param: collectionView
-*/
-func setUserListStyleWithCollectionView(collectionView: UICollectionView) {
+extension UICollectionView {
     
-    let ROW_COUNT = 3.0
-    let CELL_WIDTH = 100.0
-    let CELL_HEIGHT = 120.0
+    /**
+    统一设置用户列表样式，每行3个，CellSize(100, 120)
+    */
+    func setUserListStyle() {
+        setCellSize(CGSizeMake(100.0, 120.0), rowCount: 3)
+    }
     
-    collectionView
-        .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
+    /**
+    根据CellSize和RowCount来设置Cell上下左右间距，使得上下左右间距相等
+    
+    :param: cellSize Cell宽高
+    :param: rowCount 每行有多少个Cell
+    */
+    func setCellSize(cellSize: CGSize, rowCount: Int) {
+        let ROW_COUNT = Double(rowCount)
+        let CELL_WIDTH = Double(cellSize.width)
+        let CELL_HEIGHT = Double(cellSize.height)
+        
+        ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
             return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
         }
-        .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
+        ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
             let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
             return CGFloat(i)
         }
-        .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
+        ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
             let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
             let f = CGFloat(i)
             return UIEdgeInsets(top: f, left: f, bottom: f, right: f)
+        }
     }
+
 }
 
 /**

@@ -126,7 +126,7 @@ class PartnerViewController: UIViewController {
                 self!.performSegueWithIdentifier("showPartnerMessages", sender: nil)
             }
         }
-        setUserListStyleWithCollectionView(messageCollectionView)
+        .setUserListStyle()
     }
     
     private func loadPartners() {

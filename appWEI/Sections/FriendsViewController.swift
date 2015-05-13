@@ -81,8 +81,8 @@ class FriendsViewController: UIViewController {
                 else {
                     UIAlertView.showMessage("没有收到“\(friend.nickname!)”的消息")
                 }
-        }
-        setUserListStyleWithCollectionView(collectionView)
+            }
+            .setUserListStyle()
     }
     
     private func setupRefreshControl() {

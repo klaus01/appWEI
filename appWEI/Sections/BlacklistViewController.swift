@@ -58,7 +58,7 @@ class BlacklistViewController: UIViewController {
                 }
                 return cell;
         }
-        setUserListStyleWithCollectionView(collectionView)
+        .setUserListStyle()
         
         ce_addObserverForName(kNotification_UpdateFriendsComplete) { [weak self] (notification) -> Void in
             self!.blacklist = UserInfo.shared.blacklistFriends

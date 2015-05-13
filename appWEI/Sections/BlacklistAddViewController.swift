@@ -115,7 +115,7 @@ class BlacklistAddViewController: UIViewController {
                 }
                 return cell;
             }
-        setUserListStyleWithCollectionView(collectionView)
+            .setUserListStyle()
     }
     
     @IBOutlet weak var collectionView: UICollectionView!

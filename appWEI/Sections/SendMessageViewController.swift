@@ -102,10 +102,6 @@ class SendMessageViewController: UIViewController {
     }
     
     private func setupWordCollectionView() {
-        let ROW_COUNT = 3.0
-        let CELL_WIDTH = 100.0
-        let CELL_HEIGHT = 100.0
-        
         let cellNib1 = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
         wordCollectionView.registerNib(cellNib1, forCellWithReuseIdentifier: "MYCELL")
         let cellNib2 = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
@@ -138,18 +134,7 @@ class SendMessageViewController: UIViewController {
                 self!.loadMoreWords()
             }
         }
-        .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
-            return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
-        }
-        .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            return CGFloat(i)
-        }
-        .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            let f = CGFloat(i)
-            return UIEdgeInsets(top: f, left: f, bottom: f, right: f)
-        }
+        .setCellSize(CGSizeMake(100, 100), rowCount: 3)
     }
     
     private func setupFriendsCollectionView() {

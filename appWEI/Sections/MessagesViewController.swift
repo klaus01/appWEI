@@ -134,11 +134,6 @@ class MessagesViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        
-        let ROW_COUNT = 6.0
-        let CELL_WIDTH = 50.0
-        let CELL_HEIGHT = 50.0
-        
         let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         collectionView
@@ -156,18 +151,7 @@ class MessagesViewController: UIViewController {
             self!.showUnreadMessage(message)
             self!.collectionView.deleteItemsAtIndexPaths([indexPath])
         }
-        .ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
-            return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
-        }
-        .ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            return CGFloat(i)
-        }
-        .ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            let f = CGFloat(i)
-            return UIEdgeInsets(top: f, left: f, bottom: f, right: f)
-        }
+        .setCellSize(CGSizeMake(50, 50), rowCount: 6)
     }
     
     private func reloadUnreadMessages() {
