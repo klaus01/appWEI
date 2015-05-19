@@ -111,6 +111,8 @@
 		24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */; };
 		24E8197C1ACD9327007577F6 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */; };
 		24E827A21ADEA40700813C34 /* CE_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E827A11ADEA40700813C34 /* CE_UITableView.swift */; };
+		24E86FBE1B0B636F00B68F81 /* UserTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E86FBD1B0B636F00B68F81 /* UserTitleView.swift */; };
+		24E86FC01B0B638100B68F81 /* UserTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E86FBF1B0B638100B68F81 /* UserTitleView.xib */; };
 		24EA77BD1AF90A8E008EE77E /* CE_UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
@@ -289,6 +291,8 @@
 		24E8062D1AE5588E004AD0F5 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingTableViewCell.xib; path = View/LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		24E8197B1ACD9327007577F6 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		24E827A11ADEA40700813C34 /* CE_UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITableView.swift; sourceTree = "<group>"; };
+		24E86FBD1B0B636F00B68F81 /* UserTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTitleView.swift; path = View/UserTitleView.swift; sourceTree = "<group>"; };
+		24E86FBF1B0B638100B68F81 /* UserTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserTitleView.xib; path = View/UserTitleView.xib; sourceTree = "<group>"; };
 		24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -672,6 +676,8 @@
 				24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */,
 				24E0EF5B1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift */,
 				24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */,
+				24E86FBD1B0B636F00B68F81 /* UserTitleView.swift */,
+				24E86FBF1B0B638100B68F81 /* UserTitleView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 			files = (
 				24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */,
 				24DEA2651AF132F600E0E4AD /* Resource.bundle in Resources */,
+				24E86FC01B0B638100B68F81 /* UserTitleView.xib in Resources */,
 				24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */,
 				24DEA2641AF132F600E0E4AD /* ShareSDKLocalizable.strings in Resources */,
 				24E0EF5E1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib in Resources */,
@@ -886,6 +893,7 @@
 				24019C4D1ABC19A100672673 /* RegisterViewController.swift in Sources */,
 				240D52B81ADEB69E00B8E112 /* UISlider.swift in Sources */,
 				2426E8D01AD96A4E00E47636 /* CE_UIScrollView.swift in Sources */,
+				24E86FBE1B0B636F00B68F81 /* UserTitleView.swift in Sources */,
 				24B7808C1AE2522800460DE3 /* ProjectFunc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

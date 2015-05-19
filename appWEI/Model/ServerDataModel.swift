@@ -322,6 +322,42 @@ struct HistoryMessageModel : ServerDataProtocol {
             gift = nil
         }
     }
+    
+    var userID: Int? {
+        if let user = appUser {
+            return user.appUserID
+        }
+        else if let user = partnerUser {
+            return user.partnerUserID
+        }
+        else {
+            return nil
+        }
+    }
+    
+    var iconUrl: String? {
+        if let user = appUser {
+            return user.iconUrl
+        }
+        else if let user = partnerUser {
+            return user.iconUrl
+        }
+        else {
+            return nil
+        }
+    }
+    
+    var nickname: String? {
+        if let user = appUser {
+            return user.nickname
+        }
+        else if let user = partnerUser {
+            return user.name
+        }
+        else {
+            return nil
+        }
+    }
 }
 
 // 公众号消息情况

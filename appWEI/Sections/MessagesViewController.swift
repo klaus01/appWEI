@@ -74,6 +74,7 @@ class MessagesViewController: UIViewController {
 
     private var unreadMessages: [HistoryMessageModel]!
     private var currentDisplayMessage: HistoryMessageModel?
+    private var userTitleView: UserTitleView?
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var wordView: WordView!
@@ -126,6 +127,8 @@ class MessagesViewController: UIViewController {
         ce_addObserverForName(kNotification_UpdateUnreadMessagesComplete) { [weak self] (notification) -> Void in
             self!.reloadUnreadMessages()
         }
+        
+        self.navigationItem.titleView = nil;
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -148,6 +151,7 @@ class MessagesViewController: UIViewController {
         }
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
             let message = self!.unreadMessages.removeAtIndex(indexPath.item)
+            self!.showUserInfoWithMessage(message)
             self!.showUnreadMessage(message)
             self!.collectionView.deleteItemsAtIndexPaths([indexPath])
         }
@@ -179,18 +183,22 @@ class MessagesViewController: UIViewController {
         })
     }
     
+    private func showUserInfoWithMessage(message: HistoryMessageModel) {
+        if (userTitleView == nil) {
+            userTitleView = NSBundle.mainBundle().loadNibNamed("UserTitleView", owner: nil, options: nil).first as? UserTitleView
+            navigationItem.titleView = userTitleView
+            userTitleView!.backgroundColor = UIColor.clearColor()
+            userTitleView!.frame = CGRectMake(0, 0, userTitleView!.superview!.bounds.size.width, userTitleView!.superview!.bounds.size.height)
+        }
+        if let view = userTitleView {
+            view.imageView.imageWebUrl = message.iconUrl
+            view.label.text = message.nickname
+            view.autoContnetSize()
+        }
+    }
+    
     deinit {
         ce_removeObserver()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
