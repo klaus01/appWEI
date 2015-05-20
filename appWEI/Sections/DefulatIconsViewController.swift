@@ -24,19 +24,15 @@ class DefulatIconsViewController: UIViewController {
     }
     
     private func setImage(headName: String) {
-        image1.image = UIImage(named: headName + "1")
-        image2.image = UIImage(named: headName + "2")
-        image3.image = UIImage(named: headName + "3")
-        image4.image = UIImage(named: headName + "4")
-        image5.image = UIImage(named: headName + "5")
-        image6.image = UIImage(named: headName + "6")
-        image7.image = UIImage(named: headName + "7")
-        image8.image = UIImage(named: headName + "8")
-        image9.image = UIImage(named: headName + "9")
+        let images = [image1, image2, image3, image4, image5, image6, image7, image8, image9]
+        for (var i = 0; i < images.count; i++) {
+            images[i].image = UIImage(named: "\(headName)\(i + 1)")
+        }
     }
     
     // MARK: - IB
     
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
@@ -61,7 +57,8 @@ class DefulatIconsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        topView.backgroundColor = THEME_BAR_COLOR
+        sexSegmentedControl.tintColor = THEME_BAR_TEXT_COLOR
         sexSegmentedControl.selectedSegmentIndex = 0
     }
     

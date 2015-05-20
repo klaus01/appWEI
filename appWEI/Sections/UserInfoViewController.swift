@@ -85,6 +85,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     // MARK: - IB
     
+    @IBOutlet weak var iconView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
@@ -94,10 +95,31 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        iconView.layer.cornerRadius = 4
+        iconView.layer.shadowColor = UIColor.lightGrayColor().CGColor
+        iconView.layer.shadowOffset = CGSizeMake(0, 2)
+        iconView.layer.shadowOpacity = 1
+        iconView.layer.shadowRadius = 0
+        
+        saveButton.backgroundColor = THEME_BAR_COLOR
+        saveButton.setTitleColor(THEME_BAR_TEXT_COLOR, forState: UIControlState.Normal)
+        
         iconImageView.addGestureRecognizer(UITapGestureRecognizer() { [unowned self] (gestureRecognizer) -> () in
             self.showSelectIconActionSheet()
         })
+        nicknameTextField.ce_ShouldChangeCharactersInRange { (textField, range, string) -> Bool in
+            if string == "\n" {
+                if textField.text == nil || textField.text!.length <= 0 || textField.text!.length > 1 {
+                    UIAlertView.showMessage("请输入一个字做为昵称")
+                }
+                else {
+                    textField.resignFirstResponder()
+                }
+                return false
+            }
+            return true
+        }
         saveButton.clicked { [unowned self] UIButton -> () in
             if self.iconImage == nil {
                 UIAlertView.showMessage("请选择头像") { () -> Void in

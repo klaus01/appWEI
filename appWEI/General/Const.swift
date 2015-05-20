@@ -14,8 +14,8 @@ let UUIDString = ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDS
 
 // 服务端域名
 #if DEBUG
-let SERVER_HOST_RESOURCE_FILE   = "http://192.168.199.101:3001"
-let SERVER_HOST_INTERFACE       = "http://192.168.199.101:3001"
+let SERVER_HOST_RESOURCE_FILE   = "http://192.168.1.3:3001"
+let SERVER_HOST_INTERFACE       = "http://192.168.1.3:3001"
 #else
 let SERVER_HOST_RESOURCE_FILE   = "http://weiapp.cf:3000"
 let SERVER_HOST_INTERFACE       = "http://weiapp.cf:3001"
@@ -27,3 +27,6 @@ let VERIFICATIONCODE_INTERVAL   = 60
 let VERIFICATIONCODE_LENGTH     = 6
 // 多久上传一次经纬度坐标(秒)
 let UPLOADLOCATION_INTERVAL     = 5 * 60
+
+let THEME_BAR_COLOR = UIColor(red: 71/255.0, green: 120/255.0, blue: 135/255.0, alpha: 1)
+let THEME_BAR_TEXT_COLOR = UIColor.whiteColor()
