@@ -133,6 +133,7 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
             }
             if let weakSelf = self {
                 if ret!.success {
+                    // TODO 造了字需要弹出分享菜单，是在哪个界面弹呢？
                     NSNotificationCenter.defaultCenter().postNotificationName(kNotification_NewWord, object: ret!.data!.newWordID)
                 }
                 else {
