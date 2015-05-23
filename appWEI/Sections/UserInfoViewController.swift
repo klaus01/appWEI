@@ -26,7 +26,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                     imagePickerController.allowsEditing = true
                     imagePickerController.sourceType = .Camera
                     imagePickerController.ce_DidFinishPickingMediaWithInfo({ (picker, info) -> Void in
-                        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
                             self.iconImage = image
                             picker.dismissViewControllerAnimated(true, completion: nil)
                         }
@@ -37,7 +37,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                     imagePickerController.allowsEditing = true
                     imagePickerController.sourceType = .PhotoLibrary
                     imagePickerController.ce_DidFinishPickingMediaWithInfo({ (picker, info) -> Void in
-                        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
                             self.iconImage = image
                             picker.dismissViewControllerAnimated(true, completion: nil)
                         }
@@ -61,6 +61,23 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             return iconImageView.image
         }
         set {
+            if let image = newValue {
+                let MAXSIZE = CGFloat(300)
+                let oldSize = image.size
+                if oldSize.width > MAXSIZE || oldSize.height > MAXSIZE {
+                    var newSize = CGSizeZero
+                    if oldSize.width > oldSize.height {
+                        newSize.width = MAXSIZE
+                        newSize.height = oldSize.height * (newSize.width / oldSize.width)
+                    }
+                    else {
+                        newSize.height = MAXSIZE
+                        newSize.width = oldSize.width * (newSize.height / oldSize.height)
+                    }
+                    iconImageView.image = image.scaleToSize(newSize)
+                    return
+                }
+            }
             iconImageView.image = newValue
         }
     }
@@ -100,7 +117,14 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         iconView.layer.shadowColor = UIColor.lightGrayColor().CGColor
         iconView.layer.shadowOffset = CGSizeMake(0, 2)
         iconView.layer.shadowOpacity = 1
-        iconView.layer.shadowRadius = 0
+        iconView.layer.shadowRadius = 4
+        
+        // 图片 上边左右角 圆角
+//        let maskPath = UIBezierPath(roundedRect: iconImageView.bounds, byRoundingCorners: UIRectCorner.TopLeft | UIRectCorner.TopRight, cornerRadii: CGSizeMake(4, 4))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = iconImageView.bounds;
+//        maskLayer.path = maskPath.CGPath;
+//        iconImageView.layer.mask = maskLayer;
         
         saveButton.backgroundColor = THEME_BAR_COLOR
         saveButton.setTitleColor(THEME_BAR_TEXT_COLOR, forState: UIControlState.Normal)
@@ -108,6 +132,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         iconImageView.addGestureRecognizer(UITapGestureRecognizer() { [unowned self] (gestureRecognizer) -> () in
             self.showSelectIconActionSheet()
         })
+        
         nicknameTextField.ce_ShouldChangeCharactersInRange { (textField, range, string) -> Bool in
             if string == "\n" {
                 if textField.text == nil || textField.text!.length <= 0 || textField.text!.length > 1 {
@@ -120,6 +145,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             }
             return true
         }
+        
         saveButton.clicked { [unowned self] UIButton -> () in
             if self.iconImage == nil {
                 UIAlertView.showMessage("请选择头像") { () -> Void in
@@ -166,6 +192,7 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                 }
             }
         }
+        
         if mode == .updateUser {
             ServerHelper.appUserGet(UserInfo.shared.id, completionHandler: { [weak self] (ret, error) -> Void in
                 if let error = error {
@@ -185,5 +212,5 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             });
         }
     }
-
+    
 }
