@@ -105,16 +105,16 @@ internal class AlertViewDelegate : NSObject, UIAlertViewDelegate {
     }
 }
 
-private var AlertViewDelegateKey:Void
+private var AlertViewDelegateKey: UInt8 = 0
 
 internal extension UIAlertView {
-
+    
     var __delegate: AlertViewDelegate? {
         get {
             return objc_getAssociatedObject(self, &AlertViewDelegateKey) as? AlertViewDelegate
         }
         set {
-            objc_setAssociatedObject(self, &AlertViewDelegateKey, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
+            objc_setAssociatedObject(self, &AlertViewDelegateKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC));
         }
     }
 }

@@ -105,7 +105,7 @@ internal class ActionSheetDelegate :NSObject, UIActionSheetDelegate {
     }
 }
 
-private var ActionSheetDelegateKey:Void
+private var ActionSheetDelegateKey: UInt8 = 0
 
 internal extension UIActionSheet {
     
