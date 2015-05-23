@@ -56,6 +56,59 @@ class WordLayerView: UIView {
         super.init(coder: aDecoder)
     }
     
+    // MAKE: - Touchs
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch = touches.first as? UITouch {
+            if touch.tapCount == 1 {
+                if mode == .MoveZoomRotation {
+                    touchBeginPoint = touch.locationInView(self)
+                }
+                else {
+                    
+                }
+            }
+        }
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch = touches.first as? UITouch {
+            if touch.tapCount == 1 {
+                if mode == .MoveZoomRotation {
+                    let newPoint = touch.locationInView(self)
+                    var center = wordView.center
+                    center.x += newPoint.x - touchBeginPoint.x
+                    center.y += newPoint.y - touchBeginPoint.y
+                    wordView.center = center
+                    touchBeginPoint = newPoint
+                }
+                else {
+                    
+                }
+            }
+        }
+        super.touchesMoved(touches, withEvent: event)
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        super.touchesCancelled(touches, withEvent: event)
+        if let touch = touches.first as? UITouch {
+            if touch.tapCount == 1 {
+                doChanged()
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
+        if let touch = touches.first as? UITouch {
+            if touch.tapCount == 1 {
+                doChanged()
+            }
+        }
+    }
+    
     // MARK: - Private
     
     private class WordView: UIView {
@@ -80,6 +133,7 @@ class WordLayerView: UIView {
         }
     }
     
+    private var touchBeginPoint: CGPoint = CGPointZero
     private var wordView: WordView!
     private var pinchGesture: UIPinchGestureRecognizer!
     private var rotationGesture: UIRotationGestureRecognizer!
@@ -118,9 +172,7 @@ class WordLayerView: UIView {
     }
     
     private func doChanged() {
-        if let f = onChanged {
-            f(self)
-        }
+        onChanged?(self)
     }
     
 }
