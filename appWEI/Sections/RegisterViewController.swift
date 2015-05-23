@@ -141,6 +141,24 @@ class RegisterViewController: UIViewController {
         sendButton.hidden = true
         regOrLoginButton.hidden = true
         
+        phoneNumberTextField.ce_ShouldChangeCharactersInRange { [weak self] (textField, range, string) -> Bool in
+            if string == "\n" && !self!.sendButton.hidden {
+                textField.resignFirstResponder()
+                self!.sendClick(self!.sendButton)
+                return false
+            }
+            return true
+        }
+        
+        verificationCodeTextField.ce_ShouldChangeCharactersInRange { [weak self] (textField, range, string) -> Bool in
+            if string == "\n" && !self!.regOrLoginButton.hidden {
+                textField.resignFirstResponder()
+                self!.regOrLoginClick(self!.regOrLoginButton)
+                return false
+            }
+            return true
+        }
+        
         if let phoneNumber = UserInfo.shared.phoneNumber {
             phoneNumberTextField.text = phoneNumber
             phoneNumberEditingChanged(phoneNumberTextField)
