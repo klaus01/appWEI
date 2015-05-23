@@ -60,6 +60,25 @@ extension UIView {
     
 }
 
+extension UIImage {
+    
+    /**
+    调整当前Image到指定尺寸
+    
+    :param: size 指定调整后的尺寸
+    
+    :returns: 调整尺寸后的Image
+    */
+    func scaleToSize(size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        self.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        return newImage;
+    }
+    
+}
+
 extension UIAlertView {
     
     /**
