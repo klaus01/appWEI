@@ -47,6 +47,7 @@
 		24B7808C1AE2522800460DE3 /* ProjectFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808B1AE2522800460DE3 /* ProjectFunc.swift */; };
 		24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */; };
 		24C388451AE38F5600C05A2D /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */; };
+		24D29EAC1B10469900FA35A9 /* WordLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D29EAB1B10469900FA35A9 /* WordLayerView.swift */; };
 		24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */; };
 		24DEA2601AF132F600E0E4AD /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEA2501AF132F600E0E4AD /* FacebookConnection.framework */; };
 		24DEA2611AF132F600E0E4AD /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEA2511AF132F600E0E4AD /* InstagramConnection.framework */; };
@@ -217,6 +218,7 @@
 		24B7808B1AE2522800460DE3 /* ProjectFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFunc.swift; sourceTree = "<group>"; };
 		24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistViewController.swift; sourceTree = "<group>"; };
 		24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
+		24D29EAB1B10469900FA35A9 /* WordLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordLayerView.swift; path = View/WordLayerView.swift; sourceTree = "<group>"; };
 		24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerViewController.swift; sourceTree = "<group>"; };
 		24DEA2501AF132F600E0E4AD /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		24DEA2511AF132F600E0E4AD /* InstagramConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstagramConnection.framework; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */,
 				24E86FBD1B0B636F00B68F81 /* UserTitleView.swift */,
 				24E86FBF1B0B638100B68F81 /* UserTitleView.xib */,
+				24D29EAB1B10469900FA35A9 /* WordLayerView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */,
 				24E02D011ACAD10B00A17D13 /* NSDate.swift in Sources */,
 				247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */,
+				24D29EAC1B10469900FA35A9 /* WordLayerView.swift in Sources */,
 				24060F1A1AE6960300A405BC /* StatisticsViewController.swift in Sources */,
 				2486F6B51ABE99E70007E070 /* Const.swift in Sources */,
 				24E3E9651AD27CD800B51FBE /* FriendCollectionViewCell.swift in Sources */,
@@ -1060,7 +1064,7 @@
 					"$(PROJECT_DIR)/appWEI/Vendor/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ebe81ce7-1ecf-4166-ab80-700f504b4fdd";
 				SWIFT_OBJC_BRIDGING_HEADER = "appWEI/appWEI-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1086,7 +1090,7 @@
 					"$(PROJECT_DIR)/appWEI/Vendor/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ebe81ce7-1ecf-4166-ab80-700f504b4fdd";
 				SWIFT_OBJC_BRIDGING_HEADER = "appWEI/appWEI-Bridging-Header.h";
 			};
 			name = Release;

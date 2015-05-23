@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxC-Mm-jCf">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1381,24 +1381,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入需要添加的新字" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8H2-vc-eh1">
-                                <rect key="frame" x="16" y="72" width="288" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="A6H-cc-vlD"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNa-FK-h65">
-                                <rect key="frame" x="275" y="125" width="22" height="22"/>
+                                <rect key="frame" x="283" y="450" width="22" height="22"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsR-nb-29f">
-                                <rect key="frame" x="268" y="155" width="36" height="317"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="276" y="102" width="36" height="340"/>
+                                <color key="backgroundColor" red="0.93677004419999998" green="0.93677004419999998" blue="0.93677004419999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="ETb-Ly-GSZ"/>
                                 </constraints>
@@ -1408,37 +1399,43 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MYCELL" id="nYV-Tg-c6g">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-SM-ZWW">
-                                <rect key="frame" x="16" y="125" width="244" height="347"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-SM-ZWW">
+                                <rect key="frame" x="8" y="142" width="260" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UkY-SM-ZWW" secondAttribute="height" multiplier="1:1" id="dNF-61-e6v"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wx-OK-UzS">
+                                <rect key="frame" x="283" y="72" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eXb-Tz-BbA">
+                                <rect key="frame" x="8" y="444" width="260" height="29"/>
+                                <segments>
+                                    <segment title="移动、缩放、旋转"/>
+                                    <segment title="擦除"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="hsR-nb-29f" secondAttribute="bottom" constant="8" id="0wa-dV-NWL"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="trailing" constant="8" id="2Ge-eS-jvy"/>
-                            <constraint firstItem="UkY-SM-ZWW" firstAttribute="top" secondItem="8H2-vc-eh1" secondAttribute="bottom" constant="8" id="46L-Oi-0e6"/>
-                            <constraint firstItem="8H2-vc-eh1" firstAttribute="trailing" secondItem="eRg-v2-7N0" secondAttribute="trailingMargin" id="Dio-wA-7Rx"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="trailing" secondItem="eRg-v2-7N0" secondAttribute="trailingMargin" id="L2g-tW-i72"/>
-                            <constraint firstItem="oNa-FK-h65" firstAttribute="top" secondItem="8H2-vc-eh1" secondAttribute="bottom" constant="8" id="Rd9-yi-Bnp"/>
-                            <constraint firstItem="8H2-vc-eh1" firstAttribute="leading" secondItem="eRg-v2-7N0" secondAttribute="leadingMargin" id="XvG-k2-I3f"/>
-                            <constraint firstItem="UkY-SM-ZWW" firstAttribute="leading" secondItem="eRg-v2-7N0" secondAttribute="leadingMargin" id="avK-xe-jcb"/>
-                            <constraint firstItem="8H2-vc-eh1" firstAttribute="top" secondItem="xAC-9Y-H4H" secondAttribute="bottom" constant="8" id="oij-Pm-Vdv"/>
-                            <constraint firstItem="oNa-FK-h65" firstAttribute="centerX" secondItem="hsR-nb-29f" secondAttribute="centerX" id="tff-Nu-5pu"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="top" secondItem="oNa-FK-h65" secondAttribute="bottom" constant="8" id="tuL-B5-x40"/>
-                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="UkY-SM-ZWW" secondAttribute="bottom" constant="8" id="x9n-pA-jjV"/>
+                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="eXb-Tz-BbA" secondAttribute="bottom" constant="8" id="6xX-JH-sYI"/>
+                            <constraint firstItem="7Wx-OK-UzS" firstAttribute="top" secondItem="xAC-9Y-H4H" secondAttribute="bottom" constant="8" id="ANS-g8-kjJ"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="centerY" secondItem="UkY-SM-ZWW" secondAttribute="centerY" id="DpT-dY-YVv"/>
+                            <constraint firstItem="7Wx-OK-UzS" firstAttribute="centerX" secondItem="hsR-nb-29f" secondAttribute="centerX" id="FSw-hz-hVj"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="top" secondItem="7Wx-OK-UzS" secondAttribute="bottom" constant="8" id="HAW-25-dY6"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="trailing" secondItem="eRg-v2-7N0" secondAttribute="trailingMargin" constant="8" id="L2g-tW-i72"/>
+                            <constraint firstItem="oNa-FK-h65" firstAttribute="top" secondItem="hsR-nb-29f" secondAttribute="bottom" constant="8" id="Rry-C6-Y73"/>
+                            <constraint firstItem="eXb-Tz-BbA" firstAttribute="trailing" secondItem="UkY-SM-ZWW" secondAttribute="trailing" id="SK2-Xu-Y1U"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="centerX" secondItem="oNa-FK-h65" secondAttribute="centerX" id="VeV-kU-2mG"/>
+                            <constraint firstItem="eXb-Tz-BbA" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="leading" id="YJc-yj-cpn"/>
+                            <constraint firstItem="UkY-SM-ZWW" firstAttribute="leading" secondItem="eRg-v2-7N0" secondAttribute="leadingMargin" constant="-8" id="iFV-Ud-Bmn"/>
+                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="oNa-FK-h65" secondAttribute="bottom" constant="8" id="lVE-7x-vqg"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="trailing" constant="8" id="woV-Vw-3bj"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1449,6 +1446,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addLayerButton" destination="oNa-FK-h65" id="YAz-I9-zwO"/>
+                        <outlet property="clearLayerButton" destination="7Wx-OK-UzS" id="40G-Lc-6hh"/>
+                        <outlet property="layersCollectionView" destination="hsR-nb-29f" id="MbF-GS-rv2"/>
+                        <outlet property="modeSegmentedControl" destination="eXb-Tz-BbA" id="GBm-AH-Qwy"/>
+                        <outlet property="nextButton" destination="ERr-fa-6nu" id="oIx-DQ-ngd"/>
+                        <outlet property="wordView" destination="UkY-SM-ZWW" id="DaU-ti-PK0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7b-Cp-haE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1481,39 +1486,48 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Q-2h-NVc">
-                                <rect key="frame" x="16" y="311" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Q-2h-NVc">
+                                <rect key="frame" x="16" y="311" width="30" height="30"/>
                                 <state key="normal" title="播放">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5Y-PI-4lz">
-                                <rect key="frame" x="251" y="311" width="46" height="30"/>
-                                <state key="normal" title="录音">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnY-qz-BWq">
-                                <rect key="frame" x="139" y="315" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnY-qz-BWq">
+                                <rect key="frame" x="155" y="315" width="10" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="按下录音按钮可以录制这个字的发音" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-Tv-tOi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="按下录音按钮可以录制这个字的发音" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-Tv-tOi">
                                 <rect key="frame" x="16" y="282" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5Y-PI-4lz">
+                                <rect key="frame" x="274" y="311" width="30" height="30"/>
+                                <state key="normal" title="录音">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Mhq-5O-WBq" firstAttribute="leading" secondItem="Jpt-sL-fFS" secondAttribute="leadingMargin" id="6BR-ec-wo9"/>
+                            <constraint firstItem="Ve3-Tv-tOi" firstAttribute="top" secondItem="Mhq-5O-WBq" secondAttribute="bottom" constant="38" id="Ddy-kT-Wjs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yhn-FT-hMR" secondAttribute="trailing" constant="-16" id="F1R-t8-aD8"/>
+                            <constraint firstItem="w6Q-2h-NVc" firstAttribute="leading" secondItem="Jpt-sL-fFS" secondAttribute="leadingMargin" id="KFe-Ed-ccD"/>
                             <constraint firstItem="yhn-FT-hMR" firstAttribute="top" secondItem="Uy4-mu-sga" secondAttribute="bottom" id="QCj-zO-ci9"/>
+                            <constraint firstItem="a5Y-PI-4lz" firstAttribute="trailing" secondItem="Jpt-sL-fFS" secondAttribute="trailingMargin" id="RFe-5V-PSC"/>
                             <constraint firstItem="Mhq-5O-WBq" firstAttribute="top" secondItem="yhn-FT-hMR" secondAttribute="bottom" id="Rsm-WQ-qYe"/>
+                            <constraint firstItem="a5Y-PI-4lz" firstAttribute="top" secondItem="Ve3-Tv-tOi" secondAttribute="bottom" constant="8" id="V8p-wS-GuW"/>
                             <constraint firstItem="yhn-FT-hMR" firstAttribute="leading" secondItem="Jpt-sL-fFS" secondAttribute="leadingMargin" constant="-16" id="XTX-0v-08j"/>
+                            <constraint firstItem="Ve3-Tv-tOi" firstAttribute="trailing" secondItem="Jpt-sL-fFS" secondAttribute="trailingMargin" id="Yng-R7-grZ"/>
                             <constraint firstItem="Mhq-5O-WBq" firstAttribute="trailing" secondItem="Jpt-sL-fFS" secondAttribute="trailingMargin" id="njL-ia-Q7m"/>
+                            <constraint firstItem="BnY-qz-BWq" firstAttribute="top" secondItem="Ve3-Tv-tOi" secondAttribute="bottom" constant="12" id="pGU-2P-U99"/>
+                            <constraint firstItem="Ve3-Tv-tOi" firstAttribute="leading" secondItem="Jpt-sL-fFS" secondAttribute="leadingMargin" id="tY1-0h-wsa"/>
+                            <constraint firstItem="w6Q-2h-NVc" firstAttribute="top" secondItem="Ve3-Tv-tOi" secondAttribute="bottom" constant="8" id="u2v-lZ-fKy"/>
+                            <constraint firstAttribute="centerX" secondItem="BnY-qz-BWq" secondAttribute="centerX" id="whb-u1-p9K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="音" id="PXa-gl-aN6">
