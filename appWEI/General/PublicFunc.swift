@@ -43,6 +43,23 @@ extension String {
     
 }
 
+extension UIView {
+    
+    /**
+    获取当前UIView的Image
+    
+    :returns: 当前UIView的Image
+    */
+    func captureView() -> UIImage {
+        UIGraphicsBeginImageContext(self.bounds.size)
+        self.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
+    
+}
+
 extension UIAlertView {
     
     /**
