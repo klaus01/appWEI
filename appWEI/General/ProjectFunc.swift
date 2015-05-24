@@ -210,21 +210,20 @@ extension UICollectionView {
     :param: rowCount 每行有多少个Cell
     */
     func setCellSize(cellSize: CGSize, rowCount: Int) {
-        let ROW_COUNT = Double(rowCount)
-        let CELL_WIDTH = Double(cellSize.width)
-        let CELL_HEIGHT = Double(cellSize.height)
+        let ROW_COUNT = CGFloat(rowCount)
+        let CELL_WIDTH = cellSize.width
+        let CELL_HEIGHT = cellSize.height
         
         ce_LayoutSizeForItemAtIndexPath { (collectionView, collectionViewLayout, indexPath) -> CGSize in
-            return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+            let size = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
+            return size
         }
         ce_LayoutMinimumLineSpacingForSectionAtIndex { (collectionView, collectionViewLayout, section) -> CGFloat in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            return CGFloat(i)
+            return floor((collectionView.bounds.size.width - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
         }
         ce_LayoutInsetForSectionAtIndex { (collectionView, collectionViewLayout, section) -> UIEdgeInsets in
-            let i = Int((Double(collectionView.bounds.size.width) - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
-            let f = CGFloat(i)
-            return UIEdgeInsets(top: f, left: f, bottom: f, right: f)
+            let i = floor((collectionView.bounds.size.width - (ROW_COUNT * CELL_WIDTH)) / (ROW_COUNT + 1))
+            return UIEdgeInsets(top: i, left: i, bottom: i, right: i)
         }
     }
 
