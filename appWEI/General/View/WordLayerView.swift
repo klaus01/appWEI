@@ -125,11 +125,22 @@ class WordLayerView: UIView {
         override func drawRect(rect: CGRect) {
             super.drawRect(rect)
             
+            // 居中显示 字
             let str = NSString(string: word)
             let attrs = [NSFontAttributeName: font]
             let strSize = str.sizeWithAttributes(attrs)
             let strRect = CGRectMake((rect.size.width - strSize.width) / 2, (rect.size.height - strSize.height) / 2, strSize.width, strSize.height)
             str.drawInRect(strRect, withAttributes: attrs)
+        }
+        func setAnchorPointWithPosition(position: CGPoint) {
+            // http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/
+            var anchorPoint = CGPointZero
+            anchorPoint.x = (position.x - frame.origin.x) / bounds.size.width
+            anchorPoint.y = (position.y - frame.origin.y) / bounds.size.height
+            
+            let oldFrame = self.frame;
+            self.layer.anchorPoint = anchorPoint;
+            self.frame = oldFrame;
         }
     }
     
@@ -148,7 +159,10 @@ class WordLayerView: UIView {
     
     private func setupPinchGesture() {
         pinchGesture = UIPinchGestureRecognizer() { [weak self] (gestureRecognizer) -> () in
-            if gestureRecognizer.state == .Changed {
+            if gestureRecognizer.state == .Began {
+                self!.wordView.setAnchorPointWithPosition(gestureRecognizer.locationInView(self))
+            }
+            else if gestureRecognizer.state == .Changed {
                 let scale = self!.pinchGesture.scale
                 self!.wordView.transform = CGAffineTransformScale(self!.wordView.transform, scale, scale)
                 self!.pinchGesture.scale = 1
@@ -161,7 +175,10 @@ class WordLayerView: UIView {
     
     private func setupRotationGesture() {
         rotationGesture = UIRotationGestureRecognizer() { [weak self] (gestureRecognizer) -> () in
-            if gestureRecognizer.state == .Changed {
+            if gestureRecognizer.state == .Began {
+                self!.wordView.setAnchorPointWithPosition(gestureRecognizer.locationInView(self))
+            }
+            else if gestureRecognizer.state == .Changed {
                 self!.wordView.transform = CGAffineTransformRotate(self!.wordView.transform, self!.rotationGesture.rotation)
                 self!.rotationGesture.rotation = 0
             }
