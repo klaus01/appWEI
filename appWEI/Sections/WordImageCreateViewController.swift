@@ -70,7 +70,7 @@ class WordImageCreateViewController: UIViewController {
             if cell.selectedBackgroundView == nil {
                 cell.selectedBackgroundView = UIView()
             }
-            cell.selectedBackgroundView.backgroundColor = UIColor.blueColor()
+            cell.selectedBackgroundView.backgroundColor = UIColor.yellowColor()
             
             let wordLayer = self!.wordLayerViews[indexPath.item]
             cell.imageView.image = wordLayer.captureView()

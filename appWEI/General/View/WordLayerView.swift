@@ -65,7 +65,7 @@ class WordLayerView: UIView {
                     touchBeginPoint = touch.locationInView(self)
                 }
                 else {
-                    
+                    wordView.addEraserLineWithBeginPoint(touch.locationInView(wordView))
                 }
             }
         }
@@ -84,7 +84,7 @@ class WordLayerView: UIView {
                     touchBeginPoint = newPoint
                 }
                 else {
-                    
+                    wordView.addEraserPoint(touch.locationInView(wordView))
                 }
             }
         }
@@ -94,24 +94,21 @@ class WordLayerView: UIView {
     override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         super.touchesCancelled(touches, withEvent: event)
         if let touch = touches.first as? UITouch {
-            if touch.tapCount == 1 {
-                doChanged()
-            }
+            doChanged()
         }
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
         if let touch = touches.first as? UITouch {
-            if touch.tapCount == 1 {
-                doChanged()
-            }
+            doChanged()
         }
     }
     
     // MARK: - Private
     
     private class WordView: UIView {
+        private var eraserPaths: [(CGFloat, [CGPoint])] = [(CGFloat, [CGPoint])]()
         private var word: String!
         private var font: UIFont!
         init(word: String, font: UIFont) {
@@ -131,16 +128,40 @@ class WordLayerView: UIView {
             let strSize = str.sizeWithAttributes(attrs)
             let strRect = CGRectMake((rect.size.width - strSize.width) / 2, (rect.size.height - strSize.height) / 2, strSize.width, strSize.height)
             str.drawInRect(strRect, withAttributes: attrs)
-        }
-        func setAnchorPointWithPosition(position: CGPoint) {
-            // http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/
-            var anchorPoint = CGPointZero
-            anchorPoint.x = (position.x - frame.origin.x) / bounds.size.width
-            anchorPoint.y = (position.y - frame.origin.y) / bounds.size.height
             
-            let oldFrame = self.frame;
-            self.layer.anchorPoint = anchorPoint;
-            self.frame = oldFrame;
+            // 橡皮擦 线条
+            if eraserPaths.count > 0 {
+                let context=UIGraphicsGetCurrentContext()
+                CGContextSetLineCap(context, kCGLineCapRound)
+                CGContextSetLineJoin(context,kCGLineJoinRound)
+                CGContextSetBlendMode(context, kCGBlendModeClear)
+                for (scale, points) in eraserPaths {
+                    var moved = false
+                    for point in points {
+                        if !moved {
+                            CGContextMoveToPoint(context, point.x, point.y)
+                            moved = true
+                        }
+                        CGContextAddLineToPoint(context, point.x,point.y)
+                    }
+                    CGContextSetLineWidth(context, CGFloat(44) / scale)
+                    CGContextStrokePath(context)
+                }
+            }
+        }
+        func addEraserLineWithBeginPoint(point: CGPoint) {
+            eraserPaths.append(getScale(), [point])
+            setNeedsDisplay()
+        }
+        func addEraserPoint(point: CGPoint) {
+            var (scale, line) = eraserPaths.removeLast()
+            line.append(point)
+            eraserPaths += [(scale, line)]
+            setNeedsDisplay()
+        }
+        private func getScale() -> CGFloat {
+            let t = transform
+            return sqrt(t.a * t.a + t.c * t.c)
         }
     }
     
@@ -159,31 +180,41 @@ class WordLayerView: UIView {
     
     private func setupPinchGesture() {
         pinchGesture = UIPinchGestureRecognizer() { [weak self] (gestureRecognizer) -> () in
-            if gestureRecognizer.state == .Began {
-                self!.wordView.setAnchorPointWithPosition(gestureRecognizer.locationInView(self))
-            }
-            else if gestureRecognizer.state == .Changed {
-                let scale = self!.pinchGesture.scale
-                self!.wordView.transform = CGAffineTransformScale(self!.wordView.transform, scale, scale)
-                self!.pinchGesture.scale = 1
-            }
-            else if gestureRecognizer.state == .Ended || gestureRecognizer.state == .Cancelled {
-                self!.doChanged()
+            if let gestureRecognizer = gestureRecognizer as? UIPinchGestureRecognizer {
+                if gestureRecognizer.state == .Began {
+                    let locationInView = gestureRecognizer.locationInView(self!.wordView)
+                    let locationInSuperview = gestureRecognizer.locationInView(self!)
+                    self!.wordView.layer.anchorPoint = CGPointMake(locationInView.x / self!.wordView.bounds.size.width, locationInView.y / self!.wordView.bounds.size.height)
+                    self!.wordView.center = locationInSuperview
+                }
+                else if gestureRecognizer.state == .Changed {
+                    let scale = gestureRecognizer.scale
+                    self!.wordView.transform = CGAffineTransformScale(self!.wordView.transform, scale, scale)
+                    gestureRecognizer.scale = 1
+                }
+                else if gestureRecognizer.state == .Ended || gestureRecognizer.state == .Cancelled {
+                    self!.doChanged()
+                }
             }
         }
     }
     
     private func setupRotationGesture() {
         rotationGesture = UIRotationGestureRecognizer() { [weak self] (gestureRecognizer) -> () in
-            if gestureRecognizer.state == .Began {
-                self!.wordView.setAnchorPointWithPosition(gestureRecognizer.locationInView(self))
-            }
-            else if gestureRecognizer.state == .Changed {
-                self!.wordView.transform = CGAffineTransformRotate(self!.wordView.transform, self!.rotationGesture.rotation)
-                self!.rotationGesture.rotation = 0
-            }
-            else if gestureRecognizer.state == .Ended || gestureRecognizer.state == .Cancelled {
-                self!.doChanged()
+            if let gestureRecognizer = gestureRecognizer as? UIRotationGestureRecognizer {
+                if gestureRecognizer.state == .Began {
+                    let locationInView = gestureRecognizer.locationInView(self!.wordView)
+                    let locationInSuperview = gestureRecognizer.locationInView(self!)
+                    self!.wordView.layer.anchorPoint = CGPointMake(locationInView.x / self!.wordView.bounds.size.width, locationInView.y / self!.wordView.bounds.size.height)
+                    self!.wordView.center = locationInSuperview
+                }
+                else if gestureRecognizer.state == .Changed {
+                    self!.wordView.transform = CGAffineTransformRotate(self!.wordView.transform, gestureRecognizer.rotation)
+                    gestureRecognizer.rotation = 0
+                }
+                else if gestureRecognizer.state == .Ended || gestureRecognizer.state == .Cancelled {
+                    self!.doChanged()
+                }
             }
         }
     }
