@@ -48,6 +48,7 @@
 		24B7808E1AE254FE00460DE3 /* BlacklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */; };
 		24C388451AE38F5600C05A2D /* CE_NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */; };
 		24D29EAC1B10469900FA35A9 /* WordLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D29EAB1B10469900FA35A9 /* WordLayerView.swift */; };
+		24DE4BDF1B11870A006C9266 /* CE_UIGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DE4BDE1B11870A006C9266 /* CE_UIGestureRecognizer.swift */; };
 		24DEA24D1AF117B200E0E4AD /* PartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */; };
 		24DEA2601AF132F600E0E4AD /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEA2501AF132F600E0E4AD /* FacebookConnection.framework */; };
 		24DEA2611AF132F600E0E4AD /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DEA2511AF132F600E0E4AD /* InstagramConnection.framework */; };
@@ -219,6 +220,7 @@
 		24B7808D1AE254FE00460DE3 /* BlacklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistViewController.swift; sourceTree = "<group>"; };
 		24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_NotificationCenter.swift; sourceTree = "<group>"; };
 		24D29EAB1B10469900FA35A9 /* WordLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordLayerView.swift; path = View/WordLayerView.swift; sourceTree = "<group>"; };
+		24DE4BDE1B11870A006C9266 /* CE_UIGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIGestureRecognizer.swift; sourceTree = "<group>"; };
 		24DEA24C1AF117B200E0E4AD /* PartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerViewController.swift; sourceTree = "<group>"; };
 		24DEA2501AF132F600E0E4AD /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		24DEA2511AF132F600E0E4AD /* InstagramConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstagramConnection.framework; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 				24C388441AE38F5600C05A2D /* CE_NotificationCenter.swift */,
 				24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */,
 				24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */,
+				24DE4BDE1B11870A006C9266 /* CE_UIGestureRecognizer.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				240D52B31ADEB69E00B8E112 /* UIControl.swift in Sources */,
 				24C388451AE38F5600C05A2D /* CE_NotificationCenter.swift in Sources */,
 				240D52B91ADEB69E00B8E112 /* UIStepper.swift in Sources */,
+				24DE4BDF1B11870A006C9266 /* CE_UIGestureRecognizer.swift in Sources */,
 				242E35BB1AC164D1001EDA0D /* UserInfoViewController.swift in Sources */,
 				24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */,
 				24E79A181AE00AB900347C06 /* CE_UIViewController.swift in Sources */,
