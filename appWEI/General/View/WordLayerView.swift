@@ -197,6 +197,9 @@ class WordLayerView: UIView {
                 }
             }
         }
+        pinchGesture.ce_ShouldRecognizeSimultaneouslyWithGestureRecognizer { (gestureRecognizer, otherGestureRecognizer) -> Bool in
+            return true
+        }
     }
     
     private func setupRotationGesture() {
@@ -216,6 +219,9 @@ class WordLayerView: UIView {
                     self!.doChanged()
                 }
             }
+        }
+        rotationGesture.ce_ShouldRecognizeSimultaneouslyWithGestureRecognizer { (gestureRecognizer, otherGestureRecognizer) -> Bool in
+            return true
         }
     }
     
