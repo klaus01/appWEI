@@ -129,7 +129,7 @@ class WordImageCreateViewController: UIViewController {
         }
         
         wordView.addSubview(wordLayer)
-        wordLayerViews.push(wordLayer)
+        wordLayerViews.append(wordLayer)
         let indexPath = NSIndexPath(forItem: wordLayerViews.count - 1, inSection: 0)
         layersCollectionView.insertItemsAtIndexPaths([indexPath])
         layersCollectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.Bottom)
