@@ -297,7 +297,7 @@ class ServerHelper {
             "pictureFile": UploadValue.PNGFILE(pictureFile)
         ]
         if let audioFile = audioFile {
-            parameters["audioFile"] = UploadValue.OTHERFILE(audioFile, "mp3")
+            parameters["audioFile"] = UploadValue.OTHERFILE(audioFile, "amr")
         }
         myUpload("/word/new", parameters).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
