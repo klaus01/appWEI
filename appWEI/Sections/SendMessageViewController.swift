@@ -36,8 +36,13 @@ class SendMessageViewController: UIViewController {
     }
     private var selectedWordImageViewFrame: CGRect! {
         didSet {
-            selectedWordImageViewTopConstraint.constant = selectedWordImageViewFrame.origin.y - navigationController!.navigationBar.frame.size.height - 20
-            selectedWordImageViewLeftConstraint.constant = selectedWordImageViewFrame.origin.x - 16
+            selectedWordImageViewTopConstraint.constant = selectedWordImageViewFrame.origin.y
+            selectedWordImageViewLeftConstraint.constant = selectedWordImageViewFrame.origin.x
+            if let sysVer = UIDevice.currentDevice().systemVersion.toDouble() {
+                if (sysVer >= 8) {
+                    selectedWordImageViewLeftConstraint.constant -= 16
+                }
+            }
             selectedWordImageViewWidthConstraint.constant = selectedWordImageViewFrame.size.width
             selectedWordImageViewHeightConstraint.constant = selectedWordImageViewFrame.size.height
         }
@@ -112,6 +117,7 @@ class SendMessageViewController: UIViewController {
         }
         .ce_CellForItemAtIndexPath { [weak self] (collectionView, indexPath) -> UICollectionViewCell in
             if self!.allLoaded == false && indexPath.item >= self!.currentWords.count {
+                self!.loadMoreWords()
                 return collectionView.dequeueReusableCellWithReuseIdentifier("LOADCELL", forIndexPath: indexPath) as! UICollectionViewCell
             }
             else {
@@ -122,16 +128,11 @@ class SendMessageViewController: UIViewController {
             }
         }
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
-            if self!.allLoaded == false || indexPath.item < self!.currentWords.count {
+            if self!.allLoaded == true || indexPath.item < self!.currentWords.count {
                 var frame = collectionView.layoutAttributesForItemAtIndexPath(indexPath)!.frame;
                 frame.origin.x += collectionView.frame.origin.x
                 frame.origin.y += collectionView.frame.origin.y
                 self!.showSelectedWord(self!.currentWords[indexPath.item], wordFrame: frame)
-            }
-        }
-        .ce_WillDisplayCell { [weak self] (collectionView, cell, indexPath) -> Void in
-            if self!.allLoaded == false && indexPath.item >= self!.currentWords.count {
-                self!.loadMoreWords()
             }
         }
         .setCellSize(CGSizeMake(100, 100), rowCount: 3)
@@ -266,7 +267,9 @@ class SendMessageViewController: UIViewController {
         selectedWordImageView.imageWebUrl = word.pictureUrl
         selectedWordImageViewFrame = wordFrame
         self.selectedWordImageView.layoutIfNeeded()
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            self.wordGroupSegmentedControl.alpha = 0
+            self.wordCollectionView.alpha = 0
             self.selectedWordImageView.hidden = false
             var frame = CGRectZero
             frame.origin = self.wordGroupSegmentedControl.frame.origin
@@ -284,7 +287,9 @@ class SendMessageViewController: UIViewController {
         selectedWordPlayButton.stopPlayWordSound()
         if animate {
             self.selectedWordPlayButton.hidden = true
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                self.wordGroupSegmentedControl.alpha = 1
+                self.wordCollectionView.alpha = 1
                 self.selectedWordImageViewFrame = self.selectedWordCellFrame
                 self.selectedWordImageView.layoutIfNeeded()
                 self.selectedWordPlayButton.layoutIfNeeded()
@@ -296,6 +301,8 @@ class SendMessageViewController: UIViewController {
             }
         }
         else {
+            wordGroupSegmentedControl.alpha = 1
+            wordCollectionView.alpha = 1
             selectedWord = nil
             selectedWordCellFrame = nil
             selectedWordImageView.imageWebUrl = nil
