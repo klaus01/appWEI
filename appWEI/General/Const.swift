@@ -9,7 +9,7 @@
 import Foundation
 import AdSupport
 
-// 应用与设备唯一标识
+/// 应用与设备唯一标识
 let UUIDString = ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDString.replace("-", withString: "")
 
 // 服务端域名
@@ -17,16 +17,18 @@ let UUIDString = ASIdentifierManager.sharedManager().advertisingIdentifier.UUIDS
 let SERVER_HOST_RESOURCE_FILE   = "http://192.168.1.3:3001"
 let SERVER_HOST_INTERFACE       = "http://192.168.1.3:3001"
 #else
-let SERVER_HOST_RESOURCE_FILE   = "http://weiapp.cf:3000"
+let SERVER_HOST_RESOURCE_FILE   = "http://weiapp.cf"
 let SERVER_HOST_INTERFACE       = "http://weiapp.cf:3001"
 #endif
 
-// 获取验证码的间隔时间(秒)
+/// 获取验证码的间隔时间(秒)
 let VERIFICATIONCODE_INTERVAL   = 60
-// 验证码长度
+/// 验证码长度
 let VERIFICATIONCODE_LENGTH     = 6
-// 多久上传一次经纬度坐标(秒)
+/// 多久上传一次经纬度坐标(秒)
 let UPLOADLOCATION_INTERVAL     = 5 * 60
 
-let THEME_BAR_COLOR = UIColor(red: 71/255.0, green: 120/255.0, blue: 135/255.0, alpha: 1)
+/// 导航栏背景色
+let THEME_BAR_COLOR = UIColor(red: 37/255.0, green: 161/255.0, blue: 157/255.0, alpha: 1)
+/// 导航栏字体色
 let THEME_BAR_TEXT_COLOR = UIColor.whiteColor()

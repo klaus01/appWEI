@@ -23,7 +23,7 @@ extension NSObject {
     }
 
     public func ce_addObserverForName(name: String, handle: (notification: NSNotification) -> Void) -> Self {
-        ce.handle = handle
+        ce.addNotificationForName(name, handle: handle)
         NSNotificationCenter.defaultCenter().addObserver(ce, selector: "observerHandlerAction:", name: name, object: nil)
         return self
     }
@@ -51,9 +51,17 @@ private class NSObject_Delegate: NSObject {
     }
     #endif
     
-    var handle: ((NSNotification) -> Void)!
+    typealias NotificationAction = (NSNotification) -> Void
+    private var dic = [String : NotificationAction]()
+    
+    func addNotificationForName(name: String, handle: (notification: NSNotification) -> Void) {
+        dic[name] = handle
+    }
+    
     @objc func observerHandlerAction(notification: NSNotification) {
-        handle(notification);
+        if let action = dic[notification.name] {
+            action(notification)
+        }
     }
 
 }

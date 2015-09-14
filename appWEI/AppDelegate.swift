@@ -63,6 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 处理应用通知数量
         clearNotifications(application)
         
+        // 自定义BackButton样式，移除按钮文字
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -100), forBarMetrics: .Default)
+        // 自定义NavigationBar样式
+        UINavigationBar.appearance().barStyle = .Black;
+        UINavigationBar.appearance().tintColor = THEME_BAR_TEXT_COLOR;
+        UINavigationBar.appearance().barTintColor = THEME_BAR_COLOR;
+//        UINavigationBar.appearance().titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:20]};
+        
         return true
     }
 
