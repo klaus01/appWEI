@@ -117,6 +117,8 @@
 		24E86FC01B0B638100B68F81 /* UserTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E86FBF1B0B638100B68F81 /* UserTitleView.xib */; };
 		24EA77BD1AF90A8E008EE77E /* CE_UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */; };
 		24F3C09D1AC51CBB00E9FF49 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */; };
+		24F5590C1BA86525005C3158 /* mht.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 24F5590A1BA86525005C3158 /* mht.TTF */; };
+		24F5590D1BA86525005C3158 /* msyh.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24F5590B1BA86525005C3158 /* msyh.ttf */; };
 		24FFD5F31ABEAE2C00F0C147 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */; };
 		24FFD5F91ABEBD9400F0C147 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FFD5F81ABEBD9400F0C147 /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -299,6 +301,8 @@
 		24E86FBF1B0B638100B68F81 /* UserTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserTitleView.xib; path = View/UserTitleView.xib; sourceTree = "<group>"; };
 		24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UITextView.swift; sourceTree = "<group>"; };
 		24F3C09C1AC51CBB00E9FF49 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		24F5590A1BA86525005C3158 /* mht.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = mht.TTF; sourceTree = "<group>"; };
+		24F5590B1BA86525005C3158 /* msyh.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = msyh.ttf; sourceTree = "<group>"; };
 		24FFD5F21ABEAE2C00F0C147 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		24FFD5F81ABEBD9400F0C147 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -434,6 +438,8 @@
 				244C19E31ABBFFC000813708 /* Main.storyboard */,
 				244C19E61ABBFFC000813708 /* Images.xcassets */,
 				244C19E81ABBFFC000813708 /* LaunchScreen.xib */,
+				24F5590A1BA86525005C3158 /* mht.TTF */,
+				24F5590B1BA86525005C3158 /* msyh.ttf */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -800,9 +806,11 @@
 				24E86FC01B0B638100B68F81 /* UserTitleView.xib in Resources */,
 				24E02CFE1ACAD10B00A17D13 /* Info.plist in Resources */,
 				24DEA2641AF132F600E0E4AD /* ShareSDKLocalizable.strings in Resources */,
+				24F5590D1BA86525005C3158 /* msyh.ttf in Resources */,
 				24E0EF5E1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib in Resources */,
 				244C19E51ABBFFC000813708 /* Main.storyboard in Resources */,
 				24E8062F1AE5588E004AD0F5 /* LoadingTableViewCell.xib in Resources */,
+				24F5590C1BA86525005C3158 /* mht.TTF in Resources */,
 				24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */,
 				244C19EA1ABBFFC000813708 /* LaunchScreen.xib in Resources */,
 				24E806271AE5361C004AD0F5 /* WordTableViewCell.xib in Resources */,
@@ -1054,6 +1062,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shing Fai Chan (5VTZQG75NA)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/appWEI/Vendor/ShareSDK/Connection",

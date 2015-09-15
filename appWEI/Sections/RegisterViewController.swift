@@ -44,6 +44,8 @@ class RegisterViewController: UIViewController {
             }
             if ret!.success {
                 UserInfo.shared.id = ret!.data!.appUserID
+                UserInfo.shared.nickname = ret!.data!.nickname
+                UserInfo.shared.iconUrl = ret!.data!.iconUrl
                 UserInfo.shared.save()
 //                self!.verificationCodeTextField.hidden = false
                 self!.verificationCodeTextField.becomeFirstResponder()
@@ -213,7 +215,8 @@ class RegisterViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is UserInfoViewController {
-            segue.destinationViewController.navigationItem.hidesBackButton = true
+            (segue.destinationViewController as! UserInfoViewController).navigationItem.hidesBackButton = true
+            (segue.destinationViewController as! UserInfoViewController).title = "我"
         }
     }
 }

@@ -26,6 +26,7 @@ public let kNotification_NewWord = "kNotification_NewWord"
 class UserInfo: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager = CLLocationManager()
+    private var _sessionID: String? = nil
     private var _isLogged = false
     private var _deviceToken: String? = nil
     private var _isUpdatingFriends = false
@@ -45,8 +46,12 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
     // MAKE: - Public
     
     var id = 0
-    // 用户手机号
+    /// 用户手机号
     var phoneNumber: String?
+    /// 昵称
+    var nickname: String?
+    /// 头像链接
+    var iconUrl: String?
     // 用户是否已经登录
     var isLogged: Bool {
         get { return _isLogged }
@@ -66,6 +71,9 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
                 uploadDeviceToken()
             }
         }
+    }
+    var sessionID: String {
+        return _sessionID!
     }
     
     // 用户的朋友列表，缓存
@@ -112,8 +120,18 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         let userDefaults = NSUserDefaults(suiteName: "UserInfo")!
         id               = userDefaults.integerForKey("id")
         phoneNumber      = userDefaults.stringForKey("phoneNumber")
+        nickname         = userDefaults.stringForKey("nickname")
+        iconUrl          = userDefaults.stringForKey("iconUrl")
         _isLogged        = userDefaults.boolForKey("isLogged")
         _deviceToken     = userDefaults.stringForKey("deviceToken")
+        if let str = userDefaults.stringForKey("sessionID") {
+            _sessionID = str
+        }
+        else {
+            _sessionID = String.random(length: 64)
+            userDefaults.setValue(_sessionID, forKey: "sessionID")
+            userDefaults.synchronize()
+        }
         if let array = userDefaults.arrayForKey("lastUseWordIDs") as? [Int] {
             _lastUseWordIDs = array
         }
@@ -126,6 +144,8 @@ class UserInfo: NSObject, CLLocationManagerDelegate {
         let userDefaults = NSUserDefaults(suiteName: "UserInfo")!
         userDefaults.setInteger(id, forKey: "id")
         userDefaults.setValue(phoneNumber, forKey: "phoneNumber")
+        userDefaults.setValue(nickname, forKey: "nickname")
+        userDefaults.setValue(iconUrl, forKey: "iconUrl")
         userDefaults.setBool(_isLogged, forKey: "isLogged")
         userDefaults.setValue(_deviceToken, forKey: "deviceToken")
         userDefaults.setObject(_lastUseWordIDs, forKey: "lastUseWordIDs")

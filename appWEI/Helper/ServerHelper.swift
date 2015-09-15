@@ -14,8 +14,7 @@ public let kNotification_NotLogged = "kNotification_NotLogged"
 class ServerHelper {
     
     struct Static {
-        // 静态的目的是只调用UUIDString一次。
-        static let SessionID = UUIDString
+        static let SessionID = UserInfo.shared.sessionID
         // 服务端返回的未登录字符串，用于判断
         static let NotLoggedString = "未登录或登录已过期"
     }
@@ -128,7 +127,7 @@ class ServerHelper {
     }
     
     // 用户注册
-    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ret: ServerResultModel<AppUserRegisterModel>?, error: NSError?) -> Void) {
+    class func appUserRegisterAndSendCheck(phoneNumber: String, device: String, deviceOS: String, completionHandler: (ret: ServerResultModel<AppUserModel>?, error: NSError?) -> Void) {
         myRequest("/appUser/registerAndSendCheck", parameters: [
             "phoneNumber": phoneNumber,
             "device": device,
@@ -137,12 +136,12 @@ class ServerHelper {
     }
     
     // 修改用户资料
-    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ret: ServerResultModel<Any>?, error: NSError?) -> Void) {
+    class func appUserUpdate(iconFile: NSData, nickname: String, isMan: Bool, completionHandler: (ret: ServerResultModel<AppUserModel>?, error: NSError?) -> Void) {
         myUpload("/appUser/update", [
             "iconFile": UploadValue.PNGFILE(iconFile),
             "nickname": UploadValue.STRING(nickname),
             "isMan": UploadValue.STRING(isMan ? "1" : "0")
-            ]).responseJSON(getCompletionHandlerWithNoData(completionHandler))
+            ]).responseJSON(getCompletionHandlerWithObject(completionHandler))
     }
     
     // 提交APNS令牌

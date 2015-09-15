@@ -84,19 +84,19 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     var isMen: Bool? {
         get {
-            switch sexSegmentedControl.selectedSegmentIndex {
-            case 0: return true
-            case 1: return false
-            default: return nil
+            if maleButton.selected {
+                return true
+            }
+            else if femaleButton.selected {
+                return false
+            }
+            else {
+                return nil
             }
         }
         set {
-            if newValue == nil {
-                sexSegmentedControl.selectedSegmentIndex = -1
-            }
-            else {
-                sexSegmentedControl.selectedSegmentIndex = newValue! ? 0 : 1
-            }
+            maleButton.selected = newValue == true
+            femaleButton.selected = newValue == false
         }
     }
     
@@ -105,7 +105,8 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     @IBOutlet weak var iconView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
 
     // MARK: - ViewController
@@ -113,18 +114,16 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        iconView.layer.cornerRadius = 4
-        iconView.layer.shadowColor = UIColor.lightGrayColor().CGColor
-        iconView.layer.shadowOffset = CGSizeMake(0, 2)
-        iconView.layer.shadowOpacity = 1
-        iconView.layer.shadowRadius = 4
-        
-        // 图片 上边左右角 圆角
-//        let maskPath = UIBezierPath(roundedRect: iconImageView.bounds, byRoundingCorners: UIRectCorner.TopLeft | UIRectCorner.TopRight, cornerRadii: CGSizeMake(4, 4))
-//        let maskLayer = CAShapeLayer()
-//        maskLayer.frame = iconImageView.bounds;
-//        maskLayer.path = maskPath.CGPath;
-//        iconImageView.layer.mask = maskLayer;
+        maleButton.setImage(UIImage(named: "male_pressed"), forState: UIControlState.Highlighted)
+        maleButton.setImage(UIImage(named: "male_pressed"), forState: UIControlState.Selected)
+        maleButton.clicked { [unowned self] btn -> () in
+            self.isMen = true
+        }
+        femaleButton.setImage(UIImage(named: "female_pressed"), forState: UIControlState.Highlighted)
+        femaleButton.setImage(UIImage(named: "female_pressed"), forState: UIControlState.Selected)
+        femaleButton.clicked { [unowned self] btn -> () in
+            self.isMen = false
+        }
         
         saveButton.backgroundColor = THEME_BAR_COLOR
         saveButton.setTitleColor(THEME_BAR_TEXT_COLOR, forState: UIControlState.Normal)
@@ -179,6 +178,10 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                 }
                 if let weakSelf = self {
                     if ret!.success {
+                        UserInfo.shared.nickname = ret!.data!.nickname
+                        UserInfo.shared.iconUrl = ret!.data!.iconUrl
+                        UserInfo.shared.save()
+                        
                         if weakSelf.mode == .newUser {
                             weakSelf.performSegueWithIdentifier("userToShow", sender: nil)
                         }
@@ -211,6 +214,34 @@ class UserInfoViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                 }
             });
         }
+        ce_addObserverForName(UIKeyboardWillShowNotification) { [weak self] (notification) -> Void in
+            if let info = notification.userInfo {
+                if let frameValue = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                    var kbRect = frameValue.CGRectValue()
+                    UIView.animateWithDuration(0.3) { () -> Void in
+                        var frame = self!.view.frame
+                        frame.origin.y = -kbRect.size.height * 0.5
+                        self!.view.frame = frame
+                    }
+                }
+            }
+        }
+        ce_addObserverForName(UIKeyboardWillHideNotification) { [weak self] (notification) -> Void in
+            UIView.animateWithDuration(0.3) { () -> Void in
+                var frame = self!.view.frame
+                frame.origin.y = 64
+                self!.view.frame = frame
+            }
+        }
+    }
+    
+    deinit {
+        ce_removeObserver()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        iconImageView.layer.cornerRadius = iconImageView.bounds.size.width * 0.5
     }
     
 }

@@ -18,7 +18,7 @@ class DefulatIconsViewController: UIViewController {
             if vc is UserInfoViewController {
                 let vc = vc as! UserInfoViewController
                 vc.iconImage = image
-                vc.isMen = sexSegmentedControl.selectedSegmentIndex == 0
+                vc.isMen = femaleLineView.hidden
             }
         }
     }
@@ -33,7 +33,10 @@ class DefulatIconsViewController: UIViewController {
     // MARK: - IB
     
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var sexSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var femaleButton: UIButton!
+    @IBOutlet weak var maleLineView: UIView!
+    @IBOutlet weak var femaleLineView: UIView!
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
@@ -44,22 +47,21 @@ class DefulatIconsViewController: UIViewController {
     @IBOutlet weak var image8: UIImageView!
     @IBOutlet weak var image9: UIImageView!
     
-    @IBAction func sexValueChanged(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            setImage("Men")
-        }
-        else {
-            setImage("Women")
-        }
-    }
-    
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topView.backgroundColor = THEME_BAR_COLOR
-        sexSegmentedControl.tintColor = THEME_BAR_TEXT_COLOR
-        sexSegmentedControl.selectedSegmentIndex = 0
+        femaleLineView.hidden = true
+        maleButton.clicked { [unowned self] btn -> () in
+            self.setImage("Men")
+            self.maleLineView.hidden = false
+            self.femaleLineView.hidden = true
+        }
+        femaleButton.clicked { [unowned self] btn -> () in
+            self.setImage("Women")
+            self.maleLineView.hidden = true
+            self.femaleLineView.hidden = false
+        }
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {

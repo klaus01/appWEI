@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .Black;
         UINavigationBar.appearance().tintColor = THEME_BAR_TEXT_COLOR;
         UINavigationBar.appearance().barTintColor = THEME_BAR_COLOR;
-//        UINavigationBar.appearance().titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:20]};
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName as NSObject : UIFont(name: "CloudMeiHeiGBK", size: 22) as! AnyObject]
         
         return true
     }

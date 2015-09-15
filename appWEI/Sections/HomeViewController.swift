@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         avatarImageView.layer.borderColor = UIColor.whiteColor().CGColor
         avatarImageView.layer.borderWidth = 4
         
-        nicknameLabel.text = "我";
+        nicknameLabel.backgroundColor = THEME_BAR_COLOR
     }
     
     override func viewDidLayoutSubviews() {
@@ -32,12 +32,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        avatarImageView.imageWebUrl = UserInfo.shared.iconUrl
+        nicknameLabel.text = UserInfo.shared.nickname
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

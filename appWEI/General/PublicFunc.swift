@@ -35,6 +35,11 @@ extension String {
         return self.rangeOfString(regularExpression, options: .RegularExpressionSearch) != nil
     }
     
+    /**
+    获取当前字符串的拼音
+    
+    :returns: 拼音字符串
+    */
     func getPinYin() -> String {
         var cn = NSMutableString(string: self) as CFMutableStringRef
         CFStringTransform(cn, nil, kCFStringTransformMandarinLatin, Boolean(0))
