@@ -118,9 +118,16 @@ class InviteContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 19, 0, 0);
+        
         let allContacts = getSysContacts()
         allContacts.map { contact -> [String : AnyObject] in
             var ret = contact
+            let phone = ret["phone"] as! String
+            if getPhoneNumberAreaType(phone) == .Error {
+                return ret
+            }
             
             // 生成姓名拼音，确定分组
             let name = ret["name"] as! String
@@ -134,7 +141,6 @@ class InviteContactsTableViewController: UITableViewController {
             }
             
             // 是否已经是朋友了
-            let phone = ret["phone"] as! String
             let friends = UserInfo.shared.friends.filter { FriendModel -> Bool in
                 if let user = FriendModel.appUser {
                     return user.phoneNumber == phone
@@ -143,6 +149,7 @@ class InviteContactsTableViewController: UITableViewController {
             }
             ret["networking"] = false
             ret["isFriend"] = friends.count > 0
+            ret["nicknameLoading"] = false
             
             self.contacts[firstLetter]!.append(ret)
             
@@ -173,6 +180,41 @@ class InviteContactsTableViewController: UITableViewController {
         return self.firstLetterArray[section]
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let firstLetter = self.firstLetterArray[indexPath.section]
+        var contacts = self.contacts[firstLetter]!
+        var contact = contacts[indexPath.row]
+        if (contact["nickname"] as? String == nil) && (contact["nicknameLoading"] as! Bool == false) {
+            contact["nicknameLoading"] = true
+            contacts[indexPath.row] = contact
+            self.contacts[firstLetter] = contacts
+            
+            let phone = contact["phone"]! as! String
+            ServerHelper.appUserGet(phone, completionHandler: { [weak self] (ret, error) -> Void in
+                if let obj = self {
+                }
+                else {
+                    return
+                }
+                
+                if error != nil {
+                    println(error)
+                    return
+                }
+                if ret!.success {
+                    contact["nickname"] = ret!.data!.nickname
+                    contact["iconUrl"] = ret!.data!.iconUrl
+                    contacts[indexPath.row] = contact
+                    self!.contacts[firstLetter] = contacts
+                    
+                    if self!.tableView.cellForRowAtIndexPath(indexPath) != nil {
+                        self!.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    }
+                }
+            })
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let firstLetter = self.firstLetterArray[indexPath.section]
         let contacts = self.contacts[firstLetter]!
@@ -180,30 +222,49 @@ class InviteContactsTableViewController: UITableViewController {
         let phone = contact["phone"]! as! String
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! UITableViewCell
-        let imageView = cell.viewWithTag(101) as! UIImageView
-        let nameLabel = cell.viewWithTag(102) as! UILabel
-        let nicknameLabel = cell.viewWithTag(103) as! UILabel
-        let button = cell.viewWithTag(104) as! UIButton
         
-        imageView.hidden = true
-        nameLabel.text = contact["name"] as? String
-        nicknameLabel.text = phone
-        button.addTarget(self, action: "addFriendButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        if getPhoneNumberAreaType(phone) == .Error {
-            button.setTitle("不支持该手机号", forState: UIControlState.Normal)
-            button.enabled = false
+        if let imageView = cell.viewWithTag(101) as? UIImageView {
+            imageView.layer.cornerRadius = imageView.bounds.size.width * 0.5
+            if let iconUrl = contact["iconUrl"] as? String {
+                imageView.imageWebUrl = iconUrl
+            }
         }
-        else if contact["isFriend"] as! Bool {
-            button.setTitle("已添加", forState: UIControlState.Normal)
-            button.enabled = false
+        
+        if let label = cell.viewWithTag(102) as? UILabel {
+            var attrStr = NSMutableAttributedString()
+            if let nickname = contact["nickname"] as? String {
+                let attributes = [
+                    NSFontAttributeName as NSObject : UIFont(name: "CloudMeiHeiGBK", size: 30) as! AnyObject,
+                    NSForegroundColorAttributeName : UIColor(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1.0)
+                ]
+                attrStr.appendAttributedString(NSAttributedString(string: "\(nickname) ", attributes: attributes))
+            }
+            if let name = contact["name"] as? String {
+                let attributes = [
+                    NSFontAttributeName as NSObject : UIFont(name: "Microsoft YaHei", size: 17) as! AnyObject,
+                    NSForegroundColorAttributeName : UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0)
+                ]
+                attrStr.appendAttributedString(NSAttributedString(string: "(\(name))", attributes: nil))
+            }
+            label.attributedText = attrStr
         }
-        else if contact["networking"] as! Bool {
-            button.setTitle("正在添加...", forState: UIControlState.Normal)
-            button.enabled = false
+        
+        if let button = cell.viewWithTag(104) as? UIButton {
+            button.setImage(UIImage(named: "connected"), forState: UIControlState.Disabled)
+            button.addTarget(self, action: "addFriendButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            if contact["isFriend"] as! Bool {
+                button.enabled = false
+            }
+            else if contact["networking"] as! Bool {
+                button.enabled = false
+            }
+            else {
+                button.enabled = true
+            }
         }
-        else {
-            button.setTitle("添加", forState: UIControlState.Normal)
-            button.enabled = true
+        
+        if let lineView = cell.viewWithTag(105) {
+            lineView.hidden = indexPath.row == (contacts.count - 1)
         }
         
         return cell
