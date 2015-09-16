@@ -12,18 +12,30 @@ class InviteFriendViewController: UIViewController {
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var inviteButton: UIButton!
+    @IBOutlet weak var contactsButton: UIButton!
     
-    @IBAction func phoneNumberEditingChanged(sender: UITextField) {
-        inviteButton.enabled = getPhoneNumberAreaType(sender.text) != .Error
+    @IBAction func viewTapAction(sender: AnyObject) {
+        phoneNumberTextField.resignFirstResponder()
     }
     
     @IBAction func inviteClick(sender: AnyObject) {
+        if (getPhoneNumberAreaType(phoneNumberTextField.text) == .Error) {
+            UIAlertView.showMessage("请输入有效的手机号")
+            return
+        }
+        
+        phoneNumberTextField.resignFirstResponder()
         phoneNumberTextField.enabled = false
         inviteButton.enabled = false
         
-        ServerHelper.appUserAddFriend(phoneNumberTextField.text!, completionHandler: { (ret, error) -> Void in
-            self.phoneNumberTextField.enabled = true
-            self.inviteButton.enabled = true
+        ServerHelper.appUserAddFriend(phoneNumberTextField.text!, completionHandler: { [weak self] (ret, error) -> Void in
+            if let obj = self {
+            }
+            else {
+                return
+            }
+            self!.phoneNumberTextField.enabled = true
+            self!.inviteButton.enabled = true
             
             if let error = error {
                 println(error)
@@ -41,7 +53,8 @@ class InviteFriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inviteButton.enabled = false
+        inviteButton.layer.cornerRadius = 4;
+        contactsButton.layer.cornerRadius = 4;
     }
-
+    
 }
