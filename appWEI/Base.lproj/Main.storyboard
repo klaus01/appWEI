@@ -365,58 +365,58 @@
                                     <constraint firstItem="zcn-oQ-Rha" firstAttribute="trailing" secondItem="AQT-d3-Sbm" secondAttribute="trailing" id="w0k-oW-L1i"/>
                                 </constraints>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men1" translatesAutoresizingMaskIntoConstraints="NO" id="2vO-ou-Yst">
-                                <rect key="frame" x="16" y="76" width="83" height="83"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men1" translatesAutoresizingMaskIntoConstraints="NO" id="2vO-ou-Yst">
+                                <rect key="frame" x="19" y="79" width="81" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2vO-ou-Yst" secondAttribute="height" multiplier="1:1" id="Q0d-Qv-iFd"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men2" translatesAutoresizingMaskIntoConstraints="NO" id="wSV-0o-7kg">
-                                <rect key="frame" x="118" y="76" width="84" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wSV-0o-7kg" secondAttribute="height" multiplier="1:1" id="bBm-Ab-aTL"/>
-                                </constraints>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men3" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-rj-JrW">
-                                <rect key="frame" x="221" y="76" width="83" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="fPo-rj-JrW" secondAttribute="height" multiplier="1:1" id="MCm-bW-PFp"/>
-                                </constraints>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men4" translatesAutoresizingMaskIntoConstraints="NO" id="z6Z-7f-eLI">
-                                <rect key="frame" x="16" y="178" width="83" height="84"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="z6Z-7f-eLI" secondAttribute="height" multiplier="1:1" id="qPu-OZ-HuY"/>
-                                </constraints>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men5" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-hQ-BDy">
-                                <rect key="frame" x="118" y="178" width="84" height="84"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men5" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-hQ-BDy">
+                                <rect key="frame" x="118" y="179" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KWf-hQ-BDy" secondAttribute="height" multiplier="1:1" id="oKh-sK-uTd"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men6" translatesAutoresizingMaskIntoConstraints="NO" id="6B0-ZF-ni2">
-                                <rect key="frame" x="221" y="178" width="83" height="84"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men6" translatesAutoresizingMaskIntoConstraints="NO" id="6B0-ZF-ni2">
+                                <rect key="frame" x="221" y="179" width="83" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6B0-ZF-ni2" secondAttribute="height" multiplier="1:1" id="HWB-li-0tI"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men7" translatesAutoresizingMaskIntoConstraints="NO" id="shb-HX-Ea7">
-                                <rect key="frame" x="16" y="281" width="83" height="83"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men7" translatesAutoresizingMaskIntoConstraints="NO" id="shb-HX-Ea7">
+                                <rect key="frame" x="16" y="282" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="shb-HX-Ea7" secondAttribute="height" multiplier="1:1" id="uWH-bj-dJF"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men8" translatesAutoresizingMaskIntoConstraints="NO" id="wPM-mn-63X">
-                                <rect key="frame" x="118" y="281" width="84" height="83"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men8" translatesAutoresizingMaskIntoConstraints="NO" id="wPM-mn-63X">
+                                <rect key="frame" x="118" y="282" width="84" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wPM-mn-63X" secondAttribute="height" multiplier="1:1" id="KvH-Sd-0Xe"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men9" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-bw-CPk">
-                                <rect key="frame" x="221" y="281" width="83" height="83"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men9" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-bw-CPk">
+                                <rect key="frame" x="221" y="282" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Saq-bw-CPk" secondAttribute="height" multiplier="1:1" id="FgQ-as-aTt"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men2" translatesAutoresizingMaskIntoConstraints="NO" id="wSV-0o-7kg">
+                                <rect key="frame" x="119" y="79" width="82" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wSV-0o-7kg" secondAttribute="height" multiplier="1:1" id="bBm-Ab-aTL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men3" translatesAutoresizingMaskIntoConstraints="NO" id="fPo-rj-JrW">
+                                <rect key="frame" x="220" y="79" width="81" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fPo-rj-JrW" secondAttribute="height" multiplier="1:1" id="MCm-bW-PFp"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Men4" translatesAutoresizingMaskIntoConstraints="NO" id="z6Z-7f-eLI">
+                                <rect key="frame" x="16" y="179" width="83" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="z6Z-7f-eLI" secondAttribute="height" multiplier="1:1" id="qPu-OZ-HuY"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -431,15 +431,15 @@
                             <constraint firstItem="z6Z-7f-eLI" firstAttribute="leading" secondItem="uss-Q4-Zz5" secondAttribute="leadingMargin" id="7nc-sw-aDM"/>
                             <constraint firstItem="Saq-bw-CPk" firstAttribute="width" secondItem="wPM-mn-63X" secondAttribute="width" id="9Nu-Cd-dw7"/>
                             <constraint firstItem="6B0-ZF-ni2" firstAttribute="width" secondItem="KWf-hQ-BDy" secondAttribute="width" id="Faa-JX-bpj"/>
-                            <constraint firstItem="2vO-ou-Yst" firstAttribute="leading" secondItem="uss-Q4-Zz5" secondAttribute="leadingMargin" id="Fjy-e4-1lA"/>
-                            <constraint firstItem="wSV-0o-7kg" firstAttribute="top" secondItem="StV-cQ-U6B" secondAttribute="bottom" constant="16" id="GUJ-2L-Lhw"/>
+                            <constraint firstItem="2vO-ou-Yst" firstAttribute="leading" secondItem="uss-Q4-Zz5" secondAttribute="leading" constant="19" id="Fjy-e4-1lA"/>
+                            <constraint firstItem="wSV-0o-7kg" firstAttribute="top" secondItem="StV-cQ-U6B" secondAttribute="bottom" constant="19" id="GUJ-2L-Lhw"/>
                             <constraint firstItem="6B0-ZF-ni2" firstAttribute="top" secondItem="KWf-hQ-BDy" secondAttribute="top" id="HKO-Rk-TzJ"/>
                             <constraint firstItem="StV-cQ-U6B" firstAttribute="leading" secondItem="uss-Q4-Zz5" secondAttribute="leading" id="JVq-zz-ZED"/>
                             <constraint firstItem="z6Z-7f-eLI" firstAttribute="top" secondItem="KWf-hQ-BDy" secondAttribute="top" id="PU2-Yg-b42"/>
                             <constraint firstAttribute="trailing" secondItem="StV-cQ-U6B" secondAttribute="trailing" id="RrK-W2-18F"/>
                             <constraint firstItem="Saq-bw-CPk" firstAttribute="top" secondItem="wPM-mn-63X" secondAttribute="top" id="S4A-gD-Nf8"/>
                             <constraint firstItem="StV-cQ-U6B" firstAttribute="top" secondItem="SJP-Hs-hMZ" secondAttribute="bottom" id="TaR-Gu-len"/>
-                            <constraint firstItem="fPo-rj-JrW" firstAttribute="trailing" secondItem="uss-Q4-Zz5" secondAttribute="trailingMargin" id="Xp2-oO-cZy"/>
+                            <constraint firstItem="fPo-rj-JrW" firstAttribute="trailing" secondItem="uss-Q4-Zz5" secondAttribute="trailing" constant="-19" id="Xp2-oO-cZy"/>
                             <constraint firstItem="KWf-hQ-BDy" firstAttribute="top" secondItem="wSV-0o-7kg" secondAttribute="bottom" constant="19" id="Znb-PH-Za3"/>
                             <constraint firstItem="2vO-ou-Yst" firstAttribute="width" secondItem="wSV-0o-7kg" secondAttribute="width" id="asg-fb-acS"/>
                             <constraint firstItem="wPM-mn-63X" firstAttribute="top" secondItem="KWf-hQ-BDy" secondAttribute="bottom" constant="19" id="epv-6F-kH1"/>
@@ -1711,7 +1711,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通过手机号邀请好友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hG-Yq-uee">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="19"/>
                                         <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VXD-2f-8Nh">
@@ -1757,7 +1757,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通过通讯录邀请好友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obt-2E-qpf">
                                         <rect key="frame" x="0.0" y="202" width="126" height="19"/>
                                         <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huJ-dx-Drz">
@@ -1771,7 +1771,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通过社交账号邀请好友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0C-wK-5Tt">
                                         <rect key="frame" x="0.0" y="339" width="140" height="19"/>
                                         <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9N-hR-vE0">

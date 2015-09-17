@@ -64,6 +64,14 @@ class DefulatIconsViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let images = [image1, image2, image3, image4, image5, image6, image7, image8, image9]
+        for (var i = 0; i < images.count; i++) {
+            images[i].layer.cornerRadius = images[i].bounds.size.width * 0.5
+        }
+    }
+    
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if let obj = touches.first {
             if let touch = obj as? UITouch {
