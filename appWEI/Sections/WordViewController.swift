@@ -19,6 +19,7 @@ class WordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.textContainerInset = UIEdgeInsetsZero;
         
         imageView.imageWebUrl = word.pictureUrl
         numberLabel.text = word.number
@@ -36,4 +37,13 @@ class WordViewController: UIViewController {
             playSoundButton.playWordSoundUrl(url)
         }
     }
+    
+    @IBAction func shareItemAction(sender: UIButton) {
+        UIActionSheet(title: nil, cancelButtonTitle: "下次再分享", destructiveButtonTitle: nil, otherButtonTitles: "分享到Facebook", "分享到Instagram", "分享到微信")
+            .clicked({ (buttonAtIndex) -> () in
+                // TODO 分享
+            })
+            .showInView(self.view)
+    }
+    
 }
