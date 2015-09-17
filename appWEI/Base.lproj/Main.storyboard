@@ -34,6 +34,7 @@
             <string>MicrosoftYaHei</string>
             <string>MicrosoftYaHei</string>
             <string>MicrosoftYaHei</string>
+            <string>MicrosoftYaHei</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -982,20 +983,38 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sY8-BH-vYF">
-                                <rect key="frame" x="0.0" y="386" width="320" height="30"/>
-                                <state key="normal" title="发">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="IA7-Iw-iTb" kind="show" id="vdp-ay-qYg"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mKV-0L-Okr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s19-ki-YMu" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="IDv-1t-ryY">
+                                        <rect key="frame" x="10" y="17" width="37" height="37"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入文字或数字" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="YYk-d0-DBc">
+                                        <rect key="frame" x="57" y="0.0" width="253" height="70"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchValueChanged:" destination="2zJ-US-cpT" eventType="editingChanged" id="Mpy-s2-eD0"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.91764705882352937" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YYk-d0-DBc" secondAttribute="trailing" constant="10" id="8Mc-YB-1p3"/>
+                                    <constraint firstItem="YYk-d0-DBc" firstAttribute="leading" secondItem="IDv-1t-ryY" secondAttribute="trailing" constant="10" id="IWj-SR-xgT"/>
+                                    <constraint firstItem="YYk-d0-DBc" firstAttribute="top" secondItem="s19-ki-YMu" secondAttribute="top" id="etq-c4-tiX"/>
+                                    <constraint firstAttribute="bottom" secondItem="YYk-d0-DBc" secondAttribute="bottom" id="fTS-sC-Ots"/>
+                                    <constraint firstItem="IDv-1t-ryY" firstAttribute="leading" secondItem="s19-ki-YMu" secondAttribute="leading" constant="10" id="fbF-S8-Gvr"/>
+                                    <constraint firstAttribute="centerY" secondItem="IDv-1t-ryY" secondAttribute="centerY" id="qS0-Le-zmM"/>
+                                    <constraint firstAttribute="height" constant="70" id="vbg-kp-ooC"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mKV-0L-Okr">
+                                <rect key="frame" x="0.0" y="70" width="320" height="346"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="SkF-1f-YJT">
-                                    <size key="itemSize" width="100" height="120"/>
+                                    <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
@@ -1005,13 +1024,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sY8-BH-vYF" firstAttribute="leading" secondItem="PSF-sm-VtZ" secondAttribute="leadingMargin" constant="-16" id="3CY-jd-7bV"/>
-                            <constraint firstItem="mKV-0L-Okr" firstAttribute="leading" secondItem="PSF-sm-VtZ" secondAttribute="leadingMargin" constant="-16" id="8Ds-BX-rZR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mKV-0L-Okr" secondAttribute="trailing" constant="-16" id="eLy-jk-yIJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sY8-BH-vYF" secondAttribute="trailing" constant="-16" id="hDG-Ml-tm6"/>
-                            <constraint firstItem="ogf-6g-Ofa" firstAttribute="top" secondItem="sY8-BH-vYF" secondAttribute="bottom" id="kO6-JJ-JAt"/>
-                            <constraint firstItem="sY8-BH-vYF" firstAttribute="top" secondItem="mKV-0L-Okr" secondAttribute="bottom" id="vqq-6p-SHt"/>
-                            <constraint firstItem="mKV-0L-Okr" firstAttribute="top" secondItem="jyY-HN-IE7" secondAttribute="bottom" id="vv2-6H-Lde"/>
+                            <constraint firstItem="mKV-0L-Okr" firstAttribute="leading" secondItem="PSF-sm-VtZ" secondAttribute="leading" id="8Ds-BX-rZR"/>
+                            <constraint firstItem="s19-ki-YMu" firstAttribute="top" secondItem="jyY-HN-IE7" secondAttribute="bottom" id="BrQ-1C-SOv"/>
+                            <constraint firstItem="s19-ki-YMu" firstAttribute="leading" secondItem="PSF-sm-VtZ" secondAttribute="leading" id="DPs-7N-7Sd"/>
+                            <constraint firstItem="ogf-6g-Ofa" firstAttribute="top" secondItem="mKV-0L-Okr" secondAttribute="bottom" id="MoL-Iy-zBL"/>
+                            <constraint firstItem="mKV-0L-Okr" firstAttribute="top" secondItem="s19-ki-YMu" secondAttribute="bottom" id="QvS-vf-Kfs"/>
+                            <constraint firstAttribute="trailing" secondItem="s19-ki-YMu" secondAttribute="trailing" id="ZzH-5S-V2O"/>
+                            <constraint firstAttribute="trailing" secondItem="mKV-0L-Okr" secondAttribute="trailing" id="eLy-jk-yIJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="人" id="rxw-5P-a6y">
@@ -1023,6 +1042,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="mKV-0L-Okr" id="xsN-2J-Acu"/>
+                        <outlet property="textField" destination="YYk-d0-DBc" id="GKh-EN-8gV"/>
                         <segue destination="2nX-CH-KXk" kind="show" identifier="showMessage" id="T6I-vG-2Wh"/>
                     </connections>
                 </viewController>
@@ -1912,7 +1932,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="nGj-tw-58a"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QU-mg-HYN">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QU-mg-HYN">
                                             <rect key="frame" x="103" y="26" width="149" height="23"/>
                                             <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1975,6 +1995,7 @@
         <image name="icon_forbid" width="64" height="64"/>
         <image name="icon_people" width="64" height="64"/>
         <image name="icon_reward" width="64" height="64"/>
+        <image name="icon_search" width="37" height="37"/>
         <image name="icon_setting" width="64" height="64"/>
         <image name="instagram" width="64" height="64"/>
         <image name="male_normal" width="64" height="64"/>
@@ -1982,11 +2003,10 @@
         <image name="wechat" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w3i-EN-3wY"/>
         <segue reference="Gel-uq-x6C"/>
-        <segue reference="8VC-lQ-WAc"/>
-        <segue reference="N6u-aN-OrZ"/>
-        <segue reference="vdp-ay-qYg"/>
+        <segue reference="w3i-EN-3wY"/>
+        <segue reference="XQk-b1-g31"/>
         <segue reference="PMA-Jc-9AP"/>
+        <segue reference="T6I-vG-2Wh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -197,10 +197,10 @@ extension UIButton {
 extension UICollectionView {
     
     /**
-    统一设置用户列表样式，每行3个，CellSize(100, 120)
+    统一设置用户列表样式，每行3个，CellSize(100, 135)
     */
     func setUserListStyle() {
-        setCellSize(CGSizeMake(100.0, 120.0), rowCount: 3)
+        setCellSize(CGSizeMake(100.0, 135.0), rowCount: 3)
     }
     
     /**

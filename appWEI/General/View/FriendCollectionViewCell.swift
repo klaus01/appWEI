@@ -39,6 +39,7 @@ class FriendCollectionViewCell: UICollectionViewCell {
     var hintText: String? {
         didSet {
             hintLabel.text = hintText
+            hintLabel.hidden = hintText == nil
         }
     }
 
@@ -92,6 +93,12 @@ class FriendCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        hintLabel.layer.cornerRadius = hintLabel.bounds.size.width * 0.5
+        iconImageView.layer.cornerRadius = iconImageView.bounds.size.width * 0.5
     }
     
 }

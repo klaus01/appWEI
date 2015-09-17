@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="mht.TTF">
+            <string>CloudMeiHeiGBK</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FriendCollectionViewCell" customModule="appWEI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="187" height="169"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="135"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="187" height="169"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="135"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsV-hx-LDC">
-                        <rect key="frame" x="0.0" y="0.0" width="187" height="149"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsV-hx-LDC">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-Zy-ZYn">
-                        <rect key="frame" x="0.0" y="149" width="187" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP1-Zy-ZYn">
+                        <rect key="frame" x="0.0" y="110" width="100" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="fal-uX-PP0"/>
+                            <constraint firstAttribute="height" constant="25" id="fal-uX-PP0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="CloudMeiHeiGBK" family="CloudMeiHeiGBK" pointSize="22"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhT-TQ-4di">
-                        <rect key="frame" x="145" y="0.0" width="42" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhT-TQ-4di">
+                        <rect key="frame" x="76" y="0.0" width="24" height="24"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="a8S-Fw-U0h"/>
+                            <constraint firstAttribute="width" constant="24" id="eGG-wK-gc1"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ax7-9u-UKO">
-                        <rect key="frame" x="157" y="0.0" width="30" height="30"/>
+                        <rect key="frame" x="70" y="0.0" width="30" height="30"/>
                         <state key="normal" title="删">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -46,21 +56,21 @@
                 <constraint firstItem="bhT-TQ-4di" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JJl-oC-Cma"/>
                 <constraint firstAttribute="trailing" secondItem="GsV-hx-LDC" secondAttribute="trailing" id="JeA-so-ubJ"/>
                 <constraint firstItem="GsV-hx-LDC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SrS-Bv-waU"/>
-                <constraint firstItem="IP1-Zy-ZYn" firstAttribute="top" secondItem="GsV-hx-LDC" secondAttribute="bottom" id="Wb1-zi-q5q"/>
+                <constraint firstItem="IP1-Zy-ZYn" firstAttribute="top" secondItem="GsV-hx-LDC" secondAttribute="bottom" constant="10" id="Wb1-zi-q5q"/>
                 <constraint firstItem="IP1-Zy-ZYn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAY-zz-6j8"/>
                 <constraint firstAttribute="trailing" secondItem="IP1-Zy-ZYn" secondAttribute="trailing" id="g5c-LM-jEc"/>
                 <constraint firstAttribute="trailing" secondItem="Ax7-9u-UKO" secondAttribute="trailing" id="inc-zv-KI6"/>
                 <constraint firstAttribute="bottom" secondItem="IP1-Zy-ZYn" secondAttribute="bottom" id="tgi-ZZ-gzD"/>
                 <constraint firstItem="GsV-hx-LDC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uYF-0E-PSL"/>
             </constraints>
-            <size key="customSize" width="187" height="169"/>
+            <size key="customSize" width="187" height="207"/>
             <connections>
                 <outlet property="deleteButton" destination="Ax7-9u-UKO" id="PGn-Sq-l9S"/>
                 <outlet property="hintLabel" destination="bhT-TQ-4di" id="Zk3-0e-E1n"/>
                 <outlet property="iconImageView" destination="GsV-hx-LDC" id="JXU-95-VrR"/>
                 <outlet property="nicknameLabel" destination="IP1-Zy-ZYn" id="xMb-mZ-T3O"/>
             </connections>
-            <point key="canvasLocation" x="75.5" y="122.5"/>
+            <point key="canvasLocation" x="75.5" y="141.5"/>
         </collectionViewCell>
     </objects>
 </document>
