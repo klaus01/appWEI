@@ -35,6 +35,7 @@
             <string>MicrosoftYaHei</string>
             <string>MicrosoftYaHei</string>
             <string>MicrosoftYaHei</string>
+            <string>MicrosoftYaHei</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1062,40 +1063,52 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykw-bz-aGC">
-                                <rect key="frame" x="16" y="8" width="80" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irB-dm-NiE" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="ZB7-9Z-Dv6">
+                                        <rect key="frame" x="10" y="17" width="37" height="37"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入文字或数字" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ttf-z0-hjw">
+                                        <rect key="frame" x="57" y="0.0" width="253" height="70"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="MicrosoftYaHei" family="Microsoft YaHei" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchValueChanged:" destination="2zJ-US-cpT" eventType="editingChanged" id="g54-Xj-A7E"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="nV9-k1-l4w"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ttf-z0-hjw" secondAttribute="bottom" id="4uu-tt-e8o"/>
+                                    <constraint firstItem="ZB7-9Z-Dv6" firstAttribute="leading" secondItem="irB-dm-NiE" secondAttribute="leading" constant="10" id="Qio-GN-asu"/>
+                                    <constraint firstAttribute="centerY" secondItem="ZB7-9Z-Dv6" secondAttribute="centerY" id="Qn9-p0-bM1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ttf-z0-hjw" secondAttribute="trailing" constant="10" id="YGc-nX-pXf"/>
+                                    <constraint firstItem="Ttf-z0-hjw" firstAttribute="top" secondItem="irB-dm-NiE" secondAttribute="top" id="gBQ-zo-0GV"/>
+                                    <constraint firstItem="Ttf-z0-hjw" firstAttribute="leading" secondItem="ZB7-9Z-Dv6" secondAttribute="trailing" constant="10" id="haG-qY-BVv"/>
+                                    <constraint firstAttribute="height" constant="70" id="zts-pI-8Mz"/>
                                 </constraints>
-                                <state key="normal" title="编号"/>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-qe-ZKE">
-                                <rect key="frame" x="104" y="8" width="200" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SOT-dj-kb5">
-                                <rect key="frame" x="0.0" y="46" width="320" height="370"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SOT-dj-kb5">
+                                <rect key="frame" x="0.0" y="80" width="320" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ykw-bz-aGC" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leadingMargin" id="0Gi-vU-Vpo"/>
-                            <constraint firstItem="e2g-qe-ZKE" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailingMargin" id="BYm-U2-xKC"/>
-                            <constraint firstItem="SOT-dj-kb5" firstAttribute="top" secondItem="e2g-qe-ZKE" secondAttribute="bottom" constant="8" id="Bzv-GI-fOD"/>
-                            <constraint firstItem="SOT-dj-kb5" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailingMargin" constant="16" id="G5i-og-upL"/>
-                            <constraint firstItem="Ykw-bz-aGC" firstAttribute="top" secondItem="8tT-2B-8IW" secondAttribute="bottom" constant="8" id="UTq-UP-BJA"/>
-                            <constraint firstItem="e2g-qe-ZKE" firstAttribute="top" secondItem="8tT-2B-8IW" secondAttribute="bottom" constant="8" id="lrj-Ky-kqr"/>
+                            <constraint firstItem="irB-dm-NiE" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leading" id="6eY-xu-daW"/>
+                            <constraint firstItem="irB-dm-NiE" firstAttribute="top" secondItem="8tT-2B-8IW" secondAttribute="bottom" id="9hj-r8-Nn6"/>
+                            <constraint firstItem="SOT-dj-kb5" firstAttribute="trailing" secondItem="hOG-vs-Yjc" secondAttribute="trailing" id="G5i-og-upL"/>
+                            <constraint firstAttribute="trailing" secondItem="irB-dm-NiE" secondAttribute="trailing" id="jKc-xy-LU7"/>
                             <constraint firstItem="gqL-PI-I97" firstAttribute="top" secondItem="SOT-dj-kb5" secondAttribute="bottom" id="nBi-oV-6fd"/>
-                            <constraint firstItem="SOT-dj-kb5" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leadingMargin" constant="-16" id="rfP-nd-YsW"/>
-                            <constraint firstItem="e2g-qe-ZKE" firstAttribute="leading" secondItem="Ykw-bz-aGC" secondAttribute="trailing" constant="8" id="taB-gl-qFM"/>
+                            <constraint firstItem="SOT-dj-kb5" firstAttribute="leading" secondItem="hOG-vs-Yjc" secondAttribute="leading" id="rfP-nd-YsW"/>
+                            <constraint firstItem="SOT-dj-kb5" firstAttribute="top" secondItem="irB-dm-NiE" secondAttribute="bottom" constant="10" id="spG-kr-YV0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="典" id="xIu-7J-tg6"/>
                     <connections>
-                        <outlet property="searchTextField" destination="e2g-qe-ZKE" id="0eI-h1-brL"/>
-                        <outlet property="searchTypeButton" destination="Ykw-bz-aGC" id="lnm-kc-RHG"/>
+                        <outlet property="searchTextField" destination="Ttf-z0-hjw" id="T0r-6w-EIf"/>
                         <outlet property="tableView" destination="SOT-dj-kb5" id="vRV-Rw-goy"/>
                         <segue destination="ghL-lg-d9H" kind="show" identifier="showWord" id="fm5-X3-Ctw"/>
                     </connections>
@@ -2003,10 +2016,10 @@
         <image name="wechat" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fm5-X3-Ctw"/>
         <segue reference="Gel-uq-x6C"/>
         <segue reference="w3i-EN-3wY"/>
         <segue reference="XQk-b1-g31"/>
-        <segue reference="PMA-Jc-9AP"/>
         <segue reference="T6I-vG-2Wh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -87,7 +87,7 @@ class StatisticsViewController: UIViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
                 let word = self!.words[indexPath.item]
                 
-                cell.number = word.number
+//                cell.number = word.number
                 cell.pictureImageUrl = word.pictureUrl
                 let orderType = self!.orderSegmentedControl.selectedSegmentIndex
                 var text = ""

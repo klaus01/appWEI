@@ -20,13 +20,13 @@ class DictionaryViewController: UIViewController {
     private var searchType = SearchType.Number
     private var selectedWord: WordModel?
     
-    @IBOutlet weak var searchTypeButton: UIButton!
+//    @IBOutlet weak var searchTypeButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSearchTypeButton()
+//        self.setupSearchTypeButton()
         self.setupSearchTextField()
         self.setupTableView()
     }
@@ -46,15 +46,19 @@ class DictionaryViewController: UIViewController {
         }
     }
     
-    private func setupSearchTypeButton() {
-        searchTypeButton.clicked { [weak self] (button) -> Void in
-            self!.searchType = self!.searchType == .Number ? .Description : .Number
-            button.setTitle(self!.searchType == .Number ? "编号" : "描述", forState: UIControlState.Normal)
-        }
-    }
+//    private func setupSearchTypeButton() {
+//        searchTypeButton.clicked { [weak self] (button) -> Void in
+//            self!.searchType = self!.searchType == .Number ? .Description : .Number
+//            button.setTitle(self!.searchType == .Number ? "编号" : "描述", forState: UIControlState.Normal)
+//        }
+//    }
     
     private func setupSearchTextField() {
         searchTextField.ce_ShouldReturn { [weak self] (textField) -> Bool in
+            self!.searchType = .Description
+            if textField.text =~ "^[0-9]+$" {
+                self!.searchType = .Number
+            }
             self!.words.removeAll(keepCapacity: false)
             self!.allLoaded = false
             self!.tableView.reloadData()
@@ -81,7 +85,7 @@ class DictionaryViewController: UIViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
                 let word = self!.words[indexPath.item]
                 
-                cell.number = word.number
+//                cell.number = word.number
                 cell.pictureImageUrl = word.pictureUrl
                 cell.rightText = word.description
                 

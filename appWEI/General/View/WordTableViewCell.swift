@@ -10,20 +10,10 @@ import UIKit
 
 class WordTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var noLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    class var cellHeight: CGFloat { return 44 }
-    
-    var number: String? {
-        get {
-            return noLabel.text
-        }
-        set {
-            noLabel.text = newValue
-        }
-    }
+    class var cellHeight: CGFloat { return 67 }
     
     var pictureImageUrl: String? {
         didSet {
@@ -44,17 +34,6 @@ class WordTableViewCell: UITableViewCell {
         set {
             descriptionLabel.text = newValue
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
