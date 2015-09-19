@@ -44,7 +44,7 @@ class PartnerMessagesViewController: UIViewController {
         tableView.registerNib(cellNib, forCellReuseIdentifier: "LOADING")
         cellNib = UINib(nibName: "PartnerMessageTableViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "MYCELL")
-        tableView.rowHeight = 147
+        tableView.rowHeight = PartnerMessageTableViewCell.cellHeight
         tableView
         .ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
             return self!.messages == nil ? 1 : self!.messages!.count
