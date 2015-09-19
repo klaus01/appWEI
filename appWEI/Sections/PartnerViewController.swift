@@ -10,17 +10,42 @@ import UIKit
 
 class PartnerViewController: UIViewController {
 
+    enum ListType {
+        case Partner
+        case Message
+    }
     private var partners: [PartnerUserModel]!
     private var partnerMessages: [PartnerUserAndMessageOverviewModel]!
     private var selectedPartner: PartnerUserModel?
+    private var listType: ListType = .Partner {
+        didSet {
+            partnerListBottomView.hidden = listType != .Partner
+            partnerTableView.hidden      = listType != .Partner
+            messageListBottomView.hidden = listType != .Message
+            messageCollectionView.hidden = listType != .Message
+        }
+    }
+    private var messageCount = 0 {
+        didSet {
+            messageCountLabel.hidden = messageCount <= 0
+            messageCountLabel.text = "\(messageCount)"
+        }
+    }
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var partnerListButton: UIButton!
+    @IBOutlet weak var messageListButton: UIButton!
+    @IBOutlet weak var partnerListBottomView: UIView!
+    @IBOutlet weak var messageListBottomView: UIView!
+    @IBOutlet weak var messageCountLabel: UILabel!
+    
     @IBOutlet weak var partnerTableView: UITableView!
     @IBOutlet weak var messageCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSegmentedControl()
+        listType = .Partner
+        messageCount = 10
+        setupListButton()
         setupPartnerTableView()
         setupMessageCollectionView()
         loadPartners()
@@ -33,16 +58,22 @@ class PartnerViewController: UIViewController {
         }
     }
     
-    private func setupSegmentedControl() {
-        segmentedControl.selectedIndexChange { [weak self] (index) -> () in
-            self!.partnerTableView.hidden = index != 0
-            self!.messageCollectionView.hidden = index != 1
+    private func setupListButton() {
+        partnerListButton.clicked { [weak self] btn -> () in
+            self!.listType = .Partner
         }
+        messageListButton.clicked { [weak self] btn -> () in
+            self!.listType = .Message
+        }
+        messageCountLabel.layer.cornerRadius = 10
     }
     
     private func setupPartnerTableView() {
-        let cellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
-        partnerTableView.registerNib(cellNib, forCellReuseIdentifier: "LOADING")
+        let cellNib = UINib(nibName: "PartnerTableViewCell", bundle: nil)
+        partnerTableView.registerNib(cellNib, forCellReuseIdentifier: "MYCELL")
+        let loadingCellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        partnerTableView.registerNib(loadingCellNib, forCellReuseIdentifier: "LOADING")
+        partnerTableView.rowHeight = PartnerTableViewCell.cellHeight
         partnerTableView
         .ce_NumberOfRowsInSection { [weak self] (tableView, section) -> Int in
             return (self!.partners == nil || self!.partnerMessages == nil) ? 1 : self!.partners.count
@@ -52,36 +83,62 @@ class PartnerViewController: UIViewController {
                 return tableView.dequeueReusableCellWithIdentifier("LOADING", forIndexPath: indexPath) as! UITableViewCell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! PartnerTableViewCell
                 let partner = self!.partners[indexPath.row]
-                
-                cell.imageView!.imageWebUrl = partner.iconUrl
-                cell.textLabel!.text        = partner.name
-                cell.detailTextLabel!.text  = partner.description
-                let button = UIButton(frame: CGRectMake(0, 0, 90, 30))
-                button.backgroundColor = UIColor.redColor()
-                button.setTitle("订阅", forState: UIControlState.Normal)
-                button.setTitle("已订阅", forState: UIControlState.Disabled)
-                button.enabled = !(self!.isSubscribedWithPartner(partner.partnerUserID))
-                button.clicked { (button) -> () in
-                    button.enabled = false
-                    ServerHelper.appUserAddPartnerUser(partner.partnerUserID, completionHandler: { [weak self] (ret, error) -> Void in
-                        if let error = error {
-                            println(error)
-                            return
-                        }
-                        if let weakSelf = self {
-                            if ret!.success {
-                                self!.loadPartnerMessages()
-                                self!.share(partner)
-                            }
-                            else {
-                                UIAlertView.showMessage(ret!.errorMessage!)
-                            }
-                        }
-                    })
+                cell.pictureImageUrl = partner.iconUrl
+                cell.title = partner.name
+                cell.desc = partner.description
+                if self!.isSubscribedWithPartner(partner.partnerUserID) {
+                    cell.subscribe = nil
                 }
-                cell.accessoryView = button
+                else {
+                    cell.subscribe = { [weak self] cell -> () in
+                        cell.subscribe = nil
+                        ServerHelper.appUserAddPartnerUser(partner.partnerUserID, completionHandler: { [weak self] (ret, error) -> Void in
+                            if let error = error {
+                                println(error)
+                                return
+                            }
+                            if let weakSelf = self {
+                                if ret!.success {
+                                    self!.loadPartnerMessages()
+                                    self!.share(partner)
+                                }
+                                else {
+                                    UIAlertView.showMessage(ret!.errorMessage!)
+                                }
+                            }
+                        })
+                    }
+                }
+                
+//                cell.imageView!.imageWebUrl = partner.iconUrl
+//                cell.textLabel!.text        = partner.name
+//                cell.detailTextLabel!.text  = partner.description
+//                let button = UIButton(frame: CGRectMake(0, 0, 90, 30))
+//                button.backgroundColor = UIColor.redColor()
+//                button.setTitle("订阅", forState: UIControlState.Normal)
+//                button.setTitle("已订阅", forState: UIControlState.Disabled)
+//                button.enabled = !(self!.isSubscribedWithPartner(partner.partnerUserID))
+//                button.clicked { (button) -> () in
+//                    button.enabled = false
+//                    ServerHelper.appUserAddPartnerUser(partner.partnerUserID, completionHandler: { [weak self] (ret, error) -> Void in
+//                        if let error = error {
+//                            println(error)
+//                            return
+//                        }
+//                        if let weakSelf = self {
+//                            if ret!.success {
+//                                self!.loadPartnerMessages()
+//                                self!.share(partner)
+//                            }
+//                            else {
+//                                UIAlertView.showMessage(ret!.errorMessage!)
+//                            }
+//                        }
+//                    })
+//                }
+//                cell.accessoryView = button
                 
                 return cell
             }

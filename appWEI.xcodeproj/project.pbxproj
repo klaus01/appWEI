@@ -100,6 +100,8 @@
 		24E3E9661AD27CD800B51FBE /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */; };
 		24E3E9681AD2943F00B51FBE /* WordImageCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */; };
 		24E3E96A1AD2947000B51FBE /* WordSoundCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */; };
+		24E46DA21BAD3B8900EF3EC7 /* PartnerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E46DA01BAD3B8900EF3EC7 /* PartnerTableViewCell.swift */; };
+		24E46DA31BAD3B8900EF3EC7 /* PartnerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E46DA11BAD3B8900EF3EC7 /* PartnerTableViewCell.xib */; };
 		24E50EDE1B039F100016F1DD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E50EDD1B039F100016F1DD /* MainNavigationController.swift */; };
 		24E649281AE35D0B00B5228A /* BlacklistAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */; };
 		24E69A5E1AECF0B900419361 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */; };
@@ -278,6 +280,8 @@
 		24E3E9641AD27CD800B51FBE /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendCollectionViewCell.xib; path = View/FriendCollectionViewCell.xib; sourceTree = "<group>"; };
 		24E3E9671AD2943F00B51FBE /* WordImageCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordImageCreateViewController.swift; sourceTree = "<group>"; };
 		24E3E9691AD2947000B51FBE /* WordSoundCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSoundCreateViewController.swift; sourceTree = "<group>"; };
+		24E46DA01BAD3B8900EF3EC7 /* PartnerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartnerTableViewCell.swift; path = View/PartnerTableViewCell.swift; sourceTree = "<group>"; };
+		24E46DA11BAD3B8900EF3EC7 /* PartnerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PartnerTableViewCell.xib; path = View/PartnerTableViewCell.xib; sourceTree = "<group>"; };
 		24E50EDD1B039F100016F1DD /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		24E649271AE35D0B00B5228A /* BlacklistAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlacklistAddViewController.swift; sourceTree = "<group>"; };
 		24E69A5C1AECF0B900419361 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCollectionViewCell.xib; path = View/LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -674,6 +678,8 @@
 				24E806251AE5361C004AD0F5 /* WordTableViewCell.xib */,
 				24F4D18E1BAD12B7001740E5 /* StatisticsWordTableViewCell.swift */,
 				24F4D18F1BAD12B7001740E5 /* StatisticsWordTableViewCell.xib */,
+				24E46DA01BAD3B8900EF3EC7 /* PartnerTableViewCell.swift */,
+				24E46DA11BAD3B8900EF3EC7 /* PartnerTableViewCell.xib */,
 				24E0EF5B1AF2664D00B44C68 /* PartnerMessageTableViewCell.swift */,
 				24E0EF5C1AF2664D00B44C68 /* PartnerMessageTableViewCell.xib */,
 				24E86FBD1B0B636F00B68F81 /* UserTitleView.swift */,
@@ -783,6 +789,7 @@
 				24E806271AE5361C004AD0F5 /* WordTableViewCell.xib in Resources */,
 				244C19E71ABBFFC000813708 /* Images.xcassets in Resources */,
 				24E3E9601AD277C800B51FBE /* ImageCollectionViewCell.xib in Resources */,
+				24E46DA31BAD3B8900EF3EC7 /* PartnerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +868,7 @@
 				24E02D031ACAD10B00A17D13 /* Sequence.swift in Sources */,
 				24ADB4351AE7DF4C000B4B59 /* MessagesViewController.swift in Sources */,
 				24E79A1C1AE00C1900347C06 /* CE_UIImagePickerController.swift in Sources */,
+				24E46DA21BAD3B8900EF3EC7 /* PartnerTableViewCell.swift in Sources */,
 				240D52B01ADEB69E00B8E112 /* UIAlertView.swift in Sources */,
 				24E02D041ACAD10B00A17D13 /* String.swift in Sources */,
 				2426E8CF1AD96A4E00E47636 /* CE_UICollectionView.swift in Sources */,
