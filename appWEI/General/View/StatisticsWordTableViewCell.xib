@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="StatisticsWordTableViewCell" customModule="appWEI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQW-BH-AKq">
+                        <rect key="frame" x="22" y="0.0" width="52" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jQW-BH-AKq" secondAttribute="height" id="zwJ-O3-yWt"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOV-l7-hZ1" userLabel="Progress Bar View">
+                        <rect key="frame" x="94" y="11" width="206" height="15"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ds7-gQ-3kD" userLabel="Progress View">
+                                <rect key="frame" x="0.0" y="0.0" width="103" height="15"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.63137254899999995" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ds7-gQ-3kD" secondAttribute="bottom" id="VNY-8s-Aqu"/>
+                            <constraint firstItem="Ds7-gQ-3kD" firstAttribute="top" secondItem="GOV-l7-hZ1" secondAttribute="top" id="faQ-9W-wXh"/>
+                            <constraint firstItem="Ds7-gQ-3kD" firstAttribute="leading" secondItem="GOV-l7-hZ1" secondAttribute="leading" id="wDg-9B-E48"/>
+                            <constraint firstItem="Ds7-gQ-3kD" firstAttribute="width" secondItem="GOV-l7-hZ1" secondAttribute="width" multiplier="0.5" placeholder="YES" id="xwW-Lv-cT4"/>
+                            <constraint firstAttribute="height" constant="15" id="yLm-Bq-gyT"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRx-W6-RQI" userLabel="Count Label">
+                        <rect key="frame" x="94" y="26" width="36" height="26"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jQW-BH-AKq" secondAttribute="bottom" constant="14" id="9Qd-kl-2wc"/>
+                    <constraint firstItem="jQW-BH-AKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="GNe-L4-G67"/>
+                    <constraint firstAttribute="trailing" secondItem="GOV-l7-hZ1" secondAttribute="trailing" constant="20" id="IW0-ih-GhF"/>
+                    <constraint firstItem="cRx-W6-RQI" firstAttribute="top" secondItem="GOV-l7-hZ1" secondAttribute="bottom" id="O8I-kf-SF0"/>
+                    <constraint firstItem="Ds7-gQ-3kD" firstAttribute="leading" secondItem="cRx-W6-RQI" secondAttribute="leading" id="Pyr-VJ-VcK"/>
+                    <constraint firstItem="GOV-l7-hZ1" firstAttribute="leading" secondItem="jQW-BH-AKq" secondAttribute="trailing" constant="20" id="ZNu-27-c2m"/>
+                    <constraint firstItem="jQW-BH-AKq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dXJ-9t-F4T"/>
+                    <constraint firstItem="GOV-l7-hZ1" firstAttribute="bottom" secondItem="jQW-BH-AKq" secondAttribute="centerY" id="hpB-hi-oXr"/>
+                    <constraint firstItem="jQW-BH-AKq" firstAttribute="bottom" secondItem="cRx-W6-RQI" secondAttribute="bottom" id="rtn-wC-Lok"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="countLabel" destination="cRx-W6-RQI" id="MLy-gX-fab"/>
+                <outlet property="pictureImageView" destination="jQW-BH-AKq" id="3Bx-P7-HuK"/>
+                <outlet property="progressBarView" destination="GOV-l7-hZ1" id="gqR-BP-rgq"/>
+                <outlet property="progressView" destination="Ds7-gQ-3kD" id="0Kf-pE-pjb"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

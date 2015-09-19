@@ -14,23 +14,54 @@ class StatisticsViewController: UIViewController {
         case Number
         case Description
     }
+    enum OrderType {
+        case Today
+        case Month
+        case Year
+    }
     private let pageCount = 20
+    private var userPhoneNumberAreaType: PhoneNumberAreaType = .CN
     private var words: [WordModel] = [WordModel]()
+    private var firstWordUseCount = 0
     private var allLoaded = false
     private var searchType = SearchType.Number
     private var selectedWord: WordModel?
+    private var orderType: OrderType {
+        get {
+            if !todayLineView.hidden {
+                return .Today
+            }
+            else if !monthLineView.hidden {
+                return .Month
+            }
+            return .Year
+        }
+        set {
+            todayLineView.hidden = newValue != .Today
+            monthLineView.hidden = newValue != .Month
+            yearLineView.hidden  = newValue != .Year
+        }
+    }
     
-    @IBOutlet weak var searchTypeButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var orderSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var todayButton: UIButton!
+    @IBOutlet weak var monthButton: UIButton!
+    @IBOutlet weak var yearButton: UIButton!
+    @IBOutlet weak var todayLineView: UIView!
+    @IBOutlet weak var monthLineView: UIView!
+    @IBOutlet weak var yearLineView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSearchTypeButton()
-        self.setupSearchTextField()
-        self.setupOrderSegmentedControl()
-        self.setupTableView()
+        
+        userPhoneNumberAreaType = getPhoneNumberAreaType(UserInfo.shared.phoneNumber!)
+        orderType = .Month
+        setupSearchTextField()
+        setupOrderTypeButton()
+        setupTableView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,21 +79,33 @@ class StatisticsViewController: UIViewController {
         }
     }
     
-    private func setupSearchTypeButton() {
-        searchTypeButton.clicked { [weak self] (button) -> Void in
-            self!.searchType = self!.searchType == .Number ? .Description : .Number
-            button.setTitle(self!.searchType == .Number ? "编号" : "描述", forState: UIControlState.Normal)
+    private func setupOrderTypeButton() {
+        todayButton.clicked { [weak self] btn -> () in
+            if self!.orderType != .Today {
+                self!.orderType = .Today
+                self!.reloadWords()
+            }
         }
-    }
-    
-    private func setupOrderSegmentedControl() {
-        orderSegmentedControl.selectedIndexChange() { [weak self] (index) -> Void in
-            self!.reloadWords()
+        monthButton.clicked { [weak self] btn -> () in
+            if self!.orderType != .Month {
+                self!.orderType = .Month
+                self!.reloadWords()
+            }
+        }
+        yearButton.clicked { [weak self] btn -> () in
+            if self!.orderType != .Year {
+                self!.orderType = .Year
+                self!.reloadWords()
+            }
         }
     }
     
     private func setupSearchTextField() {
         searchTextField.ce_ShouldReturn { [weak self] (textField) -> Bool in
+            self!.searchType = .Description
+            if textField.text =~ "^[0-9]+$" {
+                self!.searchType = .Number
+            }
             self!.reloadWords()
             textField.resignFirstResponder()
             return true
@@ -70,7 +113,7 @@ class StatisticsViewController: UIViewController {
     }
     
     private func setupTableView() {
-        let cellNib = UINib(nibName: "WordTableViewCell", bundle: nil)
+        let cellNib = UINib(nibName: "StatisticsWordTableViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "MYCELL")
         let loadingCellNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
         tableView.registerNib(loadingCellNib, forCellReuseIdentifier: "LOADINGCELL")
@@ -84,36 +127,12 @@ class StatisticsViewController: UIViewController {
         }
         .ce_CellForRowAtIndexPath { [weak self] (tableView, indexPath) -> UITableViewCell in
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! WordTableViewCell
-                let word = self!.words[indexPath.item]
+                let cell = tableView.dequeueReusableCellWithIdentifier("MYCELL", forIndexPath: indexPath) as! StatisticsWordTableViewCell
+                let word = self!.words[indexPath.row]
                 
-//                cell.number = word.number
                 cell.pictureImageUrl = word.pictureUrl
-                let orderType = self!.orderSegmentedControl.selectedSegmentIndex
-                var text = ""
-                switch getPhoneNumberAreaType(UserInfo.shared.phoneNumber!) {
-                case .CN:
-                    switch orderType {
-                    case 0:
-                        text = "\(word.useCount_Before1D_CN)"
-                    case 1:
-                        text = "\(word.useCount_Before30D_CN)"
-                    default:
-                        text = "\(word.useCount_Before365D_CN)"
-                    }
-                case .HK:
-                    switch orderType {
-                    case 0:
-                        text = "\(word.useCount_Before1D_HK)"
-                    case 1:
-                        text = "\(word.useCount_Before30D_HK)"
-                    default:
-                        text = "\(word.useCount_Before365D_HK)"
-                    }
-                default:
-                    break
-                }
-                cell.rightText = "\t\t\(text)"
+                cell.count = self!.getWordUseCount(word)
+                cell.allCount = self!.firstWordUseCount
 
                 return cell
             }
@@ -134,8 +153,34 @@ class StatisticsViewController: UIViewController {
         }
     }
     
+    private func getWordUseCount(word: WordModel) -> Int {
+        switch userPhoneNumberAreaType {
+        case .CN:
+            switch orderType {
+            case .Today:
+                return word.useCount_Before1D_CN
+            case .Month:
+                return word.useCount_Before30D_CN
+            default:
+                return word.useCount_Before365D_CN
+            }
+        case .HK:
+            switch orderType {
+            case .Today:
+                return word.useCount_Before1D_HK
+            case .Month:
+                return word.useCount_Before30D_HK
+            default:
+                return word.useCount_Before365D_HK
+            }
+        default:
+            return 0
+        }
+    }
+    
     private func reloadWords() {
         words.removeAll(keepCapacity: false)
+        firstWordUseCount = 0;
         allLoaded = false
         tableView.reloadData()
     }
@@ -152,6 +197,9 @@ class StatisticsViewController: UIViewController {
                         self!.allLoaded = true
                     }
                     if data.count > 0 {
+                        if (self!.words.count <= 0 && data.count > 0) {
+                            self!.firstWordUseCount = self!.getWordUseCount(data[0])
+                        }
                         self!.words += data
                     }
                     self!.tableView.reloadData()
@@ -161,7 +209,7 @@ class StatisticsViewController: UIViewController {
                 UIAlertView.showMessage(ret!.errorMessage!)
             }
         }
-        let orderType = orderSegmentedControl.selectedSegmentIndex
+        let orderType = self.orderType.hashValue
         let offset = words.count
         if searchTextField.text == nil || searchTextField.text!.length <= 0 {
             ServerHelper.wordFindAll(orderType, offset: offset, resultCount: pageCount, completionHandler: completionHandler)
