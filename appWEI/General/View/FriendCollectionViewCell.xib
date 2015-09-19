@@ -70,7 +70,7 @@
                 <outlet property="iconImageView" destination="GsV-hx-LDC" id="JXU-95-VrR"/>
                 <outlet property="nicknameLabel" destination="IP1-Zy-ZYn" id="xMb-mZ-T3O"/>
             </connections>
-            <point key="canvasLocation" x="75.5" y="141.5"/>
+            <point key="canvasLocation" x="75" y="141.5"/>
         </collectionViewCell>
     </objects>
 </document>

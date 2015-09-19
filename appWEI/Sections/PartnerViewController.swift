@@ -15,7 +15,22 @@ class PartnerViewController: UIViewController {
         case Message
     }
     private var partners: [PartnerUserModel]!
-    private var partnerMessages: [PartnerUserAndMessageOverviewModel]!
+    private var partnerMessages: [PartnerUserAndMessageOverviewModel]! {
+        didSet {
+            if let list = partnerMessages {
+                var count = 0
+                for partnerMessage in partnerMessages {
+                    if let messageInfo = partnerMessage.messageOverview {
+                        count += (messageInfo.unreadCount + messageInfo.noAwardCount)
+                    }
+                }
+                messageCount = count
+            }
+            else {
+                messageCount = 0
+            }
+        }
+    }
     private var selectedPartner: PartnerUserModel?
     private var listType: ListType = .Partner {
         didSet {
@@ -44,7 +59,7 @@ class PartnerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listType = .Partner
-        messageCount = 10
+        messageCount = 0
         setupListButton()
         setupPartnerTableView()
         setupMessageCollectionView()
@@ -111,35 +126,6 @@ class PartnerViewController: UIViewController {
                         })
                     }
                 }
-                
-//                cell.imageView!.imageWebUrl = partner.iconUrl
-//                cell.textLabel!.text        = partner.name
-//                cell.detailTextLabel!.text  = partner.description
-//                let button = UIButton(frame: CGRectMake(0, 0, 90, 30))
-//                button.backgroundColor = UIColor.redColor()
-//                button.setTitle("订阅", forState: UIControlState.Normal)
-//                button.setTitle("已订阅", forState: UIControlState.Disabled)
-//                button.enabled = !(self!.isSubscribedWithPartner(partner.partnerUserID))
-//                button.clicked { (button) -> () in
-//                    button.enabled = false
-//                    ServerHelper.appUserAddPartnerUser(partner.partnerUserID, completionHandler: { [weak self] (ret, error) -> Void in
-//                        if let error = error {
-//                            println(error)
-//                            return
-//                        }
-//                        if let weakSelf = self {
-//                            if ret!.success {
-//                                self!.loadPartnerMessages()
-//                                self!.share(partner)
-//                            }
-//                            else {
-//                                UIAlertView.showMessage(ret!.errorMessage!)
-//                            }
-//                        }
-//                    })
-//                }
-//                cell.accessoryView = button
-                
                 return cell
             }
         }
@@ -148,7 +134,7 @@ class PartnerViewController: UIViewController {
     private func setupMessageCollectionView() {
         var cellNib = UINib(nibName: "LoadingCollectionViewCell", bundle: nil)
         messageCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "LOADING")
-        cellNib = UINib(nibName: "FriendCollectionViewCell", bundle: nil)
+        cellNib = UINib(nibName: "PartnerCollectionViewCell", bundle: nil)
         messageCollectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
         messageCollectionView
         .ce_NumberOfItemsInSection { [weak self] (collectionView, section) -> Int in
@@ -159,17 +145,19 @@ class PartnerViewController: UIViewController {
                 return collectionView.dequeueReusableCellWithReuseIdentifier("LOADING", forIndexPath: indexPath) as! UICollectionViewCell
             }
             else {
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! FriendCollectionViewCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MYCELL", forIndexPath: indexPath) as! PartnerCollectionViewCell
                 let partnerMessage = self!.partnerMessages[indexPath.item]
                 
                 cell.iconImageUrl = partnerMessage.partnerUser.iconUrl
                 cell.nickname     = partnerMessage.partnerUser.name
-                cell.deleteAction = nil
+                cell.hintType     = .None
                 if let messageInfo = partnerMessage.messageOverview {
-                    cell.hintText = "\(messageInfo.unreadCount)"
-                }
-                else {
-                    cell.hintText = ""
+                    if messageInfo.unreadCount > 0 {
+                        cell.hintType = .NewMessage
+                    }
+                    else if messageInfo.noAwardCount > 0 {
+                        cell.hintType = .Prize
+                    }
                 }
                 
                 return cell
