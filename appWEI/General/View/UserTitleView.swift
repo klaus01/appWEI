@@ -15,8 +15,10 @@ class UserTitleView: UIView {
     @IBOutlet weak var label: UILabel!
     
     func autoContnetSize() {
+        let height = frame.size.height - 8 * 2
         label.sizeToFit()
-        contentWidthConstraint.constant = (frame.size.height - 8 * 2) + 8 + label.frame.size.width
+        contentWidthConstraint.constant = height + 8 + label.frame.size.width
+        imageView.layer.cornerRadius = height * 0.5
     }
     
 }

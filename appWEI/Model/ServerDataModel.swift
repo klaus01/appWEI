@@ -119,6 +119,14 @@ struct FriendModel : ServerDataProtocol {
         isBlack = dic["IsBlack"] as! Bool
     }
     
+    init(message: HistoryMessageModel) {
+        appUser = message.appUser
+        partnerUser = message.partnerUser
+        unreadCount = nil
+        lastTime = nil
+        isBlack = false
+    }
+    
     var userID: Int? {
         if let user = appUser {
             return user.appUserID

@@ -47,6 +47,8 @@ class SendMessageViewController: UIViewController {
             selectedWordImageViewHeightConstraint.constant = selectedWordImageViewFrame.size.height
         }
     }
+    var defaultWord: WordModel?
+    var defaultFriend: FriendModel?
     
     @IBOutlet weak var selectedWordImageView: UIImageView!
     @IBOutlet weak var selectedWordPlayButton: UIButton!
@@ -84,6 +86,17 @@ class SendMessageViewController: UIViewController {
                 self!.friends = selectFriendsViewController.selectedFriends
                 self!.friendsCollectionView.reloadData()
             }
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let word = defaultWord {
+            showSelectedWord(word, wordFrame: CGRectMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds), 0, 0))
+        }
+        if let friend = defaultFriend {
+            friends = [friend]
+            friendsCollectionView.reloadData()
         }
     }
     
@@ -129,10 +142,10 @@ class SendMessageViewController: UIViewController {
         }
         .ce_DidSelectItemAtIndexPath { [weak self] (collectionView, indexPath) -> Void in
             if self!.allLoaded == true || indexPath.item < self!.currentWords.count {
-                var frame = collectionView.layoutAttributesForItemAtIndexPath(indexPath)!.frame;
-                frame.origin.x += collectionView.frame.origin.x
-                frame.origin.y += collectionView.frame.origin.y
-                self!.showSelectedWord(self!.currentWords[indexPath.item], wordFrame: frame)
+                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+                    let frame = cell.convertRect(cell.bounds, toView: self!.view)
+                    self!.showSelectedWord(self!.currentWords[indexPath.item], wordFrame: frame)
+                }
             }
         }
         .setCellSize(CGSizeMake(100, 100), rowCount: 3)

@@ -76,9 +76,12 @@ class MessagesViewController: UIViewController {
     private var currentDisplayMessage: HistoryMessageModel?
     private var userTitleView: UserTitleView?
     
+    @IBOutlet weak var shareBarItem: UIBarButtonItem!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var wordView: WordView!
     @IBOutlet weak var forwardButton: UIButton!
+    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var wordSendTimeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -86,10 +89,11 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
+        shareBarItem.enabled = false
         wordView.hidden = true
         wordSendTimeLabel.hidden = true
         playButton.hidden = true
-        forwardButton.hidden = true
+        footerView.hidden = true
         playButton.clicked() { [weak self] (button) -> () in
             if let message = self!.currentDisplayMessage {
                 if message.message.type == .Word {
@@ -119,14 +123,20 @@ class MessagesViewController: UIViewController {
                 }
             }
         }
-        forwardButton.clicked() { (button) -> () in
-            // TODO 转发消息
+        forwardButton.clicked() { [weak self] (button) -> () in
+            // TODO 转发消息，打开发消息界面，默认此字，没有人
+            self!.performSegueWithIdentifier("messageToSend", sender: NSNumber(bool: true))
+        }
+        replyButton.clicked() { [weak self] (button) -> () in
+            // TODO 回复消息，打开发消息界面，默认没有字，选中该人
+            self!.performSegueWithIdentifier("messageToSend", sender: NSNumber(bool: false))
         }
         
         reloadUnreadMessages()
         ce_addObserverForName(kNotification_UpdateUnreadMessagesComplete) { [weak self] (notification) -> Void in
             self!.reloadUnreadMessages()
         }
+        UserInfo.shared.updateUnreadMessages()
         
         self.navigationItem.titleView = nil;
     }
@@ -135,7 +145,22 @@ class MessagesViewController: UIViewController {
         super.viewWillDisappear(animated)
         playButton.stopPlayWordSound()
     }
-    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is SendMessageViewController && currentDisplayMessage != nil {
+            let vc = segue.destinationViewController as! SendMessageViewController
+            if let isWord = sender as? NSNumber {
+                if isWord.boolValue && currentDisplayMessage!.word != nil {
+                    vc.defaultWord = currentDisplayMessage!.word!
+                }
+                else if currentDisplayMessage!.appUser != nil {
+                    let friend = FriendModel(message: currentDisplayMessage!)
+                    vc.defaultFriend = friend
+                }
+            }
+        }
+    }
+
     private func setupCollectionView() {
         let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "MYCELL")
@@ -171,7 +196,8 @@ class MessagesViewController: UIViewController {
         wordSendTimeLabel.hidden = false
         wordSendTimeLabel.text = message.message.createTime.stringWithFormat("HH:mm")
         playButton.hidden = message.message.type != .Word || message.word?.audioUrl == nil
-        forwardButton.hidden = message.message.type != .Word
+        footerView.hidden = message.message.type != .Word
+        shareBarItem.enabled = message.message.type == .Word
         
         ServerHelper.messageSetRead(message.message.id, completionHandler: { (ret, error) -> Void in
             if let error = error {
@@ -195,6 +221,14 @@ class MessagesViewController: UIViewController {
             view.label.text = message.nickname
             view.autoContnetSize()
         }
+    }
+    
+    @IBAction func shareItemAction(sender: UIButton) {
+        UIActionSheet(title: nil, cancelButtonTitle: "下次再分享", destructiveButtonTitle: nil, otherButtonTitles: "分享到Facebook", "分享到Instagram", "分享到微信")
+            .clicked({ (buttonAtIndex) -> () in
+                // TODO 分享
+            })
+            .showInView(self.view)
     }
     
     deinit {
