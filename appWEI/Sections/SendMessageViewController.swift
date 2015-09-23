@@ -10,6 +10,27 @@ import UIKit
 
 class SendMessageViewController: UIViewController {
     
+    enum WordType {
+        case Last
+        case System
+        case My
+    }
+    private var wordType: WordType {
+        get {
+            if !lastWordLineView.hidden {
+                return .Last
+            }
+            else if !systemWordLineView.hidden {
+                return .System
+            }
+            return .My
+        }
+        set {
+            lastWordLineView.hidden   = newValue != .Last
+            systemWordLineView.hidden = newValue != .System
+            myWordLineView.hidden     = newValue != .My
+        }
+    }
     private let pageCount = 30
     private var allLoaded = false
     private var loadedCount: Int = 0
@@ -17,9 +38,9 @@ class SendMessageViewController: UIViewController {
     private var systemWords: [WordModel] = [WordModel]()
     private var userWords: [WordModel] = [WordModel]()
     private var currentWords: [WordModel] {
-        switch wordGroupSegmentedControl.selectedSegmentIndex {
-        case 1: return systemWords
-        case 2: return userWords
+        switch wordType {
+        case .System: return systemWords
+        case .My: return userWords
         default: return lastUseWords
         }
     }
@@ -38,11 +59,6 @@ class SendMessageViewController: UIViewController {
         didSet {
             selectedWordImageViewTopConstraint.constant = selectedWordImageViewFrame.origin.y
             selectedWordImageViewLeftConstraint.constant = selectedWordImageViewFrame.origin.x
-            if let sysVer = UIDevice.currentDevice().systemVersion.toDouble() {
-                if (sysVer >= 8) {
-                    selectedWordImageViewLeftConstraint.constant -= 16
-                }
-            }
             selectedWordImageViewWidthConstraint.constant = selectedWordImageViewFrame.size.width
             selectedWordImageViewHeightConstraint.constant = selectedWordImageViewFrame.size.height
         }
@@ -56,7 +72,15 @@ class SendMessageViewController: UIViewController {
     @IBOutlet weak var selectedWordImageViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectedWordImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectedWordImageViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var wordGroupSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var typeView: UIView!
+    @IBOutlet weak var lastWordButton: UIButton!
+    @IBOutlet weak var systemWordButton: UIButton!
+    @IBOutlet weak var myWordButton: UIButton!
+    @IBOutlet weak var lastWordLineView: UIView!
+    @IBOutlet weak var systemWordLineView: UIView!
+    @IBOutlet weak var myWordLineView: UIView!
+
     @IBOutlet weak var wordCollectionView: UICollectionView!
     @IBOutlet weak var friendsCollectionView: UICollectionView!
     @IBOutlet weak var addFriendButton: UIButton!
@@ -65,13 +89,13 @@ class SendMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSelectedWordImageView()
-        setupWordGroupSegmentedControl()
+        setupTypeButton()
         setupWordCollectionView()
         setupFriendsCollectionView()
         setupObserver()
         
         hideSelectedWord(false)
-        wordGroupSegmentedControl.selectedSegmentIndex = UserInfo.shared.lastUseWordIDs.count > 0 ? 0 : 1
+        wordType = UserInfo.shared.lastUseWordIDs.count > 0 ? .Last : .System
     }
 
     deinit {
@@ -105,8 +129,17 @@ class SendMessageViewController: UIViewController {
         selectedWordPlayButton.stopPlayWordSound()
     }
     
-    private func setupWordGroupSegmentedControl() {
-        wordGroupSegmentedControl.selectedIndexChange() { [weak self] (Int) -> () in
+    private func setupTypeButton() {
+        lastWordButton.clicked() { [weak self] btn -> () in
+            self!.wordType = .Last
+            self!.wordCollectionView.reloadData()
+        }
+        systemWordButton.clicked() { [weak self] btn -> () in
+            self!.wordType = .System
+            self!.wordCollectionView.reloadData()
+        }
+        myWordButton.clicked() { [weak self] btn -> () in
+            self!.wordType = .My
             self!.wordCollectionView.reloadData()
         }
     }
@@ -186,7 +219,7 @@ class SendMessageViewController: UIViewController {
         ce_addObserverForName(kNotification_NewWord, handle: { [weak self] (notification) -> Void in
             if let weakSelf = self {
                 let newWordID = notification.object as! Int
-                self!.wordGroupSegmentedControl.selectedSegmentIndex = 2
+                self!.wordType = .My
                 self!.reloadWords({ [weak self] () -> () in
                     if let weakSelf = self {
                         var i = 0
@@ -281,13 +314,14 @@ class SendMessageViewController: UIViewController {
         selectedWordImageViewFrame = wordFrame
         self.selectedWordImageView.layoutIfNeeded()
         UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            self.wordGroupSegmentedControl.alpha = 0
+            self.typeView.alpha = 0
             self.wordCollectionView.alpha = 0
             self.selectedWordImageView.hidden = false
             var frame = CGRectZero
-            frame.origin = self.wordGroupSegmentedControl.frame.origin
-            frame.size.width = self.wordGroupSegmentedControl.frame.size.width
-            frame.size.height = CGRectGetMaxY(self.wordCollectionView.frame) - self.wordGroupSegmentedControl.frame.origin.y
+            frame.size.width = min(self.view.bounds.size.width - 30 * 2, CGRectGetMaxY(self.wordCollectionView.frame) - 30 * 2)
+            frame.size.height = frame.size.width
+            frame.origin.x = self.view.bounds.size.width * 0.5 - frame.size.width * 0.5
+            frame.origin.y = self.friendsCollectionView.frame.origin.y * 0.5 - frame.size.height * 0.5
             self.selectedWordImageViewFrame = frame
             self.selectedWordImageView.layoutIfNeeded()
         }) { (success) -> Void in
@@ -301,7 +335,7 @@ class SendMessageViewController: UIViewController {
         if animate {
             self.selectedWordPlayButton.hidden = true
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                self.wordGroupSegmentedControl.alpha = 1
+                self.typeView.alpha = 1
                 self.wordCollectionView.alpha = 1
                 self.selectedWordImageViewFrame = self.selectedWordCellFrame
                 self.selectedWordImageView.layoutIfNeeded()
@@ -314,7 +348,7 @@ class SendMessageViewController: UIViewController {
             }
         }
         else {
-            wordGroupSegmentedControl.alpha = 1
+            typeView.alpha = 1
             wordCollectionView.alpha = 1
             selectedWord = nil
             selectedWordCellFrame = nil
@@ -326,10 +360,6 @@ class SendMessageViewController: UIViewController {
     
     private func resetSendButtonEnabled() {
         sendButton.enabled = selectedWord != nil && friends.count > 0
-    }
-    
-    @IBAction func closeClick(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func sendClick(sender: AnyObject) {
