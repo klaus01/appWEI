@@ -37,6 +37,7 @@
 		247094C21AC543A500A830F3 /* InviteFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247094C11AC543A500A830F3 /* InviteFriendViewController.swift */; };
 		247094C41AC546BF00A830F3 /* InviteContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */; };
 		247094C61AC54A9500A830F3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247094C51AC54A9500A830F3 /* AddressBook.framework */; };
+		2484BBD01BB9890A00437AEC /* CE_UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484BBCF1BB9890A00437AEC /* CE_UIPickerView.swift */; };
 		2486F6B11ABE92BD0007E070 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */; };
 		2486F6B31ABE97E40007E070 /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B21ABE97E40007E070 /* ServerHelper.swift */; };
 		2486F6B51ABE99E70007E070 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F6B41ABE99E70007E070 /* Const.swift */; };
@@ -208,6 +209,7 @@
 		247094C11AC543A500A830F3 /* InviteFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewController.swift; sourceTree = "<group>"; };
 		247094C31AC546BF00A830F3 /* InviteContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteContactsTableViewController.swift; sourceTree = "<group>"; };
 		247094C51AC54A9500A830F3 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		2484BBCF1BB9890A00437AEC /* CE_UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE_UIPickerView.swift; sourceTree = "<group>"; };
 		2486F6B01ABE92BD0007E070 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 		2486F6B21ABE97E40007E070 /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
 		2486F6B41ABE99E70007E070 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				24E1F7D81AE68D2000A77A16 /* CE_UITextField.swift */,
 				24EA77BC1AF90A8E008EE77E /* CE_UITextView.swift */,
 				24DE4BDE1B11870A006C9266 /* CE_UIGestureRecognizer.swift */,
+				2484BBCF1BB9890A00437AEC /* CE_UIPickerView.swift */,
 			);
 			path = ClosuresExtension;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				244C1A0F1ABC053A00813708 /* Alamofire.swift in Sources */,
 				240D52B61ADEB69E00B8E112 /* UIRefreshControl.swift in Sources */,
 				24E46DC71BAD533900EF3EC7 /* ImageCollectionViewCell.swift in Sources */,
+				2484BBD01BB9890A00437AEC /* CE_UIPickerView.swift in Sources */,
 				24E02D021ACAD10B00A17D13 /* Range.swift in Sources */,
 				242E35B91AC14DA2001EDA0D /* PublicFunc.swift in Sources */,
 				24E02CF81ACAD10B00A17D13 /* Array.swift in Sources */,

@@ -1864,14 +1864,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNa-FK-h65">
-                                <rect key="frame" x="283" y="386" width="22" height="22"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="字体" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7iw-sY-rSJ">
+                                <rect key="frame" x="8" y="8" width="260" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Qsc-uP-qtV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hsR-nb-29f">
-                                <rect key="frame" x="276" y="38" width="36" height="340"/>
+                                <rect key="frame" x="276" y="37" width="36" height="282"/>
                                 <color key="backgroundColor" red="0.93677004419999998" green="0.93677004419999998" blue="0.93677004419999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="ETb-Ly-GSZ"/>
@@ -1885,56 +1887,79 @@
                                 <cells/>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-SM-ZWW">
-                                <rect key="frame" x="8" y="78" width="260" height="260"/>
+                                <rect key="frame" x="8" y="48" width="260" height="260"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="7Wu-E2-r9t">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7Wu-E2-r9t" secondAttribute="bottom" id="ZGw-Lj-WJK"/>
                                     <constraint firstAttribute="width" secondItem="UkY-SM-ZWW" secondAttribute="height" multiplier="1:1" id="dNF-61-e6v"/>
+                                    <constraint firstItem="7Wu-E2-r9t" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="leading" id="fsx-Xq-Thp"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Wu-E2-r9t" secondAttribute="trailing" id="nnA-J6-Hwa"/>
+                                    <constraint firstItem="7Wu-E2-r9t" firstAttribute="top" secondItem="UkY-SM-ZWW" secondAttribute="top" id="otA-ri-3DB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wx-OK-UzS">
-                                <rect key="frame" x="283" y="8" width="22" height="22"/>
-                                <state key="normal">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wx-OK-UzS">
+                                <rect key="frame" x="276" y="0.0" width="37" height="37"/>
+                                <state key="normal" image="button_delete">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eXb-Tz-BbA">
-                                <rect key="frame" x="8" y="380" width="260" height="29"/>
+                                <rect key="frame" x="8" y="308" width="260" height="29"/>
                                 <segments>
                                     <segment title="移动、缩放、旋转"/>
                                     <segment title="擦除"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHU-Kn-1eJ">
+                                <rect key="frame" x="0.0" y="356" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.63137254899999995" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="V7S-zP-qRr"/>
+                                    <constraint firstAttribute="height" constant="60" id="nN0-FZ-DqA"/>
+                                </constraints>
+                                <state key="normal" image="button_done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendClick:" destination="IA7-Iw-iTb" eventType="touchUpInside" id="cff-EN-A9f"/>
+                                    <segue destination="Maz-Y7-0K3" kind="show" id="A17-QO-Ljk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="eXb-Tz-BbA" secondAttribute="bottom" constant="8" id="6xX-JH-sYI"/>
-                            <constraint firstItem="7Wx-OK-UzS" firstAttribute="top" secondItem="xAC-9Y-H4H" secondAttribute="bottom" constant="8" id="ANS-g8-kjJ"/>
+                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="eXb-Tz-BbA" secondAttribute="bottom" constant="80" id="6xX-JH-sYI"/>
+                            <constraint firstItem="UkY-SM-ZWW" firstAttribute="top" secondItem="7iw-sY-rSJ" secondAttribute="bottom" constant="-2" id="7bb-wO-C5J"/>
+                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="GHU-Kn-1eJ" secondAttribute="bottom" id="AAY-dh-LQj"/>
+                            <constraint firstItem="7Wx-OK-UzS" firstAttribute="top" secondItem="xAC-9Y-H4H" secondAttribute="bottom" id="ANS-g8-kjJ"/>
                             <constraint firstItem="hsR-nb-29f" firstAttribute="centerY" secondItem="UkY-SM-ZWW" secondAttribute="centerY" id="DpT-dY-YVv"/>
                             <constraint firstItem="7Wx-OK-UzS" firstAttribute="centerX" secondItem="hsR-nb-29f" secondAttribute="centerX" id="FSw-hz-hVj"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="top" secondItem="7Wx-OK-UzS" secondAttribute="bottom" constant="8" id="HAW-25-dY6"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="trailing" secondItem="eRg-v2-7N0" secondAttribute="trailingMargin" constant="8" id="L2g-tW-i72"/>
-                            <constraint firstItem="oNa-FK-h65" firstAttribute="top" secondItem="hsR-nb-29f" secondAttribute="bottom" constant="8" id="Rry-C6-Y73"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="top" secondItem="7Wx-OK-UzS" secondAttribute="bottom" id="HAW-25-dY6"/>
+                            <constraint firstItem="hsR-nb-29f" firstAttribute="trailing" secondItem="eRg-v2-7N0" secondAttribute="trailing" constant="-8" id="L2g-tW-i72"/>
+                            <constraint firstItem="7iw-sY-rSJ" firstAttribute="centerX" secondItem="UkY-SM-ZWW" secondAttribute="centerX" id="MGO-6X-AQF"/>
+                            <constraint firstItem="GHU-Kn-1eJ" firstAttribute="leading" secondItem="eRg-v2-7N0" secondAttribute="leading" id="QC7-tN-nhh"/>
                             <constraint firstItem="eXb-Tz-BbA" firstAttribute="trailing" secondItem="UkY-SM-ZWW" secondAttribute="trailing" id="SK2-Xu-Y1U"/>
-                            <constraint firstItem="hsR-nb-29f" firstAttribute="centerX" secondItem="oNa-FK-h65" secondAttribute="centerX" id="VeV-kU-2mG"/>
+                            <constraint firstItem="7iw-sY-rSJ" firstAttribute="width" secondItem="UkY-SM-ZWW" secondAttribute="width" id="U67-4k-kY0"/>
                             <constraint firstItem="eXb-Tz-BbA" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="leading" id="YJc-yj-cpn"/>
                             <constraint firstItem="UkY-SM-ZWW" firstAttribute="leading" secondItem="eRg-v2-7N0" secondAttribute="leadingMargin" constant="-8" id="iFV-Ud-Bmn"/>
-                            <constraint firstItem="FIg-K5-IVf" firstAttribute="top" secondItem="oNa-FK-h65" secondAttribute="bottom" constant="8" id="lVE-7x-vqg"/>
+                            <constraint firstAttribute="trailing" secondItem="GHU-Kn-1eJ" secondAttribute="trailing" id="keQ-t6-lPD"/>
+                            <constraint firstItem="GHU-Kn-1eJ" firstAttribute="top" secondItem="hsR-nb-29f" secondAttribute="bottom" constant="37" id="vSN-Rq-Ifo"/>
                             <constraint firstItem="hsR-nb-29f" firstAttribute="leading" secondItem="UkY-SM-ZWW" secondAttribute="trailing" constant="8" id="woV-Vw-3bj"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="写" id="hrg-sJ-zci">
-                        <barButtonItem key="rightBarButtonItem" title="下一步" id="ERr-fa-6nu">
-                            <connections>
-                                <segue destination="Maz-Y7-0K3" kind="show" id="zKL-Fb-YuG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="写" id="hrg-sJ-zci"/>
                     <connections>
-                        <outlet property="addLayerButton" destination="oNa-FK-h65" id="YAz-I9-zwO"/>
                         <outlet property="clearLayerButton" destination="7Wx-OK-UzS" id="40G-Lc-6hh"/>
+                        <outlet property="fontTextField" destination="7iw-sY-rSJ" id="HEZ-GZ-bws"/>
                         <outlet property="layersCollectionView" destination="hsR-nb-29f" id="MbF-GS-rv2"/>
                         <outlet property="modeSegmentedControl" destination="eXb-Tz-BbA" id="GBm-AH-Qwy"/>
-                        <outlet property="nextButton" destination="ERr-fa-6nu" id="oIx-DQ-ngd"/>
+                        <outlet property="nextButton" destination="GHU-Kn-1eJ" id="V14-lw-mEb"/>
+                        <outlet property="wordBGView" destination="7Wu-E2-r9t" id="erH-54-Pyg"/>
                         <outlet property="wordView" destination="UkY-SM-ZWW" id="DaU-ti-PK0"/>
                     </connections>
                 </viewController>
@@ -2282,6 +2307,7 @@
         <image name="add_friend" width="37" height="37"/>
         <image name="add_friend02" width="64" height="64"/>
         <image name="board" width="277" height="277"/>
+        <image name="button_delete" width="37" height="37"/>
         <image name="button_done" width="37" height="37"/>
         <image name="button_edit" width="37" height="37"/>
         <image name="button_forward" width="37" height="37"/>

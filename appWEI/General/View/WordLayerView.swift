@@ -32,6 +32,12 @@ class WordLayerView: UIView {
         }
     }
     
+    var fontColor: UIColor = UIColor.blackColor() {
+        didSet {
+            wordView.fontColor = fontColor
+        }
+    }
+    
     /// 图层内容已改变事件
     var onChanged: ((WordLayerView) -> ())?
     
@@ -111,9 +117,15 @@ class WordLayerView: UIView {
         private var eraserPaths: [(CGFloat, [CGPoint])] = [(CGFloat, [CGPoint])]()
         private var word: String!
         private var font: UIFont!
-        init(word: String, font: UIFont) {
+        private var fontColor: UIColor! {
+            didSet {
+                setNeedsDisplay()
+            }
+        }
+        init(word: String, font: UIFont, fontColor: UIColor) {
             self.word = word
             self.font = font
+            self.fontColor = fontColor
             super.init(frame: CGRectZero)
         }
         required init(coder aDecoder: NSCoder) {
@@ -124,7 +136,7 @@ class WordLayerView: UIView {
             
             // 居中显示 字
             let str = NSString(string: word)
-            let attrs = [NSFontAttributeName: font]
+            let attrs = [NSFontAttributeName: font, NSForegroundColorAttributeName: fontColor]
             let strSize = str.sizeWithAttributes(attrs)
             let strRect = CGRectMake((rect.size.width - strSize.width) / 2, (rect.size.height - strSize.height) / 2, strSize.width, strSize.height)
             str.drawInRect(strRect, withAttributes: attrs)
@@ -171,7 +183,7 @@ class WordLayerView: UIView {
     private var rotationGesture: UIRotationGestureRecognizer!
     
     private func setupWordView(#word: String, font: UIFont) {
-        wordView = WordView(word: word, font: font)
+        wordView = WordView(word: word, font: font, fontColor: fontColor)
         wordView.backgroundColor = UIColor.clearColor()
         wordView.frame = bounds
         wordView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
