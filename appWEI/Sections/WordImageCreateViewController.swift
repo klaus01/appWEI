@@ -212,6 +212,7 @@ class WordImageCreateViewController: UIViewController {
     }
     
     private func refreshButtonEnabled() {
+        modeSegmentedControl.hidden = wordLayerViews.count <= 0
         clearLayerButton.hidden = wordLayerViews.count <= 0
         nextButton.enabled = wordLayerViews.count > 0
     }

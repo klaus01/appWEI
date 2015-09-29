@@ -15,6 +15,8 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
     private var audioPlay: AVAudioPlayer!
     private var countdownTimer: NSTimer!
     private var countdown: Int = 0
+    private var viewFrameY: CGFloat = 0
+    private let hintText = "亲，科普一下这字虾米意思吧"
     
     var wordImage: UIImage!
     
@@ -22,7 +24,7 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +33,53 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
         setupDescriptionTextView()
         setupRecorder()
         setupRecordButton()
-        setupAudioPlay()
         setupPlayButton()
+        
+        ce_addObserverForName(UIKeyboardWillShowNotification, handle: { [weak self] (notification) -> Void in
+            if self!.viewFrameY == 0 {
+                self!.viewFrameY = self!.view.frame.origin.y
+            }
+            let info = notification.userInfo!
+            let duation = (info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+            let options = (info[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue
+            UIView.animateWithDuration(duation, delay: 0, options: UIViewAnimationOptions(options), animations: { () -> Void in
+                var frame = self!.view.frame
+                frame.origin.y = self!.viewFrameY - CGRectGetMaxY(self!.imageView.frame)
+                self!.view.frame = frame
+            }, completion: nil)
+        })
+        ce_addObserverForName(UIKeyboardWillHideNotification, handle: { [weak self] (notification) -> Void in
+            let info = notification.userInfo!
+            let duation = (info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+            let options = (info[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue
+            UIView.animateWithDuration(duation, delay: 0, options: UIViewAnimationOptions(options), animations: { () -> Void in
+                var frame = self!.view.frame
+                frame.origin.y = self!.viewFrameY
+                self!.view.frame = frame
+            }, completion: nil)
+        })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func setupDescriptionTextView() {
-        descriptionTextView.ce_ShouldChangeTextInRange { (textView, range, text) -> Bool in
+        descriptionTextView.text = hintText;
+        descriptionTextView
+        .ce_ShouldBeginEditing { [weak self] (textView) -> Bool in
+            if textView.text == self!.hintText {
+                textView.text = ""
+            }
+            return true
+        }
+        .ce_ShouldChangeTextInRange { (textView, range, text) -> Bool in
             if text == "\n" {
                 textView.resignFirstResponder()
                 return false
             }
             return true
+        }
+        .ce_DidEndEditing { [weak self] (textView) -> Void in
+            if textView.text.length <= 0 {
+                textView.text = self!.hintText
+            }
         }
     }
     
@@ -72,21 +105,20 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
             session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
             session.setActive(true, error: nil)
             self!.recorder.record()
-            self!.countdown = 5
-            self!.countdownLabel.text = self!.countdown.description
-            self!.countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self!, selector: "onCountdownTimer", userInfo: nil, repeats: true)
+            self!.countdown = 5 * 10 + 1
+            self!.progressView.progress = 0
+            self!.countdownTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self!, selector: "onCountdownTimer", userInfo: nil, repeats: true)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ [weak self] () -> Void in
+                self!.onCountdownTimer()
+            })
         })
         recordButton.__on(UIControlEvents.TouchUpInside, action: { [weak self] (control) -> () in
             if self!.recorder.recording {
                 self!.recorder.stop()
-                self!.countdownLabel.text = ""
                 self!.countdownTimer.invalidate()
                 self!.countdownTimer = nil
             }
         })
-    }
-    
-    private func setupAudioPlay() {
     }
     
     private func setupPlayButton() {
@@ -98,21 +130,34 @@ class WordSoundCreateViewController: UIViewController, AVAudioRecorderDelegate {
             self!.audioPlay = AVAudioPlayer(contentsOfURL: self!.recorder.url, error: nil)
             self!.audioPlay.prepareToPlay()
             self!.audioPlay.play()
+            
+            self!.progressView.progress = 0
+            NSOperationQueue.mainQueue().addOperationWithBlock({ [weak self] () -> Void in
+                UIView.animateWithDuration(self!.audioPlay.duration, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                    self!.progressView.setProgress(1, animated: true)
+                }, completion: nil)
+            })
         }
     }
     
     func onCountdownTimer() {
         countdown--
-        countdownLabel.text = countdown.description
+        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            self.progressView.setProgress(self.progressView.progress + 1.0 / 50.0, animated: true)
+        }, completion: nil)
         if countdown <= 0 {
             recorder.stop()
-            countdownLabel.text = ""
             countdownTimer.invalidate()
             countdownTimer = nil
         }
     }
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
+        if descriptionTextView.text == hintText {
+            UIAlertView.showMessage("请输入字的解释！", cancelButtonTitle: "好")
+            return
+        }
+        
         var audioData: NSData?
         let imageData: NSData = UIImagePNGRepresentation(wordImage)
         
